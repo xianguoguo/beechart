@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YID Chart Demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="css/yid-chart-demo-merge.css" type="text/css" media="screen" />
+</head>
+<body>
+    
+    <ul class="demos" id="demos"></ul>
+    <div style="clear:both"></div>
+    
+    <script src="js/yid-chart-demo-merge.js"></script>
+    <script>
+        jQuery(function($){
+        
+            $('#demos').demos(
+            {
+                title   : '默认线图样式',
+                type    : 'line',
+                width   : 952,
+                height  : 450,
+                swf     : 'swf/ali-yid-chart-line.swf',
+                dataUrl : ['data/mon-av-temp.xml', 'data/mon-av-temp-4-ser.xml', 'data/time-label-data.xml'],
+                cssUrl  : ['css/ali-line.css', 'css/ali-line2.css', 'css/single-dark.css', 'css/time-label-data.css'],
+                flashvars : {
+                    w   : 850,
+                    h   : 390
+                }
+            },
+        
+            {
+                type    : 'line',
+                width   : 952,
+                height  : 450,
+                dataUrl : 'data/data-xml-single.xml',
+                cssUrl  : 'css/single-dark.css',
+                flashvars : {
+                    w   : 850,
+                    h   : 390
+                }
+            },
+            
+            {
+                type    : 'line',
+                width   : 952,
+                height  : 450,                
+                dataUrl : 'data/data-xml-single.xml',
+                cssUrl  : 'css/single-dark-2.css',
+                flashvars : {
+                    w   : 850,
+                    h   : 390
+                }
+            },
+            
+            {
+                type    : 'line',
+                width   : 952,
+                height  : 450,
+                dataUrl : 'data/2-serials.xml',
+                cssUrl  : 'css/2-lines-light.css',
+                flashvars : {
+                    w   : 850,
+                    h   : 390
+                }
+            },
+            
+            {
+                type    : 'line',
+                width   : 952,
+                height  : 450,                
+                dataUrl : 'data/2-serials.xml',
+                cssUrl  : 'css/2-lines-dark.css',
+                flashvars : {
+                    w   : 850,
+                    h   : 390
+                }
+            }
+            
+            ).anythingSlider({
+                resizeContents  : true,
+                buildStartStop  : false,
+                infiniteSlides  : false
+            });
+        })
+    </script>
+
+</body>
+</html>

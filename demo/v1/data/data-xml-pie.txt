@@ -1,0 +1,9 @@
+<graph bgcolor='ffffff' yaxisminvalue='0' yaxismaxvalue='1'
+	decimalprecision='0' formatnumberscale='0' showcanvasbg='0' showvalues='1'
+	basefontsize='12' basefontcolor='606060' numberSuffix='条'>
+	<set name='一星信息' value='1' color='f6c11d' alpha='90' />
+	<set name='二星信息' value='58' color='ab76df' alpha='90' />
+	<set name='三星信息' value='2' color='b3daf8' alpha='90' />
+	<set name='四星信息' value='0' color='f98ba6' alpha='90' />
+	<set name='五星信息' value='0' color='92be0f' alpha='90' isSliced='1' />
+</graph>

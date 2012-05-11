@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     编辑主界面
+-->
+<s:SkinnableContainer xmlns:fx="http://ns.adobe.com/mxml/2009"
+                      xmlns:s="library://ns.adobe.com/flex/spark"
+                      xmlns:mx="library://ns.adobe.com/flex/mx"
+                      xmlns:components="cn.alibaba.yid.chart.builder.components.*"
+                      xmlns:base="cn.alibaba.yid.chart.builder.components.base.*"
+                      creationComplete="skinnablecontainer1_creationCompleteHandler(event)"
+                      removedFromStage="skinnablecontainer1_removedFromStageHandler(event)">
+    <fx:Metadata>
+		[Event(name="changeState",type="flash.events.DataEvent")]
+	</fx:Metadata>
+    <s:layout>
+        <s:BasicLayout/>
+    </s:layout>
+    <fx:Declarations>
+        <!-- 将非可视元素（例如服务、值对象）放在此处 -->
+    </fx:Declarations>
+    <fx:Script>
+        <![CDATA[
+            import bee.chart.builder.CHART_SETTING;
+            import bee.chart.builder.ChartTypes;
+            import bee.chart.builder.events.BuilderEvent;
+            import bee.chart.builder.events.StyleChangeEvent;
+            import bee.chart.builder.utils.ChartStyleSetting;
+            import bee.chart.demo.BarChartDemoPlus;
+            import bee.chart.demo.LineChartDemoPlus;
+            import bee.chart.demo.PieChartDemoPlus;
+            
+            import mx.collections.ArrayCollection;
+            import mx.core.IVisualElement;
+            import mx.core.UIComponent;
+            import mx.events.FlexEvent;
+            
+            import spark.components.NavigatorContent;
+            [Bindable]
+            //图表的配置信息
+            public var chartsSetting:ArrayCollection;
+            
+            //反射视图对应的木偶变量
+            private var pie:PieEditorMain;
+            private var line:LineEditorMain;
+            private var bar:BarEditorMain;
+            
+            private var chart:*;
+            
+            /**
+             * 根据配置信息生成相应视图
+             */
+            protected function viewStack_addedToStageHandler(event:Event):void
+            {
+                
+                if (!chartsSetting)
+                {
+                    callLater(viewStack_addedToStageHandler, [event]);
+                    return;
+                }
+                var chartNum:int = chartsSetting.length;
+                var chartData:Object;
+                for (var i:int = 0; i < chartNum; i++)
+                {
+                    chartData = chartsSetting[i];
+                    var sc:NavigatorContent = new chartData.klass();
+                    if (sc)
+                    {
+                        sc.label = chartData.type;
+                        sc.percentWidth = 100;
+                        sc.percentHeight = 100;
+                        viewStack.addElement(sc);
+                    }
+                }
+            }
+            
+            protected function skinnablecontainer1_creationCompleteHandler(event:FlexEvent):void
+            {
+                this.addEventListener(StyleChangeEvent.STYLE_CHANGE, styleChangeHandler);
+                ChartStyleSetting.getInstance().addEventListener(StyleChangeEvent.CSS_CHANGE, cssChangeHandler);
+            }
+            
+            protected function skinnablecontainer1_removedFromStageHandler(event:Event):void
+            {
+                this.removeEventListener(StyleChangeEvent.STYLE_CHANGE, styleChangeHandler);
+                ChartStyleSetting.getInstance().removeEventListener(StyleChangeEvent.CSS_CHANGE, cssChangeHandler);
+            }
+            
+            /**
+             * changeView监听事件的回调函数，根据携带的点击图标的名称信息，
+             * 找到对应的视图，并激活该视图.
+             * */
+            public function initView(type:String):void
+            {
+                if (type)
+                {
+                    //get label from type
+                    var label:String = "";
+                    for each (var obj:Object in CHART_SETTING)
+                    {
+                        if (obj['type'] === type)
+                        {
+                            label = type;
+                            break;
+                        }
+                    }
+                    var childNum:int = viewStack.numElements;
+                    var nc:NavigatorContent;
+                    
+                    for (var i:int = 0; i < childNum; i++)
+                    {
+                        nc = viewStack.getElementAt(i) as NavigatorContent;
+                        if (nc && nc.label === label)
+                        {
+                            viewStack.selectedIndex = i;
+                            switch (type)
+                            {
+                                case ChartTypes.PIE:
+                                    chart = new PieChartDemoPlus();
+                                    break;
+                                case ChartTypes.LINE:
+                                    chart = new LineChartDemoPlus();
+                                    break;
+                                case ChartTypes.BAR:
+                                    chart = new BarChartDemoPlus();
+                                    break;
+                            }
+                            
+                            if (chart)
+                            {
+                                var ui:UIComponent = new UIComponent();
+                                ui.addChild(chart);
+                                preView.addElement(ui);
+                                adjustChartPosition();
+                                //将图表中默认的样式设置赋给编辑器图表样式操作类
+                                ChartStyleSetting.getInstance().styleSheet = chart.getStyleSheet();
+                                ChartStyleSetting.getInstance().dispatchEvent(new StyleChangeEvent(StyleChangeEvent.CSS_CHANGE, null, null));
+                            }
+                        }
+                    }
+                }
+            }
+            
+            /**
+             * 点击"更改图表类型"按钮，分发changeState事件.
+             * */
+            protected function changeTypeBtn_clickHandler(event:MouseEvent):void
+            {
+                
+                if (chart)
+                {
+                    chart.dispose();
+                    chart = null;
+                    preView.removeAllElements();
+                    ChartStyleSetting.getInstance().clearStyle();
+                }
+                dispatchEvent(new DataEvent("changeState", true, false, ""));
+                
+                /**
+                 * 退回主界面时，viewStack的子界面全部分发reset事件，使得子界面全部重置数据.
+                 * */
+                var length:int = viewStack.numElements;
+                var sc:IVisualElement
+                for (var i:int = 0; i < length; i++)
+                {
+                    sc = viewStack.getElementAt(i);
+                    sc.dispatchEvent(new BuilderEvent(BuilderEvent.RESET));
+                }
+            
+            }
+            
+            //监听style改变
+            private function styleChangeHandler(event:StyleChangeEvent):void
+            {
+                chart.x = 0;
+                chart.y = 0;
+                var styleName:String = event.styleName;
+                var styleObject:Object = event.styleObject;
+                chart.setStyleByName(styleName, styleObject);
+                ChartStyleSetting.getInstance().setStyle(styleName, styleObject);
+                adjustChartPosition();
+            }
+            
+            /**
+             * 监听css改变
+             * */
+            private function cssChangeHandler(event:StyleChangeEvent):void
+            {
+                chart.setStyle(ChartStyleSetting.getInstance().getStyleString());
+                adjustChartPosition();
+            }
+            
+            /**调整chart的位置*/
+            private function adjustChartPosition():void
+            {
+                if (chart)
+                {
+                    var reg:Rectangle = chart.getBounds(chart);
+                    if (reg.left > 0)
+                    {
+                        chart.x = -reg.left;
+                    }
+                    if (reg.top > 0)
+                    {
+                        chart.y = -reg.top;
+                    }
+                }
+            }
+        ]]>
+    </fx:Script>
+
+    <base:Grip left="4"
+               right="4"
+               top="8"
+               bottom="4"
+               styleName="chartBgColor">
+        <base:leftChild>
+            <mx:ViewStack id="viewStack"
+                          width="100%"
+                          height="100%"
+                          addedToStage="viewStack_addedToStageHandler(event)">
+            </mx:ViewStack>
+        </base:leftChild>
+        <base:rightChild>
+            <s:Group width="100%"
+                     height="100%">
+                <s:layout>
+                    <s:VerticalLayout>
+                        <s:gap>5</s:gap>
+						<s:paddingTop>-4</s:paddingTop>
+                    </s:VerticalLayout>
+                </s:layout>
+                <s:Group width="100%" >
+                    <s:Button id="changeTypeBtn"
+                              label="更改图表类型"
+                              click="changeTypeBtn_clickHandler(event)"
+                              right="{importCssBtn.width+saveBtn.width+15}"/>
+                    <base:ImportCssBtn id="importCssBtn"
+                                       label="引入css文件"
+                                       right="{saveBtn.width+5}"/>
+                    <base:SaveFileBtn id="saveBtn"
+                                      label="保存文件"
+                                      right="0"/>
+                </s:Group>
+                <s:Panel width="100%"
+                         height="100%"
+                         title="预览区"
+                         dropShadowVisible="false"
+                         styleName="chartBorder"
+                         skinClass="cn.alibaba.yid.chart.builder.skins.PreViewPanelSkin">
+                    <s:SkinnableContainer id="preView"
+                                          width="100%"
+                                          height="100%"
+                                          backgroundColor="0xFFFFFF"/>
+                </s:Panel>
+            </s:Group>
+        </base:rightChild>
+    </base:Grip>
+</s:SkinnableContainer>

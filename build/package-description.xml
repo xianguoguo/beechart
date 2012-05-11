@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<overviews>
+	<packages>
+		<package name="bee.chart.abstract">
+			<shortDescription>
+			<![CDATA[
+				图表的抽象类
+			]]>
+			</shortDescription>
+			<description>
+			<![CDATA[
+				包含基本的图表基类
+			]]>
+			</description>
+		</package>
+	</packages>
+</overviews>

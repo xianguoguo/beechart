@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base:EditorChildBase xmlns:fx="http://ns.adobe.com/mxml/2009"
+                      xmlns:s="library://ns.adobe.com/flex/spark"
+                      xmlns:mx="library://ns.adobe.com/flex/mx"
+                      xmlns:base="cn.alibaba.yid.chart.builder.components.base.*">
+    <fx:Metadata>
+		[Event(name="styleChange",type="events.StyleChangeEvent")]
+	</fx:Metadata>
+    <fx:Declarations>
+        <!-- 将非可视元素（例如服务、值对象）放在此处 -->
+    </fx:Declarations>
+    <fx:Script>
+        <![CDATA[
+            import bee.chart.builder.DataProvider;
+            import bee.chart.builder.events.StyleChangeEvent;
+            import bee.chart.builder.utils.ChartStyleSetting;
+            
+            import mx.collections.ArrayCollection;
+            import mx.collections.IList;
+            import mx.events.FlexEvent;
+            import mx.events.ItemClickEvent;
+            [Bindable]
+            private var barAnimImgArray:ArrayCollection = DataProvider.getBarAnimImgArray();
+            
+            /**
+             * 重写defalutSetting()函数，设置默认设置
+             * */
+            override protected function defalutSetting():void
+            {
+                super.defalutSetting();
+                var dataProvider:IList;
+                
+                var styleSetting:ChartStyleSetting = ChartStyleSetting.getInstance();
+                var chartStyleObject:Object = styleSetting.getStyle("chart");
+                if (chartStyleObject)
+                {
+                    var obj:Object;
+                    //进入动画，默认选中"无"
+                    var animateStr:String = chartStyleObject["animate"];
+                    if (!animateStr)
+                    {
+                        animateStr = "";
+                    }
+                    if (animateStr != null)
+                    {
+                        dataProvider = animBtnList.dataProvider;
+                        for each (obj in dataProvider)
+                        {
+                            if (obj.animate == animateStr)
+                            {
+                                animBtnList.selectedItem = obj;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            private function animBtnList_ItemClickHandler(event:ItemClickEvent):void
+            {
+                var itemObj:Object = event.item;
+                var styleObject:Object = {animate: itemObj["animate"]};
+                dispatchStyleChangeEvent("chart", styleObject);
+            }
+        ]]>
+    </fx:Script>
+    <mx:Grid top="18"
+             verticalGap="18"
+             horizontalGap="0"
+             paddingLeft="22"
+             width="100%"
+             height="100%">
+        <mx:GridRow width="100%">
+            <mx:GridItem width="100%">
+                <base:TitleLabelContainer width="100%"
+                                          text="进入动画"/>
+            </mx:GridItem>
+        </mx:GridRow>
+        <mx:GridRow width="100%">
+            <mx:GridItem width="100%"
+                         paddingLeft="8">
+                <base:PopularList id="animBtnList"
+                                  dataProvider="{barAnimImgArray}"
+                                  itemClickHanlder="animBtnList_ItemClickHandler">
+
+                </base:PopularList>
+            </mx:GridItem>
+        </mx:GridRow>
+    </mx:Grid>
+</base:EditorChildBase>

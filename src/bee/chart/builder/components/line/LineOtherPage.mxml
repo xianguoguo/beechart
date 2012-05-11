@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base:EditorChildBase xmlns:fx="http://ns.adobe.com/mxml/2009"
+                      xmlns:s="library://ns.adobe.com/flex/spark"
+                      xmlns:mx="library://ns.adobe.com/flex/mx"
+                      xmlns:base="cn.alibaba.yid.chart.builder.components.base.*">
+    <base:layout>
+        <s:VerticalLayout/>
+    </base:layout>
+    <fx:Declarations>
+        <!-- 将非可视元素（例如服务、值对象）放在此处 -->
+    </fx:Declarations>
+    <base:TitleLabelContainer width="100%"
+                              text="特色功能"/>
+    <s:Group>
+        <s:layout>
+            <s:HorizontalLayout/>
+        </s:layout>
+        <s:Label text="放大图表功能"/>
+        <s:CheckBox label="添加"/>
+    </s:Group>
+    <base:TitleLabelContainer width="100%"
+                              text="右键菜单功能"/>
+    <s:Group>
+        <s:layout>
+            <s:HorizontalLayout/>
+        </s:layout>
+        <s:Label text="以图片形式保存图表"/>
+        <s:CheckBox label="添加"
+                    selected="true"/>
+    </s:Group>
+</base:EditorChildBase>

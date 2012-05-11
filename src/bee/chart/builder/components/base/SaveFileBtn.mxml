@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	 保存文件按钮
+-->
+<s:Button xmlns:fx="http://ns.adobe.com/mxml/2009"
+		  xmlns:s="library://ns.adobe.com/flex/spark"
+		  xmlns:mx="library://ns.adobe.com/flex/mx"
+		  click="saveBtn_clickHandler(event)">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import bee.chart.builder.utils.ChartStyleSetting;
+
+			import mx.controls.Alert;
+			private var fileReference:FileReference;
+
+			protected function saveBtn_clickHandler(event:MouseEvent):void
+			{
+
+				var str:String=ChartStyleSetting.getInstance().getStyleString();
+				fileReference=new FileReference();
+				var byte:ByteArray=new ByteArray();
+				byte.writeUTFBytes(str);
+				fileReference.save(byte, "chart.css");
+				configureListeners(fileReference);
+			}
+
+			private function configureListeners(dispatcher:IEventDispatcher):void
+			{
+				dispatcher.addEventListener(Event.COMPLETE, completeHandler);
+				dispatcher.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
+			}
+
+			private function removeListeners(dispatcher:IEventDispatcher):void
+			{
+				dispatcher.removeEventListener(Event.COMPLETE, completeHandler);
+				dispatcher.removeEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
+			}
+
+			private function completeHandler(event:Event):void
+			{
+				removeListeners(fileReference);
+				Alert.show("保存成功.", "提示");
+			}
+
+			private function ioErrorHandler(event:IOErrorEvent):void
+			{
+				removeListeners(fileReference);
+				Alert.show("保存失败.", "提示");
+			}
+		]]>
+	</fx:Script>
+</s:Button>

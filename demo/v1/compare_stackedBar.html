@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>yid-chart</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="language" content="en" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	
+	<script src="http://style.china.alibaba.com/js/lib/fdev-v3/core/fdev-min.js" type="text/javascript"></script>
+	<script src="http://style.china.alibaba.com/js/lib/fdev-v3/widget/flash/flash-min.js" type="text/javascript"></script>
+	<script type="text/javascript">
+
+                
+                FYE.onDOMReady(function(){
+                var data = "<graph palette='2' showLabels='1' showvalues='0'  numberPrefix='$' showSum='1' decimals='0' useRoundEdges='1' legendBorderAlpha='0'><categories><category name='Product A' /><category name='Product B' /><category name='Product C' /><category name='Product D' /><category name='Product E' /></categories><dataset seriesName='2004' color='AFD8F8' showValues='0'><set value='25601.34' /><set value='20148.82' /><set value='17372.76' /><set value='35407.15' /><set value='38105.68' /></dataset><dataset seriesName='2005' color='F6BD0F' showValues='0'><set value='57401.85' /><set value='41941.19' /><set value='45263.37' /><set value='117320.16' /><set value='114845.27' /></dataset><dataset seriesName='2006' color='8BBA00' showValues='0'><set value='45000.65' /><set value='44835.76' /><set value='18722.18' /><set value='77557.31' /><set value='92633.68' /></dataset></graph>";
+                var yidData = '<chart>\
+                                  <data>\
+                                    <indexAxis name="产品">\
+                                      <labels>Product A,Product B,Product C,Product D,Product E</labels>\
+                                    </indexAxis>\
+                                    <valueAxis name="销售额"/>\
+                                    <dataSets>\
+                                      <set name="2004" stackGroup="销售总额">\
+                                        <values>25601.34,20148.82,17372.76,35407.15,38105.68</values>\
+                                        <style>\
+                                          <item name="color" value="#AFD8F8"/>\
+                                        </style>\
+                                      </set>\
+                                      <set name="2005" stackGroup="销售总额">\
+                                        <values>57401.85,41941.19,45263.37,117320.16,114845.27</values>\
+                                        <style>\
+                                          <item name="color" value="#F6BD0F"/>\
+                                        </style>\
+                                      </set>\
+                                      <set name="2006" stackGroup="销售总额">\
+                                        <values>45000.65,44835.76,18722.18,77557.31,92633.68</values>\
+                                        <style>\
+                                          <item name="color" value="#8BBA00"/>\
+                                        </style>\
+                                      </set>\
+                                    </dataSets>\
+                                  </data>\
+                                </chart>';
+                var css  = "xAxis {\
+                                tickThickness  : 0;\
+                                tickLength     : 5;\
+                                tickPosition   : center;\
+                                labelPosition  : center;\
+                                labelGap       : auto;\
+                            }\
+                            yAxis {\
+                                tickThickness  : 0;\
+                                tickPosition   : left;\
+                                labelPosition  : left;\
+                            }\
+                            canvas {\
+                                borderThickness   : 4;\
+                                borderColor       : #666666;\
+                                backgroundColor   : #FFFFFF;\
+                                backgroundColor2  : #FFF7F3;\
+                                gridColor         : #FFEBE1;\
+                                gridThickness     : 1;\
+                            }\
+                            bar {\
+                                dropShadow: none;\
+                                valueVisibility: none;\
+                            }\
+                            bar label {\
+                                fontSize: 15;\
+                            }\
+                            chart {\
+                                colors        : #A9CF56,#EA9410,#4E9ADB;\
+                                leftAxisVisibility: visible;\
+                                animate : true;\
+                                paddingTop : 50;\
+                            }\
+                            legend {\
+                                position:bottom;\
+                            }";
+                
+                var chart = FD.widget.Flash.init('altContent1', {
+                        width: 500,
+                        height: 500,
+                        url: 'yid-chart-bar.swf',
+                        insert: false,
+                        id:'demo1',
+                        allowScriptAccess: 'always',
+                        flashvars: {
+                            chartWidth: 400,
+                            chartHeight: 400,
+                            startDelay: 500,
+                            debug: true
+                        }
+                    });
+                    
+                    chart.on('swfReady', function(evt){
+                        chart.swf.parseCSS(css);
+                        chart.swf.parse(yidData);
+                    });
+                    
+                    var chart2 = FD.widget.Flash.init('altContent2', {
+                        width: 500,
+                        height: 500,
+                        url: 'swfs/StackedColumn2D.swf',
+                        insert: false,
+                        allowScriptAccess: 'always',
+                        flashvars: {
+                            chartWidth: 400,
+                            chartHeight: 400,
+                            startDelay: 500,
+                            dataXML: data,
+                        }
+                    });
+                    
+                    chart2.on('swfReady', function(evt){
+                    });
+                });
+	</script>
+	<style type="text/css">
+		html, body { height:100%; overflow:hidden; }
+        
+		body { margin:0; }
+        
+        #article { 
+            margin:0 auto; 
+            padding:1em; 
+            color:#666;
+            text-align:left;
+            font-size:11pt;
+        }
+        
+        #demo{
+            float:left;
+            width:50%;
+        }
+        
+        #demo2{
+            float:left;
+            width:50%;
+        }
+        
+        h1{
+            margin-left: 450px;
+        }
+
+        .plus{
+            margin-left: 200px;
+        }
+        
+	</style>
+</head>
+<body>
+    <h1>堆叠柱状图比较</h1>
+    <div id="article">
+        <div id="demo">
+            <div id="altContent1">
+                <h1>yid-chart</h1>
+                <p>Alternative content</p>
+                <p><a href="http://www.adobe.com/go/getflashplayer"><img 
+                    src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" 
+                    alt="Get Adobe Flash player" /></a></p>
+            </div>
+            <div class="plus">YID堆叠柱状图</div>
+        </div>
+        <div id="demo2">
+            <div id="altContent2">
+                <h1>yid-chart</h1>
+                <p>Alternative content</p>
+                <p><a href="http://www.adobe.com/go/getflashplayer"><img 
+                    src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" 
+                    alt="Get Adobe Flash player" /></a></p>
+            </div>
+            <div class="plus">FusionCharts堆叠柱状图</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	 引入css文件按钮
+	 引入之前编辑过的css文件，便于用户继续编辑。
+-->
+<s:Button xmlns:fx="http://ns.adobe.com/mxml/2009"
+		  xmlns:s="library://ns.adobe.com/flex/spark"
+		  xmlns:mx="library://ns.adobe.com/flex/mx"
+		  click="button1_clickHandler(event)">
+
+	<fx:Script>
+		<![CDATA[
+			import bee.chart.builder.events.StyleChangeEvent;
+			import bee.chart.builder.utils.ChartStyleSetting;
+			import bee.util.YIDStyleSheet;
+			
+			import mx.controls.Alert;
+			private var fileReference:FileReference;
+
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				fileReference=new FileReference();
+				configureListeners(fileReference);
+				fileReference.browse([new FileFilter("Images (*.css)", "*.css")]);
+			}
+
+			private function configureListeners(dispatcher:IEventDispatcher):void
+			{
+				dispatcher.addEventListener(Event.COMPLETE, completeHandler);
+				dispatcher.addEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
+				dispatcher.addEventListener(Event.SELECT, selectHandler);
+				dispatcher.addEventListener(ProgressEvent.PROGRESS, progressHandler);
+			}
+
+			private function removeListeners(dispatcher:IEventDispatcher):void
+			{
+				dispatcher.removeEventListener(Event.COMPLETE, completeHandler);
+				dispatcher.removeEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
+				dispatcher.removeEventListener(Event.SELECT, selectHandler);
+				dispatcher.removeEventListener(ProgressEvent.PROGRESS, progressHandler);
+			}
+
+			private function selectHandler(event:Event):void
+			{
+				//加载数据
+				fileReference.load();
+			}
+
+			private function ioErrorHandler(event:IOErrorEvent):void
+			{
+				Alert.show("加载数据出错!", "提示");
+			}
+
+			private function progressHandler(event:ProgressEvent):void
+			{
+				var file:FileReference=FileReference(event.target);
+			}
+
+			private function completeHandler(event:Event):void
+			{
+				var cssString:String=new String(fileReference.data);
+				//解析加载的css数据
+				if (cssString)
+				{
+					var styleSheet:YIDStyleSheet=new YIDStyleSheet();
+					styleSheet.parseCSS(cssString);
+					var styleArray:Array=styleSheet.styleNames;
+					if (styleArray.length == 0)
+					{
+						Alert.show("数据解析失败或数据为空", "提示");
+						return;
+					}
+					ChartStyleSetting.getInstance().parseCSS(cssString);
+					ChartStyleSetting.getInstance().dispatchEvent(new StyleChangeEvent(StyleChangeEvent.CSS_CHANGE,null,null));
+				}
+			}
+		]]>
+	</fx:Script>
+
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+</s:Button>

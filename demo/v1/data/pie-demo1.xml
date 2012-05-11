@@ -1,0 +1,41 @@
+<chart>
+	<data>
+		<dataSets>
+			<set name="Offline Marketing">
+				<values>1327</values>
+			</set>
+
+			<set name="Search">
+				<values>2042</values>
+			</set>
+
+			<set name="Paid Search">
+				<values>850</values>
+			</set>
+
+			<set name="From Mail">
+				<values>541</values>
+			</set>
+		</dataSets>
+	</data>
+	<css>
+		<![CDATA[
+			slice {
+				labelPosition   : inside;
+			}
+			tooltip {	
+				tip : #value# of #total#<br>#percent#;
+			}
+			legend {
+				position      : bottom;
+				align         : middle;
+				paddingRight  : 0;
+			}
+			chart {
+				colors: #A8CE55, #E9930F, #4D99DA, #CE5555, #DCBB29,#55BECE,#AF80DE;
+                animate:composite;
+			}
+		]]>
+	</css>
+	
+</chart>

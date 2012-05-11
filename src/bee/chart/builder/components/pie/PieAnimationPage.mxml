@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base:EditorChildBase xmlns:fx="http://ns.adobe.com/mxml/2009"
+                      xmlns:s="library://ns.adobe.com/flex/spark"
+                      xmlns:mx="library://ns.adobe.com/flex/mx"
+                      xmlns:base="cn.alibaba.yid.chart.builder.components.base.*">
+    <fx:Metadata>
+		[Event(name="styleChange",type="events.StyleChangeEvent")]
+	</fx:Metadata>
+    <fx:Declarations>
+        <!-- 将非可视元素（例如服务、值对象）放在此处 -->
+    </fx:Declarations>
+    <fx:Script>
+        <![CDATA[
+            import assets.FileAssests;
+            
+            import bee.chart.builder.DataProvider;
+            import bee.chart.builder.events.BuilderEvent;
+            import bee.chart.builder.events.StyleChangeEvent;
+            import bee.chart.builder.utils.ChartStyleSetting;
+            
+            import mx.collections.ArrayCollection;
+            import mx.collections.IList;
+            import mx.events.FlexEvent;
+            import mx.events.ItemClickEvent;
+            [Bindable]
+            private var pieAnimImgArray:ArrayCollection = DataProvider.getPieAnimImgArray();
+            [Bindable]
+            private var pieMouseAnimImgArray:ArrayCollection = DataProvider.getPieMouseAnimImgArray();
+            
+            /**
+             * 重写defalutSetting()函数，设置默认设置
+             * */
+            override protected function defalutSetting():void
+            {
+                super.defalutSetting();
+                animBtnList.selectedIndex = 0;
+                mouseAnimBtnList.selectedIndex = 0;
+                var styleSetting:ChartStyleSetting = ChartStyleSetting.getInstance();
+                var chartStyleObject:Object = styleSetting.getStyle("chart");
+                if (chartStyleObject)
+                {
+                    //进入动画，默认选中"无"
+//                    var animateStr:String = chartStyleObject["animate"];
+                    var animateStr:String = "expand";
+                    if (!animateStr)
+                    {
+                        animateStr = "";
+                    }
+                    if (animateStr != null)
+                    {
+                        var animDataProvider:IList = animBtnList.dataProvider;
+                        for each (var obj:Object in animDataProvider)
+                        {
+                            if (obj.animate + "" == animateStr)
+                            {
+                                animBtnList.selectedItem = obj;
+                                break;
+                            }
+                        }
+                    }
+                    
+                    //鼠标经过动画，默认选中"无"
+                    var mouseAnimateStr:String = chartStyleObject["mouseAnimate"];
+                    if (!mouseAnimateStr)
+                    {
+                        mouseAnimateStr = "false";
+                    }
+                    if (mouseAnimateStr)
+                    {
+                        var mouseAnimDataProvider:IList = mouseAnimBtnList.dataProvider;
+                        for each (var obj2:Object in mouseAnimDataProvider)
+                        {
+                            if (obj2.mouseAnimate + "" == mouseAnimateStr)
+                            {
+                                mouseAnimBtnList.selectedItem = obj2;
+                                break;
+                            }
+                        }
+                    }
+                    
+                }
+            }
+            
+            /**
+             * 进入动画
+             * */
+            private function animBtnList_ItemClickHandler(event:ItemClickEvent):void
+            {
+                var itemObj:Object = event.item;
+                var styleObject:Object = {animate: itemObj["animate"]};
+                dispatchStyleChangeEvent("chart", styleObject);
+            }
+            
+            /**
+             * 鼠标经过动画
+             * */
+            private function mouseAnimBtnList_ItemClickHandler(event:ItemClickEvent):void
+            {
+                var itemObj:Object = event.item;
+                var styleObject:Object = {mouseAnimate: itemObj["mouseAnimate"]};
+                dispatchStyleChangeEvent("chart", styleObject);
+            }
+        ]]>
+    </fx:Script>
+    <mx:Grid top="18"
+             verticalGap="18"
+             horizontalGap="0"
+             paddingLeft="22"
+             width="100%"
+             height="100%">
+        <mx:GridRow width="100%">
+            <mx:GridItem width="100%">
+                <base:TitleLabelContainer width="100%"
+                                          text="进入动画"/>
+            </mx:GridItem>
+        </mx:GridRow>
+        <mx:GridRow width="100%">
+            <mx:GridItem width="100%"
+                         paddingLeft="8">
+                <base:PopularList id="animBtnList"
+                                  dataProvider="{pieAnimImgArray}"
+                                  itemClickHanlder="animBtnList_ItemClickHandler"/>
+
+            </mx:GridItem>
+        </mx:GridRow>
+        <mx:GridRow width="100%">
+            <mx:GridItem width="100%">
+                <base:TitleLabelContainer width="100%"
+                                          text="鼠标经过时动画"/>
+            </mx:GridItem>
+        </mx:GridRow>
+        <mx:GridRow width="100%">
+            <mx:GridItem width="100%"
+                         paddingLeft="8">
+                <base:PopularList id="mouseAnimBtnList"
+                                  dataProvider="{pieMouseAnimImgArray}"
+                                  itemClickHanlder="mouseAnimBtnList_ItemClickHandler"/>
+            </mx:GridItem>
+        </mx:GridRow>
+    </mx:Grid>
+</base:EditorChildBase>

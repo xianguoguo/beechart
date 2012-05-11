@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base:EditorChildBase xmlns:fx="http://ns.adobe.com/mxml/2009"
+                      xmlns:s="library://ns.adobe.com/flex/spark"
+                      xmlns:mx="library://ns.adobe.com/flex/mx"
+                      xmlns:base="cn.alibaba.yid.chart.builder.components.base.*">
+    <fx:Metadata>
+		[Event(name="styleChange",type="events.StyleChangeEvent")]
+	</fx:Metadata>
+    <fx:Declarations>
+        <!-- 将非可视元素（例如服务、值对象）放在此处 -->
+        <s:ArrayCollection id="characterAC">
+            <fx:Array>
+                <fx:Object label="12px"
+                           data="12"/>
+                <fx:Object label="14px"
+                           data="14"/>
+                <fx:Object label="16px"
+                           data="16"/>
+                <fx:Object label="18px"
+                           data="18"/>
+                <fx:Object label="20px"
+                           data="20"/>
+                <fx:Object label="22px"
+                           data="22"/>
+            </fx:Array>
+        </s:ArrayCollection>
+    </fx:Declarations>
+    <fx:Script>
+        <![CDATA[
+            import cn.alibaba.util.ColorUtil;
+            import bee.chart.builder.events.BuilderEvent;
+            import bee.chart.builder.events.StyleChangeEvent;
+            import bee.chart.builder.utils.ChartStyleSetting;
+            
+            import mx.events.ColorPickerEvent;
+            import mx.events.FlexEvent;
+            import mx.events.ItemClickEvent;
+            
+            import spark.events.IndexChangeEvent;
+            
+            /**
+             * 重写defalutSetting()函数，设置默认设置
+             * */
+            override protected function defalutSetting():void
+            {
+                super.defalutSetting();
+                barThicknessNC.value = 10;
+                var styleSetting:ChartStyleSetting = ChartStyleSetting.getInstance();
+                var barStyleObject:Object = styleSetting.getStyle("bar");
+                if (barStyleObject)
+                {
+                    //柱形大小
+                    var thicknessStr:String = barStyleObject["thickness"];
+                    if (thicknessStr)
+                    {
+                        barThicknessNC.value = Number(thicknessStr);
+                    }
+                }
+            }
+            
+            protected function barThicknessNC_changeHandler(event:Event):void
+            {
+                var styleObject:Object = {"thickness": barThicknessNC.value};
+                dispatchStyleChangeEvent("bar", styleObject);
+            }
+            
+//			protected function labelColorPicker_changeHandler(event:ColorPickerEvent):void
+//			{
+//
+//				var styleObject:Object={"color": labelColorTextInput.text};
+//				dispatchStyleChangeEvent("label", styleObject);
+//			}
+//
+//			protected function labelColorTextInput_enterHandler(event:FlexEvent):void
+//			{
+//
+//				labelColorPicker.selectedColor=ColorUtil.str2int(labelColorTextInput.text);
+//				var styleObject:Object={"color": labelColorTextInput.text};
+//				dispatchStyleChangeEvent("label", styleObject);
+//			}
+//
+//			protected function legendColorTextInput_enterHandler(event:FlexEvent):void
+//			{
+//
+//				legendColorPicker.selectedColor=ColorUtil.str2int(legendColorTextInput.text);
+//			}
+//
+//			/**
+//			 * 修改label字体大小
+//			 * */
+//			protected function labelFontSizeComboBox_changeHandler(event:IndexChangeEvent):void
+//			{
+//				var selectedItem:Object=labelFontSizeComboBox.selectedItem;
+//				var styleObject:Object={"fontSize": selectedItem.data};
+//				dispatchStyleChangeEvent("label", styleObject);
+//			}
+        ]]>
+    </fx:Script>
+    <mx:Grid top="18"
+             verticalGap="18"
+             horizontalGap="0"
+             paddingLeft="22"
+             width="100%"
+             height="100%">
+        <mx:GridRow width="100%">
+            <mx:GridItem width="100%">
+                <base:ChartSizeContainer chartWidth="500"
+                                         chartHeight="300"
+                                         width="100%">
+
+                </base:ChartSizeContainer>
+            </mx:GridItem>
+        </mx:GridRow>
+        <mx:GridRow width="100%">
+            <mx:GridItem width="100%">
+                <base:TitleLabelContainer width="100%"
+                                          text="柱形大小"/>
+            </mx:GridItem>
+        </mx:GridRow>
+        <mx:GridRow width="100%">
+            <mx:GridItem width="100%"
+                         paddingLeft="8">
+                <s:Group width="100%"
+                         height="100%">
+                    <s:layout>
+                        <s:HorizontalLayout>
+                        </s:HorizontalLayout>
+                    </s:layout>
+                    <s:Label text="宽："/>
+                    <s:NumericStepper id="barThicknessNC"
+                                      change="barThicknessNC_changeHandler(event)">
+                        <s:minimum>2</s:minimum>
+                        <s:maximum>10</s:maximum>
+                    </s:NumericStepper>
+                    <s:Label text="px"/>
+                </s:Group>
+            </mx:GridItem>
+        </mx:GridRow>
+        <mx:GridRow width="100%">
+            <mx:GridItem width="100%">
+                <!--颜色配置组件-->
+                <base:ColorConfigContainer width="100%">
+                </base:ColorConfigContainer>
+            </mx:GridItem>
+        </mx:GridRow>
+    </mx:Grid>
+    <!-- 暂时无该功能
+         <mx:HRule width="100%"
+         height="1"/>
+         <s:Label text="文字编辑"
+         styleName="titleFont"/>
+         <s:Group>
+         <s:layout>
+         <s:HorizontalLayout/>
+         </s:layout>
+         <s:Label text="数据标注"/>
+         <s:ComboBox id="labelFontSizeComboBox"
+         dataProvider="{characterAC}"
+         selectedIndex="0"
+         change="labelFontSizeComboBox_changeHandler(event)">
+         </s:ComboBox>
+         <mx:ColorPicker id="labelColorPicker"
+         change="labelColorPicker_changeHandler(event)">
+         </mx:ColorPicker>
+         <s:TextInput id="labelColorTextInput"
+         text="{ColorUtil.int2str(labelColorPicker.selectedColor)}"
+         enter="labelColorTextInput_enterHandler(event)"/>
+         </s:Group>
+         <s:Group>
+         <s:layout>
+         <s:HorizontalLayout/>
+         </s:layout>
+         <s:Label text="图例文字"/>
+         <s:ComboBox id="legendComboBox"
+         dataProvider="{characterAC}"
+         selectedIndex="0">
+         </s:ComboBox>
+         <mx:ColorPicker id="legendColorPicker">
+         </mx:ColorPicker>
+         <s:TextInput id="legendColorTextInput"
+         text="{ColorUtil.int2str(legendColorPicker.selectedColor)}"
+         enter="legendColorTextInput_enterHandler(event)"/>
+         </s:Group>
+    -->
+</base:EditorChildBase>

@@ -1,0 +1,129 @@
+1）折线类型:
+    a) 无节点
+        line dot { radius: 0; }
+    b)
+        line dot { } /* 使用默认的radius即可 */
+        line dot { radius: 5; } /* 或使用具体数字 */
+2) 图例位置
+    a) 左侧
+        legend { position: left; valign: middle; }
+    b) 右侧
+        legend { position: right; valign: middle; }
+    c) 下方
+        legend { position: bottom; align: center; }
+    d) 上方
+        legend { position: top; align: center; }
+    e) 无
+        legend { position: none; }
+
+3) 标题显示 (不支持)
+4) 标注内容 (只支持数据数字显示）
+    a) 显示
+        line label { visibility: visible; }
+    b) 不显示
+        line label {} /* 使用默认设置即可 */
+5) 浮出提示
+    a) 显示
+        chart.chartModel.enableTooltip = true;
+    b) 不显示
+        chart.chartModel.enableTooltip = false;
+
+6) 网格线
+    a) 横网格线
+        I) 显示
+            canvas { 
+                gridThickness: 1;   /* 横线宽度 */
+                gridColor: #29A5F7; /* 横线颜色 */
+                gridAlpha: .5;      /* 横线不透明度 */
+            }
+        II) 不显示
+            canvas { }              /* 不设置 gridThickness 即可 */
+
+    b) 纵网格线
+        I) 显示
+            canvas { vLineStyle: dashed; } /* 目前只支持虚线，且与横线同颜色 */
+        II) 不显示 
+            canvas { } /* 不设置 vLineStyle 即可 */
+
+
+-------------------------- 图表样式 -------------------
+
+1) 图表大小
+    a) 宽度
+        chart.chartWidth = 550;
+    b) 高度
+        chart.chartHeight = 300;
+
+2) 折线样式
+    a) 连接线类型
+        I) 直线
+            line { } /* 使用默认的lineMethod设置 */
+            line { lineMethod: line; } /* 或使用line */
+        II) 曲线
+            line { lineMethod: curve; }
+            
+    b) 点类型
+        I) 实心方形
+            line dot { 
+                shape: square;          /* 方形 */
+                color: inherit#color;   /* 颜色和线条一样 */
+                borderThickness: 2;     /* 边框粗细 */
+            }
+        II) 实心圆形
+            line dot { 
+                shape: circle;          /* 圆形 */
+                color: inherit#color;   /* 颜色和线条一样 */
+                borderThickness: 2;     /* 边框粗细 */
+            }
+        III) 空心方形
+            line dot {
+                shape: square;          /* 方形 */
+                color: #FFFFFF;         /* 白色底 */
+                borderThickness: 2;     /* 边框粗细 */
+                borderColor: inherit#color; /* 边框颜色 */
+            }
+        IV) 空心圆形
+            line dot {
+                shape: circle;          /* 圆形 */
+                color: #FFFFFF;         /* 白色底 */
+                borderThickness: 2;     /* 边框粗细 */
+                borderColor: inherit#color; /* 边框颜色 */
+            }
+
+    c) 折线粗细
+        line { thickness: 7; }
+
+    d) 点大小
+        line dot { radius: 7; }
+
+3) 颜色搭配
+    chart.presetColors = colors; /* 暂未支持 */
+
+4) 横坐标数据排列方式
+    a) 默认
+        xAxis { } /*使用默认的gap设置(0) */
+    b) 文字间隔
+        xAxis { gap: 1; } /* 可使用其他数字 */
+    c) 文字倾斜
+        xAxis { labelRotation: 45; }
+
+5) 文字编辑
+    a) 图表标题 （不支持）
+    b) 数据标注 （暂未支持）
+        line dot label { color: #000000; }
+    c) 图例文字  (暂未支持)
+        legend label { color: #000000; }
+    d) 坐标文字  (暂未支持)
+        xAxis label { color: #000000; } /* x轴 */
+        yAxis label { color: #000000; } /* y轴 */
+
+-------------------------------------------------------
+
+展现动画 (暂未支持)
+
+
+    
+            
+
+        
+

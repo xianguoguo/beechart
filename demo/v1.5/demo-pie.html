@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YID Chart Demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="css/yid-chart-demo-merge.css" type="text/css" media="screen" />
+</head>
+<body>
+    
+    <ul class="demos" id="demos"></ul>
+    <div style="clear:both"></div>
+    
+    <script src="js/yid-chart-demo-merge.js"></script>
+    <script>
+        jQuery(function($){
+        
+            $('#demos').demos(
+            {
+                title   : '默认饼图样式',
+                type    : 'pie',
+                width   : 952,
+                height  : 550,
+                dataUrl : ['data/3-serials.xml','data/browser-stat.xml', 'data/site-reffers.xml'],
+                swf     : 'swf/ali-yid-chart-pie.swf',
+                cssUrl  : ['css/ali-pie.css','css/donut.css','css/pie-solid.css'],
+                flashvars : {
+                    w   : 850,
+                    h   : 350
+                }
+            },
+        
+            {
+                type    : 'pie',
+                width   : 952,
+                height  : 550,
+                dataUrl : 'data/site-reffers.xml',
+                cssUrl  : 'css/half-donut.css',
+                flashvars : {
+                    w   : 850,
+                    h   : 350
+                }
+            },
+        
+            {
+                type    : 'pie',
+                width   : 952,
+                height  : 550,
+                dataUrl : 'data/site-reffers.xml',
+                cssUrl  : 'css/donut2.css',
+                flashvars : {
+                    w   : 850,
+                    h   : 350
+                }
+            }).anythingSlider({
+                resizeContents  : true,
+                buildStartStop  : false,
+                infiniteSlides  : false
+            });
+        })
+    </script>
+
+</body>
+</html>

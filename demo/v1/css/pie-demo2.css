@@ -1,0 +1,23 @@
+chart{ 
+	mouseAnimate:true;
+    animate:composite;
+	colors:#A8CE55, #E9930F, #4D99DA, #CE5555, #DCBB29,#55BECE,#AF80DE;
+    width: 250;
+    height: 250;
+}
+legend{
+	position:bottom;
+}
+slice {
+	/*labelSetType:normal;*/
+	labelPosition   : outside;
+	labelSetType    : normal;
+	label:#label#;
+}
+tooltip{
+	enabled:true;
+	tip:#label#<br>#value# / #total#<br>#percent#;
+	borderColor         :   #F47E00;
+	backgroundColor     :   #FFECAA;
+	backgroundAlpha     :   1;
+}

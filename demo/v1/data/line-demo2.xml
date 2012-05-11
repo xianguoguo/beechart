@@ -1,0 +1,83 @@
+<chart>
+    <data>
+        <indexAxis name="月份" unit="">
+            <labels>1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月</labels>
+        </indexAxis>
+        <valueAxis name="营业额" unit="亿元" />
+        <dataSets>
+            <set name="A公司">
+                <values>343, 350, 424, 413, 415, 408, 437, 458, 452</values>
+                <style>
+                    <item name="color" value="#F7B521" />
+                </style>
+            </set>
+            <set name="B公司">
+                <values>59, 39, 64, 65, 66, 66, 69, 69, 71</values>
+                <style>
+                    <item name="color" value="#9CDE29" />
+                </style>
+            </set>
+            <set name="C公司">
+                <values>39, 39, 43,44,45,45,44,43,43</values>
+                <style>
+                    <item name="color" value="#4AADF7" />
+                </style>
+            </set>
+        </dataSets>
+    </data>
+    <css>
+        <![CDATA[
+            canvas {
+                backgroundColor   : #FFFFFF;
+                backgroundColor2  : #E4F2F5;
+                backgroundAlpha   : 1;
+                gridColor         : #29A5F7;
+            }
+            
+            line {
+                thickness         : 3;
+                alpha	            : 1;
+                thickness.active  : 5;
+                lineMethod        : curve;
+            }
+            
+            line dot {
+                radius.hl : 7;
+            }
+            
+            line dot label {
+                visibility        : visible;
+                color             : #333333;
+            }
+            
+            yAxis {
+                tickColor     : #666666;
+                lineThickness : null;
+                tickThickness : null;
+            }
+            
+            xAxis {
+                lineThickness : 2;
+                tickThickness : null;
+            }
+            
+            legend {
+                position      : bottom;
+                align         : center;
+            }
+            
+            legend label {
+                color         : #333333;
+            }
+            
+            chart {
+                rightAxisVisibility : hidden;
+                leftAxisVisibility  : hidden;
+                paddingBottom : 16;
+                animate : true;
+                width: 600;
+                height: 300;
+            }
+        ]]>
+    </css>
+</chart>

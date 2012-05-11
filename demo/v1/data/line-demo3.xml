@@ -1,0 +1,72 @@
+<graph 
+    seriesNameInToolTip='0' 
+    toolTipSepChar=' ' 
+    bgColor='FFFFFF' 
+    borderColor='FFFFFF' 
+    subcaption='' 
+    hovercapbg='FFECAA' 
+    hovercapborder='F47E00' 
+    formatNumberScale='0' 
+    decimalPrecision='0' 
+    showvalues='0' 
+    numdivlines='5' 
+    numVdivlines='0' 
+    yaxisminvalue='14600' 
+    yaxismaxvalue='30810'    
+    rotateYAxisName='1'   
+    rotateNames='1' 
+    slantLabels='1'  
+    showhovercap='1' 
+    baseFontSize='12' 
+    yAxisName=''  
+    >
+    <categories>
+        <category name='02/26' /> 
+        <category name='03/05' /> 
+        <category name='03/12' /> 
+        <category name='03/19' /> 
+        <category name='03/26' /> 
+        <category name='04/02' /> 
+        <category name='04/09' /> 
+        <category name='04/16' /> 
+        <category name='04/23' /> 
+        <category name='04/30' /> 
+        <category name='05/07' /> 
+        <category name='05/14' /> 
+        <category name='05/21' /> 
+        <category name='05/28' /> 
+        <category name='06/04' /> 
+        <category name='06/11' /> 
+        <category name='07/16' /> 
+        <category name='10/01' /> 
+        <category name='10/08' /> 
+        <category name='10/15' /> 
+        <category name='10/22' /> 
+        <category name='10/29' /> 
+        <category name='11/05' /> 
+        <category name='11/12' /> 
+        <category name='11/19' /> 
+        <category name='11/26' /> 
+        <category name='12/03' /> 
+        <category name='12/10' /> 
+        <category name='12/17' /> 
+        <category name='12/24' /> 
+        <category name='12/31' /> 
+        <category name='01/07' /> 
+        <category name='01/14' /> 
+        <category name='01/21' /> 
+        <category name='01/28' /> 
+        <category name='02/11' /> 
+    </categories>
+    
+    <dataset seriesName='滨州细绒棉出厂价' 
+        color='0080FF' 
+        anchorRadius='4'  
+        anchorBorderColor='0080FF' 
+        anchorBgColor='FFFFFF'>
+        <set value='14750' /> <set value='14810' /> <set value='15162' /> <set value='15300' /> <set value='15680' /> <set value='15900' /> <set value='15900' /> <set value='15930' /> <set value='15380' /> <set value='15180' /> <set value='15100' /> <set value='15200' /> <set value='15500' /> <set value='16940' /> <set value='17120' /> <set value='17371' /> <set value='15900' /> <set value='21966' /> <set value='22200' /> <set value='23240' /> <set value='24340' /> <set value='25800' /> <set value='27340' /> <set value='29100' /> <set value='30660' /> <set value='28940' /> <set value='26400' /> <set value='26600' /> <set value='27020' /> <set value='27280' /> <set value='27500' /> <set value='27500' /> <set value='27580' /> <set value='27625' /> <set value='27837' /> <set value='28400' /> 
+    </dataset>
+    
+    <dataset seriesName='泰州细绒棉出厂价' color='FF7300' anchorRadius='4'  anchorBorderColor='0080FF' anchorBgColor='FFFFFF'><set value='14950' /> <set value='14950' /> <set value='14950' /> <set value='15050' /> <set value='15350' /> <set value='15480' /> <set value='16000' /> <set value='16000' /> <set value='16000' /> <set value='16000' /> <set value='16700' /> <set value='16700' /> <set value='16700' /> <set value='17300' /> <set value='17300' /> <set value='16000' /> <set value='25140' /> <set value='26300' /> <set value='27440' /> <set value='29400' /> <set value='32400' /> <set value='32720' /> <set value='32000' /> <set value='32000' /> <set value='32000' /> <set value='30000' /> <set value='30000' /> <set value='30000' /> <set value='30000' /> <set value='30000' /> <set value='30000' /> <set value='30000' /> <set value='30000' /> <set value="null" /> <set value="30000" /> <set value="30000" /> </dataset>
+    
+</graph> 
