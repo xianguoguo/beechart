@@ -1,4 +1,4 @@
-# YID文档
+# BeeChart文档
 
 ## 开始使用
 
@@ -81,7 +81,7 @@ BeeChart秉承简单，好看，好用的理念，进行设计与开发。
 BeeChart针对这两个核心功能，分别由两个参数决定，分别是data和css。
 BeeChart接受的data数据可以是json数据或XML数据；css样式决定图表的展现，如颜色，动画等，这个css与html的css写法大致相同，但是属性有差异。
 BeeChart中已经包含了一套漂亮的样式，所以通常情况下，用户只需给图表传入数据，便能有漂亮的图表展现效果了。
-当然各自的需求不一样，用户可以根据自己的需要设定适合自身的css样式。
+当然需求各异，用户可以根据自己的需要设定适合自身的css样式。
 
 若用户需要修改css样式，则可以这样传递给图表：
 
@@ -160,7 +160,6 @@ legend {
 
 这样就完成啦！
 
-
 ## API
 
 ### flashvars 
@@ -190,29 +189,29 @@ legend {
 |setDatasetVisibility| 设置某条数据是否在界面上可见| setDatasetVisibility(1, false)|
 |getDatasetVisibility| 获取某条数据是否在界面上可见| getDatasetVisibility(0)|
 
-### 调用flash接口示例
-调用setDatasetVisibility接口：
+{info} 调用内部方法，都必须在监听到swfReady事件后，才能正常调用。
+
+### 调用flash方法示例
+调用setDatasetVisibility方法：
 
 ~~~
-jQuery(function($){
-   $.use('ui-flash-chart', function(){    
-       //配置flash图表
-      var chart = $('#chart-container').flash({ 
-         module     : 'chart', 
-         type       : 'line', 
-         width      : 840, 
-         height     : 400, 
-         flashvars  : { 
-            cssUrl  : 'http://style.china.alibaba.com/css/app/cbu/cms/page/kpi/line.css',
-            dataUrl : 'http://wd.alibaba-inc.com/yid-chart/data/mon-av-temp.xml'
-         } 
-      }); 
-      //需要设置数据是否可见，通常需要在数据处理完毕后调用接口
-      chart.bind('data_parsed.flash',function(){
-        chart.flash('setDatasetVisibility',0,false);
-      });
-   });
-});
+ $.use('ui-flash-chart', function(){    
+     //配置flash图表
+    var chart = $('#chart-container').flash({ 
+       module     : 'chart', 
+       type       : 'line', 
+       width      : 840, 
+       height     : 400, 
+       flashvars  : { 
+          cssUrl  : 'http://style.china.alibaba.com/css/app/cbu/cms/page/kpi/line.css',
+          dataUrl : 'http://wd.alibaba-inc.com/yid-chart/data/mon-av-temp.xml'
+       } 
+    }); 
+    //需要设置数据是否可见，通常需要在数据处理完毕后调用接口
+    chart.on('data_parsed.flash',function(){
+      chart.flash('setDatasetVisibility',0,false);
+    });
+ });
 ~~~
 
 ### 事件列表
@@ -228,10 +227,18 @@ jQuery(function($){
 |css_parsed|css数据处理完毕|
 |data_parsed|数据信息处理完毕|
 
+### 监听事件实例
+监听事件与jQuery的监听事件方法相同
+
+~~~
+chart.on('swfReady.flash',function(){
+});
+~~~
+
 ## 如何扩展
 
 ### 下载源代码
-BeeChart使用流行的GitHub来管理源代码，你只要安装了Git软件，只需要一条命令便能把代码down下来
+BeeChart使用流行的GitHub来管理源代码，你只要安装了Git，只需要一条命令便能把代码down下来
 
 ~~~
 git clone git@github.com:sjpsega/beechart.git
@@ -239,7 +246,37 @@ git clone git@github.com:sjpsega/beechart.git
 
 ### 使用Ant编译代码
 
-源码中有一名为bulid的目录，其中的bulid.xml便是ant的编译文件，基本的代码已经写好，用户只需开打该文件，然后根据自己的环境，编辑下参数，就能使用Ant将as3代码编译成swf文件了。
-Ant代码做了两件事情，一是在bin目录下，编译生成图表的swf文件；而是在doc目录下，生成了BeeChart的开发文档。
+源码中有一名为bulid的目录，其中的bulid.xml便是ant的编译文件，基本的代码已经写好，用户只需配置下Ant环境，然后打开该文件，根据自己的环境，编辑下FLEX_HOME参数，运行下，就能将as3代码编译成swf文件了。
+Ant做了两件事情，一是在bin目录下，编译生成图表的swf文件；二是在doc目录下，生成BeeChart的开发文档。
+
+### 修改源代码
+源码包括两部分：
+
+* src:BeeChart的源码
+* lib:第三方类库或资源文件
+
+src下的源码就是BeeChart的一切！
 
 ### 核心思想
+在扩展BeeChart的代码前，需要了解下BeeChart的核心架构。
+之前说过，图表的核心是数据和展现；数据没什么好说的，各个图表的实现方法都是大同小异。
+BeeChart使用流行的MVC架构模式。
+Model、Control与基本的MVC的Model、Control无异。
+最大的不同在于View。View中有个skin对象，这个skin对象决定了展现。
+skin又分为Printer和Performer两部分。
+Printer:将数据展现绘制出来；
+Performer:处理状态变化，控制数据展现的状态，如start,hover,active等状态。
+
+BeeChart的各个部分都是使用这种机制来实现功能的。
+
+如图：
+![阿里巴巴logo](http://china.alibaba.com/logo.png)
+
+### 贡献自己的代码
+只需要在GitHub中fork BeeChart，然后将自己的分支clone到本地，修改代码，提交。使用Pull Requests，我们验收通过，便能merge到主干。
+
+## FAQ
+
+Q:使用BeeChart在商业产品中，需要付费吗？
+A:BeeChart是免费、开源的图表组件，不收取任何费用。
+
