@@ -5,8 +5,8 @@
 	<meta name="description" content="beechart是免费的开源flash图表" />
     <meta name="keywords" content="flash, chart, bee, forfree, opensource, simple, 图表, 免费, 开源" />
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script type="text/javascript" src="http://livejs.com/head.min.js"></script>
-	<script type="text/javascript" src="http://livejs.com/live.js"></script>
+	<!--<script type="text/javascript" src="http://livejs.com/head.min.js"></script>
+	<script type="text/javascript" src="http://livejs.com/live.js"></script>-->
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 </head>
 <body>
@@ -143,15 +143,16 @@
 			<p>&copy; 2012 The BeeChart Project</p>
 		</div>
 	</footer>
+
 	<script src="http://s94.cnzz.com/stat.php?id=4118904&web_id=4118904" language="JavaScript"></script>
+	<script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+	<script type="text/javascript">
+	  (function($){
+	    $.use("ui-tabs-effect",function()
+	      {
+	         $("#banner").tabs({titleSelector: ".banner-title",boxSelector: ".banner-tab",currentClass: "banner-title-active",isAutoPlay: true,timeDelay: 2, effect: "fade",scrollType: "loop",easing: "easeOutCubic"})
+	      });
+	  })(jQuery);  
+	</script>
 </body>
-<script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
-<script type="text/javascript">
-  (function($){
-    $.use("ui-tabs-effect",function()
-      {
-         $("#banner").tabs({titleSelector: ".banner-title",boxSelector: ".banner-tab",currentClass: "banner-title-active",isAutoPlay: true,timeDelay: 2, effect: "fade",scrollType: "loop",easing: "easeOutCubic"})
-      });
-  })(jQuery);  
-</script>
 </html>	

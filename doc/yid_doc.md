@@ -4,7 +4,7 @@
 
 BeeChart秉承简单，好看，好用的理念，进行设计与开发。
 使用起来简单，易上手。
-只需简单5步就能使用起来。
+只需简单6步就能使用起来。
 
 * 下载BeeChart swf文件
 点击[BeeChart](https://github.com/downloads/sjpsega/beechart/beechart%20swf.rar)，下载最新版本的swf文件。
@@ -37,6 +37,8 @@ BeeChart秉承简单，好看，好用的理念，进行设计与开发。
     </data>
 </chart>
 ~~~
+
+* 设置flash本地安全沙箱。打开控制面板->Flash Player，点击“高级”tab中的"受信任位置设置"。如你的BeeChart文件夹创建在D盘下，可以选择添加文件夹，将D盘选择为受信任位置。
 
 * 在BeeChart文件夹下，新建index.html，输入如下代码：
 
@@ -176,6 +178,7 @@ legend {
 |css| 样式设置|
 |cssUrl| 样式文件路径|
 |cssCharset| 样式文件的编码|
+|debug| 设置进行测试，测试信息会打印在console界面，默认为false|
 
 ### 方法
 |接口名称| 说明| 示例|
@@ -262,7 +265,7 @@ src下的源码就是BeeChart的一切！
 之前说过，图表的核心是数据和展现；数据没什么好说的，各个图表的实现方法都是大同小异。
 BeeChart使用流行的MVC架构模式。
 Model、Control与基本的MVC的Model、Control无异。
-最大的不同在于View。View中有个skin对象，这个skin对象决定了展现。
+最大的特点在于View，View中有个skin对象，这个skin对象决定了组件的展现。
 skin又分为Printer和Performer两部分。
 Printer:将数据展现绘制出来；
 Performer:处理状态变化，控制数据展现的状态，如start,hover,active等状态。
@@ -273,10 +276,26 @@ BeeChart的各个部分都是使用这种机制来实现功能的。
 ![阿里巴巴logo](http://china.alibaba.com/logo.png)
 
 ### 贡献自己的代码
-只需要在GitHub中fork BeeChart，然后将自己的分支clone到本地，修改代码，提交。使用Pull Requests，我们验收通过，便能merge到主干。
+代码已经放在github上，贡献步骤：
+
+* 访问文档中心的github地址：git@github.com:sjpsega/beechart.git
+* 点击右上角的“Fork”到自己的帐号下
+* clone fork之后的仓库到本地进行修改
+* push修改到fork之后的仓库
+* 在github上点击“pull request”通知我们，我们验收通过，便能merge到主干
 
 ## FAQ
 
 Q:使用BeeChart在商业产品中，需要付费吗？
+
 A:BeeChart是免费、开源的图表组件，不收取任何费用。
 
+Q:设置BeeChart加载或处理data数据，图表不显示数据？
+
+A:a)如果你是将BeeChart的swf文件放在本地，data数据也放在本地，你本地直接打开html，因为flash安全沙箱的缘故，flash图表是无法正常运行的，解决方法有二：
+    1)设置flash本地安全沙箱。打开控制面板->Flash Player，点击“高级”tab中的"受信任位置设置"，将你操作的目录添加入受信任位置。
+    2)搭建本地服务器(如apache)，将数据放在本地服务器上，然后通过浏览器进行访问。
+  
+  b)如果你是放在网络环境中访问，还是不显示数据，可能的原因有二：
+    1)数据结构错误的缘故。可以将flashvars的debug参数设置为true，看看console的信息查看报错信息。
+    2)查看swf文件与加载的data数据是否在同一域名下，因为flash的安全沙箱，若加载的数据不在同一域名下，所加载数据的服务器根目录下需要放置crossdomain.xml文件，以迎合flash跨域的需要。
