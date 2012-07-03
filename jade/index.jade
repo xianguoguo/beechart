@@ -1,0 +1,110 @@
+!!!5
+html
+    head
+        title BeeChart
+        meta(name="description",content="beechart是免费的开源flash图表")
+        meta(name="keywords",content="bflash, chart, bee, forfree, opensource, simple, 图表, 免费, 开源")
+        link(rel="shortcut icon",type="image/x-icon",href="favicon.ico")
+        link(rel="stylesheet",type="text/css",href="../css/style.css")
+    body
+        include include/nav.jade
+        .content
+            .primary.fd-clr
+                #banner.banner.fd-left
+                    .banner-tab
+                        img(src="../img/banner_1.jpg")
+                    .banner-tab
+                        img(src="../img/banner_2.jpg")
+                    .banner-tab
+                        img(src="../img/banner_1.jpg")
+                    .banner-tab
+                        img(src="../img/banner_2.jpg")
+                    ul.banner-title-wrapper
+                        li.banner-title
+                            b
+                        li.banner-title
+                            b
+                        li.banner-title
+                            b
+                        li.banner-title
+                            b
+                .info.fd-left
+                    .forfree
+                        简单 可扩展
+                        完全免费
+                    .intro YID-Chart 助您在网站项目中更专业高效地展示数据，通过丰富的模版、动画效果和功能扩展，您只需简单配置即可快速常见生动的图表界面。最重要的是，他是完全免费的！
+                    .more
+                        a(hef="") 了解更多...
+                    .download.fd-clr
+                        ul
+                            li
+                                a.download_link(herf="")
+                                    p.title 下载文件包
+                                    p.version Version 1.1.02,215KB
+                            li
+                                a.demo_link(herf="")
+                                    p.title 查看演示
+                                    p.version View the demo
+                    .news
+                        ul
+                            li.new
+                                label 最新消息:
+                                a(href="") 饼图图表提升动画性能
+                                label 2011.9.28
+            hr
+            .second.fd-clr
+                ul.fd-clr
+                    li
+                        img(src="../img/img_1.jpg")
+                        p.title 轻松入手，人人可用
+                        p.intro 使用方便，只需轻点鼠标，即可完成几乎全部功能和界面设置
+                    li
+                        img(src="../img/img_2.jpg")
+                        p.title 智能图表，效果生动
+                        p.intro 人性化的动态数据展示效果，为您的数据报表吸引更多注意力
+                    li
+                        img(src="../img/img_3.jpg")
+                        p.title 丰富配置，应用广泛
+                        p.intro 包括常见的折线、柱状、饼图等，能够满足您全方位的数据展示
+                    li
+                        img(src="../img/img_4.jpg")
+                        p.title 共享与开源
+                        p.intro 免费开源，更多开发者不断增强及扩展图表功能和形式
+            hr
+            .third.fd-clr
+                .fd-left
+                    p.title 欢迎加入YID图表开发社区
+                    .github
+                        p Github 让您更简单的获取及参与开发YID-Chart图表，以及更多其他开源程序。
+                        a(href="") 了解更多 &gt;
+                .weibo.fd-left
+        .links.fd-clr
+            ul.nav
+                li
+                    a(href="") 关于
+                li.spacing |
+                li
+                    a(href="") 贡献者
+                li.spacing |
+                li
+                    a(href="") 博客
+                li.spacing |
+                li
+                    a(href="") API
+                li.spacing |
+                li
+                    a(href="") 开发者社区
+                li.spacing |
+                li
+                    a(href="") 版权声明
+        include include/footer.jade
+
+    script(type="text/javascript",src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js")
+    script
+        (function($){
+            $.use("ui-tabs-effect",function()
+              {
+                 $("#banner").tabs({titleSelector: ".banner-title",boxSelector: ".banner-tab",currentClass: "banner-title-active",isAutoPlay: true,timeDelay: 2, effect: "fade",scrollType: "loop",easing: "easeOutCubic"})
+              });
+        })(jQuery);
+
