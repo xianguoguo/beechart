@@ -1,5 +1,29 @@
 @import "public.styl";
 
-html{
-	background:#dfeaef url("../img/bg.png") repeat-x 0px -250px;
-}
+html
+    background:#dfeaef url("../img/bg.png") repeat-x 0px -250px;
+.content
+    .chart-nav-container
+        width: 165px;
+        padding-left: 47px;
+        padding-top: 50px;
+        h1
+            font-size: 60px;
+            background-color: #EFB117;
+            color: white;
+        .chart-nav
+            li
+                color:#d3d3d3
+                font-size:20px
+                cursor:pointer
+                a
+                    color:#d3d3d3
+                    &:hover
+                        text-decoration: none;
+                &.current
+                    color:#6b9cc3
+                    a
+                        color:#6b9cc3
+                    
+    .chart-container
+        margin-top: 10px;

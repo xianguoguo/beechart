@@ -1,0 +1,83 @@
+!!!5
+html
+    meta(chartset="utf-8")
+    head
+        title BeeChart
+        meta(name="description",content="beechart是免费的开源flash图表")
+        meta(name="keywords",content="bflash, chart, bee, forfree, opensource, simple, 图表, 免费, 开源")
+        link(rel="shortcut icon",type="image/x-icon",href="../favicon.ico")
+        link(rel="stylesheet",type="text/css",href="../css/yid-chart-demo-merge.css")
+        script(src="../js/yid-chart-demo-merge.js")
+    body
+        ul.demos#demos
+        div(style="clear:both")
+        script
+            jQuery(function($){
+                $('#demos').demos(
+                    {
+                        title   : '默认线图样式',
+                        type    : 'line',
+                        swf     : '../swf/ali-yid-chart-line.swf',
+                        width   : 700,
+                        height  : 450,
+                        dataUrl : ['../swf/data/mon-av-temp.xml', '../swf/data/mon-av-temp-4-ser.xml', '../swf/data/time-label-data.xml'],
+                        cssUrl  : ['../swf/css/ali-line.css', '../swf/css/ali-line2.css', '../swf/css/single-dark.css', '../swf/css/time-label-data.css'],
+                        flashvars : {
+                            w   : 600,
+                            h   : 280
+                        }
+                    },
+                    {
+                        type    : 'line',
+                        swf     : '../swf/ali-yid-chart-line.swf',
+                        width   : 700,
+                        height  : 450,
+                        dataUrl : '../swf/data/data-xml-single.xml',
+                        cssUrl  : '../swf/css/single-dark.css',
+                        flashvars : {
+                            w   : 600,
+                            h   : 280
+                        }
+                    },
+                    {
+                        type    : 'line',
+                        swf     : '../swf/ali-yid-chart-line.swf',
+                        width   : 700,
+                        height  : 450,                
+                        dataUrl : '../swf/data/data-xml-single.xml',
+                        cssUrl  : '../swf/css/single-dark-2.css',
+                        flashvars : {
+                            w   : 600,
+                            h   : 280
+                        }
+                    },
+                    {
+                        type    : 'line',
+                        swf     : '../swf/ali-yid-chart-line.swf',
+                        width   : 700,
+                        height  : 450,
+                        dataUrl : '../swf/data/2-serials.xml',
+                        cssUrl  : '../swf/css/2-lines-light.css',
+                        flashvars : {
+                            w   : 600,
+                            h   : 280
+                        }
+                    },
+                    {
+                        type    : 'line',
+                        swf     : '../swf/ali-yid-chart-line.swf',
+                        width   : 700,
+                        height  : 450,                
+                        dataUrl : '../swf/data/2-serials.xml',
+                        cssUrl  : '../swf/css/2-lines-dark.css',
+                        flashvars : {
+                            w   : 600,
+                            h   : 280
+                        }
+                    }
+                ).anythingSlider({
+                    resizeContents  : true,
+                    buildStartStop  : false,
+                    infiniteSlides  : false
+                });
+            })

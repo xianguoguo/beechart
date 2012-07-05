@@ -1,0 +1,16 @@
+<chart>
+    <data>
+        <indexAxis name="日期">
+            <labels>2010-11-26, 2010-11-28, 2010-12-4, 2010-12-6, 2010-12-10, 2010-12-12, 2010-12-14, 2010-12-16</labels>
+        </indexAxis>
+        <valueAxis name="温度" unit="摄氏度" />
+        <dataSets>
+            <set name="最低温度">
+                <values>-3, 3, 4, 8, 8, 7, 9, 5</values>
+            </set>
+            <set name="最高温度">
+                <values>10, 15, 8, 8, 22, 18, 17, 19</values>
+            </set>
+        </dataSets>
+    </data>
+</chart>

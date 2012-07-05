@@ -4,15 +4,17 @@
 html{
 	background:#dfeaef url("../img/bg.png") repeat-x;
 }
-w1000(){
-	width:1000px;
-	margin:0 auto;
-}
 hr{
 	background:#CEDFE7;
 	margin:10px 0;
 }
-
+w1000(){
+	width:1000px;
+	margin:0 auto;
+}
+.w1000{
+	w1000()
+}
 .header{
 	w1000();
 	margin-top:25px;
@@ -60,7 +62,7 @@ hr{
 	height:@height;
 	background-color:#3e7db0;
 	.content{
-		.w1000();
+		w1000();
 		p{
 			color:#dfeaef;
 			background:url("../img/miniLogo.png") no-repeat 0px center;
