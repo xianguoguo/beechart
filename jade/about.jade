@@ -1,0 +1,61 @@
+!!!5
+html
+    meta(chartset="utf-8")
+    head
+        title BeeChart
+        meta(name="description",content="beechart是免费的开源flash图表")
+        meta(name="keywords",content="bflash, chart, bee, forfree, opensource, simple, 图表, 免费, 开源")
+        link(rel="shortcut icon",type="image/x-icon",href="../favicon.ico")
+        link(rel="stylesheet",type="text/css",href="../css/about.css")
+        script
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+    body
+        include include/nav.jade
+        .content.w1000.fd-clr
+            .nav-container.fd-left
+                h1 About
+                ul.nav
+                    li.current#about
+                        a(href="#") 介绍
+                    li#group
+                        a(href="#") 项目成员
+                    li#event
+                        a(href="#") 大事记
+            .content-container.fd-left
+                    #about-content 
+                        p BeeChart是一款免费、开源的flash图表组件。
+                        p 目前支持折线图、柱状图、饼图、时间线图表。
+                        p BeeChart秉承简单，好看，好用的理念，进行设计与开发，使用起来简单，易上手。
+                        p 最初由阿里巴巴中国站UED成员出品。
+                    #group-content
+                        p 交互设计：罗伟、梁薇
+                        p 视觉设计：吴月异、梁薇、黄海
+                        p 前端开发：邱华、沈剑平、曹文文
+                    #event-content
+                        ul
+                            li 2010.11 因网站业务需求多种多样，现有的开源图表不能满足自己的需求，便有了开发自己的一套图表的设想。取名为YID-Chart，YID是Yes I Do的缩写。同月，项目启动。
+                            li 2011.2.14 YID第一个公开版本于情人节发布。
+                            li 2011.3.8 YID-Chart第一期发布，图表种类有折线图、柱状图、饼图，还有好用的图表编辑器。
+                            li 2011.4 项目组成员讨论图表的后续计划、优化点。同月，优化启动，项目代号为YID 1.5。
+                            li 2011.8.10 YID 1.5 发布，做了视觉和交互上的优化，在展现效果上是个飞跃。
+                            li 2012.2.23 项目成员开会讨论，将YID-Chart改名为BeeChart，原因是yid在英语中有贬低犹太人的意思。并讨论将图表开源的相关工作。
+                            li 2012.3.7 YID 1.6 发布，增加一时间线图表(股票形式)。
+
+        include include/footer.jade
+
+        script(type="text/javascript",src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js")
+        script
+            jQuery(function($){
+                $(".nav-container .nav li").on("click",function(e){
+                    e.preventDefault();
+                    $(this).parent().find("li").removeClass("current");
+                    $(this).addClass("current");
+                    $(".content-container>div").hide();
+                    var content_id = $(this).attr("id")+"-content";
+                    $(".content-container #"+content_id).fadeIn();
+                });
+            });

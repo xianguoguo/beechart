@@ -6,7 +6,7 @@ html
         meta(name="description",content="beechart是免费的开源flash图表")
         meta(name="keywords",content="bflash, chart, bee, forfree, opensource, simple, 图表, 免费, 开源")
         link(rel="shortcut icon",type="image/x-icon",href="../favicon.ico")
-        link(rel="stylesheet",type="text/css",href="../css/demo.css")
+        link(rel="stylesheet",type="text/css",href="../css/doc.css")
         script
             (function() {
                 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
@@ -17,28 +17,30 @@ html
         include include/nav.jade
         .content.w1000.fd-clr
             .nav-container.fd-left
-                h1 Demo
+                h1 文档
                 ul.nav
-                    li.current#pie
-                        a(href="pie-demo.html") PIE/饼图
-                    li#bar
-                        a(href="bar-demo.html") BAR/柱图
-                    li#line
-                        a(href="line-demo.html") LINE/线图
-                    li#time
-                        a(href="time-demo.html") TIME/时间线
-            .chart-container.fd-left
-                iframe#chart-iframe(src="pie-demo.html",frameborder="0",scrolling="no",width="788px",height="650px")
+                    li.current
+                        a(href="#") 开始使用
+                    li
+                        a(href="#") 下载YID-Chart
+                    li
+                        a(href="#") FAQ
+                    li
+                        a(href="#") 教程
+                    li
+                        a(href="#") 如何扩展
+                    li
+                        a(href="#") 参数类型
+            .content-container.fd-left
+
         include include/footer.jade
 
         script(type="text/javascript",src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js")
         script
-            jQuery(function($){
+           jQuery(function($){
                 $(".nav-container .nav li").on("click",function(e){
                     e.preventDefault();
                     $(this).parent().find("li").removeClass("current");
                     $(this).addClass("current");
-                    var url = $(this).find("a").eq(0).attr("href");
-                    $("#chart-iframe").attr("src",url);
                 });
             });
