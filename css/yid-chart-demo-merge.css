@@ -1,0 +1,269 @@
+html {
+  color: #000;
+  overflow-y: scroll;
+  background: #fff;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+fieldset,
+lengend,
+button,
+input,
+textarea,
+form,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+body,
+button,
+input,
+select,
+textarea {
+  font: 12px/1.5 Tahoma, Arial, "\5b8b\4f53", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+address,
+cite,
+dfn,
+em,
+var {
+  font-style: normal;
+}
+code,
+kbd,
+pre,
+samp,
+tt {
+  font-family: "Courier New", Courier, monospace;
+}
+small {
+  font-size: 12px;
+}
+ul,
+ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  color: #ff7300;
+}
+abbr[title],
+acronym[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+q:before,
+q:after {
+  content: '';
+}
+:focus {
+  outline: 0;
+}
+legend {
+  color: #000;
+}
+fieldset,
+img {
+  border: none;
+}
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+hr {
+  border: none;
+  height: 1px;
+  *color: #fff;
+}
+img {
+  -ms-interpolation-mode: bicubic;
+}
+div.anythingSlider {
+  width: 700px;
+  height: 390px;
+  margin: 0 auto;
+}
+div.anythingSlider .thumbNav a.cur,
+div.anythingSlider .thumbNav a {
+  background: #777;
+}
+div.anythingSlider.activeSlider .thumbNav a {
+  background-color: #f7f7f7;
+}
+div.anythingSlider.activeSlider .thumbNav a.cur {
+  color: #b5b5b5;
+  background-color: #eaf4fb;
+}
+div.anythingSlider .anythingWindow {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+div.anythingSlider {
+  position: relative;
+  padding: 0 45px 28px 45px;
+}
+ul.anythingBase {
+  background: transparent;
+  list-style: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+}
+ul.anythingBase li.panel {
+  background: transparent;
+  display: block;
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+div.anythingSlider .arrow {
+  top: 50%;
+  position: absolute;
+  display: block;
+}
+div.anythingSlider .arrow a {
+  display: block;
+  height: 120px;
+  margin-top: -60px;
+  width: 45px;
+  text-align: center;
+  outline: 0;
+  background: url("../img/arrows.png") no-repeat;
+  text-indent: -9999px;
+}
+div.anythingSlider .forward {
+  right: 0;
+}
+div.anythingSlider .back {
+  left: 0;
+}
+div.anythingSlider .forward a {
+  background-position: 0 -40px;
+}
+div.anythingSlider .back a {
+  background-position: -88px -40px;
+}
+div.anythingSlider .forward a:hover,
+div.anythingSlider .forward a.hover {
+  background-position: 0 -240px;
+}
+div.anythingSlider .back a:hover,
+div.anythingSlider .back a.hover {
+  background-position: -88px -240px;
+}
+div.anythingSlider .thumbNav {
+  margin: 0;
+  text-align: center;
+}
+div.anythingSlider .thumbNav li {
+  display: inline;
+}
+div.anythingSlider .thumbNav a {
+  color: #dfdfdf;
+  font-size: 24px;
+  display: inline-block;
+  text-decoration: none;
+  width: 120px;
+  margin: 0 5px 0 0;
+  text-align: center;
+  outline: 0;
+}
+div.anythingSlider .thumbNav a:hover {
+  background-image: none;
+}
+div.anythingSlider.rtl .thumbNav a {
+  float: right;
+}
+div.anythingSlider.rtl .thumbNav {
+  float: left;
+}
+div.anythingSlider .start-stop {
+  z-index: 10;
+  background: #008000 url("../img/cellshade.png") repeat-x center top;
+  color: #fff;
+  padding: 2px 5px;
+  width: 40px;
+  text-align: center;
+  text-decoration: none;
+  float: right;
+  -moz-border-radius-bottomleft: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+}
+div.anythingSlider .start-stop.playing {
+  background-color: #f00;
+}
+div.anythingSlider .start-stop:hover,
+div.anythingSlider .start-stop.hover {
+  background-image: none;
+  color: #ff0;
+}
+.demos {
+  height: 550px;
+  width: 700px;
+  padding-left: 0;
+}
+.demo .links a.cur {
+  background: #e6f2fa;
+  color: #057acd;
+  cursor: default;
+}
+.demo {
+  padding: 5em;
+  text-align: center;
+  font-family: verdana, '微软雅黑';
+}
+.demo h2 {
+  font-size: 220%;
+  padding: 0.5em;
+}
+.demo .links {
+  color: #333;
+}
+.demo .links a {
+  padding: 4px 8px;
+  border-radius: 8px;
+  margin: 0 4px;
+  cursor: pointer;
+  color: #999;
+}
+.demo .css-links {
+  margin-left: 1em;
+}

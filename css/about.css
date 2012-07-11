@@ -260,6 +260,17 @@ html {
 .content .nav-container .nav li.current a {
   color: #6b9cc3;
 }
-.content .chart-container {
+.content .content-container {
   margin-top: 10px;
+  width: 768px;
+  height: 630px;
+  background: #fff;
+  font-size: 20px;
+  color: #444;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.content .content-container #group-content,
+.content .content-container #event-content {
+  display: none;
 }

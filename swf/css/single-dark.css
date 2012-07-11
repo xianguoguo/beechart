@@ -1,0 +1,50 @@
+chart {
+    colors          : #E34F1E,#84BC0D,#00ABD9,#FF00A8;
+    paddingRight    : 2;
+    paddingLeft     : 2;
+}
+
+line {
+    thickness.active : 3;
+}
+
+line dot {
+    radius          : 4;
+    color           : inherit;
+    borderThickness : null;
+    borderThickness.hl : 8;
+    borderAlpha     : .5;
+    borderColor     : inherit#color;
+}
+
+xAxis {
+    tickLength      : 0;
+    lineThickness   : 0;
+}
+
+yAxis {
+    tickLength      : 0;
+    lineThickness   : 0;
+}
+
+canvas {
+    backgroundColor : #2B2929;
+    priLineThickness: 1;
+    priLineColor    : #303030;
+    priLineAlpha    : 1;
+    secLineThickness: 1;
+    secLineColor    : #303030;
+}
+
+tooltip {
+    backgroundType  : simple;
+    color           : #FFFFFF;
+    backgroundColor : #000000;
+    borderThickness : null;
+    backgroundAlpha : .8;
+}
+
+legend {
+    position        : bottom;
+    align           : center
+}

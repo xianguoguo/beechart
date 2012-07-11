@@ -1,0 +1,57 @@
+chart {
+    colors            : #FFC80B,#4088E0,#E9584D;
+    smooth            : true;
+    leftAxisVisibility : visible;
+    paddingLeft       : 0;
+    paddingTop        : 0;
+    paddingRight      : 0;
+}
+canvas {
+    borderThickness   : 1;
+    borderColor       : #F1F1F1;
+    backgroundColor2  : #F8F8F8;
+    priLineColor      : #F2F2F2;
+    priLineThickness  : 1;
+    secLineStyle      : dashed;
+    secLineThickness  : 1;
+    secLineColor      : #F2F2F2;
+}
+
+bar {
+    dropshadow        : none;
+    dropShadow.hl       : light;
+    borderThickness   : 1;
+    borderColor       : #FFFFFF;
+}
+
+yAxis {
+    lineColor     : #666666;
+    lineThickness : 3;
+    tickThickness : 0;
+    labelPosition : center;
+}
+
+xAxis {
+    lineColor     : #666666;
+    lineThickness : 3;
+    tickThickness : 0;
+    labelGap      : auto;
+    labelPosition : center; 
+}
+
+yAxis label {
+    color         : #666666;
+}
+
+xAxis label {
+    color         : #666666;
+}
+
+legend {
+    position      : bottom;
+    align         : center;
+}
+
+tooltip { 
+    maxchar       : 0;
+} 

@@ -1,2 +1,272 @@
-/* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */
-@import "reset.css";@import "common.css";html{background:#dfeaef url("../img/bg.png") repeat-x}.w1000{width:1000px;margin:0 auto}hr{background:#CEDFE7;margin:10px 0}header{width:1000px;margin:0 auto;margin-top:25px}header .logo{margin-left:30px;width:174px;height:121px;background:url("../img/homepage_logo.png") no-repeat;text-indent:-9999px}header nav{margin-top:10px}header nav li{float:left;text-align:center}header nav li a{font-size:14px;font-weight:700;width:170px;height:43px;text-decoration:none;color:#bde0f0;line-height:43px;display:block;background:url("../img/nav_btn.png") repeat-x}header nav li a:hover{background:url("../img/nav_btn_hover.png") repeat-x;color:#323b3d;text-decoration:none}header nav .spacing{width:2px;height:43px;background:url("../img/spacing.png") no-repeat;text-indent:-9999px;line-height:43px}footer{height:45px;background-color:#3e7db0}footer .content{width:1000px;margin:0 auto}footer .content p{color:#dfeaef;background:url("../img/miniLogo.png") no-repeat 0 center;padding-left:50px;line-height:45px}html{background:#dfeaef url("../img/bg.png") repeat-x 0 -250px}.content h1{font-size:36px;font-weight:700;color:#3e7db0;margin:15px 0 10px 0}.content .nav{width:237px;background:url("../img/doc_nav_bg.jpg") repeat-y}.content .nav ul{margin:30px 0 0 30px}.content .nav ul li a{color:#3e7db0;font-size:10px}.content .msg{width:689px;background:#FFF}
+html {
+  color: #000;
+  overflow-y: scroll;
+  background: #fff;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+fieldset,
+lengend,
+button,
+input,
+textarea,
+form,
+th,
+td {
+  margin: 0;
+  padding: 0;
+}
+body,
+button,
+input,
+select,
+textarea {
+  font: 12px/1.5 Tahoma, Arial, "\5b8b\4f53", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+address,
+cite,
+dfn,
+em,
+var {
+  font-style: normal;
+}
+code,
+kbd,
+pre,
+samp,
+tt {
+  font-family: "Courier New", Courier, monospace;
+}
+small {
+  font-size: 12px;
+}
+ul,
+ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  color: #ff7300;
+}
+abbr[title],
+acronym[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+q:before,
+q:after {
+  content: '';
+}
+:focus {
+  outline: 0;
+}
+legend {
+  color: #000;
+}
+fieldset,
+img {
+  border: none;
+}
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+hr {
+  border: none;
+  height: 1px;
+  *color: #fff;
+}
+img {
+  -ms-interpolation-mode: bicubic;
+}
+.fd-left {
+  float: left;
+}
+.fd-right {
+  float: right;
+}
+.fd-clear {
+  clear: both;
+}
+.fd-clr {
+  zoom: 1;
+}
+.fd-clr:after {
+  display: block;
+  clear: both;
+  height: 0;
+  content: "\0020";
+}
+.fd-hide {
+  display: none;
+}
+.fd-show {
+  display: block;
+}
+.fd-inline {
+  display: inline;
+}
+.fd-lump {
+  display: inline-block;
+  display: -moz-inline-stack;
+  zoom: 1;
+  *display: inline;
+}
+.fd-visible {
+  visibility: visible;
+}
+.fd-hidden {
+  visibility: hidden;
+}
+.fd-locate {
+  position: relative;
+}
+.fd-cny {
+  font-family: Helvetica, Arial;
+}
+.fd-gray {
+  color: #666;
+}
+.fd-bold {
+  font-weight: 700;
+}
+html {
+  background: #dfeaef url("../img/bg.png") repeat-x;
+}
+hr {
+  background: #cedfe7;
+  margin: 10px 0;
+}
+.w1000 {
+  width: 1000px;
+  margin: 0 auto;
+}
+.header {
+  width: 1000px;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+.header .logo {
+  margin-left: 30px;
+  width: 174px;
+  height: 121px;
+  background: url("../img/homepage_logo.png") no-repeat;
+  text-indent: -9999px;
+}
+.header .nav {
+  margin-top: 10px;
+}
+.header .nav li {
+  float: left;
+  text-align: center;
+}
+.header .nav li a {
+  font-size: 14px;
+  font-weight: bold;
+  width: 170px;
+  height: 43px;
+  text-decoration: none;
+  color: #bde0f0;
+  line-height: 43px;
+  display: block;
+  background: url("../img/nav_btn.png") repeat-x;
+}
+.header .nav li a:hover {
+  background: url("../img/nav_btn_hover.png") repeat-x;
+  color: #323b3d;
+  text-decoration: none;
+}
+.header .nav .spacing {
+  width: 2px;
+  height: 43px;
+  background: url("../img/spacing.png") no-repeat;
+  text-indent: -9999px;
+  line-height: 43px;
+}
+.footer {
+  height: 45px;
+  height: 45px;
+  background-color: #3e7db0;
+}
+.footer .content {
+  width: 1000px;
+  margin: 0 auto;
+}
+.footer .content p {
+  color: #dfeaef;
+  background: url("../img/miniLogo.png") no-repeat 0px center;
+  padding-left: 50px;
+  line-height: 45px;
+}
+html {
+  background: #dfeaef url("../img/bg.png") repeat-x 0px -250px;
+}
+.content .nav-container {
+  width: 165px;
+  padding-left: 47px;
+  padding-top: 50px;
+}
+.content .nav-container h1 {
+  font-size: 60px;
+  background-color: #efb117;
+  color: #fff;
+}
+.content .nav-container .nav li {
+  color: #d3d3d3;
+  font-size: 20px;
+  cursor: pointer;
+}
+.content .nav-container .nav li a {
+  color: #d3d3d3;
+}
+.content .nav-container .nav li a:hover {
+  text-decoration: none;
+}
+.content .nav-container .nav li.current {
+  color: #6b9cc3;
+}
+.content .nav-container .nav li.current a {
+  color: #6b9cc3;
+}
+.content .content-container {
+  margin-top: 10px;
+  width: 768px;
+  height: 630px;
+  background: #fff;
+  font-size: 20px;
+  color: #444;
+  padding-top: 20px;
+  padding-left: 20px;
+}

@@ -1,0 +1,59 @@
+chart {
+    smooth          : test;
+    colors          : #50A7F1,#7AB45E;
+    fix             : auto;
+}
+
+line {
+    dropshadow      : none;
+    fillType        : gradient;
+    fillAlpha       : 0.2;
+}
+
+line dot {
+    radius          : 0;
+    radius.hl       : 4;
+    color           : inherit;
+    borderThickness : null;
+    borderThickness.hl : 2;
+    borderColor     : #FFFFFF;
+}
+
+xAxis {
+    labelGap        : auto;
+    tickLength      : 0;
+    lineThickness   : 0;
+}
+
+xAxis label {
+    paddingLeft     : 0;
+    paddingRight    : 0;
+}
+
+canvas {
+    priLineStyle    : dashed;
+    priLineThickness: 1;
+    priLineColor    : #E4E4E4;
+    priLineAlpha    : 1;
+    secLineThickness: 1;
+    secLineColor    : #E4E4E4;
+}
+
+tooltip {
+    color           : #FFFFFF;
+    backgroundColor : #000000;
+    borderThickness : null;
+    backgroundAlpha : .8;
+}
+
+guideLine {
+    color           : #FF7300;
+}
+
+legend {
+    position        : bottom;
+}
+
+legend item label {
+    color           : inherit;
+}

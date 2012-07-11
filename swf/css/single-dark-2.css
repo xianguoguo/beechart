@@ -1,0 +1,58 @@
+chart {
+    colors          : #00B0E2,#70B1CE;
+    leftAxisVisibility: visible;
+    fix             : auto;
+}
+
+line {
+    dropshadow      : none;
+    lineMethod      : curve;
+    thickness       : 2;
+    fillType        : gradient;
+    fillAlpha       : .3;
+    dropshadow      : light;
+}
+
+line dot {
+    radius          : 0;
+    radius.hl       : 4;
+    color           : inherit;
+    borderThickness : 2;
+    borderColor     : #FFFFFF;
+}
+
+xAxis {
+    labelGap        : auto;
+    tickLength      : 0;
+    lineThickness   : 0;
+}
+
+xAxis label {
+    padding         : 5;
+}
+
+yAxis {
+    lineThickness   : 0;
+    tickLength      : 0;
+}
+
+canvas {
+    backgroundColor : #231F20;
+    priLineThickness: 1;
+    priLineColor    : #000000;
+    priLineAlpha    : 1;
+    secLineThickness: 1;
+    secLineColor    : #333333;
+}
+
+tooltip {
+    backgroundType  : simple;
+    color           : #FFFFFF;
+    backgroundColor : #000000;
+    borderThickness : null;
+    backgroundAlpha : .8;
+}
+
+guideLine {
+    color           : #FF7300;
+}
