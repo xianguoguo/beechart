@@ -163,7 +163,7 @@ img {
   font-weight: 700;
 }
 html {
-  background: #dfeaef url("../img/bg.png") repeat-x;
+  background: #dfeaef url("../img/assets.png") repeat-x 0 -905px;
 }
 hr {
   background: #cedfe7;
@@ -182,7 +182,7 @@ hr {
   margin-left: 30px;
   width: 174px;
   height: 121px;
-  background: url("../img/homepage_logo.png") no-repeat;
+  background: url("../img/assets.png") no-repeat 0px -670px;
   text-indent: -9999px;
 }
 .header .nav {
@@ -201,17 +201,17 @@ hr {
   color: #bde0f0;
   line-height: 43px;
   display: block;
-  background: url("../img/nav_btn.png") repeat-x;
+  background: url("../img/assets.png") repeat-x;
 }
 .header .nav li a:hover {
-  background: url("../img/nav_btn_hover.png") repeat-x;
+  background: url("../img/assets.png") no-repeat 0 -72px;
   color: #323b3d;
   text-decoration: none;
 }
 .header .nav .spacing {
   width: 2px;
   height: 43px;
-  background: url("../img/spacing.png") no-repeat;
+  background: url("../img/assets.png") no-repeat 0 -152px;
   text-indent: -9999px;
   line-height: 43px;
 }
@@ -226,12 +226,12 @@ hr {
 }
 .footer .content p {
   color: #dfeaef;
-  background: url("../img/miniLogo.png") no-repeat 0px center;
+  background: url("../img/assets.png") no-repeat 0px -825px;
   padding-left: 50px;
   line-height: 45px;
 }
 html {
-  background: #dfeaef url("../img/bg.png") repeat-x 0px -250px;
+  background: #dfeaef url("../img/assets.png") repeat-x 0px -1160px;
 }
 .content .nav-container {
   width: 165px;

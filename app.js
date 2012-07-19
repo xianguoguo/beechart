@@ -89,7 +89,7 @@ function replacePath(fpath,dir,type){
 }
 
 
-app.get(/((?:html|css|js|img)\/)(?:[^/.]+\/)?([^/]+)(?:\.)([\w]+)$/, function(req, res, next){
+app.get(/((?:html|css|js|img|swf|)\/)(?:[^/.]+\/)?([^/]+)(?:\.)([\w]+)$/, function(req, res, next){
     //res.send('user ' + req.params.id);
     
     var start = new Date();
@@ -122,7 +122,7 @@ app.get(/((?:html|css|js|img)\/)(?:[^/.]+\/)?([^/]+)(?:\.)([\w]+)$/, function(re
                 if(isImg(type)){
                     res.setHeader('Content-Type','image/'+type);
                 }else{
-                    res.setHeader('Content-Type','text/'+type+";charset=gbk");
+                    res.setHeader('Content-Type','text/'+type+";charset=utf-8");
                 }
                 if(notHead){
                     callback(!modifyTime);
@@ -133,14 +133,17 @@ app.get(/((?:html|css|js|img)\/)(?:[^/.]+\/)?([^/]+)(?:\.)([\w]+)$/, function(re
 
     switch(ftype){
         case 'html':
-        var jadePath = replacePath(fpath,'jade')
-        ,   htmlPath = replacePath(fpath,'html') 
-        ;
+        //修改html的判断路径，直接在根目录下
+        var htmlPath = replacePath(fpath,'');
+        var fpaths = fpath.split('.');
+        var name = fpaths[0];
+        var filetype = fpaths[1];
+        var jadePath = "jade/"+name+".jade";
         setHead(jadePath,'html',function(){
             str = fs.readFileSync(jadePath,'utf-8');
             try{
                 str = jade.compile(str, { filename: jadePath, pretty: true })();
-                var buffer = iconv.encode(str, 'GBK');
+                var buffer = iconv.encode(str, 'utf-8');
                 if(!str && str!='')throw "jade compile error";
                 fs.open( htmlPath, 'w', 0644, function(err,fd){
                     if(err){
@@ -163,6 +166,11 @@ app.get(/((?:html|css|js|img)\/)(?:[^/.]+\/)?([^/]+)(?:\.)([\w]+)$/, function(re
         });
         break;
         case 'css':
+        //访问swf中的css文件
+        if(fpath.indexOf("swf/css") > -1){
+            res.sendfile(fpath);
+            return;
+        }
         var stylusPath = replacePath(fpath,'styl');
         fpath = replacePath(fpath,'css');
         setHead(stylusPath,'css',function(notModify){
@@ -180,7 +188,7 @@ app.get(/((?:html|css|js|img)\/)(?:[^/.]+\/)?([^/]+)(?:\.)([\w]+)$/, function(re
                         next(err);
                         return
                     }
-                    var buffer = iconv.encode(css, 'GBK');
+                    var buffer = iconv.encode(css, 'utf-8');
                     fs.open( fpath, 'w', 0644, function(err,fd){
                         if(err){
                             fs.close(fd)
@@ -204,17 +212,14 @@ app.get(/((?:html|css|js|img)\/)(?:[^/.]+\/)?([^/]+)(?:\.)([\w]+)$/, function(re
         case 'js':
             fpath = replacePath(fpath,'js');
             res.sendfile(fpath);
-        // setHead(fpath,'javascript',function(){
-            // res.write(fs.readFileSync(fpath,'utf-8'));
-            // res.end();  
-        // });      
         break;
         case 'png': case 'jpg': case 'jpeg': case 'gif':
             fpath = replacePath(fpath,'img',ftype);
             ftype = (ftype == 'jpg'||ftype == 'jpeg') ? 'jpeg' : ftype;
-            //setHead(fpath,ftype,function(){
             res.sendfile(fpath);
-            //});      
+        break;
+         case 'swf': case 'json': case 'xml':
+            res.sendfile(fpath);
         break;
         default :
             res.write('Error: ENOENT, no such file \''+fname+'.'+ftype+'\'');

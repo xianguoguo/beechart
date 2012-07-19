@@ -163,7 +163,7 @@ img {
   font-weight: 700;
 }
 html {
-  background: #dfeaef url("../img/bg.png") repeat-x;
+  background: #dfeaef url("../img/assets.png") repeat-x 0 -225px;
 }
 hr {
   background: #cedfe7;
@@ -182,7 +182,7 @@ hr {
   margin-left: 30px;
   width: 174px;
   height: 121px;
-  background: url("../img/homepage_logo.png") no-repeat;
+  background: url("../img/assets.png") no-repeat 0px -670px;
   text-indent: -9999px;
 }
 .header .nav {
@@ -201,17 +201,17 @@ hr {
   color: #bde0f0;
   line-height: 43px;
   display: block;
-  background: url("../img/nav_btn.png") repeat-x;
+  background: url("../img/assets.png") repeat-x;
 }
 .header .nav li a:hover {
-  background: url("../img/nav_btn_hover.png") repeat-x;
+  background: url("../img/assets.png") no-repeat 0 -72px;
   color: #323b3d;
   text-decoration: none;
 }
 .header .nav .spacing {
   width: 2px;
   height: 43px;
-  background: url("../img/spacing.png") no-repeat;
+  background: url("../img/assets.png") no-repeat 0 -152px;
   text-indent: -9999px;
   line-height: 43px;
 }
@@ -226,7 +226,7 @@ hr {
 }
 .footer .content p {
   color: #dfeaef;
-  background: url("../img/miniLogo.png") no-repeat 0px center;
+  background: url("../img/assets.png") no-repeat 0px -825px;
   padding-left: 50px;
   line-height: 45px;
 }
@@ -271,7 +271,7 @@ hr {
 .content .primary .info .forfree {
   width: 242px;
   height: 102px;
-  background: url("../img/forfree.png") no-repeat;
+  background: url("../img/assets.png") no-repeat 0px -440px;
   text-indent: -9999px;
 }
 .content .primary .info .intro {
@@ -285,7 +285,7 @@ hr {
   color: #fff;
   font-size: 14px;
   padding-right: 30px;
-  background: url("../img/more.png") no-repeat right;
+  background: url("../img/assets.png") no-repeat 80px -617px;
 }
 .content .primary .info .download {
   margin-left: -30px;
@@ -300,24 +300,25 @@ hr {
   display: block;
   color: #fff;
   padding-left: 50px;
+  padding-top: 10px;
 }
 .content .primary .info .download li a .title {
   font-size: 20px;
   font-weight: bold;
 }
 .content .primary .info .download .download_link {
-  background: url("../img/download.png") no-repeat;
+  background: url("../img/assets.png") no-repeat 0px -336px;
 }
 .content .primary .info .download .demo_link {
   margin-left: 40px;
-  background: url("../img/demolink.png") no-repeat;
+  background: url("../img/assets.png") no-repeat -215px -336px;
 }
 .content .primary .info .news {
   margin-top: 25px;
 }
 .content .primary .info .news .new {
   padding-right: 25px;
-  background: url("../img/new.png") no-repeat right;
+  background: url("../img/assets.png") no-repeat 240px -573px;
   display: inline;
 }
 .content .second {
@@ -360,7 +361,7 @@ hr {
   height: 51px;
   height: 51px;
   margin-top: 30px;
-  background: url("../img/link_bg.png") repeat-x;
+  background: url("../img/assets.png") repeat-x 0px -230px;
 }
 .links .nav {
   width: 1000px;
