@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <meta chartset="utf-8">
+  <head>
+    <title>BeeChart</title>
+    <meta name="description" content="beechart是免费的开源flash图表">
+    <meta name="keywords" content="bflash, chart, bee, forfree, opensource, simple, 图表, 免费, 开源">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <script src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+  </head>
+  <body>
+    <div id="flash-container"></div>
+    <div id="flash-container2"></div>
+    <script>
+      jQuery(function($){
+         $.use('ui-flash-chart', function(){    
+            var chart = $('#flash-container').flash({ 
+               swf        : 'swf/ali-yid-chart-bar.swf',
+               width      : 840, 
+               height     : 400,
+               flashvars:{
+                  swfid:'flash-container',
+                  eventHandler: 'jQuery.util.flash.triggerHandler'
+               }
+            })
+            chart.on("swfReady.flash",function(){
+                  console.log(chart,this);
+                  console.log(chart.flash());
+                  chart.flash("getFlash").load("swf/data/1-serial.xml");
+            }); 
+            
+            var chart2 = $('#flash-container2').flash({ 
+               swf        : 'swf/ali-yid-chart-line.swf',
+               width      : 840, 
+               height     : 500,
+               flashvars:{
+                  swfid:'flash-container2',
+                  eventHandler: 'jQuery.util.flash.triggerHandler'
+               }
+            })
+            chart2.on("swfReady.flash",function(){
+                  console.log(chart2,this);
+                  console.log(chart2.flash());
+                  chart2.flash("getFlash").load("swf/data/1-serial.xml");
+            }); 
+         });
+      });
+    </script>
+  </body>
+</html>

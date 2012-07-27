@@ -176,7 +176,8 @@ hr {
 .header {
   width: 1000px;
   margin: 0 auto;
-  margin-top: 25px;
+  margin-top: 12px;
+  margin-bottom: 10px;
 }
 .header .logo {
   margin-left: 30px;
@@ -186,7 +187,7 @@ hr {
   text-indent: -9999px;
 }
 .header .nav {
-  margin-top: 10px;
+  margin-top: 35px;
 }
 .header .nav li {
   float: left;
@@ -229,6 +230,11 @@ hr {
   background: url("../img/assets.png") no-repeat 0px -825px;
   padding-left: 50px;
   line-height: 45px;
+}
+.dashed {
+  background: url("../img/chart-demo.png") repeat-x 0 -220px;
+  height: 1px;
+  overflow: hidden;
 }
 html {
   background: #dfeaef url("../img/assets.png") repeat-x 0px -1160px;

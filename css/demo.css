@@ -176,7 +176,8 @@ hr {
 .header {
   width: 1000px;
   margin: 0 auto;
-  margin-top: 25px;
+  margin-top: 12px;
+  margin-bottom: 10px;
 }
 .header .logo {
   margin-left: 30px;
@@ -186,7 +187,7 @@ hr {
   text-indent: -9999px;
 }
 .header .nav {
-  margin-top: 10px;
+  margin-top: 35px;
 }
 .header .nav li {
   float: left;
@@ -230,6 +231,11 @@ hr {
   padding-left: 50px;
   line-height: 45px;
 }
+.dashed {
+  background: url("../img/chart-demo.png") repeat-x 0 -220px;
+  height: 1px;
+  overflow: hidden;
+}
 html {
   background: #dfeaef url("../img/assets.png") repeat-x 0px -1160px;
 }
@@ -262,4 +268,20 @@ html {
 }
 .content .chart-container {
   margin-top: 10px;
+}
+.content .nav li {
+  background: url("../img/chart-demo.png") no-repeat;
+  padding: 15px 0px 15px 45px;
+}
+.content .nav #pie {
+  background-position: 0 13px;
+}
+.content .nav #bar {
+  background-position: 0 -45px;
+}
+.content .nav #line {
+  background-position: 0 -100px;
+}
+.content .nav #time {
+  background-position: 0 -156px;
 }

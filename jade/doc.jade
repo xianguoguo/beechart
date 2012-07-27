@@ -4,22 +4,16 @@ html
     head
         title BeeChart
         meta(name="description",content="beechart是免费的开源flash图表")
-        meta(name="keywords",content="bflash, chart, bee, forfree, opensource, simple, 图表, 免费, 开源")
+        meta(name="keywords",content="beechart, chart, forfree, opensource, simple, 图表, 免费, 开源")
         link(rel="shortcut icon",type="image/x-icon",href="favicon.ico")
         link(rel="stylesheet",type="text/css",href="css/doc.css")
-        script
-            (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
     body
         include include/nav.jade
         .content.w1000.fd-clr
             .nav-container.fd-left
                 h1 文档
                 ul.nav
-                    li.current
+                    li.current#start
                         a(href="#") 开始使用
                     li
                         a(href="#") 下载YID-Chart
@@ -32,6 +26,11 @@ html
                     li
                         a(href="#") 参数类型
             .content-container.fd-left
+                #start-content 
+                    秉承简单，好看，好用的理念，进行设计与开发.
+                    使用起来简单，易上手。
+                    只需简单5步就能使用起来。
+
 
         include include/footer.jade
 
