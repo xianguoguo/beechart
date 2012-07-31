@@ -7,7 +7,7 @@
     <meta name="keywords" content="bflash, chart, bee, forfree, opensource, simple, 图表, 免费, 开源">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <script src="js/beechart/jquery-1.7.2.js"></script>
-    <script src="js/beechart/jquery.flash.js"></script>
+    <script src="js/beechart/flash.js"></script>
   </head>
   <body>
     <div id="flash-container"></div>
@@ -15,25 +15,27 @@
     <script>
       jQuery(function($){
           var chart = $("#flash-container").flash({
-                                          src:"swf/ali-yid-chart-bar.swf",
+                                          swf:"swf/ali-yid-chart-bar.swf",
                                           width:600,
                                           height:300,
+                                          id:"aa",
                                           flashvars:{
                                               startDelay:500
                                           }
           }).on("swfReady.flash",function(){
-                                        chart.flash('getFlash').load("swf/data/1-serial.xml");
+                                        chart.getFlash().load("swf/data/1-serial.xml");
           });
           
           var chart2 = $("#flash-container2").flash({
-                                          src:"swf/ali-yid-chart-line.swf",
+                                          swf:"swf/ali-yid-chart-line.swf",
                                           width:600,
                                           height:500,
+                                          id:"bb",
                                           flashvars:{
                                               startDelay:500
                                           }
           }).on("swfReady.flash",function(){
-                                        chart2.flash('getFlash').load("swf/data/1-serial.xml");
+                                        chart2.getFlash().load("swf/data/1-serial.xml");
           });
       })
     </script>
