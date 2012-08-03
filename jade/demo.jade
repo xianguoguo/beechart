@@ -7,29 +7,24 @@ html
         meta(name="keywords",content="beechart, flash, chart , forfree, opensource, simple, 图表, 免费, 开源")
         link(rel="shortcut icon",type="image/x-icon",href="favicon.ico")
         link(rel="stylesheet",type="text/css",href="css/demo.css")
-        script
-            (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
     body
         include include/nav.jade
         .content.w1000.fd-clr
             .nav-container.fd-left
-                h1 Demo
-                ul.nav
-                    li.current#pie
-                        a(href="pie-demo.html") PIE/饼图
-                    .dashed
-                    li#bar
-                        a(href="bar-demo.html") BAR/柱图
-                    .dashed
-                    li#line
-                        a(href="line-demo.html") LINE/线图
-                    .dashed
-                    li#time
-                        a(href="time-demo.html") TIME/时间线
+                .nav
+                    h1 Demo
+                    ul
+                        li.current#pie
+                            a(href="pie-demo.html") PIE/饼图
+                        .dashed
+                        li#bar
+                            a(href="bar-demo.html") BAR/柱图
+                        .dashed
+                        li#line
+                            a(href="line-demo.html") LINE/线图
+                        .dashed
+                        li#time
+                            a(href="time-demo.html") TIME/时间线
             .chart-container.fd-left
                 iframe#chart-iframe(src="pie-demo.html",frameborder="0",scrolling="no",width="788px",height="650px")
         include include/footer.jade

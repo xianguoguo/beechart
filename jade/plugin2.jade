@@ -58,6 +58,7 @@ html
                 }
 
                 var book = new Book("哈哈");
+                //output:哈哈 哈哈
                 console.log(book.name,book.getName());
 
                 var Book2 = function(name){
@@ -82,6 +83,7 @@ html
                     }
                 }
                 var book2 = new Book2("哈哈");
+                //output:undefined "哈哈" "display:哈哈"
                 console.log(book2.name,book2.getName(),book2.display());
 
                 function extend(subClz,superClz){

@@ -7,13 +7,6 @@
     <meta name="keywords" content="beechart, flash, chart , forfree, opensource, simple, 图表, 免费, 开源">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/demo.css">
-    <script>
-      (function() {
-          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
   </head>
   <body>
     <div class="header fd-clr"><a href="">
@@ -30,16 +23,18 @@
     </div>
     <div class="content w1000 fd-clr">
       <div class="nav-container fd-left">
-        <h1>Demo</h1>
-        <ul class="nav">
-          <li id="pie" class="current"><a href="pie-demo.html">PIE/饼图</a></li>
-          <div class="dashed"></div>
-          <li id="bar"><a href="bar-demo.html">BAR/柱图</a></li>
-          <div class="dashed"></div>
-          <li id="line"><a href="line-demo.html">LINE/线图</a></li>
-          <div class="dashed"></div>
-          <li id="time"><a href="time-demo.html">TIME/时间线</a></li>
-        </ul>
+        <div class="nav">
+          <h1>Demo</h1>
+          <ul>
+            <li id="pie" class="current"><a href="pie-demo.html">PIE/饼图</a></li>
+            <div class="dashed"></div>
+            <li id="bar"><a href="bar-demo.html">BAR/柱图</a></li>
+            <div class="dashed"></div>
+            <li id="line"><a href="line-demo.html">LINE/线图</a></li>
+            <div class="dashed"></div>
+            <li id="time"><a href="time-demo.html">TIME/时间线</a></li>
+          </ul>
+        </div>
       </div>
       <div class="chart-container fd-left">
         <iframe id="chart-iframe" src="pie-demo.html" frameborder="0" scrolling="no" width="788px" height="650px"></iframe>

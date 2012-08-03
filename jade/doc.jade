@@ -7,38 +7,356 @@ html
         meta(name="keywords",content="beechart, chart, forfree, opensource, simple, 图表, 免费, 开源")
         link(rel="shortcut icon",type="image/x-icon",href="favicon.ico")
         link(rel="stylesheet",type="text/css",href="css/doc.css")
+        link(rel="stylesheet",type='text/css',href="css/sons-of-obsidian.css")
     body
         include include/nav.jade
         .content.w1000.fd-clr
             .nav-container.fd-left
-                h1 文档
-                ul.nav
-                    li.current#start
-                        a(href="#") 开始使用
-                    li
-                        a(href="#") 下载YID-Chart
-                    li
-                        a(href="#") FAQ
-                    li
-                        a(href="#") 教程
-                    li
-                        a(href="#") 如何扩展
-                    li
-                        a(href="#") 参数类型
-            .content-container.fd-left
-                #start-content 
-                    秉承简单，好看，好用的理念，进行设计与开发.
-                    使用起来简单，易上手。
-                    只需简单5步就能使用起来。
+                .nav
+                    h1 文档
+                    ul#nav
+            .content-container.fd-left.fd-clr
+                h2 开始使用
+                p 秉承简单，好看，好用的理念，进行设计与开发.
+                p 使用起来简单，易上手。
+                p 只需简单5步就能使用起来。
+                .info 因为flash本地沙箱的限制，本地flash是不能加载数据的，故在本地运行该示例，需要进行如下操作：控制面板——>Flash Player，打开“高级”tab，点选“受信任位置设置”，将新建的BeeChart文件夹加入受信任的文件夹才能正常运行。当然，如果你将该示例运行在服务器环境下(如apache)，那就再好不过了。
+                ol.ol
+                    li 
+                        p 
+                            a(href="https://github.com/downloads/sjpsega/beechart/beechart%20swf.rar") 下载BeeChart swf文件
+                        p 点击BeeChart，下载最新版本的swf文件。
+                    li  新建一文件夹，如命名为BeeChart，将下载的swf文件拷贝进该目录下。
+                    li 
+                       p 在BeeChart文件夹下，新建data.xml，输入如下内容：
+                       pre.lang-html.
+                            <chart>
+                                <data>
+                                    <indexAxis name="月份">
+                                        <labels>
+                                            Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
+                                        </labels>
+                                    </indexAxis>
+                                    <valueAxis name="温度" unit="度"></valueAxis>
+                                    <dataSets>
+                                        <set name="Tokyo">
+                                            <values>
+                                            7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6
+                                            </values>
+                                        </set>
+                                        <set name="London">
+                                            <values>
+                                            3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8
+                                            </values>
+                                        </set>
+                                    </dataSets>
+                                </data>
+                            </chart>
+                    li 
+                        p 在BeeChart文件夹下，新建index.html，输入如下代码：
+                        pre.lang-html.
+                            <!DOCTYPE html>
+                            <html>
+                            <head>
+                                <title>BeeChart Demo</title>
+                                <script src="http://sjpsega.github.com/beechart/js/beechart/jquery-1.7.2.js"></script>
+                                <script src="http://sjpsega.github.com/beechart/js/beechart/flash.js"></script>
+                            </head>
+                            <body>
+                                <div id="chart-container"></div>
+                                <script>
+                                   jQuery(function($){
+                                        $('#chart-container').flash({ 
+                                           swf        : 'beechart-line.swf',
+                                           width      : 840, 
+                                           height     : 400, 
+                                           flashvars  : { 
+                                              dataUrl : 'data.xml'
+                                           } 
+                                        }); 
+                                   });
+                                </script>
+                            </body>
+                            </html>
+                    li 
+                        p 大功告成，双击index.html就能在浏览器中看到效果啦！
+                        p 效果如下所示：
+                        #chart-container
 
+                h2 BeeChart如何工作
+                p 图表的核心功能有两种，一种是数据，另一种是展现。
+                p BeeChart针对这两个核心功能，分别由两个参数决定，分别是data和css。
+                p BeeChart接受的data数据可以是json数据或XML数据；css样式决定图表的展现，如颜色，动画等，这个css与html的css写法大致相同，但是属性有差异。
+                p BeeChart中已经包含了一套漂亮的样式，所以通常情况下，用户只需给图表传入数据，便能有漂亮的图表展现效果了。
+                p 当然需求各异，用户可以根据自己的需要设定适合自身的css样式。
+                p 若用户需要修改css样式，则可以这样传递给图表：
+                ul.ul
+                    li 
+                      p 新建一名为style.css的文件，然后输入：
+                      pre.lang-css.
+                        chart {
+                            colors          : #E34F1E,#84BC0D,#00ABD9,#FF00A8;
+                            paddingRight    : 2;
+                            paddingLeft     : 2;
+                        }
+                        line {
+                            thickness.active : 3;
+                        }
+                        line dot {
+                            radius          : 4;
+                            color           : inherit;
+                            borderThickness : null;
+                            borderThickness.hl : 8;
+                            borderAlpha     : .5;
+                            borderColor     : inherit#color;
+                        }
+                        xAxis {
+                            labelGap        : auto;
+                            tickLength      : 0;
+                            lineThickness   : 0;
+                        }
+                        yAxis {
+                            tickLength      : 0;
+                            lineThickness   : 0;
+                        }
+                        canvas {
+                            backgroundColor : #2B2929;
+                            priLineThickness: 1;
+                            priLineColor    : #303030;
+                            priLineAlpha    : 1;
+                            secLineThickness: 1;
+                            secLineColor    : #303030;
+                        }
+                        tooltip {
+                            backgroundType  : simple;
+                            color           : #FFFFFF;
+                            backgroundColor : #000000;
+                            borderThickness : null;
+                            backgroundAlpha : .8;
+                        }
+                        legend {
+                            position        : bottom;
+                            align           : center
+                        }  
+                    li
+                        p 将给css传递给图表
+                        pre.lang-js.
+                            $('#chart-container').flash({ 
+                               swf        : 'beechart-line.swf',
+                               width      : 840, 
+                               height     : 400, 
+                               flashvars  : { 
+                                  dataUrl : 'data.xml',
+                                  cssUrl  : 'style.css'
+                               } 
+                            }); 
+                        p 就是这么简单就完成啦！
+                        p 看一下效果：
+                        #chart-container-2
+                h2 API
+                h3 flashvars
+                p 参数都经过flashvar从HTML传递到flash
+                p 有用的参数：
+                table
+                    thead
+                        tr
+                            th 参数名称
+                            th 参数含义
+                    tbody
+                        tr 
+                            td w 或 chartWidth
+                            td 图表内容宽度
+                        tr 
+                            td h 或 chartHeight
+                            td 图表内容高度
+                        tr 
+                            td data
+                            td 数据内容
+                        tr 
+                            td dataUrl
+                            td 数据文件路径
+                        tr 
+                            td charset
+                            td 数据文件的编码(默认为UTF-8)
+                        tr 
+                            td css
+                            td 样式设置
+                        tr 
+                            td cssUrl
+                            td 样式文件路径
+                        tr 
+                            td charset
+                            td 样式文件的编码(默认为UTF-8)
+                h3 方法
+                table
+                    thead
+                        tr
+                            th 接口名称
+                            th 说明
+                            th 示例
+                    tbody
+                    tr 
+                        td w 或 chartWidth
+                        td(style="width:50%") 图表内容宽度
+                        td 图表内容宽度
+                    tr
+                        td parse   
+                        td 解析数据，数据可以是XML或JSON  
+                        td parse(xmlString)
+                    tr
+                        td parseCSS    
+                        td 解析样式    
+                        td parseCSS(cssString)
+                    tr
+                        td load    
+                        td 加载数据，数据可以是XML或JSON  
+                        td load('../data.xml')
+                    tr
+                        td loadCSS 
+                        td 加载样式    
+                        td loadCSS('../chart-style.css')
+                    tr
+                        td setDatasetActivity  
+                        td 设置某条数据是否处于激活状态，激活状态的数据会突出显示，进入active状态  
+                        td setDatasetActivity(1, true)
+                    tr
+                        td getDatasetActivity  
+                        td 获取某条数据是否处于激活状态  
+                        td getDatasetActivity(0)
+                    tr
+                        td setDatasetVisibility    
+                        td 设置某条数据是否在界面上可见  
+                        td setDatasetVisibility(1, false)
+                    tr
+                        td getDatasetVisibility    
+                        td 获取某条数据是否在界面上可见  
+                        td getDatasetVisibility(0)
+                .info 调用内部方法，都必须在监听到swfReady事件后，才能正常调用。
+                h3 调用flash方法示例
+                p 调用setDatasetVisibility方法：
+                pre.lang-js.
+                    var chart = $('#chart-container').flash({ 
+                       swf        : 'beechart-line.swf',
+                       width      : 600, 
+                       height     : 400, 
+                       flashvars  : { 
+                          dataUrl : 'data.xml',
+                          cssUrl  : 'style.css'
+                       } 
+                    }); 
+                    //需要设置数据是否可见，通常需要在数据处理完毕后调用接口
+                    chart.on('data_parsed.flash',function(){
+                        chart.getFlash().setDatasetVisibility(0,false);
+                    })
+                h3 事件列表
+                table
+                    thead
+                        tr
+                            th 事件名称
+                            th 说明
+                    tbody
+                        tr
+                            td swfReady    
+                            td 图表初始化完毕
+                        tr
+                            td click_item  
+                            td 用户点击一个图表上的元素
+                        tr
+                            td data_visible_change 
+                            td 数据隐藏\显示切换事件(点击Legend等情况下分发)
+                        tr
+                            td load_start  
+                            td 开始加载数据或样式
+                        tr
+                            td load_fail   
+                            td 数据或样式加载失败
+                        tr
+                            td load_finish 
+                            td 数据或样式加载完成
+                        tr
+                            td parse_fail  
+                            td 数据或样式解析错误
+                        tr
+                            td css_parsed  
+                            td css数据处理完毕
+                        tr
+                            td data_parsed 
+                            td 数据信息处理完毕
+                h3 监听flash事件示例
+                p 监听swfReady事件：
+                pre.lang-js.
+                    //事件监听的使用方法与jQuery的事件监听类似，之后的'.flash'是类似命名空间的作用，加不加都无碍功能，加了更清晰些
+                    chart.on('swfReady.flash',function(){
+                        dosomething...
+                    })
+                h2 如何扩展
+                h3 下载源代码
+                p BeeChart使用流行的GitHub来管理源代码，你只要安装了Git，只需要一条命令便能把代码down下来
+                pre.lang-js.
+                    git clone git@github.com:sjpsega/beechart.git
+                h3 使用Ant编译代码
+                p 源码中有一名为bulid的目录，其中的bulid.xml便是ant的编译文件，基本的代码已经写好，用户只需配置下Ant环境，然后打开该文件，根据自己的环境，编辑下FLEX_HOME参数，运行下ant任务，就能将as3代码编译成swf文件了。
+                p Ant做了两件事情，一是在bin目录下，编译生成图表的swf文件；二是在doc目录下，生成BeeChart的开发文档。
+                h3 修改源代码
+                p 源码包括两部分：
+                ol.ol
+                    li src:BeeChart的源码
+                    li lib:第三方类库或资源文件
+                p src目录下便是就是BeeChart的源码，你可以从中了解BeeChart的一切！
+                p lib中包含greensock，as3corelib第三方类库，以及资源swc。
+                h3 核心思想
+                p 在扩展BeeChart的代码前，需要了解下BeeChart的核心架构。
+                p 之前说过，图表的核心是数据和展现；数据没什么好说的，各个图表的实现方法都是大同小异。
+                p BeeChart使用流行的MVC架构模式。
+                p Model、Control与基本的MVC的Model、Control无异。
+                p 最大的不同在于View。View中有个skin对象，这个skin对象决定了展现。
+                p skin又分为Printer和Performer两部分。
+                p Printer:将数据展现绘制出来；
+                p Performer:处理状态变化，控制数据展现的状态，如start,hover,active等状态。
+                p BeeChart的各个部分都是使用这种机制来实现功能的。
+                h3 贡献自己的代码
+                p 只需要在GitHub中fork BeeChart，然后将自己的分支clone到本地，修改代码，提交。使用Pull Requests，我们验收通过，便能merge到主干。
+
+                h2 FAQ
+                p Q:使用BeeChart在商业产品中，需要付费吗？
+                p A:BeeChart是免费、开源的图表组件，不收取任何费用。
 
         include include/footer.jade
 
         script(type="text/javascript",src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js")
+        script(type="text/javascript",src="js/google-code-prettify/prettify.js")
+        script(type="text/javascript",src="js/google-code-prettify/lang-css.js")
+        script(type="text/javascript",src="http://sjpsega.github.com/beechart/js/beechart/flash.js")
+        script(type="text/javascript",src="js/jquery.tableofcontents.js")
         script
            jQuery(function($){
-                $(".nav-container .nav li").on("click",function(e){
-                    e.preventDefault();
+                //给pre段落增加class，并调用初始化方法
+                $("pre").each(function(index,item){
+                   $(item).addClass("prettyprint").addClass("linenums");
+                });
+                prettyPrint();
+
+                $('#chart-container').flash({ 
+                   swf        : 'swf/beechart-line.swf',
+                   width      : 600, 
+                   height     : 400, 
+                   flashvars  : { 
+                      dataUrl : 'swf/data/data.xml'
+                   } 
+                }); 
+                $('#chart-container-2').flash({ 
+                   swf        : 'swf/beechart-line.swf',
+                   width      : 600, 
+                   height     : 400, 
+                   flashvars  : { 
+                      dataUrl : 'swf/data/data.xml',
+                      cssUrl : 'swf/css/style.css'
+                   } 
+                }); 
+
+                $("#nav").tableOfContents('.content-container',{startLevel:2, depth:1}).show();
+                $("#nav li").eq(0).addClass("current");
+                $("#nav li").on("click",function(e){
                     $(this).parent().find("li").removeClass("current");
                     $(this).addClass("current");
                 });

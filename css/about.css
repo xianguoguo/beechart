@@ -236,6 +236,33 @@ hr {
   height: 1px;
   overflow: hidden;
 }
+h3 {
+  font-size: 24px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+h4 {
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+.ol {
+  list-style: decimal;
+  padding-left: 40px;
+}
+.ul {
+  list-style: disc;
+  padding-left: 40px;
+}
+.info {
+  color: #3a87ad;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  padding: 8px 35px 8px 14px;
+  margin: 21pt 0;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+  border-radius: 4px;
+}
 html {
   background: #dfeaef url("../img/assets.png") repeat-x 0px -1160px;
 }
@@ -245,7 +272,7 @@ html {
   padding-top: 50px;
 }
 .content .nav-container h1 {
-  font-size: 60px;
+  font-size: 48px;
   background-color: #efb117;
   color: #fff;
 }
@@ -268,13 +295,16 @@ html {
 }
 .content .content-container {
   margin-top: 10px;
-  width: 768px;
-  height: 630px;
+  width: 748px;
   background: #fff;
-  font-size: 20px;
+  font-size: 16px;
   color: #444;
   padding-top: 20px;
   padding-left: 20px;
+  padding-right: 20px;
+}
+.content .content-container {
+  height: 630px;
 }
 .content .content-container #group-content,
 .content .content-container #event-content {
