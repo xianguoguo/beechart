@@ -96,6 +96,7 @@
             <p>大功告成，双击index.html就能在浏览器中看到效果啦！</p>
             <p>效果如下所示：</p>
             <div id="chart-container"></div>
+            <p> <a href="https://github.com/downloads/sjpsega/beechart/beechart%20demo.rar">例子代码可以下载</a></p>
           </li>
         </ol>
         <h2>BeeChart如何工作</h2>
@@ -370,6 +371,7 @@ chart.on('swfReady.flash',function(){
         <h2>FAQ</h2>
         <p>Q:使用BeeChart在商业产品中，需要付费吗？</p>
         <p>A:BeeChart是免费、开源的图表组件，不收取任何费用。</p>
+        <h2>图表样式编辑器</h2><a href="charteditor.html">简单方便的图表样式编辑器</a>
       </div>
     </div>
     <div class="footer">
@@ -382,6 +384,7 @@ chart.on('swfReady.flash',function(){
     <script type="text/javascript" src="js/google-code-prettify/lang-css.js"></script>
     <script type="text/javascript" src="http://sjpsega.github.com/beechart/js/beechart/flash.js"></script>
     <script type="text/javascript" src="js/jquery.tableofcontents.js"></script>
+    <script type="text/javascript" src="js/page.js"></script>
     <script>
       jQuery(function($){
            //给pre段落增加class，并调用初始化方法
@@ -390,6 +393,7 @@ chart.on('swfReady.flash',function(){
            });
            prettyPrint();
            
+           //flash代码
            $('#chart-container').flash({ 
               swf        : 'swf/beechart-line.swf',
               width      : 600, 
@@ -407,13 +411,6 @@ chart.on('swfReady.flash',function(){
                  cssUrl : 'swf/css/style.css'
               } 
            }); 
-           
-           $("#nav").tableOfContents('.content-container',{startLevel:2, depth:1}).show();
-           $("#nav li").eq(0).addClass("current");
-           $("#nav li").on("click",function(e){
-               $(this).parent().find("li").removeClass("current");
-               $(this).addClass("current");
-           });
       });
     </script>
   </body>

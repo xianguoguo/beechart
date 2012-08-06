@@ -236,12 +236,12 @@ hr {
   height: 1px;
   overflow: hidden;
 }
-h3 {
+h2 {
   font-size: 24px;
   font-weight: bold;
   padding-top: 10px;
 }
-h4 {
+h3 {
   font-size: 20px;
   font-weight: bold;
   padding-top: 10px;
@@ -297,37 +297,37 @@ h4 {
   width: 466px;
   height: 328px;
 }
-.content .primary .info {
+.content .primary .infos {
   width: 400px;
   margin-left: 100px;
 }
-.content .primary .info .forfree {
+.content .primary .infos .forfree {
   width: 242px;
   height: 102px;
   background: url("../img/assets.png") no-repeat 0px -440px;
   text-indent: -9999px;
 }
-.content .primary .info .intro {
+.content .primary .infos .intro {
   color: #95c7ef;
   margin-top: 20px;
 }
-.content .primary .info .more {
+.content .primary .infos .more {
   margin-top: 5px;
 }
-.content .primary .info .more a {
+.content .primary .infos .more a {
   color: #fff;
   font-size: 14px;
-  padding-right: 30px;
+  padding-right: 32px;
   background: url("../img/assets.png") no-repeat 80px -617px;
 }
-.content .primary .info .download {
+.content .primary .infos .download {
   margin-left: -30px;
   padding-top: 50px;
 }
-.content .primary .info .download li {
+.content .primary .infos .download li {
   float: left;
 }
-.content .primary .info .download li a {
+.content .primary .infos .download li a {
   width: 128px;
   height: 75px;
   display: block;
@@ -335,21 +335,24 @@ h4 {
   padding-left: 50px;
   padding-top: 10px;
 }
-.content .primary .info .download li a .title {
+.content .primary .infos .download li a:hover {
+  text-decoration: none;
+}
+.content .primary .infos .download li a .title {
   font-size: 20px;
   font-weight: bold;
 }
-.content .primary .info .download .download_link {
+.content .primary .infos .download .download_link {
   background: url("../img/assets.png") no-repeat 0px -336px;
 }
-.content .primary .info .download .demo_link {
+.content .primary .infos .download .demo_link {
   margin-left: 40px;
   background: url("../img/assets.png") no-repeat -215px -336px;
 }
-.content .primary .info .news {
+.content .primary .infos .news {
   margin-top: 25px;
 }
-.content .primary .info .news .new {
+.content .primary .infos .news .new {
   padding-right: 25px;
   background: url("../img/assets.png") no-repeat 240px -573px;
   display: inline;

@@ -82,6 +82,8 @@ html
                         p 大功告成，双击index.html就能在浏览器中看到效果啦！
                         p 效果如下所示：
                         #chart-container
+                        p 
+                            a(href="https://github.com/downloads/sjpsega/beechart/beechart%20demo.rar") 例子代码可以下载
 
                 h2 BeeChart如何工作
                 p 图表的核心功能有两种，一种是数据，另一种是展现。
@@ -321,6 +323,9 @@ html
                 p Q:使用BeeChart在商业产品中，需要付费吗？
                 p A:BeeChart是免费、开源的图表组件，不收取任何费用。
 
+                h2 图表样式编辑器
+                a(href="charteditor.html") 简单方便的图表样式编辑器
+
         include include/footer.jade
 
         script(type="text/javascript",src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js")
@@ -328,6 +333,7 @@ html
         script(type="text/javascript",src="js/google-code-prettify/lang-css.js")
         script(type="text/javascript",src="http://sjpsega.github.com/beechart/js/beechart/flash.js")
         script(type="text/javascript",src="js/jquery.tableofcontents.js")
+        script(type="text/javascript",src="js/page.js")
         script
            jQuery(function($){
                 //给pre段落增加class，并调用初始化方法
@@ -336,6 +342,7 @@ html
                 });
                 prettyPrint();
 
+                //flash代码
                 $('#chart-container').flash({ 
                    swf        : 'swf/beechart-line.swf',
                    width      : 600, 
@@ -353,11 +360,4 @@ html
                       cssUrl : 'swf/css/style.css'
                    } 
                 }); 
-
-                $("#nav").tableOfContents('.content-container',{startLevel:2, depth:1}).show();
-                $("#nav li").eq(0).addClass("current");
-                $("#nav li").on("click",function(e){
-                    $(this).parent().find("li").removeClass("current");
-                    $(this).addClass("current");
-                });
             });

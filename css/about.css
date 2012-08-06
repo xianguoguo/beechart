@@ -236,12 +236,12 @@ hr {
   height: 1px;
   overflow: hidden;
 }
-h3 {
+h2 {
   font-size: 24px;
   font-weight: bold;
   padding-top: 10px;
 }
-h4 {
+h3 {
   font-size: 20px;
   font-weight: bold;
   padding-top: 10px;
@@ -275,6 +275,10 @@ html {
   font-size: 48px;
   background-color: #efb117;
   color: #fff;
+}
+.content .nav-container .nav {
+  width: 165px;
+  position: fixed;
 }
 .content .nav-container .nav li {
   color: #d3d3d3;
