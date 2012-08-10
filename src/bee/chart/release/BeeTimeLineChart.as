@@ -1,15 +1,15 @@
 package bee.chart.release 
 {
     import bee.chart.abstract.CartesianChart;
-	import bee.chart.assemble.line.timeline.TimeLineChartView;
-	/**
-	 * ...
-	 * @author jianping.shenjp
-	 */
-	public class BeeTimeLineChart extends CartesianChart 
-	{
-		
-		/**
+    import bee.chart.assemble.line.timeline.TimeLineChartView;
+    /**
+     * ...
+     * @author jianping.shenjp
+     */
+    public class BeeTimeLineChart extends CartesianChart 
+    {
+        
+        /**
         * 如果要给LineChart指定自定义的Viewer和ChartData类型
         * 请使用 chart.setViewer 和 chart.chartModel.setData
         */
@@ -17,7 +17,7 @@ package bee.chart.release
         {
             super(TimeLineChartView, null, pluginClz);
         }
-		
+        
         override protected function initChart():void 
         {
             var presetCSS:String = <![CDATA[
@@ -25,7 +25,6 @@ package bee.chart.release
                     colors          : #1b75d2,#5f9618,#eead23,#b3351b,#ff862e,#925100;
                     smooth          : true;
                     leftAxisVisibility: visible;
-                    fix             : auto;
                 }
 
                 line {
@@ -49,7 +48,6 @@ package bee.chart.release
                 }
 
                 xAxis {
-                    labelGap        : auto;
                     lineColor       : #666666;
                 }
 
@@ -101,6 +99,6 @@ package bee.chart.release
             super.initChart();
         }
         
-	}
+    }
 
 }

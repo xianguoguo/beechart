@@ -42,7 +42,7 @@ package bee.chart.elements.ctxmenu
             save.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT, onSave);
             menu.customItems.push(save);
             
-            var about:ContextMenuItem = new ContextMenuItem("YID-Chart "+ VERSION, true);
+            var about:ContextMenuItem = new ContextMenuItem("BEE-Chart "+ VERSION, true);
             about.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT, onAbout);
             menu.customItems.push(about);
             

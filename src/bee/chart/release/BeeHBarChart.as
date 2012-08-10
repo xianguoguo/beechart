@@ -21,10 +21,10 @@ package bee.chart.release
             TooltipView.defaultStatePrinter = new TooltipForAliPrinter;
             
             super(BarChartViewer, BarChartData, pluginClz);
-			
-			var viewer:BarChartViewer = chartViewer as BarChartViewer;
-			viewer.horizontal = true;
-			viewer.skin.statePrinter = new BarChartHorizontalPrinter();
+            
+            var viewer:BarChartViewer = chartViewer as BarChartViewer;
+            viewer.horizontal = true;
+            viewer.skin.statePrinter = new BarChartHorizontalPrinter();
         }
         
         override protected function initChart():void 
@@ -46,7 +46,6 @@ package bee.chart.release
                 }
 
                 xAxis {
-                    labelGap        : auto;
                     lineColor       : #666666;
                     lineThickness   : 3;
                     tickThickness   : 0;

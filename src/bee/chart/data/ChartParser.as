@@ -74,7 +74,7 @@ package bee.chart.data
             if(!src){
                 return;
             }
-            log("parseCSS", src);
+            log("parseCSS", src, toAppend);
             if(toAppend){
                 var styleSheet:YIDStyleSheet = new YIDStyleSheet();
                 styleSheet.parseCSS(src);

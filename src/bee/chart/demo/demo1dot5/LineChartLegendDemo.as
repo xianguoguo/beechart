@@ -144,7 +144,8 @@ package bee.chart.demo.demo1dot5
                     \
                     "legend" : {\
                         "position"      : "bottom",\
-                        "align"         : "center"\
+                        "align"         : "center",\
+                        "itemEachColumn":3\
                     },\
                     "moveline":{\
                         "color":"#BBBBBB",\

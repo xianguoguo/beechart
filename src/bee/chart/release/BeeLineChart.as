@@ -30,7 +30,6 @@ package bee.chart.release
                 colors          : #1b75d2,#5f9618,#eead23,#b3351b,#ff862e,#925100;
                 smooth          : true;
                 leftAxisVisibility: visible;
-                fix             : auto;
                 animate         : true;
             }
 
@@ -55,7 +54,6 @@ package bee.chart.release
             }
 
             xAxis {
-                labelGap        : auto;
                 lineColor       : #666666;
                 lineThickness   : 3;
                 tickThickness   : 0;

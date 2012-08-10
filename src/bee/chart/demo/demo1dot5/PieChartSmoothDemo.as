@@ -30,7 +30,7 @@ package bee.chart.demo.demo1dot5
         }
         
         override protected function initChart():void 
-        {
+        {·
             super.initChart();
             chart = new PieChart(new <Class>[
             ]);
@@ -42,7 +42,7 @@ package bee.chart.demo.demo1dot5
             }
             var styleSheet:StyleSheet = chart.styleSheet;
             styleSheet.setStyle('slice', {
-                //'labelSetType'  : 'normal',
+                'labelSetType'  : 'normal',
                 'labelPosition':'callout'
             });
             styleSheet.setStyle('slice label', {

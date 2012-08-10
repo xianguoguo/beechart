@@ -44,7 +44,6 @@ package bee.chart.release
                 }
 
                 xAxis {
-                    labelGap        : auto;
                     lineColor       : #666666;
                     lineThickness   : 3;
                     tickThickness   : 0;
