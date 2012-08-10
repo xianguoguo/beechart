@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BeeChart Demo</title>
+    <link rel="stylesheet" type="text/css" href="css/google-code-prettify/sons-of-obsidian.css">
+    <script src="js/jquery-1.7.2.js"></script>
+    <script src="js/flash.js"></script>
+    <script src="js/google-code-prettify/prettify.js"></script>
+    <script src="js/google-code-prettify/lang-css.js"></script>
+</head>
+<body>
+    <h2>基本示例代码</h2>
+    <div id="chart-container"></div>
+    <pre class="lang-js">
+      $('#chart-container').flash({ 
+         swf        : 'beechart-line.swf',
+         width      : 600, 
+         height     : 400, 
+         flashvars  : { 
+            dataUrl : 'data.xml'
+         } 
+      }); 
+    </pre>
+
+    <h2>设置css样式</h2>
+    <div id="chart-container-2"></div>
+    <pre class="lang-js">
+      $('#chart-container').flash({ 
+         swf        : 'beechart-line.swf',
+         width      : 600, 
+         height     : 400, 
+         flashvars  : { 
+            dataUrl : 'data.xml',
+            cssUrl  : 'style.css'
+         } 
+      }); 
+    </pre>
+
+    <h2>设置css样式(文本)</h2>
+    <div id="chart-container-3"></div>
+    <pre class="lang-js">
+      var cssStr = "chart{colors:#E34F1E,#84BC0D,#00ABD9,#FF00A8;paddingRight:2;paddingLeft:2;}";
+      $('#chart-container-3').flash({ 
+         swf        : 'beechart-line.swf',
+         width      : 600, 
+         height     : 400, 
+         flashvars  : { 
+            dataUrl : 'data.xml',
+            css  : cssStr
+         } 
+      });
+    </pre>
+
+    <h2>接口调用与事件监听</h2>
+    <div id="chart-container-4"></div>
+    <pre class="lang-js">
+      var chart = $('#chart-container').flash({ 
+         swf        : 'beechart-line.swf',
+         width      : 600, 
+         height     : 400, 
+         flashvars  : { 
+            dataUrl : 'data.xml',
+            cssUrl  : 'style.css'
+         } 
+      }); 
+      //需要设置数据是否可见，通常需要在数据处理完毕后调用接口
+      chart.on('data_parsed.flash',function(){
+          //调用setDatasetVisibility接口，让第一条数据不可见
+          chart.getFlash().setDatasetVisibility(0,false);
+      })
+    </pre>
+    <script>
+       jQuery(function($){
+            //给pre段落增加class，并调用初始化方法
+            $("pre").each(function(index,item){
+               $(item).addClass("prettyprint").addClass("linenums");
+            });
+            prettyPrint();
+
+            $('#chart-container').flash({ 
+               swf        : 'beechart-line.swf',
+               width      : 600, 
+               height     : 400, 
+               flashvars  : { 
+                  dataUrl : 'data.xml'
+               } 
+            }); 
+
+            $('#chart-container-2').flash({ 
+               swf        : 'beechart-line.swf',
+               width      : 600, 
+               height     : 400, 
+               flashvars  : { 
+                  dataUrl : 'data.xml',
+                  cssUrl  : 'style.css'
+               } 
+            });
+
+            var cssStr = "chart{colors:#E34F1E,#84BC0D,#00ABD9,#FF00A8;paddingRight:2;paddingLeft:2;}";
+            $('#chart-container-3').flash({ 
+               swf        : 'beechart-line.swf',
+               width      : 600, 
+               height     : 400, 
+               flashvars  : { 
+                  dataUrl : 'data.xml',
+                  css  : cssStr
+               } 
+            });
+
+            var chart = $('#chart-container-4').flash({ 
+               swf        : 'beechart-line.swf',
+               width      : 600, 
+               height     : 400, 
+               flashvars  : { 
+                  dataUrl : 'data.xml',
+                  cssUrl  : 'style.css'
+               } 
+            }); 
+            //需要设置数据是否可见，通常需要在数据处理完毕后调用接口
+            chart.on('data_parsed.flash',function(){
+                //调用setDatasetVisibility接口，让第一条数据不可见
+                chart.getFlash().setDatasetVisibility(0,false);
+            })
+       });
+    </script>
+</body>
+</html>
