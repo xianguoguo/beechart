@@ -96,83 +96,103 @@
             <p>大功告成，双击index.html就能在浏览器中看到效果啦！</p>
             <p>效果如下所示：</p>
             <div id="chart-container"></div>
-            <p> <a href="https://github.com/downloads/sjpsega/beechart/beechart%20demo.rar">例子代码可以下载</a></p>
           </li>
         </ol>
-        <h2>BeeChart如何工作</h2>
-        <p>图表的核心功能有两种，一种是数据，另一种是展现。</p>
-        <p>BeeChart针对这两个核心功能，分别由两个参数决定，分别是data和css。</p>
-        <p>BeeChart接受的data数据可以是json数据或XML数据；css样式决定图表的展现，如颜色，动画等，这个css与html的css写法大致相同，但是属性有差异。</p>
-        <p>BeeChart中已经包含了一套漂亮的样式，所以通常情况下，用户只需给图表传入数据，便能有漂亮的图表展现效果了。</p>
-        <p>当然需求各异，用户可以根据自己的需要设定适合自身的css样式。</p>
-        <p>若用户需要修改css样式，则可以这样传递给图表：</p>
-        <ul class="ul">
-          <li> 
-            <p>新建一名为style.css的文件，然后输入：</p>
-            <pre class="lang-css">chart {
-    colors          : #E34F1E,#84BC0D,#00ABD9,#FF00A8;
-    paddingRight    : 2;
-    paddingLeft     : 2;
-}
-line {
-    thickness.active : 3;
-}
-line dot {
-    radius          : 4;
-    color           : inherit;
-    borderThickness : null;
-    borderThickness.hl : 8;
-    borderAlpha     : .5;
-    borderColor     : inherit#color;
-}
-xAxis {
-    labelGap        : auto;
-    tickLength      : 0;
-    lineThickness   : 0;
-}
-yAxis {
-    tickLength      : 0;
-    lineThickness   : 0;
-}
-canvas {
-    backgroundColor : #2B2929;
-    priLineThickness: 1;
-    priLineColor    : #303030;
-    priLineAlpha    : 1;
-    secLineThickness: 1;
-    secLineColor    : #303030;
-}
-tooltip {
-    backgroundType  : simple;
-    color           : #FFFFFF;
-    backgroundColor : #000000;
-    borderThickness : null;
-    backgroundAlpha : .8;
-}
-legend {
-    position        : bottom;
-    align           : center
-}  </pre>
-          </li>
-          <li>
-            <p>将给css传递给图表</p>
-            <pre class="lang-js">$('#chart-container').flash({ 
-   swf        : 'beechart-line.swf',
-   width      : 840, 
-   height     : 400, 
-   flashvars  : { 
-      dataUrl : 'data.xml',
-      cssUrl  : 'style.css'
-   } 
-}); </pre>
-            <p>就是这么简单就完成啦！</p>
-            <p>看一下效果：</p>
-            <div id="chart-container-2"></div>
-          </li>
-        </ul>
-        <h2>API</h2>
+        <h2>在网页上部署图表</h2>为了便于在html中嵌入图表，故基于jQuery写了一个简单的插件，方便用户使用。
+        <h3>嵌入flash图表</h3>嵌入flash图表使用flash()方法，参数为object对象，里面的参数如下表：
+        <table>
+          <thead>
+            <tr>
+              <th>参数名</th>
+              <th>说明</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>swf</td>
+              <td>图表swf的地址</td>
+            </tr>
+            <tr>
+              <td>width  </td>
+              <td>图表外层div的宽度</td>
+            </tr>
+            <tr>
+              <td>height</td>
+              <td>图表外层div的高度</td>
+            </tr>
+            <tr>
+              <td>flashvars</td>
+              <td>传递给图表的参数集<a href="#与图表进行通信">具体见</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>wmode、allowScriptAccess等flash参数也可在该对象中设置。</p>
+        <h3>监听flash事件</h3>监听事件与jQuery监听事件的方法相同，可以使用on\off语法，便可很方便地进行监听事件。
+        <h3>调用flash中的方法</h3>通过getFlash方法返回flash对象，然后便可以调用flash中的方法，<a href="#与图表进行通信">方法列表见</a>
+        <p>代码示例:</p>
+        <pre class="lang-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;BeeChart Demo&lt;/title&gt;
+    &lt;script src=&quot;http://sjpsega.github.com/beechart/js/beechart/jquery-1.7.2.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;http://sjpsega.github.com/beechart/js/beechart/flash.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;chart-container&quot;&gt;&lt;/div&gt;
+    &lt;script&gt;
+       jQuery(function($){
+            var chart = $('#chart-container').flash({ 
+               swf        : 'beechart-line.swf',
+               width      : 840, 
+               height     : 400, 
+               allowScriptAccess : &quot;always&quot;,
+               flashvars  : { 
+                  dataUrl : 'data.xml'
+               } 
+            })
+            //事件监听的使用方法与jQuery的事件监听类似，之后的'.flash'是类似命名空间的作用，
+            //加不加都无碍功能，加了更清晰些
+            .on(&quot;data_parsed.flash&quot;,function(){
+                chart.getFlash().setDatasetVisibility(0,false);
+            }); 
+       });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+        <h3>图表对应关系</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>图表</th>
+              <th>文件名</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>折线图</td>
+              <td>beechart-line.swf</td>
+            </tr>
+            <tr>
+              <td>柱状图(垂直)</td>
+              <td>beechart-bar.swf</td>
+            </tr>
+            <tr>
+              <td>水平柱状图</td>
+              <td>beechart-hbar.swf</td>
+            </tr>
+            <tr>
+              <td>饼图</td>
+              <td>beechart-pie.swf</td>
+            </tr>
+            <tr>
+              <td>时间线</td>
+              <td>beechart-timeline.swf</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2>与图表进行通信</h2>
         <h3>flashvars</h3>
-        <p>参数都经过flashvar从HTML传递到flash</p>
+        <p>参数经过flashvar从HTML传递到flash</p>
         <p>有用的参数：</p>
         <table>
           <thead>
@@ -211,7 +231,7 @@ legend {
               <td>样式文件路径</td>
             </tr>
             <tr> 
-              <td>charset</td>
+              <td>cssCharset</td>
               <td>样式文件的编码(默认为UTF-8)</td>
             </tr>
           </tbody>
@@ -307,7 +327,7 @@ chart.on('data_parsed.flash',function(){
             </tr>
             <tr>
               <td>data_visible_change </td>
-              <td>数据隐藏\显示切换事件(点击Legend等情况下分发)</td>
+              <td>数据隐藏\显示切换事件(点击Legend等情况下触发)</td>
             </tr>
             <tr>
               <td>load_start  </td>
@@ -337,10 +357,105 @@ chart.on('data_parsed.flash',function(){
         </table>
         <h3>监听flash事件示例</h3>
         <p>监听swfReady事件：</p>
-        <pre class="lang-js">//事件监听的使用方法与jQuery的事件监听类似，之后的'.flash'是类似命名空间的作用，加不加都无碍功能，加了更清晰些
-chart.on('swfReady.flash',function(){
+        <pre class="lang-js">chart.on('swfReady.flash',function(){
     dosomething...
-})</pre>
+})
+</pre>
+        <h2>BeeChart如何工作</h2>
+        <p>图表的核心功能有两种，一种是数据，另一种是展现。</p>
+        <p>BeeChart针对这两个核心功能，分别由两个参数决定，分别是data和css。</p>
+        <p>BeeChart接受的data数据可以是json数据或XML数据；css样式决定图表的展现，如颜色，动画等，这个css与html的css写法大致相同，但是属性有差异。</p>
+        <h3>css</h3>
+        <p>BeeChart中已经包含了一套漂亮的样式，所以通常情况下，用户只需给图表传入数据，便能有漂亮的图表展现效果了。</p>
+        <p>当然需求各异，用户可以根据自己的需要设定适合自身的css样式。</p>
+        <p>内置的样式比较复杂，暂时不会出详细的文档，但我们有<a href="charteditor.html" target="_blank">样式编辑器</a>让用户简单方便地完成图表的配置工作</p>
+        <h3>data</h3>
+        <p>图表同时接受XML和JSON两种数据类型</p>
+        <p>XML范例：</p>
+        <pre class="lang-html">&lt;chart&gt;
+    &lt;data&gt;
+        &lt;indexAxis name=&quot;月份&quot;&gt;
+            &lt;labels&gt;
+                Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
+            &lt;/labels&gt;
+        &lt;/indexAxis&gt;
+        &lt;valueAxis name=&quot;温度&quot; unit=&quot;度&quot;&gt;&lt;/valueAxis&gt;
+        &lt;dataSets&gt;
+            &lt;set name=&quot;Tokyo&quot;&gt;
+                &lt;values&gt;
+                7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6
+                &lt;/values&gt;
+            &lt;/set&gt;
+            &lt;set name=&quot;London&quot;&gt;
+                &lt;values&gt;
+                3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8
+                &lt;/values&gt;
+            &lt;/set&gt;
+        &lt;/dataSets&gt;
+    &lt;/data&gt;
+&lt;/chart&gt;</pre>
+        <p>XML也可以包含CSS设置：</p>
+        <pre class="lang-html">&lt;chart&gt;
+        &lt;data&gt;
+            &lt;indexAxis name=&quot;月份&quot;&gt;
+                &lt;labels&gt;
+                    Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
+                &lt;/labels&gt;
+            &lt;/indexAxis&gt;
+            &lt;valueAxis name=&quot;温度&quot; unit=&quot;度&quot;&gt;&lt;/valueAxis&gt;
+            &lt;dataSets&gt;
+                &lt;set name=&quot;Tokyo&quot;&gt;
+                    &lt;values&gt;
+                    7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6
+                    &lt;/values&gt;
+                &lt;/set&gt;
+                &lt;set name=&quot;London&quot;&gt;
+                    &lt;values&gt;
+                    3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8
+                    &lt;/values&gt;
+                &lt;/set&gt;
+            &lt;/dataSets&gt;
+        &lt;/data&gt;
+        &lt;css&gt;
+            canvas {
+                backgroundColor   : #FFFFFF;
+                backgroundColor2  : #E4F2F5;
+                backgroundAlpha   : 1;
+                gridColor         : #29A5F7;
+            }
+        &lt;/css&gt;
+&lt;/chart&gt;</pre>
+        <p>JSON范例：</p>
+        <pre class="lang-js">{
+    &quot;data&quot; : {
+        &quot;indexAxis&quot; : {
+            &quot;name&quot; : &quot;月份&quot;,
+            &quot;unit&quot; : &quot;&quot;,
+            &quot;labels&quot; : [&quot;Jan&quot;, &quot;Feb&quot;, &quot;Mar&quot;, &quot;Apr&quot;, &quot;May&quot;, &quot;Jun&quot;, &quot;Jul&quot;, &quot;Aug&quot;, &quot;Sep&quot;, &quot;Oct&quot;, &quot;Nov&quot;, &quot;Dec&quot;]
+        },
+        &quot;valueAxis&quot; : {
+            &quot;name&quot; : &quot;温度&quot;,
+            &quot;unit&quot; : &quot;度&quot;
+        },
+        &quot;dataSets&quot; : [
+            {
+                &quot;name&quot; : &quot;Tokyo&quot;,
+                &quot;values&quot; : [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
+                &quot;style&quot; : {
+                    &quot;color&quot; : &quot;#0080FF&quot;
+                }
+            },
+            {
+                &quot;name&quot; : &quot;London&quot;,
+                &quot;values&quot; : [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8],
+                &quot;style&quot; : {
+                    &quot;color&quot; : &quot;#FF7300&quot;
+                }
+            }
+        ]
+    }
+}
+</pre>
         <h2>如何扩展</h2>
         <h3>下载源代码</h3>
         <p>BeeChart使用流行的GitHub来管理源代码，你只要安装了Git，只需要一条命令便能把代码down下来</p>
@@ -371,7 +486,7 @@ chart.on('swfReady.flash',function(){
         <h2>FAQ</h2>
         <p>Q:使用BeeChart在商业产品中，需要付费吗？</p>
         <p>A:BeeChart是免费、开源的图表组件，不收取任何费用。</p>
-        <h2>图表样式编辑器</h2><a href="charteditor.html">简单方便的图表样式编辑器</a>
+        <h2>图表样式编辑器</h2><a href="charteditor.html" target="_blank">简单方便的图表样式编辑器</a>
       </div>
     </div>
     <div class="footer">
@@ -379,6 +494,62 @@ chart.on('swfReady.flash',function(){
         <p>&copy; 2012 The BeeChart Project</p>
       </div>
     </div>
+    <script>
+      (function(){
+          function gv_cnzz(of){
+              var es = document.cookie.indexOf(";",of);
+              if(es==-1) es=document.cookie.length;
+              return unescape(document.cookie.substring(of,es));
+          }
+          function gc_cnzz(n){
+              var arg=n+"=";
+              var alen=arg.length;
+              var clen=document.cookie.length;
+              var i=0;
+              while(i<clen){
+                  var j=i+alen;
+                  if(document.cookie.substring(i,j)==arg){ 
+                      return gv_cnzz(j);
+                  }
+                  i=document.cookie.indexOf(" ",i)+1;
+                  if(i==0){
+                      break;
+                  }
+              }
+              return -1;
+          }
+          var cnzz_ed=new Date();
+          var cnzz_now=parseInt(cnzz_ed.getTime());
+          var cnzz_ref=document.referrer;
+          var cnzz_data='&r='+escape(cnzz_ref.substr(0,512))+'&lg='+escape(navigator.systemLanguage)+'&ntime=0.71971300 1336960341';
+          var cnzz_a=gc_cnzz("cnzz_a4118904");
+          if(cnzz_a!=-1) cnzz_a=parseInt(cnzz_a)+1;
+          else cnzz_a=0;
+          var cnzz_rt=parseInt(gc_cnzz("rtime"));
+          var cnzz_lt=parseInt(gc_cnzz("ltime"));
+          var cnzz_st = parseInt((cnzz_now-cnzz_lt)/1000);
+          var cnzz_sin = gc_cnzz("sin4118904");
+          if(cnzz_sin==-1) cnzz_sin='none';
+          if( cnzz_ref.split('/')[2]!=document.domain ) cnzz_sin=cnzz_ref;
+          var cnzz_eid=gc_cnzz("cnzz_eid");
+          if(cnzz_eid==-1) cnzz_eid=Math.floor(Math.random()*100000000)+"-"+1336960341+"-"+cnzz_ref.substr(0,64);
+          if(cnzz_lt<1000000){cnzz_rt=0;cnzz_lt=0;}
+          if(cnzz_rt<1) cnzz_rt=0;
+          if(((cnzz_now-cnzz_lt)>500*86400)&&(cnzz_lt>0)) cnzz_rt++;
+          cnzz_data=cnzz_data+'&repeatip='+cnzz_a+'&rtime='+cnzz_rt+'&cnzz_eid='+escape(cnzz_eid)+'&showp='+escape(screen.width+'x'+screen.height)+'&st='+cnzz_st+'&sin='+escape(cnzz_sin.substr(0,512))+'&res=0';
+          var img = new Image();
+          img.src = "http://hzs3.cnzz.com/stat.htm?id=4118904"+cnzz_data;
+          
+          var cnzz_et=(86400-cnzz_ed.getHours()*3600-cnzz_ed.getMinutes()*60-cnzz_ed.getSeconds());
+          cnzz_ed.setTime(cnzz_now+1000*(cnzz_et-cnzz_ed.getTimezoneOffset()*60));
+          document.cookie="cnzz_a4118904="+cnzz_a+";expires="+cnzz_ed.toGMTString()+ "; path=/";
+          document.cookie="sin4118904="+escape(cnzz_sin)+ ";expires="+cnzz_ed.toGMTString()+";path=/";
+          cnzz_ed.setTime(cnzz_now+1000*86400*182);
+          document.cookie="rtime="+cnzz_rt+";expires="+cnzz_ed.toGMTString()+ ";path=/";
+          document.cookie="ltime="+cnzz_now+";expires=" + cnzz_ed.toGMTString()+ ";path=/";
+          document.cookie="cnzz_eid="+escape(cnzz_eid)+ ";expires="+cnzz_ed.toGMTString()+";path=/";
+      })()
+    </script>
     <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
     <script type="text/javascript" src="js/google-code-prettify/prettify.js"></script>
     <script type="text/javascript" src="js/google-code-prettify/lang-css.js"></script>
@@ -400,15 +571,6 @@ chart.on('swfReady.flash',function(){
               height     : 400, 
               flashvars  : { 
                  dataUrl : 'swf/data/data.xml'
-              } 
-           }); 
-           $('#chart-container-2').flash({ 
-              swf        : 'swf/beechart-line.swf',
-              width      : 600, 
-              height     : 400, 
-              flashvars  : { 
-                 dataUrl : 'swf/data/data.xml',
-                 cssUrl : 'swf/css/style.css'
               } 
            }); 
       });

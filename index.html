@@ -44,9 +44,9 @@
           <div class="more"><a hef="">了解更多...</a></div>
           <div class="download fd-clr">
             <ul>
-              <li><a href="https://github.com/downloads/sjpsega/beechart/beechart%20swf.rar" class="download_link">
+              <li><a href="https://github.com/downloads/sjpsega/beechart/beechart%20demo.rar" class="download_link">
                   <p class="title">下载文件包</p>
-                  <p class="version">Version 1.1.02,215KB</p></a></li>
+                  <p class="version">Version 1.7.1</p></a></li>
               <li><a href="demo.html" class="demo_link">
                   <p class="title">查看演示</p>
                   <p class="version">View the demo</p></a></li>
@@ -86,7 +86,7 @@
       <hr>
       <div class="third fd-clr">
         <div class="fd-left">
-          <p class="title">欢迎加入YID图表开发社区</p>
+          <p class="title">欢迎加入BeeChart开发社区</p>
           <div class="github">
             <p>Github 让您更简单的获取及参与开发YID-Chart图表，以及更多其他开源程序。</p><a href="">了解更多 &gt;</a>
           </div>
@@ -96,13 +96,13 @@
     </div>
     <div class="links fd-clr">
       <ul class="nav">
-        <li><a href="">关于</a></li>
+        <li><a href="about.html">关于</a></li>
         <li class="spacing">|</li>
         <li><a href="">贡献者</a></li>
         <li class="spacing">|</li>
         <li><a href="">博客</a></li>
         <li class="spacing">|</li>
-        <li><a href="">API</a></li>
+        <li><a href="demo.html">文档</a></li>
         <li class="spacing">|</li>
         <li><a href="">开发者社区</a></li>
         <li class="spacing">|</li>
@@ -114,6 +114,62 @@
         <p>&copy; 2012 The BeeChart Project</p>
       </div>
     </div>
+    <script>
+      (function(){
+          function gv_cnzz(of){
+              var es = document.cookie.indexOf(";",of);
+              if(es==-1) es=document.cookie.length;
+              return unescape(document.cookie.substring(of,es));
+          }
+          function gc_cnzz(n){
+              var arg=n+"=";
+              var alen=arg.length;
+              var clen=document.cookie.length;
+              var i=0;
+              while(i<clen){
+                  var j=i+alen;
+                  if(document.cookie.substring(i,j)==arg){ 
+                      return gv_cnzz(j);
+                  }
+                  i=document.cookie.indexOf(" ",i)+1;
+                  if(i==0){
+                      break;
+                  }
+              }
+              return -1;
+          }
+          var cnzz_ed=new Date();
+          var cnzz_now=parseInt(cnzz_ed.getTime());
+          var cnzz_ref=document.referrer;
+          var cnzz_data='&r='+escape(cnzz_ref.substr(0,512))+'&lg='+escape(navigator.systemLanguage)+'&ntime=0.71971300 1336960341';
+          var cnzz_a=gc_cnzz("cnzz_a4118904");
+          if(cnzz_a!=-1) cnzz_a=parseInt(cnzz_a)+1;
+          else cnzz_a=0;
+          var cnzz_rt=parseInt(gc_cnzz("rtime"));
+          var cnzz_lt=parseInt(gc_cnzz("ltime"));
+          var cnzz_st = parseInt((cnzz_now-cnzz_lt)/1000);
+          var cnzz_sin = gc_cnzz("sin4118904");
+          if(cnzz_sin==-1) cnzz_sin='none';
+          if( cnzz_ref.split('/')[2]!=document.domain ) cnzz_sin=cnzz_ref;
+          var cnzz_eid=gc_cnzz("cnzz_eid");
+          if(cnzz_eid==-1) cnzz_eid=Math.floor(Math.random()*100000000)+"-"+1336960341+"-"+cnzz_ref.substr(0,64);
+          if(cnzz_lt<1000000){cnzz_rt=0;cnzz_lt=0;}
+          if(cnzz_rt<1) cnzz_rt=0;
+          if(((cnzz_now-cnzz_lt)>500*86400)&&(cnzz_lt>0)) cnzz_rt++;
+          cnzz_data=cnzz_data+'&repeatip='+cnzz_a+'&rtime='+cnzz_rt+'&cnzz_eid='+escape(cnzz_eid)+'&showp='+escape(screen.width+'x'+screen.height)+'&st='+cnzz_st+'&sin='+escape(cnzz_sin.substr(0,512))+'&res=0';
+          var img = new Image();
+          img.src = "http://hzs3.cnzz.com/stat.htm?id=4118904"+cnzz_data;
+          
+          var cnzz_et=(86400-cnzz_ed.getHours()*3600-cnzz_ed.getMinutes()*60-cnzz_ed.getSeconds());
+          cnzz_ed.setTime(cnzz_now+1000*(cnzz_et-cnzz_ed.getTimezoneOffset()*60));
+          document.cookie="cnzz_a4118904="+cnzz_a+";expires="+cnzz_ed.toGMTString()+ "; path=/";
+          document.cookie="sin4118904="+escape(cnzz_sin)+ ";expires="+cnzz_ed.toGMTString()+";path=/";
+          cnzz_ed.setTime(cnzz_now+1000*86400*182);
+          document.cookie="rtime="+cnzz_rt+";expires="+cnzz_ed.toGMTString()+ ";path=/";
+          document.cookie="ltime="+cnzz_now+";expires=" + cnzz_ed.toGMTString()+ ";path=/";
+          document.cookie="cnzz_eid="+escape(cnzz_eid)+ ";expires="+cnzz_ed.toGMTString()+";path=/";
+      })()
+    </script>
   </body>
   <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
   <script>

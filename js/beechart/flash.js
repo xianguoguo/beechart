@@ -120,6 +120,7 @@
          * 是否激活expressInstall
          */
         var expressInstallIsActive = false;
+        
         function create(container, options) {
             if (!options.swf || expressInstallIsActive || (!available && !options.hasVersionFail)) {
                 return false;

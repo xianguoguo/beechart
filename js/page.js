@@ -20,6 +20,7 @@ jQuery(function($){
         }
         var scrolltop = $(window).scrollTop() || 0;
         lis.removeClass("current");
+        lis.eq(0).addClass("current");
         for(var i in headings) {
           if(scrolltop >= headings[i].top) {
             lis.removeClass("current");
