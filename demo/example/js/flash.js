@@ -120,7 +120,7 @@
          * 是否激活expressInstall
          */
         var expressInstallIsActive = false;
-        
+
         function create(container, options) {
             if (!options.swf || expressInstallIsActive || (!available && !options.hasVersionFail)) {
                 return false;
@@ -184,7 +184,6 @@
          * 给容器分配一个id
          */
         function _generateId(){
-            console.log("gen,",elem,this);
             isGenerateId = true;
             elem.attr("id",'ui-flash' + $.guid);
         }

@@ -233,7 +233,7 @@ package bee.chart.data
                     inputArrayToVector(values.split(",")),
                     config
                 );
-				dSet.valueType = dSetXML.@type.toString() || dataXML.valueAxis.@type.toString() || 'number';
+                dSet.valueType = dSetXML.@type.toString() || dataXML.valueAxis.@type.toString() || 'number';
                 data.addSet(dSet);
             }
 
@@ -276,7 +276,7 @@ package bee.chart.data
                     config
                 );
 				
-				dSet.valueType = dsetObj.type || obj.valueAxis.type || 'number';
+				dSet.valueType = dsetObj.type || (obj.valueAxis && obj.valueAxis.type) || 'number';
 				
                 data.addSet(dSet);
             }
