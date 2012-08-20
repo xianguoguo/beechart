@@ -21,7 +21,7 @@ package bee.chart.test
 
 
 import asunit.framework.TestSuite;
-import cn.alibaba.yid.chart.test.*;
+import bee.chart.test.*;
 import bee.chart.test.line.LineChartTest;
 
 class YIDChartTestSuite extends TestSuite {

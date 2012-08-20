@@ -23,7 +23,7 @@ package bee.chart.test.line
 
 }
 import asunit.framework.TestCase;
-import cn.alibaba.product.chart.AliLineChart;
+import bee.chart.release.BeeLineChart;
 import bee.chart.abstract.CartesianChartViewer;
 import bee.chart.abstract.Chart;
 import bee.chart.abstract.ChartElement;
@@ -67,7 +67,7 @@ class LineChartTestCase extends TestCase
 	override protected function setUp():void
 	{
 		super.setUp();
-		chart = new AliLineChart();
+		chart = new BeeLineChart();
 		chart.parse(data);
 		addChild(chart);
 		chart.x = 500;
@@ -122,7 +122,7 @@ class LineChartTestCase extends TestCase
 			assertTrue(line.visible || line.view.visible);
 			//第2条线对应的control或view不可见
 			line = view.getElementByName("line1");
-			assertFalse(!line.visible || !line.view.visible);
+			assertTrue(!line.visible || !line.view.visible);
 		});
 	}
 

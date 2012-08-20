@@ -144,6 +144,7 @@ package bee.chart.assemble.line
 		private function updateLineDotPositions(line:Line, index:uint = 0):void
 		{
 			var index:uint = getLineIndex(line);
+            
 			var dataSet:ChartDataSet = _viewer.chart.getChartSetAt(index);
 			
 			var lnData:LineData = LineData.fromDataSet(dataSet);

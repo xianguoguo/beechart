@@ -25,7 +25,11 @@ package bee.chart.events
         {
             _data = data;
             super(type, bubbles, cancelable);
-			
+        }
+        
+        override public function clone():Event 
+        {
+            return new ChartEvent(type, data, bubbles, cancelable);
         }
         
         public function get data():* { return _data; }

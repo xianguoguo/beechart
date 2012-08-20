@@ -8,21 +8,12 @@ package bee.chart.elements.legend.item
     import bee.util.StyleUtil;
     import flash.display.DisplayObject;
     import flash.display.DisplayObjectContainer;
-	/**
+    /**
     * ...
     * @author hua.qiuh
     */
     public class LegendItemSimplePrinter implements IStatePrinter
     {
-		static private var _instance:IStatePrinter;
-		static public function get instance():IStatePrinter
-		{
-			if (!_instance) {
-				_instance = new LegendItemSimplePrinter();
-			}
-			return _instance;
-		}
-        
         protected var _context:DisplayObjectContainer;
         protected var _host:LegendItem;
         protected var _data:LegendItemData;
@@ -32,8 +23,6 @@ package bee.chart.elements.legend.item
         {
             
         }
-        
-        /* INTERFACE cn.alibaba.yid.printers.IStatePrinter */
         
         public function renderState(host:IStatesHost, state:String, context:DisplayObjectContainer):void
         {
@@ -45,7 +34,6 @@ package bee.chart.elements.legend.item
                 
                 DisplayUtil.clearSprite(context);
                 _data = _host.dataModel as LegendItemData;
-                
                 drawIcon();
                 drawLabel();
             }

@@ -12,13 +12,13 @@ package bee.chart.elements.legend.item
     {
         override protected function drawIcon():void 
         {
-			if(_host.getStyle('iconType') === 'square'){
-				super.drawIcon();
-			} else {
-				var checkbox:CheckBoxItem = new CheckBoxItem(_data.color, _data.active);
-				checkbox.y = -Math.round(checkbox.height / 2);
-				_context.addChild(checkbox);
-			}
+            if(_host.getStyle('iconType') === 'square'){
+                super.drawIcon();
+            } else {
+                var checkbox:CheckBoxItem = new CheckBoxItem(_data.color, _data.active);
+                checkbox.y = -Math.round(checkbox.height / 2);
+                _context.addChild(checkbox);
+            }
         }
     }
 

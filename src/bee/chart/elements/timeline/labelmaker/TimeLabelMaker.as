@@ -23,7 +23,9 @@ package bee.chart.elements.timeline.labelmaker
             var labelsInCurrentRange:Vector.<String> = data.labels;
             var min:Number = TimeLabelMaker.dateLabel2miliseconds(allLabels[0]);
             var max:Number = TimeLabelMaker.dateLabel2miliseconds(allLabels[allLabels.length - 1]);
-            
+            if (isNaN(min) || isNaN(max)) {
+                return;
+            }
             var startDateLabel:String = labelsInCurrentRange[0];
             var endDateLabel:String = labelsInCurrentRange[labelsInCurrentRange.length - 1];
             

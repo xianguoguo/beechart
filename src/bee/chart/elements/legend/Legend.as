@@ -31,7 +31,6 @@ package bee.chart.elements.legend
             super.dispose();
         }
         
-        
         override protected function initController():void 
         {
             addEventListener(LegendEvent.TURN_OFF, onTurn);

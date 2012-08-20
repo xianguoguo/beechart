@@ -1,16 +1,16 @@
 package bee.chart.assemble.line.timeline
 {
-	import bee.chart.abstract.Chart;
-	import bee.chart.abstract.ChartModel;
-	import bee.chart.assemble.line.LineChartViewer;
-	import bee.chart.assemble.line.SuperLineChartViewer;
-	import bee.chart.assemble.line.timeline.TimeLineChartPrinter;
-	import bee.chart.elements.cursor.Cursor;
-	import bee.chart.elements.cursor.CursorManager;
-	import bee.chart.elements.tooltip.Tooltip;
-	import bee.util.StyleUtil;
-	import flash.events.Event;
-	import flash.events.MouseEvent;
+    import bee.chart.abstract.Chart;
+    import bee.chart.abstract.ChartModel;
+    import bee.chart.assemble.line.LineChartViewer;
+    import bee.chart.assemble.line.SuperLineChartViewer;
+    import bee.chart.assemble.line.timeline.TimeLineChartPrinter;
+    import bee.chart.elements.cursor.Cursor;
+    import bee.chart.elements.cursor.CursorManager;
+    import bee.chart.elements.tooltip.Tooltip;
+    import bee.util.StyleUtil;
+    import flash.events.Event;
+    import flash.events.MouseEvent;
     
     /**
      * ...
@@ -27,36 +27,34 @@ package bee.chart.assemble.line.timeline
         
         public function TimeLineChartView(chart:Chart = null)
         {
-			LineChartViewer.defaultStatePrinter = new TimeLineChartPrinter();
+            LineChartViewer.defaultStatePrinter = new TimeLineChartPrinter();
             super(chart);
-			_cursorManager = CursorManager.getInstance();
+            _cursorManager = CursorManager.getInstance();
         }
         
-		override public function applyStyleNow():void 
-		{
-			//重新加载style时候，需要将数据的range还原
-			(dataModel as ChartModel).data.updateDatasetRange();
-			super.applyStyleNow();
-		}
-		
+        override public function applyStyleNow():void 
+        {
+            //重新加载style时候，需要将数据的range还原
+            (dataModel as ChartModel).data.updateDatasetRange();
+            super.applyStyleNow();
+        }
+        
         override protected function get defaultStyles():Object
         {
             return StyleUtil.mergeStyle(
-				{
-					"chartType": "timeline",
-					"smooth":true 
-				}, 
-				super.defaultStyles
-			);
+                {
+                }, 
+                super.defaultStyles
+            );
         }
         
         override protected function addEventListeners():void
         {
             addEventListener(MouseEvent.CLICK, onClick);
             addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
-			addEventListener(MouseEvent.ROLL_OUT, onRollOut);
-			stage.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
-			stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+            addEventListener(MouseEvent.ROLL_OUT, onRollOut);
+            stage.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+            stage.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
         }
         
         override protected function removeEventListeners():void
@@ -64,15 +62,15 @@ package bee.chart.assemble.line.timeline
             removeEventListener(MouseEvent.CLICK, onClick);
             removeEventListener(MouseEvent.ROLL_OUT, onRollOut);
             removeEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
-			stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
-			stage.removeEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+            stage.removeEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+            stage.removeEventListener(MouseEvent.MOUSE_UP, onMouseUp);
         }
         
         private function moveCursor():void
         {
             _cursorManager.followMouse();
         }
-		
+        
         override public function dispose():void
         {
             _cursorManager = null;
@@ -91,29 +89,29 @@ package bee.chart.assemble.line.timeline
         
         override protected function onMouseDown(e:MouseEvent):void
         {
-			if (_isMouseOverOnCanvas)
-			{
-				super.onMouseDown(e);
-				isMouseDownOnCanvas = true;
-				_mouseDownX = mouseX;
-			}
+            if (_isMouseOverOnCanvas)
+            {
+                super.onMouseDown(e);
+                isMouseDownOnCanvas = true;
+                _mouseDownX = mouseX;
+            }
         }
         
         override protected function onMouseUp(e:MouseEvent):void
         {
-			super.onMouseUp(e);
-			isDragging = false;
-			isMouseDownOnCanvas = false;
+            super.onMouseUp(e);
+            isDragging = false;
+            isMouseDownOnCanvas = false;
         }
 
         override protected function onMouseMove(e:MouseEvent):void
         {
-			changeMouseOverOnCanvas();
+            changeMouseOverOnCanvas();
             if (!isDragging)
             {
                 super.onMouseMove(e);
             }
-			//拖动图表的逻辑
+            //拖动图表的逻辑
             if (isMouseDownOnCanvas)
             {
                 isDragging = true;
@@ -123,18 +121,18 @@ package bee.chart.assemble.line.timeline
                 moveDis = _mouseDownX - mouseX;
                 tempMoveGrid = moveDis / eachDividingWidth;
                 var abc:int = tempMoveGrid - saveMoveGrid;
-				saveMoveGrid = tempMoveGrid;
-				chart.dataIndexRangeOffset(abc);
+                saveMoveGrid = tempMoveGrid;
+                chart.dataIndexRangeOffset(abc);
             }else
-			{
-				changeCursorState();
-			}
-			moveCursor();
+            {
+                changeCursorState();
+            }
+            moveCursor();
         }
-		
+        
         private function reset():void
         {
-			isDragging = false;
+            isDragging = false;
             isMouseDownOnCanvas = false;
             isMouseOverOnCanvas = false;
         }
@@ -150,11 +148,11 @@ package bee.chart.assemble.line.timeline
                 _cursorManager.setCursorState(Cursor.OVER);
             }
         }
-		
-		private function changeMouseOverOnCanvas():void 
-		{
-			isMouseOverOnCanvas = isInRange();
-		}
+        
+        private function changeMouseOverOnCanvas():void 
+        {
+            isMouseOverOnCanvas = isInRange();
+        }
         
         private function get isMouseDownOnCanvas():Boolean
         {
@@ -181,14 +179,14 @@ package bee.chart.assemble.line.timeline
             if (_isMouseOverOnCanvas != value)
             {
                 _isMouseOverOnCanvas = value;
-				if (isDragging)
-				{
-					return;
-				}
+                if (isDragging)
+                {
+                    return;
+                }
                 if (value)
                 {
                     changeCursorState();
-					_cursorManager.showCursor();
+                    _cursorManager.showCursor();
                 }
                 else
                 {

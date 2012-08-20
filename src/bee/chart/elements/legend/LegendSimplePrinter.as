@@ -1,5 +1,6 @@
 package bee.chart.elements.legend 
 {
+    import bee.printers.IStatePrinterWithUpdate;
     import cn.alibaba.util.ColorUtil;
     import cn.alibaba.util.DisplayUtil;
     import bee.abstract.IStatesHost;
@@ -19,7 +20,7 @@ package bee.chart.elements.legend
     * ...
     * @author hua.qiuh
     */
-    public class LegendSimplePrinter implements IStatePrinter
+    public class LegendSimplePrinter implements IStatePrinterWithUpdate
     {
         static public const PADDING:Number = 4;
 
@@ -103,6 +104,11 @@ package bee.chart.elements.legend
                 }
             }
             
+        }
+        
+        public function smoothUpdate(host:IStatesHost, state:String, context:DisplayObjectContainer):void 
+        {
+            renderState(host,state,context);
         }
         
         private function addHiddenOrigin(context:DisplayObjectContainer):void

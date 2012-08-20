@@ -41,9 +41,14 @@ package bee.chart.elements.line
             var lnv:LineView = host as LineView;
             if (lnv && lnv.chart)
             {
+                const isTimeline:Boolean = lnv.chart.isTimeline();
                 DisplayUtil.clearSprite(context);
                 chart = lnv.chart;
                 data = lnv.dataModel as LineData;
+                if (isTimeline && !data.visible)
+                {
+                    return;
+                }
                 line = lnv.host as Line;
                 var values:Vector.<Number> = data.values;
                 var lineSp:Sprite = new Sprite();
@@ -61,10 +66,10 @@ package bee.chart.elements.line
                 var pts:Vector.<Point> = lnv.dotPositions || data.dotPositions;
                 lineGrph.lineStyle(thickness, color, alpha, false, 'normal', CapsStyle.ROUND, JointStyle.ROUND);
                 var count:int = curved ? CURVE_SEGMENT_AMOUNT : 1;
-				if (lnv.chart.isTimeline())
-				{
-					count = 1;
-				}
+                if (isTimeline)
+                {
+                    count = 1;
+                }
                 if (fillAlpha && !lnv.chart.isTimeline())
                 {
                     var startX:Number = chart.chartToViewXY(0, 0).x;

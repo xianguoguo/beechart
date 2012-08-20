@@ -1,5 +1,8 @@
 package bee.chart.abstract 
 {
+    import adobe.utils.CustomActions;
+    import bee.chart.elements.legend.item.icon.LegendItemIcon;
+    import bee.chart.elements.legend.Legend;
 	import cn.alibaba.core.AppSetting;
 	import bee.abstract.CComponentController;
 	import bee.chart.data.ChartLoadAndParser;
@@ -141,7 +144,7 @@ package bee.chart.abstract
         {
             data.setDatasetVisibility(index, active);
             chartViewer.setDatasetVisibility(index, active);
-			dispatchLegendClickEvent(index, active);
+            dispatchLegendClickEvent(index, active);
         }
         
 		private function dispatchLegendClickEvent(index:int,isVisible:Boolean):void

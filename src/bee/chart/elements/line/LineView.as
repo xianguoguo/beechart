@@ -1,19 +1,19 @@
 package bee.chart.elements.line 
 {
-	import bee.chart.abstract.ChartElementView;
-	import bee.chart.abstract.ChartViewer;
-	import bee.chart.elements.dot.Dot;
-	import bee.chart.elements.dot.NullDot;
-	import bee.chart.elements.line.Line;
-	import bee.chart.elements.line.LineData;
-	import bee.chart.elements.line.LineView;
-	import bee.performers.IPerformer;
-	import bee.performers.SimplePerformer;
-	import bee.printers.IStatePrinter;
-	import flash.display.DisplayObjectContainer;
-	import flash.geom.Point;
-	import com.greensock.TweenLite;
-	/**
+    import bee.chart.abstract.ChartElementView;
+    import bee.chart.abstract.ChartViewer;
+    import bee.chart.elements.dot.Dot;
+    import bee.chart.elements.dot.NullDot;
+    import bee.chart.elements.line.Line;
+    import bee.chart.elements.line.LineData;
+    import bee.chart.elements.line.LineView;
+    import bee.performers.IPerformer;
+    import bee.performers.SimplePerformer;
+    import bee.printers.IStatePrinter;
+    import flash.display.DisplayObjectContainer;
+    import flash.geom.Point;
+    import com.greensock.TweenLite;
+    /**
     * ...
     * @author hua.qiuh
     */
@@ -23,16 +23,16 @@ package bee.chart.elements.line
         static public var defaultPerformer:IPerformer = SimplePerformer.instance;
         
         public var dotPositions:Vector.<Point>;
-		
-		private var tweens:Vector.<TweenLite>;//存储缓动类，用于当用户在缓动过程中变换数据时，将之前的滑动清除
-		
+        
+        private var tweens:Vector.<TweenLite>;//存储缓动类，用于当用户在缓动过程中变换数据时，将之前的滑动清除
+        
         public function LineView(host:Line) 
         {
             super(host);
             
             skin.statePrinter = defaultStatePrinter;
             skin.performer = defaultPerformer;
-			
+            
             tweens = new Vector.<TweenLite>();
             mouseChildren = false;
             state = 'ready';
@@ -53,11 +53,11 @@ package bee.chart.elements.line
                 dotPositions.length = 0;
                 dotPositions = null;
             }
-			if (tweens)
-			{
-				tweens.length = 0;
-				tweens = null;
-			}
+            if (tweens)
+            {
+                tweens.length = 0;
+                tweens = null;
+            }
             super.dispose();
         }
         
@@ -84,39 +84,39 @@ package bee.chart.elements.line
         {
             dotPositions = dots;
         }
-		
+
         override public function smoothUpdate(state:String = null, context:DisplayObjectContainer = null):void 
         {
             super.smoothUpdate(state, context);
-			if (!chart.isTimeline())
-			{
-				tweenPositions();
-			}
-			else
-			{
-				printState();
-			}
+            if (!chart.isTimeline())
+            {
+                tweenPositions();
+            }
+            else
+            {
+                printState();
+            }
         }
-		
+        
         private function tweenPositions():void 
         {
             var lineData:LineData = this.dataModel as LineData;
             var lnv:LineView = this;
             var line:Line = lnv.host as Line;
             var chartview:ChartViewer = lnv.chart.view as ChartViewer;
-			if (chartview.isSmoothing && tweens)
-			{
-				for each (var tween:TweenLite in tweens) 
-				{
-					//这里不能使用 killTweensOf(target,true)。
-					//原因有二：
-					//1.快速切换legend过程中，必定会继续执行之前的onUpdate和onComplete,会导致线条的显示与否与实际不符；
-					//2.快速切换legend，变化不平滑，影响体验；
-					TweenLite.killTweensOf(tween.target);
-					tween = null;
-				}
-			}
-			tweens.length = 0;
+            if (chartview.isSmoothing && tweens)
+            {
+                for each (var tween:TweenLite in tweens) 
+                {
+                    //这里不能使用 killTweensOf(target,true)。
+                    //原因有二：
+                    //1.快速切换legend过程中，必定会继续执行之前的onUpdate和onComplete,会导致线条的显示与否与实际不符；
+                    //2.快速切换legend，变化不平滑，影响体验；
+                    TweenLite.killTweensOf(tween.target);
+                    tween = null;
+                }
+            }
+            tweens.length = 0;
             var dotsPosBeforeTween:Vector.<Point> = getCurrentDotPositions();
             var dotsPosAfterTween:Vector.<Point> = lineData.dotPositions;
             if (dotsCountChanged())
@@ -124,11 +124,11 @@ package bee.chart.elements.line
                 printState();
                 return;
             }
-			
+            
             dealWithNaNDots(dotsPosBeforeTween, dotsPosAfterTween);
             dealWithInvisibleDots(dotsPosAfterTween, line);
-			dealWithLineVisible(lnv, line);
-			
+            dealWithLineVisible(lnv, line);
+            
             if (!needRedrawForDots(dotsPosBeforeTween,dotsPosAfterTween))
             {
                 return;
@@ -181,12 +181,12 @@ package bee.chart.elements.line
             }
         }
         
-		/**
-		 * 若前后点全部相同则无需重绘，否则就重绘
-		 * @param	dotsPosBeforeTween
-		 * @param	dotsPosAfterTween
-		 * @return
-		 */
+        /**
+         * 若前后点全部相同则无需重绘，否则就重绘
+         * @param	dotsPosBeforeTween
+         * @param	dotsPosAfterTween
+         * @return
+         */
         private function needRedrawForDots(dotsPosBeforeTween:Vector.<Point>, dotsPosAfterTween:Vector.<Point>):Boolean 
         {
             if (dotsPosBeforeTween.length != dotsPosAfterTween.length)
@@ -224,11 +224,11 @@ package bee.chart.elements.line
             return false;
         }
         
-		/**
-		 * ���ǰ���Ϊnull����������?��ֹ������������
-		 * @param	dotsPosBeforeTween
-		 * @param	dotsPosAfterTween
-		 */
+        /**
+         * 针对前后点为null的情况作处理，防止缓动发生问题
+         * @param	dotsPosBeforeTween
+         * @param	dotsPosAfterTween
+         */
         private function dealWithNaNDots(dotsPosBeforeTween:Vector.<Point>, dotsPosAfterTween:Vector.<Point>):void 
         {
             var numloop:int = dotsPosBeforeTween.length;
@@ -264,21 +264,21 @@ package bee.chart.elements.line
         
         private function dealWithLineVisible(lnv:LineView, line:Line):void 
         {
-			lnv.visible = true;
+            lnv.visible = true;
             if (!line.lineVisible)
             {
                 tweens.push(
-					TweenLite.to(lnv , 1 ,
-						{
-							alpha:0,
-							onComplete:function():void
-									{
-										lnv.visible = false;
-										lnv.alpha = 0;
-									}
-						}
-					)
-				);
+                    TweenLite.to(lnv , 1 ,
+                        {
+                            alpha:0,
+                            onComplete:function():void
+                                    {
+                                        lnv.visible = false;
+                                        lnv.alpha = 0;
+                                    }
+                        }
+                    )
+                );
             }else
             {
                 lnv.visible = true;

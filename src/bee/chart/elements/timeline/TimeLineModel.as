@@ -218,7 +218,7 @@ package bee.chart.elements.timeline
 		
 		private function setOneTimeRangeLocationHandler(e:RangeLocationEvent):void 
 		{
-			if (_dataIndexRange)
+			if (_dataIndexRange && labelInfos.length > 2)
             {
                 var rangeStart:int = labelInfos[0].index;
                 var rangeEnd:int = labelInfos[1].index;
