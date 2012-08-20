@@ -43,6 +43,8 @@ package bee.chart.assemble.line.timeline
         {
             return StyleUtil.mergeStyle(
                 {
+                    "chartType": "timeline",
+                    "smooth":true 
                 }, 
                 super.defaultStyles
             );

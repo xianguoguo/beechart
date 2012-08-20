@@ -51,7 +51,6 @@ package bee.chart.demo
                 colors          : #E34F1E,#84BC0D,#00ABD9,#FF00A8;\
                 paddingRight    : 2;\
                 paddingLeft     : 2;\
-                smooth:true;\
             }\
             line {\
                 thickness.active : 3;\
