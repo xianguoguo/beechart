@@ -40,7 +40,7 @@
             <param name="swclib" value="YOYO-sjp.swc"/>
         </antcall>
         <echo>---------------生成文档---------------</echo>
-        <antcall target="doc"/>
+        <!-- <antcall target="doc"/> -->
     </target>
     <!--编译flash-->
     <target name="compile">
