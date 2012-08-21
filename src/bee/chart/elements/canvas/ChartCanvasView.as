@@ -25,8 +25,7 @@ package bee.chart.elements.canvas
                 'width'             : '0',
                 'height'            : '0',
                 'borderAlpha'       : '1',
-                'borderColor'       : '#FF0000',
-                'gridAlpha'         : .2
+                'borderColor'       : '#FFFFFF'
             }; 
         }
     }

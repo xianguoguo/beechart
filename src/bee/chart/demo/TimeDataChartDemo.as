@@ -5,6 +5,7 @@ package bee.chart.demo
     import bee.chart.events.ParserEvent;
     import bee.chart.release.BeeLineChart;
     import bee.chart.abstract.Chart;
+    import bee.chart.release.BeePieChart;
     import bee.chart.release.BeeTimeLineChart;
     import flash.utils.setTimeout;
     /**
@@ -54,6 +55,8 @@ package bee.chart.demo
             }\
             line {\
                 thickness.active : 3;\
+                fillType:gradient;\
+                fillAlpha:0.3;\
             }\
             line dot {\
                 radius          : 4;\
@@ -73,6 +76,7 @@ package bee.chart.demo
                 lineThickness   : 0;\
             }\
             canvas {\
+                borderThickness:1;\
                 backgroundColor : #2B2929;\
                 priLineThickness: 1;\
                 priLineColor    : #303030;\
@@ -90,6 +94,9 @@ package bee.chart.demo
             legend {\
                 position        : bottom;\
                 align           : center\
+            }\
+            legend item label {\
+                color           : inherit;\
             }"
             //chart.chartWidth = 850;
             //chart.chartHeight = 390;

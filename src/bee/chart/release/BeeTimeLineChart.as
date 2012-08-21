@@ -2,6 +2,8 @@ package bee.chart.release
 {
     import bee.chart.abstract.CartesianChart;
     import bee.chart.assemble.line.timeline.TimeLineChartView;
+    import bee.chart.elements.tooltip.TooltipForAliPrinter;
+    import bee.chart.elements.tooltip.TooltipView;
     /**
      * ...
      * @author jianping.shenjp
@@ -15,6 +17,7 @@ package bee.chart.release
         */
         public function BeeTimeLineChart(pluginClz:Vector.<Class> = null) 
         {
+            TooltipView.defaultStatePrinter = new TooltipForAliPrinter;
             super(TimeLineChartView, null, pluginClz);
         }
         
@@ -29,22 +32,9 @@ package bee.chart.release
 
                 line {
                     dropshadow      : none;
-                    lineMethod      : curve;
+                    lineMethod      : line;
                     thickness       : 3;
-                    fillType        : gradient;
-                    fillAlpha.active: .3;
-                }
-
-                line dot {
-                    color	        : #FFFFFF;
-                    borderColor	    : inherit#color;
-                    borderThickness	: 2;
-                    shape	        : circle;
-                    radius	        : 3;
-                    color.hl        : inherit#color;
-                    borderColor.hl  : #FFFFFF;
-                    radius.hl	    : 7;
-                    dropShadow.hl   : light;
+                    fillType        : line;
                 }
 
                 xAxis {
@@ -66,18 +56,9 @@ package bee.chart.release
                 canvas {
                     backgroundColor2: #F8F8F8;
                     backgroundColor : #FFFFFF;
-                    borderThickness   : 1;
-                    borderColor 	  : #CCCCCC,
-                    gridAlpha        : 1;
                     priLineThickness: 1;
                     priLineColor    : #F2F2F2;
                     priLineAlpha    : 1;
-                    vLineStyle"     : dashed;
-                    secLineThickness  : 1;
-                    secLineColor      : #CCCCCC;
-                    secLineGap"       : 20;
-                    secLineStyle      : dashed;
-                    priLineColor      : "CCCCCC;
                 }
 
                 guideLine {
