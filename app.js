@@ -137,7 +137,6 @@ app.get(/((?:html|css|js|img|swf|)\/)(?:[^/.]+\/)?([^/]+)(?:\.)([\w]+)$/, functi
         var htmlPath = replacePath(fpath,'');
         var fpaths = fpath.split('.');
         var name = fpaths[0];
-        var filetype = fpaths[1];
         var jadePath = "jade/"+name+".jade";
         setHead(jadePath,'html',function(){
             str = fs.readFileSync(jadePath,'utf-8');
