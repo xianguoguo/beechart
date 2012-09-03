@@ -11,7 +11,6 @@ package bee.chart.assemble.pie
     import bee.chart.elements.legend.LegendAlign;
     import bee.chart.elements.legend.LegendPosition;
     import bee.chart.elements.pie.LabelPosition;
-    import bee.chart.elements.pie.LabelSetType;
     import bee.chart.elements.pie.PieSlice;
     import bee.chart.elements.pie.PieSlice2dDrawPrinterForNormal;
     import bee.chart.elements.pie.PieSlice2dDrawPrinterOutside;
@@ -148,9 +147,8 @@ package bee.chart.assemble.pie
         {
             var result:Boolean = false;
             var sliceStyle:Object = viewer.styleSheet.getStyle("slice");
-            var labelSetType:String = sliceStyle["labelSetType"];
-			var labelPosition:String = sliceStyle["labelPosition"];
-            if (labelSetType!=LabelSetType.NORMAL && labelPosition==LabelPosition.CALLOUT)
+            var labelPosition:String = sliceStyle["labelPosition"];
+            if (labelPosition == LabelPosition.NORMAL || labelPosition == LabelPosition.CALLOUT)
             {
                 result = true;
             }
@@ -219,46 +217,23 @@ package bee.chart.assemble.pie
 			}
             pieSlice.skin.performer = performer;
             
-            var labelSetType:String = pieSlice.getStyle("labelSetType");
-			var labelPosition:String = pieSlice.getStyle("labelPosition");
+			var labelPosition:String = pieSlice.getStyle("labelPosition") || "";
 			var printer:IStatePrinter;
-             /**
-             * 根据配置设定printer.
-             * labelPosition:
-             * （仅在labelSetType不为normal的时候才有作用）
-             *      none:只有小圆饼；
-             *      inside:(默认设置)label水平放置，自动判断是否放置在圆饼内外侧;
-             *      inside!:label水平放置，并且只在出现在圆饼内部；
-             *      outside:label倾斜放置，且出现在外部；
-             *
-             * labelSetType: 
-             *      normal:文字水平放置，且放置在圆饼外部;
-             */
 			printer = pieSlice.skin.statePrinter;
-            
-			if (labelSetType == LabelSetType.NORMAL)
-			{
-				printer = new PieSlice2dDrawPrinterForNormal(printer);
-			}
-			else
-			{
-				if (!labelPosition || labelPosition == LabelPosition.INSIDE)
-				{
-					printer = new PieSlice2dDrawPrinterWithLabel(printer);
-				} else if (labelPosition === LabelPosition.INSIDE_ONLY) 
-                {
-                    printer = new PieSlice2dDrawPrinterWithInsideLabel(printer);
+            var printerMap:Object = {
+                "":PieSlice2dDrawPrinterWithLabel,
+                "normal":PieSlice2dDrawPrinterForNormal,
+                "inside":PieSlice2dDrawPrinterWithLabel,
+                "inside!":PieSlice2dDrawPrinterWithInsideLabel,
+                "outside":PieSlice2dDrawPrinterOutside,
+                "callout":PieSlice2dDrawPrinterWithLabelCallout
+            }
+            for(var str:String in printerMap) {
+                if (str == labelPosition) {
+                    printer = new printerMap[str](printer);
+                    break;
                 }
-				else if (labelPosition == LabelPosition.OUTSIDE)
-				{
-                    //外侧倾斜
-					printer = new PieSlice2dDrawPrinterOutside(printer);
-				}else if (labelPosition == LabelPosition.CALLOUT)
-                {
-                    printer = new PieSlice2dDrawPrinterWithLabelCallout(printer);
-                }
-                //当labelPosition为none的时候，不处理
-			}
+            }
 			pieSlice.skin.statePrinter = printer;
 		}
 		

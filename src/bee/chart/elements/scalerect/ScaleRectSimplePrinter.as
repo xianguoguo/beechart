@@ -19,8 +19,6 @@ package bee.chart.elements.scalerect
     {
         private var scaleRectData:ScaleRectData;
         
-        /* INTERFACE cn.alibaba.yid.printers.IStatePrinter */
-        
         public function renderState(host:IStatesHost, state:String, context:DisplayObjectContainer):void 
         {
             const viewer:ScaleRectView = host as ScaleRectView;

@@ -3,6 +3,7 @@ package bee.chart.demo
     import bee.chart.events.ChartEvent;
     import bee.chart.events.ChartUIEvent;
     import bee.chart.events.ParserEvent;
+    import bee.chart.release.BeeBarChart;
     import bee.chart.release.BeeLineChart;
     import bee.chart.abstract.Chart;
     import bee.chart.release.BeePieChart;
@@ -22,7 +23,7 @@ package bee.chart.demo
         
         override protected function initChart():void 
         {
-            var chart:Chart = new BeeTimeLineChart();
+            var chart:Chart = new BeePieChart();
             
             //chart.load('../demo/v1.5/data/time-serials.xml');
             //chart.load('../demo/v1.5/data/time-label-data.xml');
@@ -53,6 +54,14 @@ package bee.chart.demo
                 paddingRight    : 2;\
                 paddingLeft     : 2;\
             }\
+            bar {\
+                    color        : #FFFFFF;\
+                    dropShadow      : none;\
+                    borderThickness : 1;\
+                    borderColor     : #FFFFFF;\
+                    brightnessFading: -0.2;\
+                    backgroundType.hl : slash;\
+                }\
             line {\
                 thickness.active : 3;\
                 fillType:gradient;\
@@ -97,6 +106,10 @@ package bee.chart.demo
             }\
             legend item label {\
                 color           : inherit;\
+            }\
+            slice {\
+            frameThickness  : 10;\
+            frameColor      : #FFF000;\
             }"
             //chart.chartWidth = 850;
             //chart.chartHeight = 390;
@@ -108,7 +121,7 @@ package bee.chart.demo
             chart.addEventListener(ParserEvent.DATA_PARSED, function():void {
                 setTimeout(function():void {
                     trace("~~~~~~~~~~~~~~~~");
-                    chart.setDatasetVisibility(0,false);
+                    //chart.setDatasetVisibility(0,false);
                 },100);
             });
             addChild(chart);

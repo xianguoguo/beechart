@@ -27,7 +27,10 @@ package bee.chart.elements.pie
         
         override public function checkLabelSpace(view:PieSliceView, label:Label):void
         {
-			if (!canCanvasHoldLabel(view))
+            trace("checkLabelSpace~~~~~~~~~~~~~~~~~~~~~~");
+            var data:PieSliceData = view.dataModel as PieSliceData;
+            const needMakeOutside:Boolean = data.labelRadiusAdj > 0;
+			if (needMakeOutside || !canCanvasHoldLabel(view))
 			{
                 view.removeLabel();
 			}

@@ -42,7 +42,7 @@ package bee.chart.demo
             addChild(chart);
             //vec = new <Number>[52236,9560,6367,5870,2627,2360,2068,1747,1231,1187,500,500,600,700];
             //测试
-            var num:int = 50;
+            var num:int = 30;
             for (var i:int = 0; i < num; i++ ) {
                    /* if (i == 10||i==11||i==12) {
                     vec.push(100);
@@ -94,7 +94,7 @@ package bee.chart.demo
                         //"#55BECE",
                         //"#AF80DE"]
             //});
-            chart.parseCSS("chart{colors:#A8CE55, #E9930F, #4D99DA, #CE5555, #DCBB29,#55BECE,#AF80DE}");
+            chart.parseCSS("chart{colors:#A8CE55, #E9930F, #4D99DA, #CE5555, #DCBB29,#55BECE,#AF80DE}slice {labelPosition:outside!;}");
             //chart.data.setLabels(new < String > ["", "", ""]);
             //chart.chartHeight = 250;
             //chart.chartWidth = 250;

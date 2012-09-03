@@ -35,6 +35,7 @@ package bee.chart.release
                 tooltip {
                     tip : <b>#label#</b><br>#percent#<br>#value# / #total#;
                     backgroundAlpha : .95;
+                    backgroundType:slash;
                 }
 
                 slice {

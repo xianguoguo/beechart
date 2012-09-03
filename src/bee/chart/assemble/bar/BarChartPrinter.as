@@ -1,30 +1,30 @@
 package bee.chart.assemble.bar 
 {
-	import cn.alibaba.util.ColorUtil;
-	import bee.abstract.IStatesHost;
-	import bee.chart.abstract.ChartDataSet;
-	import bee.chart.abstract.ChartElement;
-	import bee.chart.abstract.ChartStates;
-	import bee.chart.abstract.ChartViewer;
-	import bee.chart.assemble.bar.BarChartViewer;
-	import bee.chart.assemble.CartesianChartPrinter;
-	import bee.chart.elements.axis.Axis;
-	import bee.chart.elements.bar.Bar;
-	import bee.chart.elements.bar.StackedBar;
-	import bee.chart.elements.canvas.ChartCanvas;
-	import bee.chart.elements.tooltip.Tooltip;
-	import bee.chart.util.ChartUtil;
-	import bee.printers.IStatePrinterWithUpdate;
-	import bee.util.StyleUtil;
-	import flash.display.DisplayObjectContainer;
-	import flash.display.Sprite;
-	import flash.geom.Point;
-	import flash.utils.Dictionary;
-	import com.greensock.easing.Sine;
-	import com.greensock.TweenLite;
+    import cn.alibaba.util.ColorUtil;
+    import bee.abstract.IStatesHost;
+    import bee.chart.abstract.ChartDataSet;
+    import bee.chart.abstract.ChartElement;
+    import bee.chart.abstract.ChartStates;
+    import bee.chart.abstract.ChartViewer;
+    import bee.chart.assemble.bar.BarChartViewer;
+    import bee.chart.assemble.CartesianChartPrinter;
+    import bee.chart.elements.axis.Axis;
+    import bee.chart.elements.bar.Bar;
+    import bee.chart.elements.bar.StackedBar;
+    import bee.chart.elements.canvas.ChartCanvas;
+    import bee.chart.elements.tooltip.Tooltip;
+    import bee.chart.util.ChartUtil;
+    import bee.printers.IStatePrinterWithUpdate;
+    import bee.util.StyleUtil;
+    import flash.display.DisplayObjectContainer;
+    import flash.display.Sprite;
+    import flash.geom.Point;
+    import flash.utils.Dictionary;
+    import com.greensock.easing.Sine;
+    import com.greensock.TweenLite;
     
-	
-	/**
+    
+    /**
     * ...
     * @author hua.qiuh
     */
@@ -55,7 +55,7 @@ package bee.chart.assemble.bar
             viewer.clearBars();
             var data:BarChartData = viewer.chartModel.data as BarChartData;
             var sets:Vector.<ChartDataSet> = data.allSets;
-			var count:uint = data.stackedColumnsCount;
+            var count:uint = data.stackedColumnsCount;
             var p0:Point = viewer.chartToViewXY(0, 0);
             var barThick:Number = caculateBarThickness(viewer, count);
             
@@ -120,10 +120,10 @@ package bee.chart.assemble.bar
                 group = dSet.config['stackGroup'];
                 if (group)
                 {
-					var idx:int = 0;
-					for each (var value:Number in dSet.values) 
-					{
-						key = generateGroupKey(group, idx);
+                    var idx:int = 0;
+                    for each (var value:Number in dSet.values) 
+                    {
+                        key = generateGroupKey(group, idx);
                         if (stackedBars[key] == null)
                         {
                             stack = new StackedBar();
@@ -133,8 +133,8 @@ package bee.chart.assemble.bar
                             stack.xIndex = idx;
                             stackedBars[key] = stack;
                         }
-						idx++;
-					}
+                        idx++;
+                    }
                 }
             }
         }
@@ -159,10 +159,10 @@ package bee.chart.assemble.bar
                     continue;
                 }
                 group = dSet.config['stackGroup'];
-				var idx:int = 0;
-				for each (var value:Number in dSet.values) 
-				{
-					var bar:Bar = new Bar();
+                var idx:int = 0;
+                for each (var value:Number in dSet.values) 
+                {
+                    var bar:Bar = new Bar();
                     if (group)
                     {
                         key = generateGroupKey(group, idx);
@@ -172,8 +172,8 @@ package bee.chart.assemble.bar
                     bar.index = i;
                     bar.xIndex = idx;
                     barsCache.push(bar);
-					idx++;
-				}
+                    idx++;
+                }
             }
         }
         
@@ -197,13 +197,13 @@ package bee.chart.assemble.bar
                 dSet = sets[i];
                 var barStyle:Object = StyleUtil.mergeStyle(dSet.config.style, dfltStyle);
                 //若无指定颜色，就采用自动配置颜色
-                if(!dSet.config.style || !dSet.config.style.color){
+                if(!barStyle.color && (!dSet.config.style || !dSet.config.style.color)){
                     barStyle["color"] = ColorUtil.int2str(ChartUtil.getColor(dSet, i));
                 }
-				var idx:int = 0;
-				for each (var value:Number in dSet.values) 
-				{
-					for each (bar in barsCache) 
+                var idx:int = 0;
+                for each (var value:Number in dSet.values) 
+                {
+                    for each (bar in barsCache) 
                     {
                         if (bar.index==i && bar.xIndex == idx)
                         {
@@ -218,9 +218,9 @@ package bee.chart.assemble.bar
                             break;
                         }
                     }
-					idx++;
-				}
-			}
+                    idx++;
+                }
+            }
         }
         
         /**
@@ -352,29 +352,29 @@ package bee.chart.assemble.bar
         {
             if (state === ChartStates.NORMAL) 
             {
-				initParamter(host, context);
+                initParamter(host, context);
                 smoothUpdateBars(host as BarChartViewer, context);
-				for each (var el:ChartElement in _viewer.elements) 
-				{
-					smoothUpdateElement(el);
-				}
+                for each (var el:ChartElement in _viewer.elements) 
+                {
+                    smoothUpdateElement(el);
+                }
                 clearParamter();
             }
         }
         
-		private function smoothUpdateElement(el:ChartElement):void 
+        private function smoothUpdateElement(el:ChartElement):void 
         {
             if (el is Axis)
             {
                 updateAxisLabels(el as Axis);
             }
-			if (el is ChartCanvas)
-			{
-				updateCanvas(el as ChartCanvas);
-			}
+            if (el is ChartCanvas)
+            {
+                updateCanvas(el as ChartCanvas);
+            }
             el.smoothUpdate();
         }
-		
+        
         protected function smoothUpdateBars(viewer: BarChartViewer,context:DisplayObjectContainer):void 
         {
             var bars:Vector.<Bar> = (viewer as BarChartViewer).bars;
@@ -386,7 +386,7 @@ package bee.chart.assemble.bar
                 var count:uint = Math.max(data.stackedColumnsCount, 1);
                 var p0:Point = viewer.chartToViewXY(0, 0);
                 var barThick:Number = caculateBarThickness(viewer, count);
-				
+                
                 if (len)
                 {
                     var dfltStyle:Object = viewer.styleSheet.getStyle('bar');

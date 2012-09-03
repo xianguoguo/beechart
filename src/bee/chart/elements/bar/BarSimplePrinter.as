@@ -1,24 +1,24 @@
 package bee.chart.elements.bar 
 {
-	import cn.alibaba.util.ColorUtil;
-	import cn.alibaba.util.DisplayUtil;
-	import bee.abstract.IStatesHost;
-	import bee.chart.abstract.ChartViewer;
-	import bee.chart.elements.bar.BarView;
-	import bee.controls.label.Label;
-	import bee.printers.IStatePrinterWithUpdate;
-	import bee.util.StyleUtil;
-	import flash.display.DisplayObject;
-	import flash.display.DisplayObjectContainer;
-	import flash.display.GradientType;
-	import flash.display.Graphics;
-	import flash.display.Shape;
-	import flash.geom.Matrix;
-	import flash.geom.Rectangle;
-	import com.greensock.TweenLite;
+    import cn.alibaba.util.ColorUtil;
+    import cn.alibaba.util.DisplayUtil;
+    import bee.abstract.IStatesHost;
+    import bee.chart.abstract.ChartViewer;
+    import bee.chart.elements.bar.BarView;
+    import bee.controls.label.Label;
+    import bee.printers.IStatePrinterWithUpdate;
+    import bee.util.StyleUtil;
+    import flash.display.DisplayObject;
+    import flash.display.DisplayObjectContainer;
+    import flash.display.GradientType;
+    import flash.display.Graphics;
+    import flash.display.Shape;
+    import flash.geom.Matrix;
+    import flash.geom.Rectangle;
+    import com.greensock.TweenLite;
     
-	
-	/**
+    
+    /**
     * ...
     * @author hua.qiuh
     */
@@ -39,14 +39,14 @@ package bee.chart.elements.bar
             var length:Number       = StyleUtil.getNumberStyle(barview, 'length');
             var thickness:Number    = StyleUtil.getNumberStyle(barview, 'thickness');
             
-			addBar(barview, context, length, thickness);
-			
+            addBar(barview, context, length, thickness);
+            
             addLabel(barview, context, length, thickness);
         }
-		
-		private function addBar(barview:BarView, context:DisplayObjectContainer, length:Number, thickness:Number):void 
-		{
-			var model:BarModel      = barview.dataModel as BarModel;
+        
+        private function addBar(barview:BarView, context:DisplayObjectContainer, length:Number, thickness:Number):void 
+        {
+            var model:BarModel      = barview.dataModel as BarModel;
             var horizontal:Boolean  = model.horizontal;
             var color:uint          = StyleUtil.getColorStyle(barview, 'color');
             var alpha:Number        = StyleUtil.getNumberStyle(barview, 'alpha', 1);
@@ -73,7 +73,7 @@ package bee.chart.elements.bar
                 borderThickness = Number(barview.getStyle('borderThickness'));
                 g.lineStyle(borderThickness, borderColor, borderAlpha);
             }
-			
+            
             if (horizontal) {
                 startX = 0;
                 startY = thickness * (0.5 - scale / 2);
@@ -85,7 +85,7 @@ package bee.chart.elements.bar
                 width = thickness * scale;
                 height = length;
             }
-			
+            
             if (brFade) {
                 var bottomColor:uint = ColorUtil.adjstRGBBrightness(color, brFade);
                 var mtx:Matrix = new Matrix();
@@ -104,7 +104,7 @@ package bee.chart.elements.bar
 
             sp.filters = StyleUtil.getFilterStyle(barview);
             context.addChild(sp);
-		}
+        }
         
         private function addLabel(barview:BarView, context:DisplayObjectContainer, length:Number, thickness:Number):void 
         {
@@ -112,7 +112,7 @@ package bee.chart.elements.bar
                 var model:BarModel = barview.dataModel as BarModel;
                 var horizontal:Boolean = model.horizontal;
                 var lbl:Label = new Label(model.value.toString());
-				context.addChild(lbl);
+                context.addChild(lbl);
                 lbl.name = "label";
                 var labelStyle:Object = barview.styleSheet.getStyle('label');
                 for (var each:String in labelStyle) {
@@ -180,7 +180,7 @@ package bee.chart.elements.bar
             shape = context.getChildByName("shape");
             if (shape)
             {
-				TweenLite.killTweensOf(shape, true);
+                TweenLite.killTweensOf(shape, true);
                 TweenLite.from(
                     shape,
                     0.5,
@@ -202,7 +202,7 @@ package bee.chart.elements.bar
           
             if (lbl)
             {
-				TweenLite.killTweensOf(lbl, true);
+                TweenLite.killTweensOf(lbl, true);
                 TweenLite.from(
                     lbl,
                     .5,

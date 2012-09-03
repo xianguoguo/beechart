@@ -5,8 +5,8 @@ package bee.chart.elements.bar
     import flash.display.Sprite;
     import com.greensock.easing.Back;
     import com.greensock.TweenLite;
-	
-	/**
+    
+    /**
     * ...
     * @author hua.qiuh
     */
@@ -17,8 +17,6 @@ package bee.chart.elements.bar
         {
         }
         
-        /* INTERFACE cn.alibaba.yid.performers.IPerformer */
-        
         public function performTransition(host:IStatesHost, fromState:String, toState:String):void
         {
             if (!(host is Sprite))
@@ -26,7 +24,7 @@ package bee.chart.elements.bar
                 return;
             }
             var view:BarView = host as BarView;
-			//Ϊ��ʼ��������
+            //为初始动画服务
             if (fromState === null && toState === 'normal' && !(view.dataModel as BarModel).group) 
             {
                 var bv:Sprite = host as Sprite;
@@ -43,8 +41,8 @@ package bee.chart.elements.bar
                 TweenLite.from(bv, .5, easeConfig);
                 
             } 
-			//bar��ʾ/����
-			else if (toState === 'visible' || toState === 'invisible')
+            //bar显示/隐藏
+            else if (toState === 'visible' || toState === 'invisible')
             {
                 VisibleToggler.toggleVisibleState(host, fromState, toState);
             }

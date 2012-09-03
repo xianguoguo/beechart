@@ -55,6 +55,7 @@ package bee.chart.elements.pie
          */
         protected function drawPieLabel(view:PieSliceView, context:DisplayObjectContainer):void 
         {
+            trace("drawPieLabel drawPieLabel");
 			var data:PieSliceData = view.dataModel as PieSliceData;
             var radius:Number;
             var pieLabel:Label = new Label();
@@ -86,8 +87,10 @@ package bee.chart.elements.pie
             var center:Point = view.getContentCenter();
             setX = center.x - (labelW >> 1);
             setY = center.y - (labelH >> 1);
-			label.x = setX;
-			label.y = setY;
+            if (label) {
+                label.x = setX;
+                label.y = setY;
+            }
             
             checkLabelSpace(view, label);
         }
@@ -216,6 +219,9 @@ package bee.chart.elements.pie
             var result:Boolean = false;
             var canvas:PieSliceCanvas = view.canvas;
             var label:Label = view.label;
+            if (!label) {
+                return false;
+            }
             var data:PieSliceData = view.dataModel as PieSliceData;
             var r:Number = data.radius * 2 + view.labelWidth;
             var bmpd:BitmapData = new BitmapData(r, r, true);
@@ -225,9 +231,11 @@ package bee.chart.elements.pie
             bmpd.dispose();
             bmpd = null;
             result = (intersection.width == 0);
+            trace(num,label);
+            num++;
             return result;
 		}
-        
+        static public var num:int = 1;
         /**
          * 获得容器上指定的组件类型，若无，就新建一个
          * @param	context

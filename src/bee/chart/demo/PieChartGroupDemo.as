@@ -5,6 +5,7 @@ package bee.chart.demo
     import bee.chart.abstract.ChartStates;
     import bee.chart.assemble.pie.PieChartViewer;
     import bee.chart.PieChart;
+    import bee.chart.release.BeePieChart;
     import flash.display.Sprite;
     import flash.display.StageAlign;
     import flash.display.StageScaleMode;
@@ -36,7 +37,7 @@ package bee.chart.demo
             stage.scaleMode=StageScaleMode.NO_SCALE;
             stage.align=StageAlign.TOP_LEFT;
             
-            chart = new PieChart();
+            chart = new BeePieChart();
             
             chart.chartHeight = 400;
             chart.chartWidth = 400;

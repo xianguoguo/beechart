@@ -1,5 +1,6 @@
 package bee.chart.elements.pie 
 {
+    import bee.chart.abstract.ChartDataSet;
 	import cn.alibaba.util.ColorUtil;
 	import bee.chart.abstract.ChartData;
 	import bee.chart.abstract.ChartElement;
@@ -132,6 +133,7 @@ package bee.chart.elements.pie
         public function removeLabel():void
         {
             if (label) {
+                trace("removeLabel remove..........",((this.dataModel) as ChartDataSet).name);
                 content.removeChild(label);
             }
         }

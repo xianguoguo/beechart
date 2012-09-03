@@ -33,7 +33,6 @@ package bee.chart.util
             _height = height;
             
             if (width && height) {
-                
                 drawMask();
                 startScroll();
             } else {

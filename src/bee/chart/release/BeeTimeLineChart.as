@@ -73,6 +73,11 @@ package bee.chart.release
                 legend item label {
                     color           : inherit;
                 }
+                
+                tooltip {
+                    backgroundAlpha : .95;
+                    backgroundType:slash;
+                }
             ]]>;
             
             parseCSS(presetCSS);

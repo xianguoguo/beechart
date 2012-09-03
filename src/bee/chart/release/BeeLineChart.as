@@ -95,6 +95,7 @@ package bee.chart.release
             
             tooltip {
                 backgroundAlpha : .95;
+                backgroundType:slash;
             }
             ]]>;
             
