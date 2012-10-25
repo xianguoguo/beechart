@@ -89,7 +89,7 @@ package bee.chart.elements.pie
         public function get startRadian():Number { return _startRadian; }
         public function set startRadian(value:Number):void 
         {
-            if(value!=_startRadian){
+            if (value != _startRadian) {
                 _startRadian = value;
                 updateStat();
             }

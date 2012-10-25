@@ -6,7 +6,7 @@ package bee.chart.demo.timeline
     import bee.chart.elements.tooltip.TooltipForAliPrinter;
     import bee.chart.elements.tooltip.TooltipView;
     import bee.chart.LineChart;
-	import cn.alibaba.yid.chart.TimeLineChart;
+    import bee.chart.TimeLineChart;
 	import flash.display.Sprite;
 	import flash.display.StageQuality;
     import flash.events.Event;

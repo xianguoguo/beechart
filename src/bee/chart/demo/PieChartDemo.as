@@ -1,6 +1,6 @@
 package bee.chart.demo 
 {
-    import cn.alibaba.product.chart.AliPieChart;
+    import bee.chart.release.BeePieChart;
     import bee.chart.abstract.Chart;
     import bee.chart.PieChart;
 
@@ -12,9 +12,9 @@ package bee.chart.demo
     {
         
         override protected function initChart():void 
-        {
             
-            var chart:Chart = new AliPieChart();
+        {
+            var chart:Chart = new BeePieChart();
             addChild(chart);
             
             chart.chartWidth = 450;

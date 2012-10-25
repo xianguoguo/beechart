@@ -133,7 +133,6 @@ package bee.chart.elements.pie
         public function removeLabel():void
         {
             if (label) {
-                trace("removeLabel remove..........",((this.dataModel) as ChartDataSet).name);
                 content.removeChild(label);
             }
         }

@@ -55,7 +55,6 @@ package bee.chart.elements.pie
          */
         protected function drawPieLabel(view:PieSliceView, context:DisplayObjectContainer):void 
         {
-            trace("drawPieLabel drawPieLabel");
 			var data:PieSliceData = view.dataModel as PieSliceData;
             var radius:Number;
             var pieLabel:Label = new Label();
@@ -231,7 +230,6 @@ package bee.chart.elements.pie
             bmpd.dispose();
             bmpd = null;
             result = (intersection.width == 0);
-            trace(num,label);
             num++;
             return result;
 		}

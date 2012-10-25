@@ -86,7 +86,7 @@ package bee.chart.assemble.pie
 			const radius:Number         = Math.min(width, height) >> 1;
             orderType = viewer.getStyle("order");
             var datas:Vector.<PieSliceData> = (new PieChartDataHandle()).handleData(chartModel, orderType);
-            setStartRadian(datas);
+            setStartRadian(datas,StyleUtil.getNumberStyle(viewer,"startAngle",0));
             var pieSlices:Vector.<PieSlice> = createPieSlice(datas, viewer, sliceStyle);
             addPieSlices(pieSlices, viewer);
             
@@ -107,9 +107,9 @@ package bee.chart.assemble.pie
             addBg(viewer, radius);
 		}
 
-        private function setStartRadian(datas:Vector.<PieSliceData>):void 
+        private function setStartRadian(datas:Vector.<PieSliceData>, startAngle:Number):void 
         {
-            var tempStartRadian:Number = 0;
+            var tempStartRadian:Number = startAngle * PieSliceData.TO_RADIANS;
             for each (var pieSliceData:PieSliceData in datas) 
             {
                 pieSliceData.startRadian = tempStartRadian;
@@ -392,7 +392,7 @@ package bee.chart.assemble.pie
             var pieSlices:Vector.<PieSlice> = viewer.pieSlices;
             var chartModel:ChartModel = viewer.chartModel;
             var datas:Vector.<PieSliceData> = (new PieChartDataHandle()).handleData(chartModel, orderType);
-            setStartRadian(datas);
+            setStartRadian(datas,StyleUtil.getNumberStyle(viewer,"startAngle",0));
             //如果之前的圆饼数量与目前的不一样，就重绘；
             if (pieSlices.length != datas.length)
             {
