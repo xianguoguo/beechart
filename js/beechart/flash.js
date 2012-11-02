@@ -105,7 +105,6 @@
          */
         function hasVersion(version){
             var versionArray = (/string|number/.test(typeof version)) ? version.toString().split('.') : (/object/.test(typeof version)) ? [version.major, version.minor] : version || [0, 0];
-            
             return compareArrayIntegers(flashVersionMatchVersionNumbers, versionArray);
         }
         /*
