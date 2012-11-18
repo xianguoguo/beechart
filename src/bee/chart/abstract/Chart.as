@@ -429,9 +429,9 @@ package bee.chart.abstract
 			super.updateViewNow();
         }
 		
-		public function _returnChartCSS():void
+		public function _returnChartCSS():String
         {
-			YIDStyleSheet(styleSheet).toCSSText();
+			return YIDStyleSheet(styleSheet).toCSSText();
         }
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         // Event Handlers
