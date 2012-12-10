@@ -1,5 +1,6 @@
 package bee.chart.assemble.line
 {
+    import bee.chart.elements.legend.Legend;
 	import cn.alibaba.util.ColorUtil;
 	import bee.abstract.IStatesHost;
 	import bee.chart.abstract.ChartData;
@@ -137,7 +138,12 @@ package bee.chart.assemble.line
 				updateAxisLabels(el as Axis);
 			} else if (el is ChartCanvas) {
 				updateCanvas(el as ChartCanvas);
-			}
+			} else if (el is Legend) {
+                //Bugfix:数据条数未改变，但数据内容改变，需要重绘数据显示
+                var tempLegend:Legend = el as Legend;
+                tempLegend.dataSets = this._viewer.chartModel.data.allSets;
+                tempLegend = null;
+            }
 			el.smoothUpdate();
 		}
 		

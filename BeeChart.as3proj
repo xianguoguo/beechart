@@ -6,7 +6,7 @@
     <movie input="" />
     <movie path="bin\BeeChart.swf" />
     <movie fps="30" />
-    <movie width="800" />
+    <movie width="990" />
     <movie height="600" />
     <movie version="10" />
     <movie minorVersion="1" />
@@ -78,7 +78,7 @@
   </library>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>
-    <compile path="src\bee\chart\demo\TimeDataChartDemo.as" />
+    <compile path="src\bee\chart\LineChart.as" />
   </compileTargets>
   <!-- Paths to exclude from the Project Explorer tree -->
   <hiddenPaths>
