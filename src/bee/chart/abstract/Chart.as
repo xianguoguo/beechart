@@ -3,6 +3,7 @@ package bee.chart.abstract
     import adobe.utils.CustomActions;
     import bee.chart.elements.legend.item.icon.LegendItemIcon;
     import bee.chart.elements.legend.Legend;
+	import bee.util.YIDStyleSheet;
 	import cn.alibaba.core.AppSetting;
 	import bee.abstract.CComponentController;
 	import bee.chart.data.ChartLoadAndParser;
@@ -422,6 +423,16 @@ package bee.chart.abstract
 			return this.getStyle("chartType") === Constants.TIMELINE;
 		}
 		
+		/**开放私有API*/
+        public function _updateViewNow():void
+        {
+			super.updateViewNow();
+        }
+		
+		public function _returnChartCSS():String
+        {
+			return YIDStyleSheet(styleSheet).toCSSText();
+        }
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         // Event Handlers
     }

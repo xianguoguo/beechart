@@ -24,7 +24,9 @@ package bee.chart.external
             'getDatasetActivity',
             'setDatasetVisibility',
             'getDatasetVisibility',
-            'getState'
+            'getState',
+			'_updateViewNow',
+			'_returnChartCSS'
         ];
         
         /** exposed Events **/
