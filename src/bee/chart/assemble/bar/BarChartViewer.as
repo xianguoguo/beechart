@@ -191,9 +191,9 @@ package bee.chart.assemble.bar
             return  [
                     '<b><font color="', colorStr, '">', name , '</font></b>',
                     '\n', 
-                    data.labelDesc , ': <b>' , label , '</b> ', data.labelUnit,
+                    data.labelDesc ? data.labelDesc + ":": "", '<b>' , label , '</b> ', data.labelUnit,
                     '\n',
-                    data.valueDesc , ': <b>' , value , '</b> ', data.valueUnit,
+                    data.valueDesc ? data.valueDesc + ":": "", '<b>' , value , '</b> ', data.valueUnit,
                 ].join('');
             ;
         }
