@@ -127,6 +127,7 @@ package bee.chart.assemble.line
 		private function shouldSmoothUpdate(viewer:LineChartViewer, context:DisplayObjectContainer):Boolean
 		{
 			var lines:Sprite = context.getChildByName('lines') as Sprite;
+            trace((lines && lines.numChildren),viewer.chart.allSets.length);
 			return lines && lines.numChildren == viewer.chart.allSets.length;
 		}
 		

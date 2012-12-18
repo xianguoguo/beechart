@@ -1,6 +1,6 @@
 package bee.chart.demo
 {
-    import cn.alibaba.product.chart.AliLineChart;
+    import bee.chart.release.BeeLineChart;
     import bee.chart.abstract.Chart;
     import bee.chart.abstract.ChartData;
     import bee.chart.abstract.ChartDataSet;
@@ -28,7 +28,7 @@ package bee.chart.demo
         override protected function initChart():void 
         {
             //super.initChart();
-            var chart:Chart = new AliLineChart();
+            var chart:Chart = new BeeLineChart();
             
             //chart.load('../demo/data/data-xml-single.xml');
             //chart.loadCSS('../demo/css/single-dark.css');

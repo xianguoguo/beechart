@@ -1,5 +1,7 @@
 package bee.chart.assemble.bar 
 {
+    import bee.chart.abstract.CartesianChartViewer;
+    import bee.chart.elements.legend.Legend;
     import cn.alibaba.util.ColorUtil;
     import bee.abstract.IStatesHost;
     import bee.chart.abstract.ChartDataSet;
@@ -352,6 +354,12 @@ package bee.chart.assemble.bar
         {
             if (state === ChartStates.NORMAL) 
             {
+                trace(!shouldSmoothUpdate(host as CartesianChartViewer, context));
+                if (!shouldSmoothUpdate(host as CartesianChartViewer, context))
+                {
+                    renderState(host, state, context);
+                    return;
+                }
                 initParamter(host, context);
                 smoothUpdateBars(host as BarChartViewer, context);
                 for each (var el:ChartElement in _viewer.elements) 
@@ -360,6 +368,21 @@ package bee.chart.assemble.bar
                 }
                 clearParamter();
             }
+        }
+        
+        private function shouldSmoothUpdate(cartesianChartViewer:CartesianChartViewer, context:DisplayObjectContainer):Boolean 
+        {
+            var bars:Sprite = context.getChildByName('bars') as Sprite;
+            var data_num:uint = 0;
+            var isGroupBar:Boolean;
+            var allSets:Vector.<ChartDataSet> = cartesianChartViewer.chart.allSets;
+            for each(var dataset:ChartDataSet in allSets) {
+                data_num += dataset.length;
+                if (!isGroupBar) {
+                    isGroupBar = (!!dataset.config['stackGroup']);
+                }
+            }
+            return isGroupBar ? (bars && bars.numChildren == allSets.length) : (bars && bars.numChildren == data_num);
         }
         
         private function smoothUpdateElement(el:ChartElement):void 
@@ -371,6 +394,11 @@ package bee.chart.assemble.bar
             if (el is ChartCanvas)
             {
                 updateCanvas(el as ChartCanvas);
+            }else if (el is Legend) {
+                //Bugfix:数据条数未改变，但数据内容改变，需要重绘数据显示
+                var tempLegend:Legend = el as Legend;
+                tempLegend.dataSets = this._viewer.chartModel.data.allSets;
+                tempLegend = null;
             }
             el.smoothUpdate();
         }

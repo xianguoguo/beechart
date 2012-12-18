@@ -173,7 +173,7 @@ package bee.chart.demo {
                 {
                     dateSet = new ChartDataSet(
                         "A公司", 
-                        new <Number>[343*Math.random(), 350*Math.random(), 424*Math.random(), 413*Math.random(), 415*Math.random(), 408*Math.random(), 437*Math.random(), 458*Math.random(), 452*Math.random()],
+                        new <Number>[343*Math.random(), 350*Math.random(), 424*Math.random(), 413*Math.random(), 415*Math.random(), 408*Math.random(), 437*Math.random(), 458*Math.random()],
                         {
                             style: {
                                 'color'             : '#F7B521'

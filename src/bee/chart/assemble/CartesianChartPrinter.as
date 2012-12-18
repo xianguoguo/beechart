@@ -71,14 +71,14 @@ package bee.chart.assemble
         
         override protected function initParamter(host:IStatesHost, context:DisplayObjectContainer):void
         {
-			this._context = context;
+            this._context = context;
             this._viewer = host as ChartViewer;
             super.initParamter(host, context);
             if (!_labelInfosMaker || !_viewer.isDragging)
             {
                 _labelInfosMaker = new XAxisLabelInfosMaker();
                 var tempXAxis:Axis = getStyledXAxis(_viewer);
-				tempXAxis.name = "tempXAxis";
+                tempXAxis.name = "tempXAxis";
                 _labelInfosMaker.initParamter(tempXAxis.view as AxisView, _viewer.chart);
             }
             newLabelInfos();
