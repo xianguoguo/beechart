@@ -66,7 +66,7 @@ package bee.chart.assemble.line
         static private function getMaxChar(name:String, max:uint=20):String 
         {
             if (name.length > max) {
-                name = name.substr(0, max-3) + '...';
+                name = name.substr(0, max - 3) + '...';
             }
             return name;
         }

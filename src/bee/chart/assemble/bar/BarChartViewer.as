@@ -1,5 +1,6 @@
 package bee.chart.assemble.bar
 {
+    import bee.chart.util.StringFormater;
     import cn.alibaba.util.ColorUtil;
     import bee.chart.abstract.CartesianChartViewer;
     import bee.chart.abstract.Chart;
@@ -178,6 +179,7 @@ package bee.chart.assemble.bar
             const _B:String = '<b>', B_:String = '</b>';  
 			var index:uint = bar.index;
             var x:uint = bar.xIndex;
+            var valueLabelFormat:String = chart.getStyle("valueLabelFormat");
             var value:Number = bar.value;
             var data:ChartData = chartModel.data;
             var dSet:ChartDataSet = data.allSets[index];
@@ -193,7 +195,7 @@ package bee.chart.assemble.bar
                     '\n', 
                     data.labelDesc ? data.labelDesc + ":": "", '<b>' , label , '</b> ', data.labelUnit,
                     '\n',
-                    data.valueDesc ? data.valueDesc + ":": "", '<b>' , value , '</b> ', data.valueUnit,
+                    data.valueDesc ? data.valueDesc + ":": "", '<b>' , StringFormater.format( value, valueLabelFormat, dSet.valueType || "number") , '</b> ', data.valueUnit,
                 ].join('');
             ;
         }

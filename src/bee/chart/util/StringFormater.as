@@ -188,17 +188,16 @@ package bee.chart.util
                 tmp = decFmt.match(/(?<=#)\d+/);
                 if (tmp) {
                     len = Number(tmp[0]);
-					//若数字没有小数位,就不保留指定位数
-					if (decStr){
-					    if (decStr.length > len) {
-							decStr = decStr.substr(0, len);
-						} else {
-							while (decStr.length < len) {
-								decStr += '0';
-							}
-						}
-					}
-                  
+                    //若数字没有小数位,就不保留指定位数
+                    if (decStr){
+                        if (decStr.length > len) {
+                            decStr = decStr.substr(0, len);
+                        } else {
+                            while (decStr.length < len) {
+                                decStr += '0';
+                            }
+                        }
+                    }
                 }
                 decFmt = decFmt.replace(/#\d+/, decStr);
             } else {
