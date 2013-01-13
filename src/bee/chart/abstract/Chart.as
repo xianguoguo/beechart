@@ -433,6 +433,11 @@ package bee.chart.abstract
         {
 			return YIDStyleSheet(styleSheet).toCSSText();
         }
+		
+		public function _setState(state:String):void
+        {
+			this.state = state;
+        }
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         // Event Handlers
     }
