@@ -21,6 +21,9 @@ package bee.chart.elements.timeline.labelmaker
         {
             var allLabels:Vector.<String> = data.allLabels;
             var labelsInCurrentRange:Vector.<String> = data.labels;
+            if (!allLabels || allLabels.length<2) {
+                throw new Error("时间线label数据错误");
+            }
             var min:Number = TimeLabelMaker.dateLabel2miliseconds(allLabels[0]);
             var max:Number = TimeLabelMaker.dateLabel2miliseconds(allLabels[allLabels.length - 1]);
             if (isNaN(min) || isNaN(max)) {
