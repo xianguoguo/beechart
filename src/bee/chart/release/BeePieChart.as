@@ -30,6 +30,7 @@ package bee.chart.release
                     colors          : #FA6222,#FEC53F,#DBEE27,#87C822,#49AFB1;
                     animate         : clockwise;
                     order           : asc;
+					startAngle 		: 0;
                 }
 
                 tooltip {
@@ -39,7 +40,7 @@ package bee.chart.release
                 }
 
                 slice {
-                    labelPosition   : callout;
+                    labelPosition   : normal;
                     frameThickness  : 5;
                     frameColor      : #FFFFFF;
                 }

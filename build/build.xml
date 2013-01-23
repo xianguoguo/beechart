@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <!-- 默认执行"build"任务 -->
 <project name="BeeChart" basedir="../" default="build"> 
-    <property name="FLEX_HOME" value="D:/Program Files/Adobe/Adobe Flash Builder 4.5/sdks/4.5.1"/> 
+    <property name="FLEX_HOME" value="D:/Program Files/Adobe/Adobe Flash Builder 4 Plug-in/sdks/4.5.1"/> 
     <property name="DOC_DIR" location="doc"/>
     <property name="DEPLOY_DIR" location="bin"/> 
     <property name="SOURCE_DIR" location="src"/> 
