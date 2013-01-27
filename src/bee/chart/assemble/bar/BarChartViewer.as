@@ -1,5 +1,6 @@
 package bee.chart.assemble.bar
 {
+    import bee.chart.elements.bar.BarSimplePerformer;
     import bee.chart.util.StringFormater;
     import cn.alibaba.util.ColorUtil;
     import bee.chart.abstract.CartesianChartViewer;
@@ -9,8 +10,8 @@ package bee.chart.assemble.bar
     import bee.chart.abstract.ChartElement;
     import bee.chart.assemble.bar.BarChartPrinter;
     import bee.chart.elements.bar.Bar;
-	import bee.chart.elements.bar.BarEnterAnimator;
-	import bee.chart.elements.bar.BarView;
+    import bee.chart.elements.bar.BarEnterAnimator;
+    import bee.chart.elements.bar.BarView;
     import bee.chart.elements.bar.StackedBar;
     import bee.chart.elements.tooltip.Tooltip;
     import bee.chart.events.ChartUIEvent;
@@ -22,8 +23,8 @@ package bee.chart.assemble.bar
     import flash.geom.Point;
     
     
-	
-	/**
+    
+    /**
     * ...
     * @author hua.qiuh
     */
@@ -69,7 +70,7 @@ package bee.chart.assemble.bar
         {
             super.updateDataCache();
             
-			var data:ChartData  = chartModel.data;
+            var data:ChartData  = chartModel.data;
             var dataLen:uint    = data.maxSetLength;
             var valueLen:Number = horizontal ? _cacheHeight : _cacheWidth;
             _cacheXStep         = dataLen > 1 ? valueLen / dataLen : 0;
@@ -129,19 +130,19 @@ package bee.chart.assemble.bar
         }
         
         /**
-         * 根据配置设置BarView的Performer.
-		 * 原先这里设置BarChart的Performer已遭废弃.
-         */
-		//TODO: 堆叠柱形图暂无初始动画（现有实现方式，初始动画展现有问题）
+        * 根据配置设置BarView的Performer.
+        * 原先这里设置BarChart的Performer已遭废弃.
+        */
+        //TODO: 堆叠柱形图暂无初始动画（现有实现方式，初始动画展现有问题）
         protected function setBarPerformer(animate:String):void 
         {
             switch (animate)
             {
                 case "true":
-					BarView.defaultPerformer = new BarEnterAnimator();
+                    BarView.defaultPerformer = new BarEnterAnimator();
                     break;
                 default:
-					BarView.defaultPerformer = SimplePerformer.instance;
+                    BarView.defaultPerformer = new BarSimplePerformer();
                     break;
             }
         }
@@ -177,19 +178,19 @@ package bee.chart.assemble.bar
         protected function getBarTip(bar:Bar):String
         {
             const _B:String = '<b>', B_:String = '</b>';  
-			var index:uint = bar.index;
+            var index:uint = bar.index;
             var x:uint = bar.xIndex;
             var valueLabelFormat:String = chart.getStyle("valueLabelFormat");
             var value:Number = bar.value;
             var data:ChartData = chartModel.data;
             var dSet:ChartDataSet = data.allSets[index];
             var label:String = x > data.labels.length - 1 ? "--" : data.labels[x];
-			var color:uint = ChartUtil.getColor(dSet,index);
-			var colorStr:String = ColorUtil.int2str(color);
+            var color:uint = ChartUtil.getColor(dSet,index);
+            var colorStr:String = ColorUtil.int2str(color);
             var maxchar:Number = StyleUtil.getNumberStyle(Tooltip.instance, "maxchar");
             var name:String = dSet.name;
             name = ChartUtil.getRestrictTxt(name, maxchar);
-			
+            
             return  [
                     '<b><font color="', colorStr, '">', name , '</font></b>',
                     '\n', 
@@ -200,7 +201,7 @@ package bee.chart.assemble.bar
             ;
         }
         
-		override public function chartToViewXY(idx:Number, value:Number):Point 
+        override public function chartToViewXY(idx:Number, value:Number):Point 
         {
             var pt:Point = super.chartToViewXY(idx, value);
             if (chart.data.maxSetLength === 1) {
@@ -213,7 +214,7 @@ package bee.chart.assemble.bar
         {
             pt.x = _cachePaddingLeft + _cacheWidth >> 1;
         }
-		
+        
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         // Event Handlers
         

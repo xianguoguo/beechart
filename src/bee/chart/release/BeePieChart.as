@@ -30,13 +30,19 @@ package bee.chart.release
                     colors          : #FA6222,#FEC53F,#DBEE27,#87C822,#49AFB1;
                     animate         : clockwise;
                     order           : asc;
-					startAngle 		: 0;
+                    startAngle      : 0;
+                    enableTooltip   : true;
                 }
 
                 tooltip {
                     tip : <b>#label#</b><br>#percent#<br>#value# / #total#;
-                    backgroundAlpha : .95;
-                    backgroundType:slash;
+                    backgroundAlpha   : 0.95;
+                    backgroundType    : slash;
+                    backgroundColor   : #FFFFFF;
+                    backgroundAlpha   : 0.8;
+                    borderColor       : #666666;
+                    borderAlpha       : 1;
+                    borderThickness   : 2;
                 }
 
                 slice {
@@ -49,6 +55,8 @@ package bee.chart.release
                     position        : bottom;
                     align           : center;
                     paddingRight    : 0;
+                    itemEachColumn  : 4;
+                    interactive     : true;
                 }
 
                 legend item label {

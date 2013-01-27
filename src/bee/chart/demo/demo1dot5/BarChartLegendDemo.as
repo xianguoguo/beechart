@@ -1,6 +1,5 @@
 package bee.chart.demo.demo1dot5 
 {
-	import cn.alibaba.common.ui.button.Pic2StateTrans;
     import cn.alibaba.util.ColorUtil;
     import bee.abstract.CComponent;
     import bee.chart.BarChart;
@@ -102,7 +101,7 @@ package bee.chart.demo.demo1dot5
                     chart {
                         colors        : #A9CF56,#EA9410,#4E9ADB;
                         leftAxisVisibility: visible;
-                        animate : true;
+                        animate : false;
                         paddingTop : 50;
                         width: 600;
                         height: 300;

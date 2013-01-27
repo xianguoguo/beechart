@@ -59,19 +59,19 @@ package bee.chart.abstract
             }
         }
         
-		public function getElementByName(name:String):ChartElement
-		{
-			var result:ChartElement;
-			for each(var el:ChartElement in _elements)
-			{
-				if (el.name == name)
-				{
-					result = el;
-				}
-			}
-			return result;
-		}
-		
+        public function getElementByName(name:String):ChartElement
+        {
+            var result:ChartElement;
+            for each(var el:ChartElement in _elements)
+            {
+                if (el.name == name)
+                {
+                    result = el;
+                }
+            }
+            return result;
+        }
+        
         override public function clearContent():void
         {
             for each(var el:ChartElement in _elements) 
@@ -181,23 +181,23 @@ package bee.chart.abstract
         {
             return dataModel as ChartModel;
         }
-		
-		public function get elements():Vector.<ChartElement> { return _elements.concat(); }
+        
+        public function get elements():Vector.<ChartElement> { return _elements.concat(); }
         
         override protected function get defaultStyles():Object { 
             return {
                 'backgroundColor'   : '#FFFFFF',
-				'valueLabelFormat'  : '*.#2'
+                'valueLabelFormat'  : '*.#2'
             };
         }
         
         public function get isSmoothing():Boolean { return _isSmoothing; }
         
-		/**
-		 * isSmoothing
-		 * true:移除事件监听，缓动过程中，不允许事件交互
-		 * false:添加事件监听
-		 */
+        /**
+         * isSmoothing
+         * true:移除事件监听，缓动过程中，不允许事件交互
+         * false:添加事件监听
+         */
         public function set isSmoothing(value:Boolean):void 
         {
             if (value == _isSmoothing)
@@ -207,32 +207,32 @@ package bee.chart.abstract
             if (value)
             {
                 removeEventListeners();
-				dispatchChartUIEvent(ChartUIEvent.SMOOTHING_START, null);
+                dispatchChartUIEvent(ChartUIEvent.SMOOTHING_START, null);
             }else 
             {
                 addEventListeners();
-				dispatchChartUIEvent(ChartUIEvent.SMOOTHING_END, null);
+                dispatchChartUIEvent(ChartUIEvent.SMOOTHING_END, null);
             }
             _isSmoothing = value;
         }
-		
-		public function get isDragging():Boolean 
-		{
-			return _isDragging;
-		}
-		
-		public function set isDragging(value:Boolean):void 
-		{
-			if (_isDragging != value)
-			{
-				_isDragging = value;
-				//图表进行过了拖拽，停止拖拽时，进行图表重绘。主要应用在折线图，是否添加Dot上，为了提高效率。
-				if (!value)
-				{
-					updateNow();
-				}
-			}
-		}
+        
+        public function get isDragging():Boolean 
+        {
+            return _isDragging;
+        }
+        
+        public function set isDragging(value:Boolean):void 
+        {
+            if (_isDragging != value)
+            {
+                _isDragging = value;
+                //图表进行过了拖拽，停止拖拽时，进行图表重绘。主要应用在折线图，是否添加Dot上，为了提高效率。
+                if (!value)
+                {
+                    updateNow();
+                }
+            }
+        }
                 
         /**
         * 分发ChartUIEvent事件

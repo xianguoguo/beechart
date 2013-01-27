@@ -101,8 +101,8 @@ package bee.chart.elements.canvas
                     var gap:uint                = StyleUtil.getNumberStyle(canvasView, 'secLineGap', 0);
                     dashed                      = secLineStyle === 'dashed';
                     var secLinePoses:Vector.<Point> = (canvasView.host as ChartCanvas).secLinePoses;
-					grph.lineStyle(secLineFat, secLineColor, secLineAlpha);
-					for each (pt in secLinePoses) 
+                    grph.lineStyle(secLineFat, secLineColor, secLineAlpha);
+                    for each (pt in secLinePoses) 
                     {
                         x = pt.x;
                         y = pt.y;
@@ -112,21 +112,6 @@ package bee.chart.elements.canvas
                             LineUtil.drawLine(grph, x, 0, x, -h, secLineColor, secLineAlpha, dashed ? LineUtil.DASHED : LineUtil.SOLID);
                         }
                     }
-                    //for (var idx:uint = 0, len:uint = data.maxSetLength; idx < len; idx++) 
-                    //{
-                        //if (idx % (gap + 1)) {
-                            //continue;
-                        //}
-                        //pt = chart.chartToViewXY(idx, 0);
-                        //x = pt.x;
-                        //y = pt.y;
-                        //grph.lineStyle(secLineFat, secLineColor, secLineAlpha);
-                        //if (horizontal) {
-                            //LineUtil.drawLine(grph, 0, y, w, y, secLineColor, secLineAlpha, dashed ? LineUtil.DASHED : LineUtil.SOLID);
-                        //} else {
-                            //LineUtil.drawLine(grph, x, 0, x, -h, secLineColor, secLineAlpha, dashed ? LineUtil.DASHED : LineUtil.SOLID);
-                        //}
-                    //}
                     context.addChild(secLinesContainer);
                 }
                 context.addChildAt(sp, 0);

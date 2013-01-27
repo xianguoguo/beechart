@@ -29,8 +29,6 @@ package bee.chart.elements.bar
         protected var startX:Number;
         protected var startY:Number;
         
-        /* INTERFACE cn.alibaba.yid.printers.IStatePrinter */
-        
         public function renderState(host:IStatesHost, state:String, context:DisplayObjectContainer):void
         {
             DisplayUtil.clearSprite(context);

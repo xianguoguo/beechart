@@ -6,7 +6,7 @@ package bee.chart.demo.timeline
     import bee.chart.elements.tooltip.TooltipForAliPrinter;
     import bee.chart.elements.tooltip.TooltipView;
     import bee.chart.LineChart;
-	import cn.alibaba.yid.chart.TimeLineChart;
+    import bee.chart.release.BeeTimeLineChart;
 	import flash.display.Sprite;
 	import flash.display.StageQuality;
     import flash.events.Event;
@@ -27,7 +27,7 @@ package bee.chart.demo.timeline
 		
         override protected function initChart():void 
         {
-            var chart:Chart = new TimeLineChart();
+            var chart:Chart = new BeeTimeLineChart();
             addChild(chart);
 			chart.skin.statePrinter = new TimeLineChartPrinter();
 			chart.chartWidth = 800;

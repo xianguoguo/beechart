@@ -354,7 +354,6 @@ package bee.chart.assemble.bar
         {
             if (state === ChartStates.NORMAL) 
             {
-                trace(!shouldSmoothUpdate(host as CartesianChartViewer, context));
                 if (!shouldSmoothUpdate(host as CartesianChartViewer, context))
                 {
                     renderState(host, state, context);

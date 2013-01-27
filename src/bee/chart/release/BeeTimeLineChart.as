@@ -25,9 +25,14 @@ package bee.chart.release
         {
             var presetCSS:String = <![CDATA[
                 chart {
-                    colors          : #1b75d2,#5f9618,#eead23,#b3351b,#ff862e,#925100;
-                    smooth          : true;
-                    leftAxisVisibility: visible;
+                    colors              : #1b75d2,#5f9618,#eead23,#b3351b,#ff862e,#925100;
+                    smooth              : true;
+                    leftAxisVisibility  : visible;
+                    enableTooltip       : true;
+                    paddingLeft         : 0;
+                    paddingRight        : 0;
+                    paddingTop          : 0;
+                    paddingBottom       : 0;
                 }
 
                 line {
@@ -67,7 +72,9 @@ package bee.chart.release
 
                 legend {
                     position        : bottom;
-                    align           : center
+                    align           : center;
+                    itemEachColumn  : 4;
+                    interactive     : true;
                 }
 
                 legend item label {
@@ -75,8 +82,13 @@ package bee.chart.release
                 }
                 
                 tooltip {
-                    backgroundAlpha : .95;
-                    backgroundType:slash;
+                    backgroundAlpha   : 0.95;
+                    backgroundType    : slash;
+                    backgroundColor   : #FFFFFF;
+                    backgroundAlpha   : 0.8;
+                    borderColor       : #666666;
+                    borderAlpha       : 1;
+                    borderThickness   : 2;
                 }
             ]]>;
             

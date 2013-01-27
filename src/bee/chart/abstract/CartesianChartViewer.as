@@ -9,22 +9,22 @@ package bee.chart.abstract
     import bee.chart.util.LineUtil;
     import bee.util.StyleUtil;
     import flash.geom.Point;
-	/**
+    /**
     * 使用笛卡尔直角坐标系统的图表
     * @author hua.qiuh
     */
     public class CartesianChartViewer extends ChartViewer 
     {
-		protected var _cachePaddingLeft:Number    = 0;
-		protected var _cachePaddingRight:Number   = 0;
-		protected var _cachePaddingTop:Number     = 0;
-		protected var _cachePaddingBottom:Number  = 0;
-		protected var _cacheWidth:Number          = 0;
-		protected var _cacheHeight:Number         = 0;
-		protected var _cacheXStep:Number          = 0;
-		protected var _cacheYMax:Number           = 0;
-		protected var _cacheYMin:Number           = 0;
-		protected var _cachePoints:Vector.<I2VPoint>;
+        protected var _cachePaddingLeft:Number    = 0;
+        protected var _cachePaddingRight:Number   = 0;
+        protected var _cachePaddingTop:Number     = 0;
+        protected var _cachePaddingBottom:Number  = 0;
+        protected var _cacheWidth:Number          = 0;
+        protected var _cacheHeight:Number         = 0;
+        protected var _cacheXStep:Number          = 0;
+        protected var _cacheYMax:Number           = 0;
+        protected var _cacheYMin:Number           = 0;
+        protected var _cachePoints:Vector.<I2VPoint>;
         protected var _chartWidth:Number;
         protected var _chartHeight:Number;
         
@@ -142,10 +142,10 @@ package bee.chart.abstract
             {
                 ptx = pt.x;
                 pty = pt.y;
-				if (Math.abs(ptx * _cacheXStep -x) > maxDistance) {
+                if (Math.abs(ptx * _cacheXStep -x) > maxDistance) {
                     continue;
                 }
-				tmpPoint = chartToViewXY(ptx, pty);
+                tmpPoint = chartToViewXY(ptx, pty);
                 if(tmpPoint){
                     var dx:Number = x - tmpPoint.x;
                     var dy:Number = y - tmpPoint.y;
@@ -158,7 +158,7 @@ package bee.chart.abstract
                         thePt = pt.clone();
                     }
                 }
-			}
+            }
             
             return thePt;
         }
@@ -168,10 +168,10 @@ package bee.chart.abstract
         */
         public function updateCache():void
         {
-			_cachePaddingLeft   = StyleUtil.getNumberStyle(this, 'paddingLeft');
-			_cachePaddingRight  = StyleUtil.getNumberStyle(this, 'paddingRight');
-			_cachePaddingTop    = StyleUtil.getNumberStyle(this, 'paddingTop');
-			_cachePaddingBottom = StyleUtil.getNumberStyle(this, 'paddingBottom');
+            _cachePaddingLeft   = StyleUtil.getNumberStyle(this, 'paddingLeft');
+            _cachePaddingRight  = StyleUtil.getNumberStyle(this, 'paddingRight');
+            _cachePaddingTop    = StyleUtil.getNumberStyle(this, 'paddingTop');
+            _cachePaddingBottom = StyleUtil.getNumberStyle(this, 'paddingBottom');
             _chartWidth         = chartModel.chartWidth;
             _chartHeight        = chartModel.chartHeight;
             
@@ -181,7 +181,7 @@ package bee.chart.abstract
         
         public function updateDataCache():void
         {
-			var data:CartesianChartData  = chartModel.data as CartesianChartData;
+            var data:CartesianChartData  = chartModel.data as CartesianChartData;
             _cacheHeight    = _chartHeight -  _cachePaddingTop - _cachePaddingBottom;
             _cacheWidth     = _chartWidth - _cachePaddingRight - _cachePaddingLeft;
             
@@ -193,15 +193,15 @@ package bee.chart.abstract
             _hx = 1 / (_cacheYMax - _cacheYMin) * _cacheWidth;
             _vy = 1 / (_cacheYMax - _cacheYMin) * _cacheHeight;
             _cachePoints    = new Vector.<I2VPoint>();
-			for each (var dSet:ChartDataSet in data.visibleSets) 
-			{
-				var idx:int = 0;
-				for each (var v:Number in dSet.values) 
-				{
-					_cachePoints.push(new I2VPoint(idx, v));
-					idx++;
-				}
-			}
+            for each (var dSet:ChartDataSet in data.visibleSets) 
+            {
+                var idx:int = 0;
+                for each (var v:Number in dSet.values) 
+                {
+                    _cachePoints.push(new I2VPoint(idx, v));
+                    idx++;
+                }
+            }
         }
         
         override public function applyStyleNow():void 
