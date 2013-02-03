@@ -1,51 +1,46 @@
 package bee.chart.elements.axis
 {
-	import cn.alibaba.util.ColorUtil;
-	import cn.alibaba.util.DisplayUtil;
-	import bee.chart.abstract.Chart;
-	import bee.chart.elements.axis.AxisData;
-	import bee.chart.elements.timeline.labelmaker.LabelInfo;
-	import bee.chart.util.CartesianUtil;
-	import bee.chart.util.StringFormater;
-	import bee.controls.label.Label;
-	import bee.printers.IStatePrinterWithUpdate;
-	import bee.util.StyleUtil;
-	import flash.display.CapsStyle;
-	import flash.display.DisplayObjectContainer;
-	import bee.abstract.IStatesHost;
-	import bee.chart.elements.axis.AxisView;
-	import bee.printers.IStatePrinter;
-	import flash.display.Graphics;
-	import flash.display.JointStyle;
-	import flash.display.LineScaleMode;
-	import flash.display.Sprite;
-	import flash.geom.Point;
-	
-	/*
-	 * TODO:
-	 * 重要！！！！！
-	 * 此处违反了DRY原则，和AxisSimplePrinter代码类似一致却分成两个类
-	 * 互相copy, 导致维护困难，必须改进！！！！
-	 */
-	/**
-	 * ...
-	 * @author jianping.shenjp
-	 */
-	public class XAxisSimplePrinter implements IStatePrinter, IAxisWithLabelPrinter, IStatePrinterWithUpdate
-	{
-		
-		private var ax:AxisView;
+    import cn.alibaba.util.ColorUtil;
+    import cn.alibaba.util.DisplayUtil;
+    import bee.chart.abstract.Chart;
+    import bee.chart.elements.axis.AxisData;
+    import bee.chart.elements.timeline.labelmaker.LabelInfo;
+    import bee.chart.util.CartesianUtil;
+    import bee.chart.util.StringFormater;
+    import bee.controls.label.Label;
+    import bee.printers.IStatePrinterWithUpdate;
+    import bee.util.StyleUtil;
+    import flash.display.CapsStyle;
+    import flash.display.DisplayObjectContainer;
+    import bee.abstract.IStatesHost;
+    import bee.chart.elements.axis.AxisView;
+    import bee.printers.IStatePrinter;
+    import flash.display.Graphics;
+    import flash.display.JointStyle;
+    import flash.display.LineScaleMode;
+    import flash.display.Sprite;
+    import flash.geom.Point;
+    
+
+    /**
+     * ...
+     * @author jianping.shenjp
+     */
+    public class XAxisSimplePrinter implements IStatePrinter, IAxisWithLabelPrinter, IStatePrinterWithUpdate
+    {
+        
+        private var ax:AxisView;
         private var data:AxisData;
-		private var sp:Sprite;
+        private var sp:Sprite;
         private var grph:Graphics;
-		private var _labelStyle:Object;
-		protected var labelContainer:Sprite;
-		private var ticksAvailable:Boolean;
-		private var tickLength:Number;
-		private var labelsAvailable:Boolean;
-		private var _needFixForAxis:Boolean;
-		
-		public function renderState(host:IStatesHost, state:String, context:DisplayObjectContainer):void
+        private var _labelStyle:Object;
+        protected var labelContainer:Sprite;
+        private var ticksAvailable:Boolean;
+        private var tickLength:Number;
+        private var labelsAvailable:Boolean;
+        private var _needFixForAxis:Boolean;
+        
+        public function renderState(host:IStatesHost, state:String, context:DisplayObjectContainer):void
         {
             if (host is AxisView && AxisView(host).chart ) 
             {
@@ -59,18 +54,18 @@ package bee.chart.elements.axis
             ax = host as AxisView;
             data = ax.dataModel as AxisData;
             
-			initObj();
+            initObj();
             drawMainLine();
             drawTicksAndLabels();
             clean();
         }
-		
-		private function initObj():void 
-		{
-			_labelStyle = StyleUtil.inheritStyle(
+        
+        private function initObj():void 
+        {
+            _labelStyle = StyleUtil.inheritStyle(
                 ax.styleSheet.getStyle('label'),
                 ax);
-		}
+        }
         
         protected function reset(context:DisplayObjectContainer):void 
         {
@@ -82,7 +77,7 @@ package bee.chart.elements.axis
             DisplayUtil.clearSprite(context);
             
             sp = new Sprite();
-			sp.mouseEnabled = false;
+            sp.mouseEnabled = false;
             grph = sp.graphics;
             context.addChild(sp);
             
@@ -90,17 +85,17 @@ package bee.chart.elements.axis
             labelContainer.name = 'labels';
             context.addChild(labelContainer);
         }
-		
-		protected function clean():void 
+        
+        protected function clean():void 
         {
             ax     		= null;
             data   		= null;
             sp     		= null;
             grph   		= null;
-			_labelStyle = null;
+            _labelStyle = null;
         }
-		
-		protected function drawMainLine():void
+        
+        protected function drawMainLine():void
         {
             var len:Number = data.length;
             var fat:Number = Number(ax.getStyle('lineThickness'));
@@ -123,35 +118,35 @@ package bee.chart.elements.axis
                 }
             }
         }
-		
-		private function drawTicksAndLabels():void 
-		{
-			var tickThickness:Number;
+        
+        private function drawTicksAndLabels():void 
+        {
+            var tickThickness:Number;
             tickLength      = StyleUtil.getNumberStyle(ax, 'tickLength');
             tickThickness   = StyleUtil.getNumberStyle(ax, 'tickThickness');
             ticksAvailable  = tickThickness && tickLength;
-			labelsAvailable = ax.styleSheet.getStyle('label')['visibility'] !== 'hidden';
+            labelsAvailable = ax.styleSheet.getStyle('label')['visibility'] !== 'hidden';
             _needFixForAxis = CartesianUtil.needFixForAxis(ax.chart, ax);
             if (ticksAvailable) 
             {
                 grph.lineStyle( tickThickness, ColorUtil.str2int(ax.getStyle('tickColor')));
             }
-			if (data.labelInfos)
-			{
-				var idx:int = 0;
-				for each (var labelInfo:LabelInfo in data.labelInfos) 
-				{
-					drawEachTickAndLabel(labelInfo, idx);
-					idx++;
-				}
-			}
-			//else
-			//{
-				//throw new Error("XAxisSimplePrinter: data.labelInfos is null!");
-			//}
-		}
-		
-		/**
+            if (data.labelInfos)
+            {
+                var idx:int = 0;
+                for each (var labelInfo:LabelInfo in data.labelInfos) 
+                {
+                    drawEachTickAndLabel(labelInfo, idx);
+                    idx++;
+                }
+            }
+            //else
+            //{
+                //throw new Error("XAxisSimplePrinter: data.labelInfos is null!");
+            //}
+        }
+        
+        /**
         * 画刻度和标签
         * @param	label
         * @param	idx
@@ -159,39 +154,39 @@ package bee.chart.elements.axis
         */
         protected function drawEachTickAndLabel(labelInfo:LabelInfo, idx:uint):void
         {
-			if (labelInfo.textVisible)
-			{
-				if(ticksAvailable){
-					drawTickAt(idx);
-				}
-				if(labelsAvailable){
-					drawLabelAt(idx);
-				}
-			}
+            if (labelInfo.textVisible)
+            {
+                if(ticksAvailable){
+                    drawTickAt(idx);
+                }
+                if(labelsAvailable){
+                    drawLabelAt(idx);
+                }
+            }
         }
-		
-		protected function drawTickAt(idx:uint):void
+        
+        protected function drawTickAt(idx:uint):void
         {
-			var labelInfo:LabelInfo = data.labelInfos[idx];
-			if (!labelInfo.textVisible)
-			{
-				return;
-			}
-			var centerX:Number = labelInfo.getLabelHorCenter();
-			grph.moveTo( centerX, 0);
-			grph.lineTo( centerX, tickLength);
+            var labelInfo:LabelInfo = data.labelInfos[idx];
+            if (!labelInfo.textVisible)
+            {
+                return;
+            }
+            var centerX:Number = labelInfo.getLabelHorCenter();
+            grph.moveTo( centerX, 0);
+            grph.lineTo( centerX, tickLength);
         }
-		
-		protected function drawLabelAt(idx:uint, hlLabel:Boolean = false):Label
+        
+        protected function drawLabelAt(idx:uint, hlLabel:Boolean = false):Label
         {
             var labelInfo:LabelInfo = data.labelInfos[idx];
             var text:String;
             if (!hlLabel && labelInfo.textVisible == false)
-			{
-				return null;
-			}
-			text = labelInfo.text;
-			
+            {
+                return null;
+            }
+            text = labelInfo.text;
+            
             var lbl:Label = new Label(text);
             lbl.setStyles(_labelStyle);
             lbl.name = 'label' + idx;
@@ -206,13 +201,13 @@ package bee.chart.elements.axis
             ));
             lbl.updateNow();
             var rot:Number = StyleUtil.getNumberStyle(ax, 'labelRotation');
-			if (rot)
-			{
-				lbl.rotation = -rot;
-			}
-			var pos:Point = labelInfo.pos;
-			lbl.x = pos.x;
-			lbl.y = pos.y;
+            if (rot)
+            {
+                lbl.rotation = -rot;
+            }
+            var pos:Point = labelInfo.pos;
+            lbl.x = pos.x;
+            lbl.y = pos.y;
 
             if (_needFixForAxis || ax.getStyle('labelGap') === 'auto')
             {
@@ -220,8 +215,8 @@ package bee.chart.elements.axis
             }
             return lbl;
         }
-		
-		private function fixLabelPos(label:Label,idx:int):void
+        
+        private function fixLabelPos(label:Label,idx:int):void
         {
             var chart:Chart = ax.chart;
             var chartW:Number = chart.chartWidth;
@@ -229,68 +224,68 @@ package bee.chart.elements.axis
             {
                 label.x = 0;
             }else if (idx == data.labelInfos.length - 1 && (label.x +label.contentWidth) > chartW)
-			{
-				label.x = chartW - label.contentWidth;
-			}
+            {
+                label.x = chartW - label.contentWidth;
+            }
         }
-		
-		public function highlightLabelAt(host:AxisView, index:int):void
-		{
-			if(labelsAvailable){
-				ax = host;
-				data = ax.dataModel as AxisData;
-				
-				var label:Label = getLabelAt(index, host) || drawLabelAt(index, true);
-				highlightLabel(label);
-				
-				ax = null;
-				data = null;
-			}
-		}
-		
-		public function clearHighlightLabel(host:AxisView):void
-		{
-			if(labelsAvailable){
-				var data:AxisData = host.dataModel as AxisData;
-				var idx:int = data.highlightValue;
-				if (idx >= 0) {
-					var label:Label = getLabelAt(idx, host);
-					if(label){
-						if (!isLabelTextVisible(data,idx)) {
-							label.parent.removeChild(label);
-						} else {
-							label.state = 'normal';
-						}
-					}
-				}
-			}
-			
-		}
-		
-		private function isLabelTextVisible(data:AxisData, idx:int):Boolean 
-		{
-			var labelInfos:Vector.<LabelInfo> = data.labelInfos;
-			if (idx >= 0 && idx < labelInfos.length)
-			{
-				return labelInfos[idx].textVisible;
-			}
-			return false;
-		}
-
-		public function smoothUpdate(host:IStatesHost, state:String, context:DisplayObjectContainer):void
+        
+        public function highlightLabelAt(host:AxisView, index:int):void
         {
-			renderState(host, state, context);
+            if(labelsAvailable){
+                ax = host;
+                data = ax.dataModel as AxisData;
+                
+                var label:Label = getLabelAt(index, host) || drawLabelAt(index, true);
+                highlightLabel(label);
+                
+                ax = null;
+                data = null;
+            }
+        }
+        
+        public function clearHighlightLabel(host:AxisView):void
+        {
+            if(labelsAvailable){
+                var data:AxisData = host.dataModel as AxisData;
+                var idx:int = data.highlightValue;
+                if (idx >= 0) {
+                    var label:Label = getLabelAt(idx, host);
+                    if(label){
+                        if (!isLabelTextVisible(data,idx)) {
+                            label.parent.removeChild(label);
+                        } else {
+                            label.state = 'normal';
+                        }
+                    }
+                }
+            }
+            
+        }
+        
+        private function isLabelTextVisible(data:AxisData, idx:int):Boolean 
+        {
+            var labelInfos:Vector.<LabelInfo> = data.labelInfos;
+            if (idx >= 0 && idx < labelInfos.length)
+            {
+                return labelInfos[idx].textVisible;
+            }
+            return false;
         }
 
-		protected function highlightLabel(lbl:Label):void
+        public function smoothUpdate(host:IStatesHost, state:String, context:DisplayObjectContainer):void
+        {
+            renderState(host, state, context);
+        }
+
+        protected function highlightLabel(lbl:Label):void
         {
             if(lbl){
                 lbl.state = 'hl';
                 labelContainer.addChild(lbl);
             }
         }
-		
-		private function getLabelAt(index:int, host:AxisView):Label
+        
+        private function getLabelAt(index:int, host:AxisView):Label
         {
             labelContainer = host.content.getChildByName('labels') as Sprite;
             if (labelContainer) {
@@ -298,7 +293,7 @@ package bee.chart.elements.axis
             }
             return null;
         }
-	
-	}
+    
+    }
 
 }

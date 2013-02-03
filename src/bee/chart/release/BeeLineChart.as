@@ -61,20 +61,32 @@ package bee.chart.release
             xAxis {
                 lineColor       : #666666;
                 lineThickness   : 3;
+                tickColor       : #666666;
                 tickThickness   : 0;
+                tickLength      : 3;
             }
 
             xAxis label {
                 paddingLeft     : 0;
                 paddingRight    : 0;
                 color           : #666666;
+                visibility      : visible;
             }
 
             yAxis {
                 lineColor       : #666666;
                 lineThickness   : 3;
+                tickColor       : #666666;
                 tickThickness   : 0;
+                tickLength      : 3;
                 labelGap        : auto;
+            }
+            
+            xAxis label {
+                paddingLeft     : 0;
+                paddingRight    : 0;
+                color           : #666666;
+                visibility      : visible;
             }
             
             canvas {

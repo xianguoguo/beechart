@@ -17,7 +17,7 @@ package bee.chart.elements.axis
      */
     public class AxisWithSmoothPrinter extends AxisSimplePrinter implements IStatePrinterWithUpdate
     {
-		static private const SHOW_TIME:Number = 0.5;
+        static private const SHOW_TIME:Number = 0.5;
         private var maxVal:Number = 0.0;
         private var minVal:Number = 0.0;
         private var maxPt:Point = new Point();
@@ -49,15 +49,15 @@ package bee.chart.elements.axis
         
         private function animate():void 
         {
-			var label:Label;
-			for each (label in _oldLabels) 
-			{
-				fadeOutLabel(label);
-			}
-			for each (label in this.labels) 
-			{
-				fadeInLabel(label);
-			}
+            var label:Label;
+            for each (label in _oldLabels) 
+            {
+                fadeOutLabel(label);
+            }
+            for each (label in this.labels) 
+            {
+                fadeInLabel(label);
+            }
         }
         
         private function fadeOutLabel(label:Label):void 
@@ -186,8 +186,8 @@ package bee.chart.elements.axis
 
         private function shouldTween():Boolean
         {
-			var axisView:AxisView = _host as AxisView;
-			var isTimeLine:Boolean = axisView.chart.getStyle("chartType") == "timeline" ;
+            var axisView:AxisView = _host as AxisView;
+            var isTimeLine:Boolean = axisView.chart.getStyle("chartType") == "timeline" ;
             return AxisData(axisView.dataModel).isValueAxis && labels && labels.length > 0 && !isTimeLine; 
         }
     }
