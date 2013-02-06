@@ -82,7 +82,7 @@ package bee.chart.release
                 labelGap        : auto;
             }
             
-            xAxis label {
+            yAxis label {
                 paddingLeft     : 0;
                 paddingRight    : 0;
                 color           : #666666;
