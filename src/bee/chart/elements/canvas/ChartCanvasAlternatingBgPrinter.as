@@ -17,10 +17,10 @@ package bee.chart.elements.canvas
     * ...
     * @author hua.qiuh
     */
-    public class AlternatingBgPrinter extends PrinterDecorator 
+    public class ChartCanvasAlternatingBgPrinter extends PrinterDecorator 
     {
         
-        public function AlternatingBgPrinter(basePrinter:IStatePrinter = null) 
+        public function ChartCanvasAlternatingBgPrinter(basePrinter:IStatePrinter = null) 
         {
             super(basePrinter);
         }

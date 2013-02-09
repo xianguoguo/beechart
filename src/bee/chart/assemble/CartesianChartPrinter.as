@@ -11,8 +11,8 @@ package bee.chart.assemble
     import bee.chart.elements.axis.AxisView;
     import bee.chart.elements.axis.AxisWithSmoothPrinter;
     import bee.chart.elements.axis.XAxis;
-    import bee.chart.elements.canvas.AlternatingBgPrinter;
     import bee.chart.elements.canvas.ChartCanvas;
+    import bee.chart.elements.canvas.ChartCanvasAlternatingBgPrinter;
     import bee.chart.elements.canvas.ChartCanvasWithGridPrinter;
     import bee.chart.elements.canvas.ChartCanvasWithSmoothPrinter;
     import bee.chart.elements.legend.item.LegendItem;
@@ -20,8 +20,8 @@ package bee.chart.assemble
     import bee.chart.elements.legend.Legend;
     import bee.chart.elements.legend.LegendAlign;
     import bee.chart.elements.legend.LegendPosition;
-	import bee.chart.elements.timeline.labelmaker.LabelInfo;
-	import bee.chart.elements.timeline.labelmaker.XAxisLabelInfosMaker;
+    import bee.chart.elements.timeline.labelmaker.LabelInfo;
+    import bee.chart.elements.timeline.labelmaker.XAxisLabelInfosMaker;
     import bee.chart.util.StringFormater;
     import bee.printers.IStatePrinter;
     import bee.util.StyleUtil;
@@ -122,7 +122,7 @@ package bee.chart.assemble
             canvas.secLinePoses = transLinePosFromLabel();
             reSetCanvasPrinter(canvas, host.getStyle('smooth'));
             host.addElement(canvas);
-			canvas.updateViewNow();
+            canvas.updateViewNow();
             context.addChild(canvas);
         }
         
@@ -147,7 +147,7 @@ package bee.chart.assemble
             var printer:IStatePrinter = canvas.skin.statePrinter;
             if (canvas.hasStyle('backgroundColor2'))
             {
-                printer = new AlternatingBgPrinter(printer);
+                printer = new ChartCanvasAlternatingBgPrinter(printer);
             }
             if (canvas.hasStyle('priLineThickness') || canvas.hasStyle('secLineThickness') || canvas.hasStyle('gridThickness'))
             {
@@ -185,10 +185,10 @@ package bee.chart.assemble
                 var labels:Vector.<String> = new <String>[];
                 if (ticks)
                 {
-					for each (var tick:Number in ticks) 
-					{
-						labels.push(StringFormater.format(tick, ''));
-					}
+                    for each (var tick:Number in ticks) 
+                    {
+                        labels.push(StringFormater.format(tick, ''));
+                    }
                 }
                 if (toDrawLYAxis)
                 {
@@ -204,9 +204,9 @@ package bee.chart.assemble
         protected function drawXAxis(host:CartesianChartViewer, context:DisplayObjectContainer, rect:Rectangle):void
         {
             var xAxis:XAxis = getStyledXAxis(host) as XAxis;
-			xAxis.name = "XAxis";
+            xAxis.name = "XAxis";
             xAxis.length = host.chartModel.chartWidth;
-			xAxis.setStyle("smooth", host.getStyle("smooth"));
+            xAxis.setStyle("smooth", host.getStyle("smooth"));
             reSetAxisPrinter(xAxis, host.getStyle('smooth'));
             
             var data:CartesianChartData = host.chartModel.data as CartesianChartData;
@@ -259,31 +259,31 @@ package bee.chart.assemble
             return xAxis;
         }
         
-		protected function createYAxis(host:CartesianChartViewer, labels:Vector.<String>, isValueAxis:Boolean = true, direction:uint = AxisDirection.UP):Axis
-		{
-			var data:CartesianChartData = host.chartModel.data as CartesianChartData;
+        protected function createYAxis(host:CartesianChartViewer, labels:Vector.<String>, isValueAxis:Boolean = true, direction:uint = AxisDirection.UP):Axis
+        {
+            var data:CartesianChartData = host.chartModel.data as CartesianChartData;
             var yAxis:Axis = host.requestElement(Axis) as Axis;
-			yAxis.name = "yAxis";
-			yAxis.setStyle("labelFormat",host.getStyle("valueLabelFormat"));
-			yAxis.setStyle("smooth", host.getStyle("smooth"));
+            yAxis.name = "yAxis";
+            yAxis.setStyle("labelFormat",host.getStyle("valueLabelFormat"));
+            yAxis.setStyle("smooth", host.getStyle("smooth"));
             reSetAxisPrinter(yAxis, host.getStyle('smooth'));
             yAxis.mouseEnabled = false;
             yAxis.direction = direction;
             yAxis.length = host.chartModel.chartHeight;
             yAxis.isValueAxis = isValueAxis;
-			
-			yAxis.axisData.valueType = data.valueType;
-			
+            
+            yAxis.axisData.valueType = data.valueType;
+            
             host.addElement(yAxis);
             StyleUtil.inheritStyleSheet(yAxis, 'yAxis', host);
-			yAxis.labels = labels;
-			return yAxis;
-		}
-		
+            yAxis.labels = labels;
+            return yAxis;
+        }
+        
         protected function drawLeftYAxis(host:CartesianChartViewer, labels:Vector.<String>, context:DisplayObjectContainer, rect:Rectangle):void
         {
             var yAxis:Axis = createYAxis(host,labels);
-			context.addChild(yAxis);
+            context.addChild(yAxis);
             yAxis.updateViewNow();
             yAxis.x = rect.left;
             rect.left -= yAxis.width;
@@ -292,8 +292,8 @@ package bee.chart.assemble
         protected function drawRightYAxis(host:CartesianChartViewer, labels:Vector.<String>, context:DisplayObjectContainer, rect:Rectangle):void
         {
             var yAxisR:Axis = createYAxis(host,labels);
-			yAxisR.x = host.chartModel.chartWidth;
-			context.addChild(yAxisR);
+            yAxisR.x = host.chartModel.chartWidth;
+            context.addChild(yAxisR);
             yAxisR.updateViewNow();
             yAxisR.x = rect.right;
             rect.right += yAxisR.width;
@@ -441,20 +441,20 @@ package bee.chart.assemble
             {
                 if (ticks)
                 {
-					for each (var tick:Number in ticks) 
-					{
-						labels.push(StringFormater.format(tick, ''));
-					}
+                    for each (var tick:Number in ticks) 
+                    {
+                        labels.push(StringFormater.format(tick, ''));
+                    }
                 }
             }
             else
             {
                 labels = data.labels;
-				//Hbar情况下该条件不成立
-				if (axis is XAxis)
-				{
-					(axis as XAxis).labelInfos = newLabelInfos(true);
-				}
+                //Hbar情况下该条件不成立
+                if (axis is XAxis)
+                {
+                    (axis as XAxis).labelInfos = newLabelInfos(true);
+                }
             }
             axis.labels = labels;
         }

@@ -24,8 +24,6 @@ package bee.chart.elements.canvas
             
         }
         
-        /* INTERFACE cn.alibaba.yid.printers.IStatePrinter */
-        
         public function renderState(host:IStatesHost, state:String, context:DisplayObjectContainer):void
         {
             var canvas:ChartCanvasView = host as ChartCanvasView;

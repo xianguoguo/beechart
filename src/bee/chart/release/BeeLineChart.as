@@ -90,8 +90,12 @@ package bee.chart.release
             }
             
             canvas {
-                backgroundColor2: #F8F8F8;
+                borderColor     : #cccccc;
+                borderThickness : 0;
+                borderAlpha     : 0;
                 backgroundColor : #FFFFFF;
+                backgroundColor2: #F8F8F8;
+                backgroundAlpha : 1;
                 priLineThickness: 1;
                 priLineColor    : #F2F2F2;
                 priLineAlpha    : 1;

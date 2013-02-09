@@ -98,7 +98,7 @@ package bee.chart.elements.canvas
                     var secLineColor:uint       = canvasView.hasStyle('secLineColor') ? StyleUtil.getColorStyle(canvasView, 'secLineColor') : gridColor;
                     var secLineAlpha:Number     = StyleUtil.getNumberStyle(canvasView, 'secLineAlpha', gridAlpha);
                     var secLineStyle:String     = canvasView.getStyle('secLineStyle');
-                    var gap:uint                = StyleUtil.getNumberStyle(canvasView, 'secLineGap', 0);
+                    //var gap:uint                = StyleUtil.getNumberStyle(canvasView, 'secLineGap', 0);
                     dashed                      = secLineStyle === 'dashed';
                     var secLinePoses:Vector.<Point> = (canvasView.host as ChartCanvas).secLinePoses;
                     grph.lineStyle(secLineFat, secLineColor, secLineAlpha);

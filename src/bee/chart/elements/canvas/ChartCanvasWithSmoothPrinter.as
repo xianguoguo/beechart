@@ -1,16 +1,16 @@
 package bee.chart.elements.canvas
 {
-	import bee.abstract.IStatesHost;
-	import bee.chart.abstract.Chart;
-	import bee.chart.util.CartesianUtil;
-	import bee.printers.IStatePrinter;
-	import bee.printers.IStatePrinterWithUpdate;
-	import bee.printers.PrinterDecorator;
-	import flash.display.DisplayObjectContainer;
-	import flash.display.Shape;
-	import flash.display.Sprite;
-	import flash.geom.Point;
-	import com.greensock.TweenLite;
+    import bee.abstract.IStatesHost;
+    import bee.chart.abstract.Chart;
+    import bee.chart.util.CartesianUtil;
+    import bee.printers.IStatePrinter;
+    import bee.printers.IStatePrinterWithUpdate;
+    import bee.printers.PrinterDecorator;
+    import flash.display.DisplayObjectContainer;
+    import flash.display.Shape;
+    import flash.display.Sprite;
+    import flash.geom.Point;
+    import com.greensock.TweenLite;
 
     /**
      * ...
@@ -135,15 +135,15 @@ package bee.chart.elements.canvas
         {
             if (getHlineContainer())
             {
-				var line:Shape;
-				for each (line in _oldhlines) 
-				{
-					fadeOutLine(line);
-				}
-				for each (line in _newhlines) 
-				{
-					fadeInLine(line);
-				}
+                var line:Shape;
+                for each (line in _oldhlines) 
+                {
+                    fadeOutLine(line);
+                }
+                for each (line in _newhlines) 
+                {
+                    fadeInLine(line);
+                }
             }
             animateBackground();
         }

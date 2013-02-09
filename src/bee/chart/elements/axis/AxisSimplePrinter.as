@@ -21,7 +21,7 @@ package bee.chart.elements.axis
     import flash.geom.Rectangle;
     import flash.utils.Dictionary;
 
-	/**
+    /**
     * ...
     * @author hua.qiuh
     */
@@ -44,8 +44,7 @@ package bee.chart.elements.axis
         
         private var _needFixForAxis:Boolean = false;
         
-		private var _labelStyle:Object;
-        /* INTERFACE cn.alibaba.yid.printers.IStatePrinter */
+        private var _labelStyle:Object;
         
         public function renderState(host:IStatesHost, state:String, context:DisplayObjectContainer):void
         {
@@ -61,18 +60,18 @@ package bee.chart.elements.axis
             ax = host as AxisView;
             data = ax.dataModel as AxisData;
             
-			initObj();
+            initObj();
             drawMainLine();
             drawTicksAndLabels();
             clean();
         }
-		
-		private function initObj():void 
-		{
-			_labelStyle = StyleUtil.inheritStyle(
+        
+        private function initObj():void 
+        {
+            _labelStyle = StyleUtil.inheritStyle(
                 ax.styleSheet.getStyle('label'),
                 ax);
-		}
+        }
         
         protected function reset(context:DisplayObjectContainer):void 
         {
@@ -123,7 +122,7 @@ package bee.chart.elements.axis
             tickLength = StyleUtil.getNumberStyle(ax, 'tickLength');
             tickThickness = StyleUtil.getNumberStyle(ax, 'tickThickness');
             ticksAvailable = tickThickness && tickLength;
-			labelsAvailable = ax.styleSheet.getStyle('label')['visibility'] !== 'hidden';
+            labelsAvailable = ax.styleSheet.getStyle('label')['visibility'] !== 'hidden';
             tckPosNormal = ax.getStyle('tickPosition') != 'reverse';
             _needFixForAxis = CartesianUtil.needFixForAxis(ax.chart, ax);
             if (ticksAvailable) 
@@ -131,12 +130,12 @@ package bee.chart.elements.axis
                 grph.lineStyle( tickThickness, ColorUtil.str2int(ax.getStyle('tickColor')));
             }
             isTempCreatedLabel = new Dictionary(true);
-			var idx:int = 0;
-			for each (var label:String in data.labels) 
-			{
-				drawEachTickAndLabel(label,idx);
-				idx++;
-			}
+            var idx:int = 0;
+            for each (var label:String in data.labels) 
+            {
+                drawEachTickAndLabel(label,idx);
+                idx++;
+            }
         }
     
         /**
@@ -200,10 +199,10 @@ package bee.chart.elements.axis
             if (data.isValueAxis) {
                 value = getNumber(label);
                 text = StringFormater.format(
-					value, 
-					ax.getStyle('labelFormat'), 
-					data.valueType
-				);
+                    value, 
+                    ax.getStyle('labelFormat'), 
+                    data.valueType
+                );
             } else {
                 text = StringFormater.format(
                     label, 
@@ -215,7 +214,7 @@ package bee.chart.elements.axis
             var lbl:Label = new Label(text);
             lbl.setStyles(_labelStyle);
             lbl.name = 'label' + idx;
-			lbl.dataValue = value;
+            lbl.dataValue = value;
             labelContainer.addChildAt(lbl, 0);
             labels.push(lbl);
             
@@ -231,8 +230,8 @@ package bee.chart.elements.axis
             var pt:Point = getLabelPosition( lbl ,ax);
             lbl.x = pt.x;
             lbl.y = pt.y;
-			
-			modifyForTimeType(idx, data, lbl);
+            
+            modifyForTimeType(idx, data, lbl);
             
             if (_needFixForAxis || ax.getStyle('labelGap') === 'auto')
             {
@@ -245,26 +244,26 @@ package bee.chart.elements.axis
             }
             return lbl;
         }
-		
-		private function modifyForTimeType(idx:uint, data:AxisData, lbl:Label):void 
-		{
-			if (data.valueType == "time") {
-				//解决Y轴为时间刻度时最大值显示当天的24:00:00点为00:00:00
-				if ((idx == data.labels.length - 1) && (lbl.text == "00:00:00")) {
-					lbl.text = "24:00:00";
-				}
-				if ((idx == data.labels.length - 1) && (lbl.text == "00:00")) {
-					lbl.text = "24:00";
-				}
-			}
-		}
+        
+        private function modifyForTimeType(idx:uint, data:AxisData, lbl:Label):void 
+        {
+            if (data.valueType == "time") {
+                //解决Y轴为时间刻度时最大值显示当天的24:00:00点为00:00:00
+                if ((idx == data.labels.length - 1) && (lbl.text == "00:00:00")) {
+                    lbl.text = "24:00:00";
+                }
+                if ((idx == data.labels.length - 1) && (lbl.text == "00:00")) {
+                    lbl.text = "24:00";
+                }
+            }
+        }
         
         protected function getLabelPosition(lbl:Label, ax:AxisView):Point 
         {
             var pt:Point;
             var chart:Chart = ax.chart;
             var value:Number = lbl.dataValue;
-			
+            
             var idx:uint = getLabelIdx(lbl);
             var adjust:Number = ax.getStyle('labelPosition') === 'center' ? 0.5 : 0;
             var data:AxisData = ax.dataModel as AxisData;
@@ -278,9 +277,9 @@ package bee.chart.elements.axis
                         pt = chart.chartToViewXY(idx + adjust, 0);
                         pt.y += chart.chartHeight;
                     }
-					
-					pt.x = tckPosNormal ? -tickLength - lbl.width : tickLength;
-					
+                    
+                    pt.x = tckPosNormal ? -tickLength - lbl.width : tickLength;
+                    
                     pt.y -= (lbl.contentHeight >> 1);
                     break;
                     
@@ -361,7 +360,7 @@ package bee.chart.elements.axis
             sp     		= null;
             grph   		= null;
             _range  	= null;
-			_labelStyle = null;
+            _labelStyle = null;
         }
         
         protected function isLabelAvailableAt(idx:uint, host:AxisView):Boolean
@@ -369,11 +368,11 @@ package bee.chart.elements.axis
             return shouldLabelsBeDrawed(host) && !(idx % (uint(host.getStyle('labelGap')) + 1));
         }
 
-		protected function shouldLabelsBeDrawed(host:AxisView):Boolean
-		{
+        protected function shouldLabelsBeDrawed(host:AxisView):Boolean
+        {
             var labelStyle:Object = host.styleSheet.getStyle('label');
-			return labelStyle['visibility'] != 'hidden';
-		}
+            return labelStyle['visibility'] != 'hidden';
+        }
         
         protected function getNumber(label:String):Number
         {
@@ -384,16 +383,16 @@ package bee.chart.elements.axis
         
         public function highlightLabelAt(host:AxisView, index:int):void
         {
-			if(labelsAvailable){
-				ax = host;
-				data = ax.dataModel as AxisData;
-				
-				var label:Label = getLabelAt(index, host) || drawLabelAt(index);
-				highlightLabel(label);
-				
-				ax = null;
-				data = null;
-			}
+            if(labelsAvailable){
+                ax = host;
+                data = ax.dataModel as AxisData;
+                
+                var label:Label = getLabelAt(index, host) || drawLabelAt(index);
+                highlightLabel(label);
+                
+                ax = null;
+                data = null;
+            }
         }
         
         public function clearHighlightLabel(host:AxisView):void
