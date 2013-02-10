@@ -83,11 +83,23 @@ package bee.chart.release
                 }
                 
                 canvas {
-                    backgroundColor2: #F8F8F8;
+                    borderColor     : #F2F2F2;
+                    borderThickness : 0;
+                    borderAlpha     : 1;
                     backgroundColor : #FFFFFF;
+                    backgroundColor2: #F8F8F8;
+                    backgroundAlpha : 1;
+                    gridColor       : #F2F2F2;
+                    gridThickness   : 0;
+                    gridAlpha       : 1;
                     priLineThickness: 1;
                     priLineColor    : #F2F2F2;
                     priLineAlpha    : 1;
+                    priLineStyle    : line;
+                    secLineThickness: 0;
+                    secLineColor    : #F2F2F2;
+                    secLineAlpha    : 1;
+                    secLineStyle    : line;
                 }
 
                 guideLine {
