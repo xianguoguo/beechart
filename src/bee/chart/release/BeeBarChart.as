@@ -41,6 +41,7 @@ package bee.chart.release
                 }
 
                 bar {
+                    color           : inherit#color;
                     color.hl        : #C5C5C5;
                     dropShadow      : none;
                     borderThickness : 1;
@@ -61,6 +62,7 @@ package bee.chart.release
                     paddingLeft     : 0;
                     paddingRight    : 0;
                     color           : #666666;
+                    visibility      : visible;
                 }
 
                 yAxis {

@@ -199,7 +199,7 @@ package bee.chart.assemble.bar
                 dSet = sets[i];
                 var barStyle:Object = StyleUtil.mergeStyle(dSet.config.style, dfltStyle);
                 //若无指定颜色，就采用自动配置颜色
-                if(!barStyle.color && (!dSet.config.style || !dSet.config.style.color)){
+                if((!barStyle.color || barStyle.color == "inherit#color") && (!dSet.config.style || !dSet.config.style.color)){
                     barStyle["color"] = ColorUtil.int2str(ChartUtil.getColor(dSet, i));
                 }
                 var idx:int = 0;

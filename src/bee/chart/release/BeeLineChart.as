@@ -39,23 +39,35 @@ package bee.chart.release
             }
 
             line {
-                dropshadow      : none;
-                lineMethod      : line;
-                thickness       : 3;
-                fillType        : gradient;
-                fillAlpha.active: .3;
+                lineMethod             : curve;
+                dropShadow             : light;
+                thickness              : 3;
+                fillType               : gradient;
+                fillAlpha              : 0;
+                lineMethod.active      : curve;
+                dropshadow.active      : light;
+                thickness.active       : 3;
+                fillType.active        : gradient;
+                fillAlpha.active       : .3;
             }
 
             line dot {
-                color	        : #FFFFFF;
-                borderColor	    : inherit#color;
-                borderThickness	: 2;
-                shape	        : circle;
-                radius	        : 3;
-                color.hl        : inherit#color;
-                borderColor.hl  : #FFFFFF;
-                radius.hl	    : 7;
-                dropShadow.hl   : light;
+                shape               : circle;
+                color               : #FFFFFF;
+                radius              : 3;
+                alpha               : 1;
+                borderColor         : inherit#color;
+                borderThickness     : 2;
+                borderAlpha         : 1;
+                dropShadow          : none;
+                shape.hl            : circle;
+                color.hl            : inherit#color;
+                radius.hl           : 7;
+                alpha.hl            : 1;
+                borderColor.hl      : #FFFFFF;
+                borderThickness.hl  : 2;
+                borderAlpha.hl      : 1;
+                dropShadow.hl       : light;
             }
 
             xAxis {
@@ -109,7 +121,7 @@ package bee.chart.release
                 secLineStyle    : line;
             }
 
-            guideLine {
+            guideline {
                 color           : #BBBBBB;
             }
 

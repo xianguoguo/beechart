@@ -1,33 +1,33 @@
 package bee.chart.elements.guideline
 {
-	import cn.alibaba.core.IDisposable;
-	import cn.alibaba.util.ColorUtil;
+    import cn.alibaba.core.IDisposable;
+    import cn.alibaba.util.ColorUtil;
     import bee.abstract.CComponent;
-	import bee.chart.abstract.Chart;
+    import bee.chart.abstract.Chart;
     import bee.chart.abstract.ChartElement;
     import bee.performers.IPerformer;
     import bee.performers.SimplePerformer;
     import bee.printers.IStatePrinter;
-	import flash.display.Graphics;
-	import flash.display.Shape;
+    import flash.display.Graphics;
+    import flash.display.Shape;
     import com.greensock.TweenLite;
-	
-	/**
-	 * ...
-	 * @author jianping.shenjp
-	 */
-	public class GuideLine extends CComponent
-	{
+    
+    /**
+     * ...
+     * @author jianping.shenjp
+     */
+    public class GuideLine extends CComponent
+    {
         
         static public var defaultStatePrinter:IStatePrinter = new GuideLineSimplePrinter;
         static public var defaultPerformer:IPerformer = SimplePerformer.instance;
         private var _isTweening:Boolean = false;
         
-		public function GuideLine()
-		{
+        public function GuideLine()
+        {
             skin.statePrinter   = defaultStatePrinter;
             skin.performer      = defaultPerformer;
-		}
+        }
         
         public function hide():void 
         {
@@ -70,6 +70,6 @@ package bee.chart.elements.guideline
                 thickness : 1
             };
         }
-	}
+    }
 
 }

@@ -8,10 +8,10 @@ package bee.chart.assemble.line
     import bee.chart.events.ChartUIEvent;
     import bee.util.StyleUtil;
     import flash.display.DisplayObjectContainer;
-	import flash.events.MouseEvent;
+    import flash.events.MouseEvent;
     import flash.geom.Point;
-	
-	/**
+    
+    /**
     * 特点：
     * 1.具有引导线；
     * 2.引导线上的点全部高亮显示；
@@ -65,16 +65,16 @@ package bee.chart.assemble.line
             currentHighlitingPt = nearestPt;
         }
         
-		/**
-		 * 修复用户鼠标移动到x坐标轴之下再上移，点不高亮的bug
-		 * @param	e
-		 */
-		override protected function onRollOut(e:MouseEvent):void 
-		{
-			super.onRollOut(e);
-			currentHighlitingPt = null;
-		}
-		
+        /**
+         * 修复用户鼠标移动到x坐标轴之下再上移，点不高亮的bug
+         * @param	e
+         */
+        override protected function onRollOut(e:MouseEvent):void 
+        {
+            super.onRollOut(e);
+            currentHighlitingPt = null;
+        }
+        
         private function hasFocusChanged(xIndex:int, nearestPt:I2VPoint):Boolean
         {
             return currentHighlitingPt && xIndex != currentHighlitingPt.x
@@ -139,7 +139,7 @@ package bee.chart.assemble.line
             if (!_guideLine)
             {
                 addGuideLine();
-				ajustLineZIndex();
+                ajustLineZIndex();
             }
             _guideLine.show();
             _guideLine.x = x;
@@ -147,9 +147,9 @@ package bee.chart.assemble.line
         
         private function addGuideLine():void 
         {
-			if(_guideLine) {
-				disposeGuideLine();
-			}
+            if(_guideLine) {
+                disposeGuideLine();
+            }
             _guideLine = new GuideLine();
             StyleUtil.inheritStyleSheet(_guideLine, 'guideline', this);
             _guideLine.setStyle('length', _chartHeight.toString());
@@ -161,21 +161,21 @@ package bee.chart.assemble.line
 
         override public function set state(value:String):void 
         {
-			prepareForRedraw();
-			super.state = value;
+            prepareForRedraw();
+            super.state = value;
         }
 
-		private function prepareForRedraw():void
-		{
-			disposeGuideLine();
-			_linesContainer = null;
-		}
+        private function prepareForRedraw():void
+        {
+            disposeGuideLine();
+            _linesContainer = null;
+        }
 
-		override protected function redrawDirectly():void
-		{
-			prepareForRedraw();
-			super.redrawDirectly();
-		}
+        override protected function redrawDirectly():void
+        {
+            prepareForRedraw();
+            super.redrawDirectly();
+        }
         
         private function ajustLineZIndex():void
         {
