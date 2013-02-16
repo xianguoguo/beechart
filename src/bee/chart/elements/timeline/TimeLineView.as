@@ -25,12 +25,12 @@ package bee.chart.elements.timeline
         override protected function get defaultStyles():Object { 
             return {
                 'smooth'         	 : true,
-				'height' 		 	 : 50,
-				'previewFillColor'	 : "#D7D7D7",//时间线预览区的颜色值
-				'previewLineColor'	 : "#CCCCCC",//时间线预览区边框的颜色值
-				'selectedFillColor'  : "#E5F1FE",//时间选区选中的颜色值
-				'selectedLineColor'  : "#A2C2E2",//时间选区选中边框的颜色值
-				'boardColor'		 : "#CCCCCC" //时间线预览区边框颜色值
+                'height' 		 	 : 50,
+                'previewFillColor'	 : "#D7D7D7",//时间线预览区的颜色值
+                'previewLineColor'	 : "#CCCCCC",//时间线预览区边框的颜色值
+                'selectedFillColor'  : "#E5F1FE",//时间选区选中的颜色值
+                'selectedLineColor'  : "#A2C2E2",//时间选区选中边框的颜色值
+                'boardColor'		 : "#CCCCCC" //时间线预览区边框颜色值
             };
         }
         

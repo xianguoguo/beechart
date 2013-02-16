@@ -41,13 +41,20 @@ package bee.chart.release
                 }
 
                 bar {
-                    color           : inherit#color;
-                    color.hl        : #C5C5C5;
-                    dropShadow      : none;
-                    borderThickness : 1;
-                    borderColor     : #FFFFFF;
-                    brightnessFading: -0.2;
-                    backgroundType.hl : slash;
+                    color                : inherit#color;
+                    dropShadow           : none;
+                    borderThickness      : 1;
+                    backgroundType       : simple;
+                    borderColor          : #FFFFFF;
+                    brightnessFading     : -0.2;
+                    valueVisibility      : none;
+                    color.hl             : #C5C5C5;
+                    dropShadow.hl        : none;
+                    borderThickness.hl   : 1;
+                    backgroundType.hl    : slash;
+                    borderColor.hl       : #FFFFFF;
+                    brightnessFading.hl  : -0.2;
+                    valueVisibility.hl   : none;
                 }
 
                 xAxis {

@@ -8,10 +8,10 @@ package bee.chart.assemble.line.timeline
     import bee.chart.assemble.line.LineChartViewer;
     import bee.chart.elements.cursor.Cursor;
     import bee.chart.elements.cursor.CursorManager;
-	import bee.chart.elements.timeline.RangeLocationEvent;
+    import bee.chart.elements.timeline.RangeLocationEvent;
     import bee.chart.elements.timeline.TimeLine;
     import bee.chart.elements.timeline.TimeLineModel;
-	import bee.util.StyleUtil;
+    import bee.util.StyleUtil;
     import flash.display.DisplayObjectContainer;
     import flash.geom.Rectangle;
     
@@ -35,7 +35,10 @@ package bee.chart.assemble.line.timeline
             {
                 var w:Number = viewer.chartModel.chartWidth;
                 var h:Number = viewer.chartModel.chartHeight;
-                
+                if (viewer.getStyle("smooth") == "false") {
+                    viewer.setStyle("smooth", "true");
+                    return;
+                }
                 clearContent(context);
                 var rect:Rectangle = new Rectangle(0, -h, w, h);
                 drawCanvas(viewer, w, h, context, rect);
@@ -60,21 +63,21 @@ package bee.chart.assemble.line.timeline
             model.dataIndexRange = data.dataIndexRange;
             model.labels = data.allLabels;
             model.dataSets = data.allSets;
-			model.chartPosFunction = viewer.chartToViewXY;
-			model.chartHeight = viewer.chartModel.chartHeight;
+            model.chartPosFunction = viewer.chartToViewXY;
+            model.chartHeight = viewer.chartModel.chartHeight;
             var timeLine:TimeLine = new TimeLine();
-			timeLine.name = 'timeline';
-			timeLine.setStyles(_viewer.styleSheet.getStyle('timeline'));
-			model.width = viewer.chartModel.chartWidth;
+            timeLine.name = 'timeline';
+            timeLine.setStyles(_viewer.styleSheet.getStyle('timeline'));
+            model.width = viewer.chartModel.chartWidth;
             model.height = StyleUtil.getNumberStyle(timeLine,"height");
             timeLine.setModel(model);
             viewer.addElement(timeLine);
             model.dispatchBtnLocationEvent();
             context.addChild(timeLine);
             timeLine.y = rect.bottom;
-			model.dispatchEvent(new RangeLocationEvent(RangeLocationEvent.SET_ONE_TIME_RANGE, Number.NaN, Number.NaN, true));
-			viewer.updateNow();
-		}
+            model.dispatchEvent(new RangeLocationEvent(RangeLocationEvent.SET_ONE_TIME_RANGE, Number.NaN, Number.NaN, true));
+            viewer.updateNow();
+        }
         
         private function addCustomCursor(viewer:CartesianChartViewer, context:DisplayObjectContainer):void
         {

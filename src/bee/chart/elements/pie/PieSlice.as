@@ -1,24 +1,24 @@
 package bee.chart.elements.pie 
 {
-	import bee.chart.abstract.ChartElement;
+    import bee.chart.abstract.ChartElement;
     import bee.chart.assemble.pie.PieChartViewer;
-	import bee.controls.label.Label;
+    import bee.controls.label.Label;
     import flash.display.DisplayObject;
     import flash.geom.Point;
-	
-	/**
-	 * ...
-	 * @author jianping.shenjp
-	 */
-	public class PieSlice extends ChartElement 
-	{
-		public function PieSlice() 
-		{
-			setModel(new PieSliceData());
-			setView(new PieSliceView(this));
+    
+    /**
+     * ...
+     * @author jianping.shenjp
+     */
+    public class PieSlice extends ChartElement 
+    {
+        public function PieSlice() 
+        {
+            setModel(new PieSliceData());
+            setView(new PieSliceView(this));
             //使得对象的子项是不支持鼠标，鼠标点击事件分发着为PieSlice.
             this.mouseChildren = false;
-		}
+        }
         
         /**
         * 对Slice的标签位置（半径）进行调整
@@ -34,14 +34,14 @@ package bee.chart.elements.pie
         {
             return __view.getContentCenter(coord);
         }
-		
-		/**
-		 * 获得对应的label
-		 * */
-		public function get label():Label
-		{
-			return __view.label;
-		}
+        
+        /**
+         * 获得对应的label
+         * */
+        public function get label():Label
+        {
+            return __view.label;
+        }
         
         public function get index():int { return __data.index; }
         public function set index(value:int):void 
@@ -77,6 +77,6 @@ package bee.chart.elements.pie
             return "[PieSlice#" + index + " " + __data.name + "]";
         }
 
-	}
+    }
 
 }

@@ -5,6 +5,7 @@ package bee.chart.demo.pie
     import bee.chart.elements.tooltip.TooltipForAliPrinter;
     import bee.chart.elements.tooltip.TooltipView;
     import bee.chart.PieChart;
+    import bee.chart.release.BeePieChart;
 	
 	/**
      * ...
@@ -22,7 +23,7 @@ package bee.chart.demo.pie
         {
             TooltipView.defaultStatePrinter = new TooltipForAliPrinter;
             
-            var chart:Chart = new PieChart();
+            var chart:Chart = new BeePieChart();
             
             var content:XML = 
                 <chart>
@@ -59,31 +60,7 @@ package bee.chart.demo.pie
 
                         </dataSets>
                     </data>
-                    <css>
-                        <![CDATA[
-                            slice {
-                                //labelSetType    : normal;
-                                labelPosition   : callout;
-                                frameThickness  : 5;
-                                frameColor      : #FFFFFF;
-                            }
-                            tooltip {
-                                tip : #value# of #total#<br>#percent#;
-                            }
-                            
-                            legend {
-                                position      : bottom;
-                                align         : left;
-                                paddingRight  : 0;
-                            }
-                            
-                            chart {
-                                colors: #FA6222, #FEC53F, #DBEE27, #87C822, #49AFB1;
-                                animate:clockwise;
-                                order:asc;
-                            }
-                        ]]>
-                    </css>
+                   
                 </chart>;
             
             chart.parse(content);

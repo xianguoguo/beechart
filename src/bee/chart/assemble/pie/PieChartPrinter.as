@@ -31,14 +31,14 @@ package bee.chart.assemble.pie
     import flash.display.Shape;
     import flash.display.Sprite;
     import flash.geom.Rectangle;
-	
-	/**
-	 * PieChartViewer的绘制类
-	 * @author jianping.shenjp
-	 */
-	public class PieChartPrinter extends ChartBasicPrinter implements IStatePrinterWithUpdate
-	{
-		private var orderType:String = "";
+    
+    /**
+     * PieChartViewer的绘制类
+     * @author jianping.shenjp
+     */
+    public class PieChartPrinter extends ChartBasicPrinter implements IStatePrinterWithUpdate
+    {
+        private var orderType:String = "";
         
         override protected function renderNormalState(host:ChartViewer, context:DisplayObjectContainer):void 
         {
@@ -65,25 +65,25 @@ package bee.chart.assemble.pie
             }
             
             viewer.arrangeSliceLabels(viewer.chart, viewer.pieSlices);
-			viewer.makeSelfCenter();
+            viewer.makeSelfCenter();
             
             viewer = null;
         }
-		
+        
         /**
-		 * 绘制圆饼
-		 * @param	pieChartViewer
-		 * @param	width
-		 * @param	height
-		 */
-		private function drawPieSlices(viewer:PieChartViewer, width:Number, height:Number, context:DisplayObjectContainer):void
-		{
+         * 绘制圆饼
+         * @param	pieChartViewer
+         * @param	width
+         * @param	height
+         */
+        private function drawPieSlices(viewer:PieChartViewer, width:Number, height:Number, context:DisplayObjectContainer):void
+        {
             viewer.clearPieSlices();
             var pieslices:Vector.<PieSlice>;
-			var sliceStyle:Object     = viewer.styleSheet.getStyle("slice");
+            var sliceStyle:Object     = viewer.styleSheet.getStyle("slice");
             sliceStyle["smooth"] = viewer.getStyle("smooth");
             const chartModel:ChartModel = viewer.chartModel;
-			const radius:Number         = Math.min(width, height) >> 1;
+            const radius:Number         = Math.min(width, height) >> 1;
             orderType = viewer.getStyle("order");
             var datas:Vector.<PieSliceData> = (new PieChartDataHandle()).handleData(chartModel, orderType);
             setStartRadian(datas,StyleUtil.getNumberStyle(viewer,"startAngle",0));
@@ -105,7 +105,7 @@ package bee.chart.assemble.pie
             pieslices = null;
             
             addBg(viewer, radius);
-		}
+        }
 
         private function setStartRadian(datas:Vector.<PieSliceData>, startAngle:Number):void 
         {
@@ -167,8 +167,8 @@ package bee.chart.assemble.pie
         
         /**
         * 添加一个隐藏的背景
-		* 防止不经意间触发mouseOut事件
-		* 改善用户体验
+        * 防止不经意间触发mouseOut事件
+        * 改善用户体验
         * @param	context
         * @param	centerX
         * @param	centerY
@@ -177,14 +177,14 @@ package bee.chart.assemble.pie
         private function addBg(viewer:PieChartViewer, radius:Number):void 
         {
             const centerX:Number = 0;
-			const centerY:Number = 0;
+            const centerY:Number = 0;
             var pieSlicesContainer:Sprite = viewer.pieSlicesContainer;
             var bg:Shape = new Shape();
             var g:Graphics = bg.graphics;
-			g.beginFill(0, 0);
-			g.drawCircle(centerX, centerY, radius);
-			g.endFill();
-			pieSlicesContainer.addChildAt(bg, 0);
+            g.beginFill(0, 0);
+            g.drawCircle(centerX, centerY, radius);
+            g.endFill();
+            pieSlicesContainer.addChildAt(bg, 0);
         }
         
         private function setPieSliceDataAndStyle(pieSlice:PieSlice, pieSliceData:PieSliceData, sliceStyle:Object, viewer:PieChartViewer):void 
@@ -197,29 +197,29 @@ package bee.chart.assemble.pie
             ));
         }
         
-		/**
-		 * 根据配置，重新设置PieSlice的Printer
-		 * @param	pieSlice
-		 */
-		private function reSetPieSlicePrinter(pieSlice:PieSlice):void
-		{
-			/**
-			 * 根据设定配置performer.
-			 * mouseAnimate:true 鼠标经过有弹出效果.
-			 * 				false 鼠标经过无弹出效果.
-			 * */
-			var isMouseAnimateStr:String = pieSlice.chart.getStyle("mouseAnimate");
-			var performer:IPerformer;
-			if (isMouseAnimateStr == "false") {
-				performer = SimplePerformer.instance;
-			}else{
-				performer = new PieSlicePerformer();
-			}
+        /**
+         * 根据配置，重新设置PieSlice的Printer
+         * @param	pieSlice
+         */
+        private function reSetPieSlicePrinter(pieSlice:PieSlice):void
+        {
+            /**
+             * 根据设定配置performer.
+             * mouseAnimate:true 鼠标经过有弹出效果.
+             * 				false 鼠标经过无弹出效果.
+             * */
+            var isMouseAnimateStr:String = pieSlice.chart.getStyle("mouseAnimate");
+            var performer:IPerformer;
+            if (isMouseAnimateStr == "false") {
+                performer = SimplePerformer.instance;
+            }else{
+                performer = new PieSlicePerformer();
+            }
             pieSlice.skin.performer = performer;
             
-			var labelPosition:String = pieSlice.getStyle("labelPosition") || "";
-			var printer:IStatePrinter;
-			printer = pieSlice.skin.statePrinter;
+            var labelPosition:String = pieSlice.getStyle("labelPosition") || "";
+            var printer:IStatePrinter;
+            printer = pieSlice.skin.statePrinter;
             var printerMap:Object = {
                 "":PieSlice2dDrawPrinterWithLabel,
                 "normal":PieSlice2dDrawPrinterForNormal,
@@ -234,58 +234,58 @@ package bee.chart.assemble.pie
                     break;
                 }
             }
-			pieSlice.skin.statePrinter = printer;
-		}
-		
-		/**
-		 * 添加鼠标提示
-		 */
-		override protected function drawTooltip(host:ChartViewer, width:Number, height:Number, context:DisplayObjectContainer):void
-		{
+            pieSlice.skin.statePrinter = printer;
+        }
+        
+        /**
+         * 添加鼠标提示
+         */
+        override protected function drawTooltip(host:ChartViewer, width:Number, height:Number, context:DisplayObjectContainer):void
+        {
             super.drawTooltip(host, width, height, context);
             var tooltip:Tooltip = Tooltip.instance;
-			tooltip.bounds = new Rectangle(0, 0, width, height);
-		}
-		
-		/**
-		 * 绘制Legend
-		 * @param	host
-		 * @param	width
-		 * @param	height
-		 * @param	context
-		 */
-		protected function drawLegend(host:ChartViewer, width:Number, height:Number, context:DisplayObjectContainer, rect:Rectangle):void
-		{
+            tooltip.bounds = new Rectangle(0, 0, width, height);
+        }
+        
+        /**
+         * 绘制Legend
+         * @param	host
+         * @param	width
+         * @param	height
+         * @param	context
+         */
+        protected function drawLegend(host:ChartViewer, width:Number, height:Number, context:DisplayObjectContainer, rect:Rectangle):void
+        {
             var viewer:PieChartViewer = host as PieChartViewer;
             var chartModel:ChartModel = viewer.chartModel;
             var datas:Vector.<PieSliceData> = (new PieChartDataHandle()).handleData(chartModel, orderType, false);
             var dataSets:Vector.<ChartDataSet> = pieSliceData2ChartDataSet(datas);
             
-			var style:Object  = StyleUtil.mergeStyle( 
-				{ }, 
-				host.styleSheet.getStyle('legend')
-			);
-			if (!style['position'] || style['position']=='none') {
-				return;
-			}
-			
-			var legend:Legend   = new Legend();
+            var style:Object  = StyleUtil.mergeStyle( 
+                { }, 
+                host.styleSheet.getStyle('legend')
+            );
+            if (!style['position'] || style['position']=='none') {
+                return;
+            }
+            
+            var legend:Legend   = new Legend();
             legend.name = "legend";
-			var pos:String      = style['position'];
-			switch(pos) {
-				case LegendPosition.OUT_BOTTOM:
-					style['maxWidth'] = width;
-					break;
-				case LegendPosition.OUT_TOP:
-					style['maxWidth'] = width;
-					break;
-				case LegendPosition.OUT_LEFT:
-					style['maxHeight'] = height;
-					break;
-				case LegendPosition.OUT_RIGHT:
-					style['maxHeight'] = height;
-					break;
-			}
+            var pos:String      = style['position'];
+            switch(pos) {
+                case LegendPosition.OUT_BOTTOM:
+                    style['maxWidth'] = width;
+                    break;
+                case LegendPosition.OUT_TOP:
+                    style['maxWidth'] = width;
+                    break;
+                case LegendPosition.OUT_LEFT:
+                    style['maxHeight'] = height;
+                    break;
+                case LegendPosition.OUT_RIGHT:
+                    style['maxHeight'] = height;
+                    break;
+            }
             legend.dataSets = dataSets;
             legend.setStyles(style);
             
@@ -295,80 +295,80 @@ package bee.chart.assemble.pie
             host.addElement(legend);
             context.addChild(legend);
             legend.updateViewNow();
-			
-			var align:String  = style['align'] || LegendAlign.CENTER;
-			var valign:String = style['valign'] || LegendAlign.MIDDLE;
-			var x:Number = 0,   y:Number = 0;
-			var checkH:Boolean  = false;
-			var checkV:Boolean  = false;
-			const PADDING:uint    = 0;
-			
-			var bound:Rectangle = legend.getBounds(legend);
-			var w:Number    = bound.width;
-			var h:Number    = bound.height;
-			
-			switch(pos) {
-				case LegendPosition.INNER:
-					checkH  = checkV = true;
-					break;
-				case LegendPosition.OUT_BOTTOM:
-					checkH  = true;
-					checkV  = false;
-					y       = rect.bottom + PADDING;
-					rect.bottom += h + PADDING;
-					break;
-				case LegendPosition.OUT_TOP:
-					checkH  = true;
-					checkV  = false;
-					y       = rect.top - h - PADDING;
-					rect.top -= h + 1;
-					break;
-				case LegendPosition.OUT_LEFT:
-					checkH  = false;
-					checkV  = true;
-					x       = rect.left - w - PADDING;
-					rect.left -= w+1;
-					break;
-				case LegendPosition.OUT_RIGHT:
-					checkH  = false;
-					checkV  = true;
-					x       = rect.right + PADDING;
-					rect.right += w+1;
-					break;
-			}
-			
-			if(checkH){
-				switch(align) {
-					case LegendAlign.LEFT:
-						x = pos == LegendPosition.INNER ? PADDING : 0;
-						break;
-					case LegendAlign.RIGHT:
-						x = width - w;
-						break;
-					case LegendAlign.CENTER:
-					default:
-						x = (width - w) >> 1;
-						break;
-				}
-			}
-			//该处的数值与折线图、柱状图中的数值计算有所差异.
-			if(checkV){
-				switch(valign) {
-					case LegendAlign.TOP:
-						y = h;
-						break;
-					case LegendAlign.BOTTOM:
-						y =  height;
-						break;
-					case LegendAlign.MIDDLE:
-					default:
-						y = ((height - h) >> 1);
-						break;
-				}
-			}
-			legend.x = x - bound.left;
-			legend.y = y - bound.top;
-		}
+            
+            var align:String  = style['align'] || LegendAlign.CENTER;
+            var valign:String = style['valign'] || LegendAlign.MIDDLE;
+            var x:Number = 0,   y:Number = 0;
+            var checkH:Boolean  = false;
+            var checkV:Boolean  = false;
+            const PADDING:uint    = 0;
+            
+            var bound:Rectangle = legend.getBounds(legend);
+            var w:Number    = bound.width;
+            var h:Number    = bound.height;
+            
+            switch(pos) {
+                case LegendPosition.INNER:
+                    checkH  = checkV = true;
+                    break;
+                case LegendPosition.OUT_BOTTOM:
+                    checkH  = true;
+                    checkV  = false;
+                    y       = rect.bottom + PADDING;
+                    rect.bottom += h + PADDING;
+                    break;
+                case LegendPosition.OUT_TOP:
+                    checkH  = true;
+                    checkV  = false;
+                    y       = rect.top - h - PADDING;
+                    rect.top -= h + 1;
+                    break;
+                case LegendPosition.OUT_LEFT:
+                    checkH  = false;
+                    checkV  = true;
+                    x       = rect.left - w - PADDING;
+                    rect.left -= w+1;
+                    break;
+                case LegendPosition.OUT_RIGHT:
+                    checkH  = false;
+                    checkV  = true;
+                    x       = rect.right + PADDING;
+                    rect.right += w+1;
+                    break;
+            }
+            
+            if(checkH){
+                switch(align) {
+                    case LegendAlign.LEFT:
+                        x = pos == LegendPosition.INNER ? PADDING : 0;
+                        break;
+                    case LegendAlign.RIGHT:
+                        x = width - w;
+                        break;
+                    case LegendAlign.CENTER:
+                    default:
+                        x = (width - w) >> 1;
+                        break;
+                }
+            }
+            //该处的数值与折线图、柱状图中的数值计算有所差异.
+            if(checkV){
+                switch(valign) {
+                    case LegendAlign.TOP:
+                        y = h;
+                        break;
+                    case LegendAlign.BOTTOM:
+                        y =  height;
+                        break;
+                    case LegendAlign.MIDDLE:
+                    default:
+                        y = ((height - h) >> 1);
+                        break;
+                }
+            }
+            legend.x = x - bound.left;
+            legend.y = y - bound.top;
+        }
         
         private function pieSliceData2ChartDataSet(datas:Vector.<PieSliceData>):Vector.<ChartDataSet> 
         {
@@ -383,7 +383,7 @@ package bee.chart.assemble.pie
         public function smoothUpdate(host:IStatesHost, state:String, context:DisplayObjectContainer):void 
         {
             var viewer:PieChartViewer = host as PieChartViewer;
-			_viewer = viewer;
+            _viewer = viewer;
             if (viewer.state != ChartStates.NORMAL) {
                 return;
             }
@@ -428,7 +428,7 @@ package bee.chart.assemble.pie
             {
                 pieSlice.updateViewNow();
             }
-			_viewer = null;
+            _viewer = null;
         }
         
         private function makePieSlicesContainerCenter(viewer:PieChartViewer):void 
@@ -436,5 +436,5 @@ package bee.chart.assemble.pie
             viewer.pieSlicesContainer.x = viewer.chartModel.chartWidth >> 1;
             viewer.pieSlicesContainer.y = viewer.chartModel.chartHeight >> 1;
         }
-	}
+    }
 }

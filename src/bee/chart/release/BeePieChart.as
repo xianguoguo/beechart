@@ -27,9 +27,10 @@ package bee.chart.release
         {
             var presetCSS:String = <![CDATA[
                 chart {
-                    colors          : #FA6222,#FEC53F,#DBEE27,#87C822,#49AFB1;
+                    colors          : #FA6222, #FEC53F, #DBEE27, #87C822, #49AFB1;
+                    smooth          : true;
                     animate         : clockwise;
-                    order           : asc;
+                    order           : none;
                     startAngle      : 0;
                     enableTooltip   : true;
                 }
@@ -46,9 +47,26 @@ package bee.chart.release
                 }
 
                 slice {
-                    labelPosition   : normal;
-                    frameThickness  : 5;
-                    frameColor      : #FFFFFF;
+                    labelPosition         : normal;
+                    pieSliceAlpha         : 1;
+                    frameThickness        : 2;
+                    frameColor            : #FFFFFF;
+                    pieLineThickness      : 1;
+                    pieLineAlpha          : 1;
+                    offsetRadius          : 0;
+                    donutThickness        : 0;
+                    donutMaskColor        : #FFFFFF;
+                    donutMaskAlpha         :0.85
+                    pieSliceAlpha.blur    : 0.5;
+                    pieSliceAlpha.hl      : 1;
+                    frameThickness.hl     : 2;
+                    frameColor.hl         : #FFFFFF;
+                    pieLineThickness.hl   : 1;
+                    pieLineAlpha.hl       : 1;
+                    offsetRadius.hl       : 20;
+                    donutThickness.hl     : 0;
+                    donutMaskColor.hl     : #FFFFFF;
+                    donutMaskAlpha.hl     : 0.85;
                 }
 
                 legend {

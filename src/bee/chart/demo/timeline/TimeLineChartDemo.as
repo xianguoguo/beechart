@@ -238,7 +238,7 @@ package bee.chart.demo.timeline
                     "chart" : {\
 						"width"				:850,\
 						"height" 			:500,\
-                        "smooth"            : "true",\
+                        "smooth"            : "false",\
                         "leftAxisVisibility" : "visible", \
                         "paddingLeft"       : 20, \
                         "paddingRight"      : 20, \

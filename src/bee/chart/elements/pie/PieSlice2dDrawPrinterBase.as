@@ -108,7 +108,8 @@ package bee.chart.elements.pie
             {
                 var donutThickness:Number = StyleUtil.getNumberStyle(view, 'donutThickness');
                 if (donutThickness) {
-                    var color:Number = StyleUtil.getColorStyle(view, 'donutMaskColor', false) || 0xFFFFFF;
+                    donutThickness = donutThickness > data.radius ? data.radius : donutThickness;
+                    var color:Number = StyleUtil.getColorStyle(view, 'donutMaskColor', false);
                     var alpha:Number = StyleUtil.getNumberStyle(view, 'donutMaskAlpha', 0.85);
                     var innerCover:Shape = drawArcShape(0, 0, data.radius - donutThickness, view.angle, 0, color, alpha);
                     canvas.addChild(innerCover);

@@ -29,6 +29,7 @@ package bee.chart.release
                     smooth              : true;
                     leftAxisVisibility  : visible;
                     enableTooltip       : true;
+                    animate             : false;
                     paddingLeft         : 0;
                     paddingRight        : 0;
                     paddingTop          : 0;
@@ -36,10 +37,14 @@ package bee.chart.release
                 }
 
                 line {
-                    dropshadow      : none;
-                    lineMethod      : line;
-                    thickness       : 3;
-                    fillType        : line;
+                    dropshadow          : none;
+                    lineMethod          : line;
+                    thickness           : 3;
+                    fillType            : normal;
+                    dropshadow.active   : none;
+                    lineMethod.active   : line;
+                    thickness.active    : 3;
+                    fillType.active     : normal;
                 }
 
                 xAxis {

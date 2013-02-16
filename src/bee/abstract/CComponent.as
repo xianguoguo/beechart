@@ -183,15 +183,15 @@ package bee.abstract
         override public function dispose():void
         {
             _style = null;
-			if (_skin)
-			{
-				_skin.dispose();
-			}
+            if (_skin)
+            {
+                _skin.dispose();
+            }
             _skin = null;
-			if (_styleSheet)
-			{
-				_styleSheet.clear();
-			}
+            if (_styleSheet)
+            {
+                _styleSheet.clear();
+            }
             _styleSheet = null;
             DisplayUtil.clearSprite(content);
             DisplayUtil.clearSprite(this);
@@ -254,7 +254,7 @@ package bee.abstract
         public function set state(value:String):void 
         {
             if (!value) return;
-            if (value != _state) {
+            if (value != _state && _skin) {
                 var from:String = _state;
                 _state = value;
                 needRedraw = false;

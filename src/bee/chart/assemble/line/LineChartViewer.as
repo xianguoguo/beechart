@@ -55,15 +55,15 @@ package bee.chart.assemble.line
         * @param	y   当前y坐标
         * @param	hlLines 是否也要高亮点所在的线
         */
-		public function highlightPointsNear(x:Number, y:Number, hlLines:Boolean=true):void 
-		{
+        public function highlightPointsNear(x:Number, y:Number, hlLines:Boolean=true):void 
+        {
             var nearPt:I2VPoint = getNearestPoint(x, y);
-			if(nearPt){
+            if(nearPt){
                 var line:Line = getHighLightLine(nearPt);
                 highLightLineAndDot(line, nearPt, hlLines);
                 if(chartModel.enableTooltip){
                     var pos:Point = chartToViewXY(nearPt.x, nearPt.y);
-					
+                    
                     var tip:Tooltip = Tooltip.instance;
                     tip.goto(pos.x, pos.y);
                     tip.printTipAt( nearPt.x, nearPt.y );
@@ -75,18 +75,18 @@ package bee.chart.assemble.line
                 dispatchLineEvent(line, ChartUIEvent.FOCUS_ITEM);
                 line = null;
                 
-			} else {
-				clearHlObjs();
-			}
-		}
-		
+            } else {
+                clearHlObjs();
+            }
+        }
+        
         /**
          * 用来特殊处理只有一条数据时的显示
          * @param	idx
          * @param	value
          * @return
          */
-		override public function chartToViewXY(idx:Number, value:Number):Point 
+        override public function chartToViewXY(idx:Number, value:Number):Point 
         {
             var pt:Point = super.chartToViewXY(idx, value);
             if (chart.data.maxSetLength === 1) {
@@ -94,6 +94,7 @@ package bee.chart.assemble.line
             }
             return pt;
         }
+        
         private function makeTheOnlyDotCenter(pt:Point):void 
         {
             pt.x = _cachePaddingLeft + _cacheWidth >> 1;
@@ -112,19 +113,19 @@ package bee.chart.assemble.line
             }
         }
         
-		/**
-		 * 垃圾回收
-		 */
-		override public function dispose():void 
-		{
+        /**
+         * 垃圾回收
+         */
+        override public function dispose():void 
+        {
             if (_canvasRange)
             {
                 _canvasRange = null;
             }
             _linesContainer = null;
             removeEventListeners();
-			super.dispose();
-		}
+            super.dispose();
+        }
         
         override public function setStyle(name:String, value:String):void 
         {
@@ -165,7 +166,7 @@ package bee.chart.assemble.line
             removeEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
             removeEventListener(MouseEvent.ROLL_OUT, onRollOut);
         }
-		
+        
         protected function getLine(index:uint):Line
         {
             var container:DisplayObjectContainer = getLinesContainer();
@@ -215,7 +216,7 @@ package bee.chart.assemble.line
         {
             clearHlObjs();
         }
-		
+        
         /**
         * 清除所有线条
         */
@@ -256,15 +257,15 @@ package bee.chart.assemble.line
         
         protected function highLightLine(line:Line):void 
         {
-			line.parent.addChild(line);
-			line.state = 'active';
+            line.parent.addChild(line);
+            line.state = 'active';
         }
         
         protected function highLightDot(line:Line, nearPt:I2VPoint, hlLines:Boolean=true):void 
         {
             if (line && hlLines && line.lineVisible)
             {
-				line.highlightDotAt(nearPt.x, nearPt.y);
+                line.highlightDotAt(nearPt.x, nearPt.y);
             }
         }
         
@@ -280,10 +281,10 @@ package bee.chart.assemble.line
             if (line)
             {
                 var info:Object = getChartUIEventData(line);
-				if (info)
-				{
-					dispatchChartUIEvent(type, info);
-				}
+                if (info)
+                {
+                    dispatchChartUIEvent(type, info);
+                }
             }
         }
         
@@ -297,16 +298,16 @@ package bee.chart.assemble.line
         {
             for each (var line:Line in getVisibleLines())
             {
-				clearHLLine(line);
+                clearHLLine(line);
                 line.clearHighlightDot();
-			}
+            }
         }
         
         protected function clearHLLine(line:Line):void 
         {
             if (line && line.state != 'normal') {
                 line.state = 'normal';
-				dispatchLineEvent(line, ChartUIEvent.BLUR_ITEM);
+                dispatchLineEvent(line, ChartUIEvent.BLUR_ITEM);
             }
         }
         
@@ -315,7 +316,7 @@ package bee.chart.assemble.line
             for each (var line:Line in getVisibleLines())
             {
                 clearHLLine(line);
-			}
+            }
         }
         
         protected function clearHLAxis():void 
@@ -328,16 +329,16 @@ package bee.chart.assemble.line
         protected function updateCanvasRange():void 
         {
             var canvas:DisplayObject = content.getChildByName("canvas");
-			if (canvas)
-			{
-				_canvasRange = canvas.getBounds(this);
-			}
+            if (canvas)
+            {
+                _canvasRange = canvas.getBounds(this);
+            }
         }
         
         /**
         * 清除所有被高亮的点的高亮状态和tooltip提示
         */
-		protected function clearHlObjs():void 
+        protected function clearHlObjs():void 
         {
             clearHlLineDotsAndAxis();
             hideTooltip();
@@ -352,15 +353,15 @@ package bee.chart.assemble.line
             }
         }
         
-		protected function isInRange():Boolean
-		{
-			if (canvasRange && canvasRange.contains(mouseX, mouseY))
-			{
-				return true;
-			}
-			return false;
-		}
-		
+        protected function isInRange():Boolean
+        {
+            if (canvasRange && canvasRange.contains(mouseX, mouseY))
+            {
+                return true;
+            }
+            return false;
+        }
+        
         private function isVisibleLine(el:ChartElement):Boolean 
         {
             return (el is Line) && (el as Line).lineVisible;
@@ -406,16 +407,16 @@ package bee.chart.assemble.line
             {
                 var xIndex:int = line.highlightIndex;
                 var data:LineData = line.model as LineData;
-				//增加对索引最大值的判断，防止出现索引超出范围报错的问题
-				if (xIndex > data.values.length)
-				{
-					return null;
-				}
+                //增加对索引最大值的判断，防止出现索引超出范围报错的问题
+                if (xIndex > data.values.length)
+                {
+                    return null;
+                }
                 result = {
                     name: data.name,
                     xIndex: xIndex,
                     value: (xIndex >= 0) ? data.values[xIndex] : null,
-					label: chart.data.getLabelAt(xIndex)
+                    label: chart.data.getLabelAt(xIndex)
                 };
             }
             return result;

@@ -1,22 +1,22 @@
 package bee.chart.elements.pie 
 {
     import bee.chart.abstract.ChartDataSet;
-	import cn.alibaba.util.ColorUtil;
-	import bee.chart.abstract.ChartData;
-	import bee.chart.abstract.ChartElement;
-	import bee.chart.abstract.ChartElementView;
-	import bee.chart.abstract.ChartViewer;
-	import bee.chart.assemble.pie.IPieSlicePrinter;
-	import bee.chart.util.ChartUtil;
-	import bee.chart.util.TO_RADIANS;
-	import bee.controls.label.Label;
-	import bee.util.StyleUtil;
-	import flash.display.DisplayObject;
-	import flash.display.DisplayObjectContainer;
-	import flash.display.Graphics;
-	import flash.geom.Point;
-	import flash.geom.Rectangle;
-	import com.greensock.TweenLite;
+    import cn.alibaba.util.ColorUtil;
+    import bee.chart.abstract.ChartData;
+    import bee.chart.abstract.ChartElement;
+    import bee.chart.abstract.ChartElementView;
+    import bee.chart.abstract.ChartViewer;
+    import bee.chart.assemble.pie.IPieSlicePrinter;
+    import bee.chart.util.ChartUtil;
+    import bee.chart.util.TO_RADIANS;
+    import bee.controls.label.Label;
+    import bee.util.StyleUtil;
+    import flash.display.DisplayObject;
+    import flash.display.DisplayObjectContainer;
+    import flash.display.Graphics;
+    import flash.geom.Point;
+    import flash.geom.Rectangle;
+    import com.greensock.TweenLite;
     
     /**
      * ...
@@ -45,17 +45,17 @@ package bee.chart.elements.pie
         {
             super(host);
         }
-		
-		/**
-		 * 根据配置获取pieLabel的显示文本
-		 */		
-		public function getLabelText():String 
+        
+        /**
+         * 根据配置获取pieLabel的显示文本
+         */		
+        public function getLabelText():String 
         {
             if (!chart) {
                 return '';
             }
             
-			var data:PieSliceData = __data;
+            var data:PieSliceData = __data;
             var name:String = data.name;
             
             //TODO: 这部分的代码需要优化，不可出现中文字符
@@ -66,25 +66,25 @@ package bee.chart.elements.pie
             
             var titleColor:String = ColorUtil.int2str(color);
             var coloredName:String = '<font color="' + titleColor + '">' + name + '</font>';
-			var labelStr:String = getStyle('label') || getStyle('text');
-			var brReg:RegExp=/<br(?: *\/)?>/g;
-			if (labelStr) {
-				var chartData:ChartData = chart.data;
-				var value:Number = data.value;
-				var total:Number = chartData.total;
-				var percentStr:String = ChartUtil.getPercentStr(value / total);
-				labelStr = labelStr.replace("#label#", coloredName)
-					.replace("#name#", name)
-					.replace("#title#", name)
-					.replace("#value#", value)
-					.replace("#total#", total)
-					.replace("#percent#", percentStr)
-					.replace(brReg,"\n");
-			}else{
-				labelStr =  name; 
-			}
-			return labelStr;
-		}
+            var labelStr:String = getStyle('label') || getStyle('text');
+            var brReg:RegExp=/<br(?: *\/)?>/g;
+            if (labelStr) {
+                var chartData:ChartData = chart.data;
+                var value:Number = data.value;
+                var total:Number = chartData.total;
+                var percentStr:String = ChartUtil.getPercentStr(value / total);
+                labelStr = labelStr.replace("#label#", coloredName)
+                    .replace("#name#", name)
+                    .replace("#title#", name)
+                    .replace("#value#", value)
+                    .replace("#total#", total)
+                    .replace("#percent#", percentStr)
+                    .replace(brReg,"\n");
+            }else{
+                labelStr =  name; 
+            }
+            return labelStr;
+        }
         
         public function getContentCenter(coord:DisplayObject=null):Point
         {
@@ -188,11 +188,11 @@ package bee.chart.elements.pie
         
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         // Getters & Setters
-		public function get canvas():PieSliceCanvas 
-		{
-			return content.getChildByName('canvas') as PieSliceCanvas;
-		}
-		
+        public function get canvas():PieSliceCanvas 
+        {
+            return content.getChildByName('canvas') as PieSliceCanvas;
+        }
+        
         public function get label():Label 
         {
             var lbl:Label = content.getChildByName('label') as Label;
@@ -204,15 +204,15 @@ package bee.chart.elements.pie
             return lbl; 
         }
 
-		public function get line():PieLine 
-		{
-			return content.getChildByName('line') as PieLine;
-		}
+        public function get line():PieLine 
+        {
+            return content.getChildByName('line') as PieLine;
+        }
         
         public function get detailView():DisplayObject 
-		{
-			return content.getChildByName(PieSliceStates.DETAIL);
-		}
+        {
+            return content.getChildByName(PieSliceStates.DETAIL);
+        }
         
         override protected function get defaultStyles():Object 
         { 
