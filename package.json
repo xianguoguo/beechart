@@ -1,0 +1,37 @@
+{
+  "name": "beechart",
+  "version": "1.7.1",
+  "description": "chart",
+  "main": "app.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "dependencies": {
+    "grunt": "~0.4.0rc5",
+    "grunt-compare-size": "~0.3.1",
+    "grunt-contrib-jade": "~0.4.0rc7",
+    "grunt-contrib-jshint": "~0.1.1rc6",
+    "grunt-contrib-mincss": "~0.4.0rc7",
+    "grunt-contrib-connect": "~0.1.0",
+    "grunt-contrib-stylus": "~0.4.0rc7",
+    "grunt-git-authors": "~1.0.0",
+    "grunt-update-submodules": "~0.2.0",
+    "grunt-contrib-watch": "~0.1.4",
+    "grunt-contrib-uglify": "~0.1.1rc6",
+    "connect": "~2.3.9",
+    "testswarm": "~0.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sjpsega/beechart.git"
+  },
+  "keywords": [
+    "chart"
+  ],
+  "author": "",
+  "license": "BSD"
+}

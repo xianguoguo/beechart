@@ -1,0 +1,33 @@
+/* ---- demo page ---- */
+.demos {
+  height: 550px;
+  width: 700px;
+  padding-left: 0;
+}
+.demo .links a.cur {
+  background: #e6f2fa;
+  color: #057acd;
+  cursor: default;
+}
+.demo {
+  padding: 5em;
+  text-align: center;
+  font-family: verdana, '微软雅黑';
+}
+.demo h2 {
+  font-size: 220%;
+  padding: 0.5em;
+}
+.demo .links {
+  color: #333;
+}
+.demo .links a {
+  padding: 4px 8px;
+  border-radius: 8px;
+  margin: 0 4px;
+  cursor: pointer;
+  color: #999;
+}
+.demo .css-links {
+  margin-left: 1em;
+}
