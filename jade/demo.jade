@@ -1,42 +1,28 @@
 !!!5
 html
     head
-        meta(charset="utf-8")
-        title BeeChart
-        meta(name="description",content="beechart是免费的开源flash图表")
-        meta(name="keywords",content="beechart, flash, chart , forfree, opensource, simple, 图表, 免费, 开源")
-        link(rel="shortcut icon",type="image/x-icon",href="favicon.ico")
+        include include/head.jade
         link(rel="stylesheet",type="text/css",href="css/demo.css")
     body
-        include include/nav.jade
+        #header.fd-clr(data-current="demo")
+            include include/nav.jade
         .content.w1000.fd-clr
-            .nav-container.fd-left
+            #demo-nav-container.nav-container.fd-left
                 .nav
-                    h1 Demo
-                    ul
-                        li.current#pie
-                            a(href="pie-demo.html") PIE/饼图
-                        .dashed
-                        li#bar
-                            a(href="bar-demo.html") BAR/柱图
-                        .dashed
-                        li#line
-                            a(href="line-demo.html") LINE/线图
-                        .dashed
-                        li#time
-                            a(href="time-demo.html") TIME/时间线
+                    .nav-inner
+                        h2 Demo
+                        ul
+                            li.current#pie
+                                a(href="pie-demo.html") PIE/饼图
+                            li#bar
+                                a(href="bar-demo.html") BAR/柱图
+                            li#line
+                                a(href="line-demo.html") LINE/线图
+                            li#time
+                                a(href="time-demo.html") TIME/时间线
+                        .arrow
             .chart-container.fd-left
                 iframe#chart-iframe(src="pie-demo.html",frameborder="0",scrolling="no",width="788px",height="650px")
         include include/footer.jade
 
-        script(type="text/javascript",src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js")
-        script
-            jQuery(function($){
-                $(".nav-container .nav li").on("click",function(e){
-                    e.preventDefault();
-                    $(this).parent().find("li").removeClass("current");
-                    $(this).addClass("current");
-                    var url = $(this).find("a").eq(0).attr("href");
-                    $("#chart-iframe").attr("src",url);
-                });
-            });
+        script(type="text/javascript",src="dist/index-merge.js")

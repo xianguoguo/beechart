@@ -50,7 +50,7 @@ module.exports = function( grunt ) {
 	          'css/public.css': 'styl/public.styl',
 	          'css/reset.css': 'styl/reset.styl',
 	          'css/sons-of-obsidian.css': 'styl/sons-of-obsidian.styl',
-	          'css/style.css': 'styl/style.styl',
+	          'css/index.css': 'styl/index.styl',
 	          'css/yid-chart-demo.css': 'styl/yid-chart-demo.styl',
 	          'css/yid-chart-demo-merge.css': 'styl/yid-chart-demo-merge.styl'
 	        }
@@ -75,10 +75,13 @@ module.exports = function( grunt ) {
 									   "js/jquery.easing.1.2.js",
 									   "js/jquery.anythingslider.js",
 									   "js/yid-chart-demo.js"],
-				    "dist/about-merge.js": [
+				    "dist/index-merge.js": [
 									   "js/fdev-min.js",
-									   "js/jquery.tableofcontents.js",
-									   "js/page.js"],
+									   "js/header-currentset.js",
+									   "js/slider-nav-create.js"],
+				    "dist/about-merge.js": [
+									   "dist/index-merge.js",
+									   "js/jquery.tableofcontents.js"],
 				   "dist/doc-merge.js": [
 									   "dist/about-merge.js",
 									   "js/google-code-prettify/prettify.js",
@@ -87,7 +90,10 @@ module.exports = function( grunt ) {
 
 				},
 				options: {
-					 sourceMap: "dist/yid-chart-demo-merge.map"
+					 sourceMap: "dist/yid-chart-demo-merge.map",
+					 beautify: true,
+					 compress: false,
+					 mangle: false
 				}
 			}
 		},

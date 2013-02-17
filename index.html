@@ -6,34 +6,27 @@
     <meta name="description" content="beechart是免费的开源flash图表">
     <meta name="keywords" content="beechart, chart, forfree, opensource, simple, 图表, 免费, 开源">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <base target="_blank">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
   </head>
   <body>
-    <div class="header fd-clr"><a href="">
+    <div id="header" data-current="index" class="fd-clr"><a href="">
         <div class="logo fd-left">BeeChart</div></a>
       <ul class="nav fd-right">
-        <li><a href="index.html">首页</a></li>
+        <li class="index"><a href="index.html">首页</a></li>
         <li class="spacing">|</li>
-        <li><a href="doc.html">文档</a></li>
+        <li class="doc"><a href="doc.html">文档</a></li>
         <li class="spacing">|</li>
-        <li><a href="demo.html">Demo</a></li>
+        <li class="demo"><a href="demo.html">Demo</a></li>
         <li class="spacing">|</li>
-        <li><a href="about.html">关于</a></li>
+        <li class="about"><a href="about.html">关于</a></li>
       </ul>
     </div>
     <div class="content">
       <div class="primary fd-clr">
-        <div id="banner" class="banner fd-left">
-          <div class="banner-tab"><img src="img/banner_1.jpg"></div>
-          <div class="banner-tab"><img src="img/banner_2.jpg"></div>
-          <div class="banner-tab"><img src="img/banner_1.jpg"></div>
-          <div class="banner-tab"><img src="img/banner_2.jpg"></div>
-          <ul class="banner-title-wrapper">
-            <li class="banner-title"><b></b></li>
-            <li class="banner-title"><b></b></li>
-            <li class="banner-title"><b></b></li>
-            <li class="banner-title"><b></b></li>
-          </ul>
+        <div id="banner" class="banner fd-left"><a href="https://github.com/sjpsega/beechart"><img src="img/banner_1.jpg"></a>
+          <div class="banner-footer"></div>
+          <div class="biaoqian"></div>
         </div>
         <div class="infos fd-left">
           <div class="forfree">
@@ -109,7 +102,7 @@
     </div>
     <div class="footer">
       <div class="content">
-        <p>&copy; 2012 The BeeChart Project</p>
+        <p>&copy; 2010-2013 The BeeChart Project</p>
       </div>
     </div>
     <script>
@@ -169,14 +162,5 @@
       })()
     </script>
   </body>
-  <script type="text/javascript" src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
-  <script>
-    (function($){
-        $.use("ui-tabs-effect",function()
-          {
-             $("#banner").tabs({titleSelector: ".banner-title",boxSelector: ".banner-tab",currentClass: "banner-title-active",isAutoPlay: true,timeDelay: 2, effect: "fade",scrollType: "loop",easing: "easeOutCubic"})
-          });
-    })(jQuery);
-    
-  </script>
+  <script type="text/javascript" src="dist/index-merge.js"></script>
 </html>

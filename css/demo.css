@@ -163,7 +163,7 @@ img {
   font-weight: 700;
 }
 html {
-  background: #dfeaef url("../img/assets.png") repeat-x 0 -905px;
+  background: #dfeaef url("../img/assets.png") repeat-x 0 -1150px;
 }
 hr {
   background: #cedfe7;
@@ -173,27 +173,27 @@ hr {
   width: 1000px;
   margin: 0 auto;
 }
-.header {
+#header {
   width: 1000px;
   margin: 0 auto;
   margin-top: 12px;
   margin-bottom: 10px;
 }
-.header .logo {
+#header .logo {
   margin-left: 30px;
   width: 174px;
   height: 121px;
   background: url("../img/assets.png") no-repeat 0px -670px;
   text-indent: -9999px;
 }
-.header .nav {
+#header .nav {
   margin-top: 35px;
 }
-.header .nav li {
+#header .nav li {
   float: left;
   text-align: center;
 }
-.header .nav li a {
+#header .nav li a {
   font-size: 14px;
   font-weight: bold;
   width: 170px;
@@ -204,12 +204,17 @@ hr {
   display: block;
   background: url("../img/assets.png") repeat-x;
 }
-.header .nav li a:hover {
+#header .nav li a:hover {
   background: url("../img/assets.png") no-repeat 0 -72px;
   color: #323b3d;
   text-decoration: none;
 }
-.header .nav .spacing {
+#header .nav li.hover a {
+  background: url("../img/assets.png") no-repeat 0 -72px;
+  color: #323b3d;
+  text-decoration: none;
+}
+#header .nav .spacing {
   width: 2px;
   height: 43px;
   background: url("../img/assets.png") no-repeat 0 -152px;
@@ -237,14 +242,18 @@ hr {
   overflow: hidden;
 }
 h2 {
-  font-size: 24px;
+  font-size: 16px;
   font-weight: bold;
   padding-top: 15px;
+  padding-bottom: 20px;
+  color: #3e7db0;
 }
 h3 {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
   padding-top: 10px;
+  padding-bottom: 15px;
+  color: #5597cc;
 }
 .ol {
   list-style: decimal;
@@ -259,49 +268,81 @@ h3 {
   background-color: #d9edf7;
   border-color: #bce8f1;
   padding: 8px 35px 8px 14px;
-  margin: 5pt 0;
+  margin: 10pt 0;
   text-shadow: 0 1px 0 rgba(255,255,255,0.5);
   border-radius: 4px;
 }
+a:link,
+a:visited {
+  color: #3e7db0;
+}
+a:hover,
+a:active {
+  color: #3e7db0;
+}
 html {
-  background: #dfeaef url("../img/assets.png") repeat-x 0px -1160px;
+  background: #dfeaef url("../img/assets.png") repeat-x 0px -1405px;
 }
 .content .nav-container {
   width: 165px;
   padding-left: 47px;
   padding-top: 50px;
 }
-.content .nav-container h1 {
-  font-size: 48px;
-  background-color: #efb117;
+.content .nav-container h2 {
+  font-size: 24px;
+  background-color: #303331;
   color: #fff;
+  line-height: 60px;
+  height: 60px;
+  font-family: "Microsoft YaHei", SimHei, "WenQuanYi Micro Hei", STHeiti;
+  font-weight: normal;
+  padding-top: 0;
+  padding-left: 30px;
 }
 .content .nav-container .nav {
   width: 165px;
   position: fixed;
 }
+.content .nav-container .nav ul {
+  background-color: #efb117;
+}
 .content .nav-container .nav li {
-  color: #d3d3d3;
-  font-size: 20px;
+  height: 50px;
+  line-height: 50px;
+  color: #444;
+  font-size: 16px;
   cursor: pointer;
+  padding-left: 20px;
+  border-bottom: #d39a0c 1px solid;
 }
 .content .nav-container .nav li a {
-  color: #d3d3d3;
+  color: #444;
+  display: block;
 }
 .content .nav-container .nav li a:hover {
   text-decoration: none;
 }
 .content .nav-container .nav li.current {
-  color: #6b9cc3;
+  color: #fff;
+  background-color: #e0a40d;
 }
 .content .nav-container .nav li.current a {
-  color: #6b9cc3;
+  color: #fff;
+}
+.content .nav-container .nav .nav-inner {
+  position: relative;
+}
+.content .nav-container .nav .arrow {
+  position: absolute;
+  border: 10px dashed;
+  border-color: transparent #fff transparent transparent;
+  right: 0;
 }
 .content .content-container {
   margin-top: 10px;
   width: 748px;
   background: #fff;
-  font-size: 16px;
+  font-size: 14px;
   color: #444;
   padding-top: 20px;
   padding-left: 20px;
@@ -310,19 +351,19 @@ html {
 .content .chart-container {
   margin-top: 10px;
 }
-.content .nav li {
+.content .nav-container .nav li {
   background: url("../img/chart-demo.png") no-repeat;
-  padding: 15px 0px 15px 45px;
+  padding-left: 65px;
 }
-.content .nav #pie {
-  background-position: 0 13px;
+.content .nav-container .nav #pie {
+  background-position: 20px 11px;
 }
-.content .nav #bar {
-  background-position: 0 -45px;
+.content .nav-container .nav #bar {
+  background-position: 20px -90px;
 }
-.content .nav #line {
-  background-position: 0 -100px;
+.content .nav-container .nav #line {
+  background-position: 20px -190px;
 }
-.content .nav #time {
-  background-position: 0 -156px;
+.content .nav-container .nav #time {
+  background-position: 20px -291px;
 }

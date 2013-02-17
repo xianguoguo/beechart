@@ -1,34 +1,18 @@
 !!!5
 html
     head
-        meta(charset="utf-8")
-        title BeeChart
-        meta(name="description",content="beechart是免费的开源flash图表")
-        meta(name="keywords",content="beechart, chart, forfree, opensource, simple, 图表, 免费, 开源")
-        link(rel="shortcut icon",type="image/x-icon",href="favicon.ico")
-        link(rel="stylesheet",type="text/css",href="css/style.css")
+        include include/head.jade
+        link(rel="stylesheet",type="text/css",href="css/index.css")
     body
-        include include/nav.jade
+        #header.fd-clr(data-current="index")
+            include include/nav.jade
         .content
             .primary.fd-clr
                 #banner.banner.fd-left
-                    .banner-tab
+                    a(href="https://github.com/sjpsega/beechart")
                         img(src="img/banner_1.jpg")
-                    .banner-tab
-                        img(src="img/banner_2.jpg")
-                    .banner-tab
-                        img(src="img/banner_1.jpg")
-                    .banner-tab
-                        img(src="img/banner_2.jpg")
-                    ul.banner-title-wrapper
-                        li.banner-title
-                            b
-                        li.banner-title
-                            b
-                        li.banner-title
-                            b
-                        li.banner-title
-                            b
+                    .banner-footer
+                    .biaoqian
                 .infos.fd-left
                     .forfree
                         简单 可扩展
@@ -97,12 +81,12 @@ html
                     a(href="") 版权声明
         include include/footer.jade
 
-    script(type="text/javascript",src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js")
-    script
-        (function($){
-            $.use("ui-tabs-effect",function()
-              {
-                 $("#banner").tabs({titleSelector: ".banner-title",boxSelector: ".banner-tab",currentClass: "banner-title-active",isAutoPlay: true,timeDelay: 2, effect: "fade",scrollType: "loop",easing: "easeOutCubic"})
-              });
-        })(jQuery);
+    script(type="text/javascript",src="dist/index-merge.js")
+    //- script
+    //-     (function($){
+    //-         $.use("ui-tabs-effect",function()
+    //-           {
+    //-              $("#banner").tabs({titleSelector: ".banner-title",boxSelector: ".banner-tab",currentClass: "banner-title-active",isAutoPlay: true,timeDelay: 2, effect: "fade",scrollType: "loop",easing: "easeOutCubic"})
+    //-           });
+    //-     })(jQuery);
 

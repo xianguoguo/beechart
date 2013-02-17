@@ -6,27 +6,31 @@
     <meta name="description" content="beechart是免费的开源flash图表">
     <meta name="keywords" content="beechart, chart, forfree, opensource, simple, 图表, 免费, 开源">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <base target="_blank">
     <link rel="stylesheet" type="text/css" href="css/doc.css">
     <link rel="stylesheet" type="text/css" href="css/sons-of-obsidian.css">
   </head>
   <body>
-    <div class="header fd-clr"><a href="">
+    <div id="header" data-current="doc" class="fd-clr"><a href="">
         <div class="logo fd-left">BeeChart</div></a>
       <ul class="nav fd-right">
-        <li><a href="index.html">首页</a></li>
+        <li class="index"><a href="index.html">首页</a></li>
         <li class="spacing">|</li>
-        <li><a href="doc.html">文档</a></li>
+        <li class="doc"><a href="doc.html">文档</a></li>
         <li class="spacing">|</li>
-        <li><a href="demo.html">Demo</a></li>
+        <li class="demo"><a href="demo.html">Demo</a></li>
         <li class="spacing">|</li>
-        <li><a href="about.html">关于</a></li>
+        <li class="about"><a href="about.html">关于</a></li>
       </ul>
     </div>
     <div class="content w1000 fd-clr">
       <div class="nav-container fd-left">
         <div class="nav">
-          <h1>文档</h1>
-          <ul id="nav"></ul>
+          <div class="nav-inner">
+            <h2>文档</h2>
+            <ul id="slider-nav"></ul>
+            <div class="arrow"></div>
+          </div>
         </div>
       </div>
       <div class="content-container fd-left fd-clr">
@@ -493,7 +497,7 @@ chart.on('data_parsed.flash',function(){
     </div>
     <div class="footer">
       <div class="content">
-        <p>&copy; 2012 The BeeChart Project</p>
+        <p>&copy; 2010-2013 The BeeChart Project</p>
       </div>
     </div>
     <script>
