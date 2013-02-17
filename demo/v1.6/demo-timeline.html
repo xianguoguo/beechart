@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YID Chart 1.6 Demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="css/yid-chart-demo-merge.css" type="text/css" media="screen" />
+</head>
+<body>
+    
+    <ul class="demos" id="demos"></ul>
+    <div style="clear:both"></div>
+    
+    <script src="js/yid-chart-demo-merge.js"></script>
+    <script>
+        jQuery(function($){
+        
+            $('#demos').demos(
+            {
+                title   : '小数据量展示',
+                width   : 952,
+                height  : 550,
+                dataUrl : ['data/small_data.json'],
+                cssUrl  : ['css/timeline.css'],
+                swf     : 'swf/yid-chart-timeline.swf',
+                flashvars : {
+                    w   : 850,
+                    h   : 390
+                }
+            },  
+            {
+                title   : '大数据量展示',
+                width   : 952,
+                height  : 550,
+                dataUrl : ['data/big_data.json'],
+                cssUrl  : ['css/single-dark-2.css'],
+                swf     : 'swf/yid-chart-timeline.swf',
+                flashvars : {
+                    w   : 850,
+                    h   : 390
+                }
+            }          
+            ).anythingSlider({
+                resizeContents  : true,
+                buildStartStop  : false,
+                infiniteSlides  : false
+            });
+        })
+    </script>
+
+</body>
+</html>

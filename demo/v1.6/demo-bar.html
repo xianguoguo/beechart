@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YID Chart Demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="css/yid-chart-demo-merge.css" type="text/css" media="screen" />
+</head>
+<body>
+    
+    <ul class="demos" id="demos"></ul>
+    <div style="clear:both"></div>
+    
+    <script src="js/yid-chart-demo-merge.js"></script>
+    <script>
+        jQuery(function($){
+        
+            $('#demos').demos(
+            {
+                title   : '默认柱状图样式',
+                type    : 'bar',
+                width   : 952,
+                height  : 550,
+                swf     : 'swf/ali-yid-chart-bar.swf',
+                dataUrl : ['data/2-serials.xml', 'data/3-serials.xml', 'data/1-serial.xml', 'data/mon-av-temp.xml', 'data/mon-av-temp-4-ser.xml'],
+                cssUrl  : ['css/ali-bar.css', 'css/bar-stack-light.css'],
+                flashvars : {
+                    w   : 850,
+                    h   : 350
+                }
+            },
+        
+            {
+                type    : 'bar',
+                width   : 952,
+                height  : 550,
+                dataUrl : 'data/browser-stat-ff.xml',
+                cssUrl  : 'css/bar-stack-light.css',
+                flashvars : {
+                    w   : 850,
+                    h   : 390
+                }
+            },
+        
+            {
+                type    : 'bar',
+                width   : 952,
+                height  : 550,
+                dataUrl : 'data/1-serial.xml',
+                cssUrl  : 'css/bar-dark.css',
+                flashvars : {
+                    w   : 850,
+                    h   : 390
+                }
+            },
+        
+            {
+                type    : 'hbar',
+                width   : 952,
+                height  : 550,
+                dataUrl : 'data/1-serial.xml',
+                cssUrl  : 'css/hbar-light.css',
+                flashvars : {
+                    w   : 850,
+                    h   : 390
+                }
+            }
+            
+            ).anythingSlider({
+                resizeContents  : true,
+                buildStartStop  : false,
+                infiniteSlides  : false
+            });
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+<chart>
+    <data>
+        <indexAxis name="日期">
+            <labels>A,B,C,D</labels>
+            <labelType>String</labelType>
+        </indexAxis>
+        <valueAxis name="UV" unit="次">
+        </valueAxis>
+        <dataSets>
+            <set name="something">
+                <values>100,300,150,240</values>
+            </set>
+        </dataSets>
+    </data>
+</chart>

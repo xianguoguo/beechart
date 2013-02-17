@@ -1,0 +1,38 @@
+<languageVersion : 1.0;>
+
+kernel TestFileter
+<   namespace : "cn.alibaba.common.image";
+    vendor : "qhwa";
+    version : 1;
+    description : "image brightness and contrast adjustment";
+>
+
+{
+    input image4 src;
+    output pixel4 dst;
+    
+    parameter float brightness
+    <
+        minValue: -1.0;
+        maxValue: 1.0;
+        defaultValue: 0.0;
+    >;
+    
+    parameter float contrast
+    <
+        minValue: -1.0;
+        maxValue: 1.0;
+        defaultValue: 0.0;
+    >;
+
+    void
+    evaluatePixel()
+    {
+        float2 pos = outCoord();
+        pixel4 color = sampleNearest(src, pos);
+        color.r = 0.5 + ( color.r + brightness - 0.5 ) * (1.0 + contrast);
+        color.g = 0.5 + ( color.g + brightness - 0.5 ) * (1.0 + contrast);
+        color.b = 0.5 + ( color.b + brightness - 0.5 ) * (1.0 + contrast);
+        dst = color;
+    }
+}

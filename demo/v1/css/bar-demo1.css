@@ -1,0 +1,45 @@
+xAxis {
+    tickThickness  : 0;
+    tickLength     : 5;
+    tickPosition   : center;
+    labelPosition  : center;
+    labelGap       : auto;
+}
+
+yAxis {
+    tickThickness  : 0;
+    tickPosition   : left;
+    labelPosition  : left;
+}
+
+canvas {
+    borderThickness   : 4;
+    borderColor       : #666666;
+    backgroundColor   : #FFFFFF;
+    backgroundColor2  : #FFF7F3;
+    gridColor         : #FFEBE1;
+    gridThickness     : 1;
+}
+
+bar {
+    dropShadow: none;
+    valueVisibility: visible;
+    color.hl : #FF7300;
+}
+
+bar label {
+    fontSize: 15;
+}
+
+chart {
+    colors        : #A9CF56,#EA9410,#4E9ADB;
+    leftAxisVisibility: visible;
+    animate : true;
+    paddingTop : 50;
+    width: 600;
+    height: 300;
+}
+
+legend {
+    position:bottom;
+}

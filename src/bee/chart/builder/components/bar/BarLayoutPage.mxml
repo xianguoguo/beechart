@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base:EditorChildBase xmlns:fx="http://ns.adobe.com/mxml/2009"
+                      xmlns:s="library://ns.adobe.com/flex/spark"
+                      xmlns:mx="library://ns.adobe.com/flex/mx"
+                      xmlns:base="cn.alibaba.yid.chart.builder.components.base.*">
+    <fx:Metadata>
+		[Event(name="styleChange",type="events.StyleChangeEvent")]
+	</fx:Metadata>
+    <fx:Declarations>
+        <!-- 将非可视元素（例如服务、值对象）放在此处 -->
+        <s:RadioButtonGroup id="isHorizontalGroup"
+                            change="isHorizontalGroup_changeHandler(event)"/>
+    </fx:Declarations>
+    <fx:Script>
+        <![CDATA[
+            import bee.chart.builder.DataProvider;
+            import bee.chart.builder.events.BuilderEvent;
+            import bee.chart.builder.events.StyleChangeEvent;
+            
+            import mx.collections.ArrayCollection;
+            import mx.events.FlexEvent;
+            import mx.events.ItemClickEvent;
+            [Bindable]
+            private var barLegendTypes:ArrayCollection = DataProvider.getBarLegendArray();
+            
+            /**
+             * 重写defalutSetting()函数，设置默认设置
+             * */
+            override protected function defalutSetting():void
+            {
+                super.defalutSetting();
+                isHorizontalGroup.selectedValue = isHorizontalGroup.getRadioButtonAt(0).value;
+            }
+            
+            /**
+             * 柱形方向
+             * */
+            protected function isHorizontalGroup_changeHandler(event:Event):void
+            {
+                var isHorizontalGroup:RadioButtonGroup = event.target as RadioButtonGroup;
+                var styleObject:Object = {"horizontal": isHorizontalGroup.selectedValue};
+                dispatchStyleChangeEvent("chart", styleObject);
+            }
+        ]]>
+    </fx:Script>
+    <mx:Grid top="18"
+             verticalGap="18"
+             horizontalGap="0"
+             paddingLeft="22"
+             width="100%"
+             height="100%">
+        <mx:GridRow width="100%">
+            <mx:GridItem width="100%">
+                <base:TitleLabelContainer width="100%"
+                                          text="柱形方向"/>
+            </mx:GridItem>
+        </mx:GridRow>
+        <mx:GridRow width="100%">
+            <mx:GridItem width="100%"
+                         paddingLeft="8">
+                <s:Group>
+                    <s:layout>
+                        <s:HorizontalLayout/>
+                    </s:layout>
+                    <s:RadioButton label="纵向"
+                                   group="{isHorizontalGroup}"
+                                   value="false"/>
+                    <s:RadioButton label="横向"
+                                   group="{isHorizontalGroup}"
+                                   value="true"/>
+                </s:Group>
+            </mx:GridItem>
+        </mx:GridRow>
+        <mx:GridRow width="100%">
+            <mx:GridItem width="100%">
+                <base:LayoutBase width="100%"
+                                 isSimple="true"
+                                 legendTypes="{barLegendTypes}">
+                </base:LayoutBase>
+            </mx:GridItem>
+        </mx:GridRow>
+        <mx:GridRow width="100%">
+            <mx:GridItem width="100%">
+                <!--网格线-->
+                <base:GridLineContainer width="100%">
+
+                </base:GridLineContainer>
+            </mx:GridItem>
+        </mx:GridRow>
+    </mx:Grid>
+</base:EditorChildBase>

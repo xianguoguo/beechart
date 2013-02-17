@@ -1,0 +1,56 @@
+chart {
+    smooth          : true;
+    colors          : #84BC0D,#70B1CE;
+    paddingLeft     : 8;
+    paddingRight    : 8;
+    leftAxisVisibility: visible;
+}
+
+bar {
+    brightness.hl   : 0.1;
+    dropShadow      : none;
+}
+
+xAxis {
+    labelGap        : auto;
+    tickLength      : 0;
+    lineThickness   : 0;
+}
+
+xAxis label {
+    padding         : 5;
+}
+
+yAxis {
+    lineThickness   : 0;
+    tickLength      : 0;
+}
+
+canvas {
+    backgroundColor : #090F17;
+    priLineThickness: 1;
+    priLineColor    : #1B1C1C;
+    priLineAlpha    : 1;
+    secLineThickness: 1;
+    secLineColor    : #1B1C1C;
+    backgroundColor2: #171717;
+}
+
+tooltip {
+    color           : #FFFFFF;
+    backgroundColor : #000000;
+    borderThickness : null;
+    backgroundAlpha : .8;
+}
+
+guideLine {
+    color           : #FF7300;
+}
+
+legend {
+    position        : bottom;
+}
+
+legend item label {
+    color           : inherit;
+}

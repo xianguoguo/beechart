@@ -1,0 +1,90 @@
+<graph seriesNameInToolTip='0' toolTipSepChar=' ' bgColor='FFFFFF'
+	borderColor='FFFFFF' subcaption='' hovercapbg='FFECAA' hovercapborder='F47E00'
+	formatNumberScale='0' decimalPrecision='0' showvalues='0' numdivlines='5'
+	numVdivlines='0' yaxisminvalue='82' yaxismaxvalue='105'
+	rotateYAxisName='1' rotateNames='1' slantLabels='1' showhovercap='1'
+	baseFontSize='12' yAxisName='价格' xAxisName="日期">
+	<categories>
+		<category name='01/12' />
+		<category name='01/13' />
+		<category name='01/14' />
+		<category name='01/17' />
+		<category name='01/18' />
+		<category name='01/19' />
+		<category name='01/20' />
+		<category name='01/21' />
+		<category name='01/24' />
+		<category name='01/25' />
+		<category name='01/26' />
+		<category name='01/27' />
+		<category name='01/28' />
+		<category name='01/30' />
+		<category name='01/31' />
+		<category name='02/08' />
+		<category name='02/09' />
+		<category name='02/10' />
+	</categories>
+	<dataset seriesName='辛塔' color='#ff0000' anchorRadius='4'
+		anchorBorderColor='#ff0000' anchorBgColor='FFFFFF'>
+		<set value='93' />
+		<set value='97' />
+		<set value='97' />
+		<set value='97' />
+		<set value='97' />
+		<set value='96' />
+		<set value='96' />
+		<set value='96' />
+		<set value='96' />
+		<set value='95' />
+		<set value='95' />
+		<set value='96' />
+		<set value='96' />
+		<set value='96' />
+		<set value='97' />
+		<set value='99' />
+		<set value='99' />
+		<set value='100' />
+	</dataset>
+	<dataset seriesName='大庆' color='#00c049' anchorRadius='4'
+		anchorBorderColor='#00c049' anchorBgColor='FFFFFF'>
+		<set value='93' />
+		<set value='97' />
+		<set value='97' />
+		<set value='97' />
+		<set value='97' />
+		<set value='97' />
+		<set value='97' />
+		<set value='96' />
+		<set value='97' />
+		<set value='95' />
+		<set value='95' />
+		<set value='96' />
+		<set value='96' />
+		<set value='96' />
+		<set value='97' />
+		<set value='98' />
+		<set value='99' />
+		<set value='99' />
+	</dataset>
+	<dataset seriesName='胜利' color='#24389a' anchorRadius='4'
+		anchorBorderColor='#24389a' anchorBgColor='FFFFFF'>
+		<set value='87' />
+		<set value='91' />
+		<set value='91' />
+		<set value='91' />
+		<set value='91' />
+		<set value='91' />
+		<set value='91' />
+		<set value='91' />
+		<set value='92' />
+		<set value='90' />
+		<set value='90' />
+		<set value='91' />
+		<set value='91' />
+		<set value='91' />
+		<set value='92' />
+		<set value='93' />
+		<set value='94' />
+		<set value='95' />
+	</dataset>
+</graph>

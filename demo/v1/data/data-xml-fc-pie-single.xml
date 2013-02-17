@@ -1,0 +1,13 @@
+<graph  yAxisName='Sales Figure' 
+                caption='Top 5 Sales Person' 
+                numberPrefix='$' 
+                decimalPrecision='1' 
+                divlinedecimalPrecision='0' 
+                limitsdecimalPrecision='0'>
+        <set name='Alex' value='25000' color='AFD8F8'/> 
+        <set name='Mark' value='35000' color='F6BD0F'/> 
+        <set name='David' value='42300' color='8BBA00'/> 
+        <set name='Graham' value='35300' color='FF8E46'/> 
+        <set name='John' value='31300' color='008E8E'/> 
+
+</graph>

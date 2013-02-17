@@ -1,0 +1,54 @@
+/* ---- demo page ---- */
+.demos { height:600px; width:952px; padding-left:0; }
+.demo .links a.cur { background:#E6F2FA; color:#057ACD; cursor:default;}
+.demo { padding:5em; text-align:center; font-family:verdana,微软雅黑; }
+.demo h2 { font-size: 220%; padding:0.5em; }
+.demo .links { color: #333; }
+.demo .links a { padding:4px 8px; border-radius:8px; margin:0 4px; cursor:pointer; color:#999; }
+.demo .css-links { margin-left:1em; }
+
+/* ---- Home ----- */
+body.home {
+    text-align:center;
+    padding: 2em;
+}
+article { 
+    width:750px; 
+    margin:0 auto; 
+    padding:0; 
+    color:#666;
+    text-align:left;
+    font-size:11pt;
+}
+.home h1 { 
+    width:372px; 
+    height:43px; 
+    background:url(../images/page-title.png) no-repeat; 
+    text-indent:-10000px; 
+}
+.home #page-title { margin-bottom:1em; }
+.home #page-title h4 { 
+    color:#999; 
+    font-size:20px; 
+    font-family:Verdana; 
+    padding-left:15px;
+}
+.home .links li {
+    font-size: 20pt;
+    font-family: Verdana, 微软雅黑, 黑体
+}
+.home .links li img {
+    padding: 1em;
+}
+.info {
+    margin:5em 0 1em 0;
+    width: 42em;
+    background: #EEEEEE;
+    padding: 1em;
+}
+.info p {
+    padding:0.5em 0;
+}
+footer {
+    padding: 1em;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="UTF-8">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>more chart test</title>
+        <meta name="description" content="upload"/>
+    </head>
+<body>      
+    <div id="article">
+     <div id="altContent">未安装Flash时的提示</div>
+    </div> 
+</body>
+ <script src="http://style.china.alibaba.com/js/lib/fdev-v4/core/fdev-min.js"></script>
+    <script>
+    //加载数据后，设置数据是否可视，若有动画，有很大几率出现，数据隐藏了，但是对应的Legend没有变灰。
+    //与数据，css分别加载有关，跟有初始动画有关
+       jQuery(function($){
+           $.use('ui-flash-chart', function(){    
+              var chart = $('#altContent').flash({ 
+                 module     : 'chart', 
+                 type       : 'line', 
+                 width      : 840, 
+                 height     : 400, 
+                 flashvars  : { 
+                    cssUrl:'http://wd.alibaba-inc.com/yid-chart/css/ali-line.css',
+                    dataUrl : 'http://wd.alibaba-inc.com/yid-chart/data/mon-av-temp.xml',
+                    debug:true
+                 } 
+              }); 
+              //数据处理完毕后处理
+              chart.bind('data_parsed.flash',hideObj);
+              
+              function hideObj(){
+                try{
+                    chart.flash('setDatasetVisibility',0,false);
+                }catch(e)
+                {
+                    console.log("error");
+                }
+              
+                console.log("ready");
+              }
+           });
+       });
+    </script>
+</html>		

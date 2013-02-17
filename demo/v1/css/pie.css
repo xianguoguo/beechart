@@ -1,0 +1,19 @@
+chart{
+    mouseAnimate:true;
+    animate:counter_clockwise;
+    colors:#A8CE55, #E9930F, #4D99DA, #CE5555, #DCBB29,#55BECE,#AF80DE;
+}
+legend{
+    position:bottom;
+}
+slice{
+    labelPosition   : outside;
+}
+tooltip{
+    enabled:true;
+    tip:#label#<br>#value# of #total#<br>#percent#;
+    color:#000000;
+    borderColor         :   #F47E00;
+    backgroundColor     :   #FFECAA;
+    backgroundAlpha     :   1;
+}

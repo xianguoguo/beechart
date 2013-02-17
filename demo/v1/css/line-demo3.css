@@ -1,0 +1,56 @@
+
+canvas {
+    backgroundColor2  : #F7F7F7;
+    gridThickness     : 1;
+    gridColor         : #C1C1C1;
+    borderThickness   : 2;
+    borderColor       : #545454;
+    xgap              : 0;
+}
+
+line {
+    thickness         : 2;
+    alpha	            : 1;
+    thickness.active  : 3;
+    fillAlpha.active  : .1;
+    lineMethod        : line;
+}
+
+line dot {
+    color         : #FFFFFF;
+    color.hl      : #FFFFFF;
+    borderThickness   : 1;
+    borderThickness.hl   : 2;
+    borderColor   : inherit#color;
+    borderColor.hl   : inherit#color;
+    radius        : 3;
+    radius.hl     : 6;
+}
+
+yAxis {
+    tickColor     : #666666;
+    lineThickness : 0;
+    tickThickness : 0   ;
+}
+
+xAxis {
+    lineThickness : 0;
+    tickThickness : 0;
+    labelGap      : 2;
+}
+
+legend {
+    position      : bottom;
+    valign        : top;
+}
+
+tooltip {
+    backgroundAlpha   : 1;
+}
+
+chart {
+    leftAxisVisibility : visible;
+    animate : true;
+    width: 55s0;
+    height: 300;
+}

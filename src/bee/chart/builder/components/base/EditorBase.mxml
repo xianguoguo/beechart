@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     各个图表编辑区域的主界面
+-->
+<s:NavigatorContent xmlns:fx="http://ns.adobe.com/mxml/2009"
+                    xmlns:s="library://ns.adobe.com/flex/spark"
+                    xmlns:mx="library://ns.adobe.com/flex/mx"
+                    creationComplete="navigatorcontent1_creationCompleteHandler(event)"
+                    removedFromStage="navigatorcontent1_removedFromStageHandler(event)">
+    <s:layout>
+        <s:BasicLayout/>
+    </s:layout>
+    <fx:Metadata>
+		[Event(name="styleChange",type="events.StyleChangeEvent")]
+	</fx:Metadata>
+    <fx:Declarations>
+        <!-- 将非可视元素（例如服务、值对象）放在此处 -->
+    </fx:Declarations>
+    <fx:Script>
+        <![CDATA[
+            import bee.chart.builder.events.BuilderEvent;
+            
+            import mx.core.Container;
+            import mx.core.IVisualElement;
+            import mx.core.IVisualElementContainer;
+            import mx.core.UIComponent;
+            import mx.events.FlexEvent;
+            import mx.events.IndexChangedEvent;
+            
+            import spark.components.NavigatorContent;
+            import spark.components.SkinnableContainer;
+            public var layoutNCChild:SkinnableContainer;
+            public var styleNCChild:SkinnableContainer;
+            public var animationNCChild:SkinnableContainer;
+            public var otherNCChild:SkinnableContainer;
+            
+            protected function tabNavigator_creationCompleteHandler(event:Event):void
+            {
+                if (layoutNCChild != null)
+                {
+                    layoutNC.addElement(layoutNCChild);
+                }
+                if (styleNCChild != null)
+                {
+                    styleNC.addElement(styleNCChild);
+                }
+                if (animationNCChild != null)
+                {
+                    animationNC.addElement(animationNCChild);
+                }
+                else
+                {
+                    tabNavigator.removeElement(animationNC);
+                }
+                if (otherNCChild != null)
+                {
+                    otherNC.addElement(otherNCChild);
+                }
+                else
+                {
+                    tabNavigator.removeElement(otherNC);
+                }
+            }
+            
+            protected function navigatorcontent1_creationCompleteHandler(event:FlexEvent):void
+            {
+                this.addEventListener(BuilderEvent.RESET, resetHandler);
+            }
+            
+            
+            protected function navigatorcontent1_removedFromStageHandler(event:Event):void
+            {
+                this.removeEventListener(BuilderEvent.RESET, resetHandler);
+            }
+            
+            protected function resetHandler(event:BuilderEvent):void
+            {
+                
+                /**
+                 * 退回主界面时，viewStack的子界面全部分发reset事件，使得子界面全部重置数据.
+                 * */
+                trace("tabNavigator:", tabNavigator);
+                if (tabNavigator)
+                {
+                    var event:BuilderEvent = new BuilderEvent(BuilderEvent.RESET);
+                    dispatchEventForEvery(tabNavigator, event);
+                    tabNavigator.selectedIndex = 0;
+                }
+            }
+            
+            /**
+             * 对所有SkinnableContainer分发事件
+             * @param con 分发事件的IVisualElementContainer
+             * @param event 需要分发的事件
+             *
+             */
+            private function dispatchEventForEvery(con:IVisualElementContainer, event:Event):void
+            {
+                if (!con)
+                {
+                    return;
+                }
+                var childLength:int = con.numElements;
+                var childSC:IVisualElementContainer;
+                var childSC1:*;
+                for (var i:int = 0; i < childLength; i++)
+                {
+                    childSC1 = con.getElementAt(i);
+                    childSC = con.getElementAt(i) as IVisualElementContainer;
+                    if (childSC)
+                    {
+                        (childSC as UIComponent).dispatchEvent(event);
+                        dispatchEventForEvery(childSC, event);
+                    }
+                }
+            }
+            
+            /**
+             * 切换TabNavigator子界面时分发事件
+             * @param event
+             *
+             */
+            protected function tabNavigator_changeHandler(event:IndexChangedEvent):void
+            {
+                var selectItem:IVisualElementContainer = tabNavigator.selectedChild as IVisualElementContainer;
+                var builderEvent:BuilderEvent = new BuilderEvent(BuilderEvent.SELECTED);
+                dispatchEventForEvery(selectItem, builderEvent);
+            }
+        ]]>
+    </fx:Script>
+    <mx:TabNavigator id="tabNavigator"
+                     width="100%"
+                     height="100%"
+                     styleName="chartBorder"
+                     creationPolicy="all"
+                     change="tabNavigator_changeHandler(event)"
+                     creationComplete="tabNavigator_creationCompleteHandler(event)">
+        <s:NavigatorContent id="layoutNC"
+                            label="图表布局"
+                            width="100%"
+                            height="100%">
+        </s:NavigatorContent>
+        <s:NavigatorContent id="styleNC"
+                            label="图表样式"
+                            width="100%"
+                            height="100%">
+        </s:NavigatorContent>
+        <s:NavigatorContent id="animationNC"
+                            label="展现动画"
+                            width="100%"
+                            height="100%">
+        </s:NavigatorContent>
+        <s:NavigatorContent id="otherNC"
+                            label="其他设置"
+                            width="100%"
+                            height="100%">
+        </s:NavigatorContent>
+    </mx:TabNavigator>
+</s:NavigatorContent>

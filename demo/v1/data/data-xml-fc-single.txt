@@ -1,0 +1,94 @@
+<graph seriesNameInToolTip='0' toolTipSepChar=' ' bgColor='FFFFFF'
+	borderColor='FFFFFF' subcaption='' hovercapbg='FFECAA' hovercapborder='F47E00'
+	formatNumberScale='0' decimalPrecision='0' showvalues='0' numdivlines='5'
+	numVdivlines='0' yaxisminvalue='61' yaxismaxvalue='97' rotateYAxisName='1'
+	rotateNames='1' slantLabels='1' showhovercap='1' baseFontSize='12'
+	yAxisName='价格' xAxisName="日期">
+	<categories>
+		<category name='04/30' />
+		<category name='05/07' />
+		<category name='05/14' />
+		<category name='05/21' />
+		<category name='05/28' />
+		<category name='06/04' />
+		<category name='06/11' />
+		<category name='06/18' />
+		<category name='06/25' />
+		<category name='07/02' />
+		<category name='07/09' />
+		<category name='07/16' />
+		<category name='07/23' />
+		<category name='07/30' />
+		<category name='08/06' />
+		<category name='08/13' />
+		<category name='08/20' />
+		<category name='08/27' />
+		<category name='09/03' />
+		<category name='09/10' />
+		<category name='09/17' />
+		<category name='09/24' />
+		<category name='10/01' />
+		<category name='10/08' />
+		<category name='10/15' />
+		<category name='10/22' />
+		<category name='10/29' />
+		<category name='11/05' />
+		<category name='11/12' />
+		<category name='11/19' />
+		<category name='11/26' />
+		<category name='12/03' />
+		<category name='12/10' />
+		<category name='12/17' />
+		<category name='12/24' />
+		<category name='12/31' />
+		<category name='01/07' />
+		<category name='01/14' />
+		<category name='01/21' />
+		<category name='01/28' />
+		<category name='02/04' />
+	</categories>
+	<dataset seriesName='大庆' color='0080FF' anchorRadius='4'
+		anchorBorderColor='0080FF' anchorBgColor='FFFFFF'>
+		<set value='83' />
+		<set value='81' />
+		<set value='77' />
+		<set value='71' />
+		<set value='68' />
+		<set value='70' />
+		<set value='68' />
+		<set value='72' />
+		<set value='74' />
+		<set value='73' />
+		<set value='69' />
+		<set value='72' />
+		<set value='72' />
+		<set value='73' />
+		<set value='75' />
+		<set value='73' />
+		<set value='69' />
+		<set value='66' />
+		<set value='69' />
+		<set value='70' />
+		<set value='72' />
+		<set value='73' />
+		<set value='74' />
+		<set value='79' />
+		<set value='80' />
+		<set value='79' />
+		<set value='80' />
+		<set value='82' />
+		<set value='88' />
+		<set value='80' />
+		<set value='78' />
+		<set value='80' />
+		<set value='84' />
+		<set value='84' />
+		<set value='86' />
+		<set value='87' />
+		<set value='88' />
+		<set value='88' />
+		<set value='91' />
+		<set value='90' />
+		<set value='92' />
+	</dataset>
+</graph>

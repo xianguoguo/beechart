@@ -1,0 +1,46 @@
+xAxis {
+    tickThickness  : 0;
+    tickLength     : 5;
+    tickPosition   : center;
+    labelPosition  : center;
+    labelGap       : 1;
+    labelDataType  : date;
+    labelFormat    : %D;
+}
+
+yAxis {
+    lineThickness  : 0;
+    tickThickness  : 0;
+    tickLength     : 0;
+    tickPosition   : left;
+    labelPosition  : left;
+}
+
+canvas {
+    borderThickness   : 0;
+    borderColor       : #666666;
+    backgroundColor   : #FFFFFF;
+    gridColor         : #FFEBE1;
+    gridThickness     : 1;
+    vLineStyle        : dashed;
+}
+
+chart {
+    colors        : #EB4300,#F5A73A,#124FA2,#5080A8;
+    leftAxisVisibility: visible;
+    animate : true;
+    width: 600;
+    height: 300;
+}
+
+bar {
+    alpha : 0.8;
+    alpha.hl : 1;
+    dropShadow  : none;
+    borderThickness : 2;
+    borderColor : #FFFFFF;
+}
+
+legend{
+    position:bottom;
+}

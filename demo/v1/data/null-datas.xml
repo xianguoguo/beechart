@@ -1,0 +1,39 @@
+
+
+<chart>
+  <data>
+    <indexAxis name="日期" unit="">
+      <labels>03/01,03/02,03/03,03/04,03/05,03/06,03/07,03/08,03/09,03/10,03/11,03/12,03/13,03/14,03/15,03/16,03/17,03/18,03/19,03/20,03/21,03/22,03/23,03/24,03/25,03/26,03/27,03/28,03/29,03/30</labels>
+    </indexAxis>
+    <valueAxis name="cookie" unit=""/>
+    <dataSets>
+      <set name="公司搜索">
+        <values>,,,,,,,,,,,,,,,,,,,,,,,,,,,,,</values>
+      </set>
+      <set name="求购搜索">
+        <values>,,,,,,,,,,,,,,,,,,,,,,,,,,,,,</values>
+      </set>
+      <set name="供应搜索">
+        <values>,,,,,,,,,,,,,,,,,,,,,,,,,,,,,</values>
+      </set>
+      <set name="静态页面">
+        <values></values>
+      </set>
+      <set name="资讯">
+        <values></values>
+      </set>
+      <set name="首页级">
+        <values></values>
+      </set>
+      <set name="阿里助手">
+        <values></values>
+      </set>
+      <set name="贸易通">
+        <values></values>
+      </set>
+      <set name="其他">
+        <values></values>
+      </set>
+    </dataSets>
+  </data>
+</chart>

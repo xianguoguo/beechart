@@ -1,0 +1,29 @@
+/*** author honglun.menghl* date 2011-2-19* SEO tool chart*/
+canvas {
+    backgroundColor2  : #FFF7F3;
+    gridThickness     : 1;
+    gridColor         : #FF7300;
+    xgap              : 0;
+}
+
+line {
+    thickness         : 2;
+    alpha	            : 1;
+    thickness.active  : 3;
+    fillAlpha.active  : .1;
+    lineMethod        : line;
+}
+
+line dot {
+    color         : #FFFFFF;
+    color.hl      : #FFFFFF;
+    borderThickness   : 1;
+    borderThickness.hl   : 2;
+    borderColor   : inherit#color;
+    borderColor.hl   : inherit#color;
+    radius        : 3;
+    radius.hl     : 6;
+}
+
+yAxis {
+    tickColor     : #666666;lineThickness : 2;tickThickness : null;}xAxis {lineThickness : 2;tickThickness : null;labelGap      : auto;}legend {position      : none;valign        : top;}tooltip {backgroundAlpha   : 1;}chart {leftAxisVisibility : visible;width: 640;height:132;}

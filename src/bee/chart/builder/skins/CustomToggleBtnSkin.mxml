@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+自定义的ToggleButton皮肤，unselectedStates和selectedStates状态分别对象不同的图片
+-->
+<!--
+
+     ADOBE SYSTEMS INCORPORATED
+     Copyright 2008 Adobe Systems Incorporated
+     All Rights Reserved.
+
+     NOTICE: Adobe permits you to use, modify, and distribute this file
+     in accordance with the terms of the license agreement accompanying it.
+
+-->
+
+<!--- The default skin class for a Spark ToggleButton component.
+
+     @see spark.components.ToggleButton
+
+     @langversion 3.0
+     @playerversion Flash 10
+     @playerversion AIR 1.5
+     @productversion Flex 4
+-->
+<s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009"
+             xmlns:s="library://ns.adobe.com/flex/spark"
+             xmlns:fb="http://ns.adobe.com/flashbuilder/2009"
+             minHeight="0"
+             minWidth="0">
+
+    <!-- host component -->
+    <fx:Metadata>
+        <![CDATA[ 
+        /** 
+         * @copy spark.skins.spark.ApplicationSkin#hostComponent
+         */
+        [HostComponent("spark.components.ToggleButton")]
+    ]]>
+    </fx:Metadata>
+    <fx:Script>
+        <![CDATA[
+            import assets.FileAssests;
+            [Bindable]
+            private var unselectedStatesImg:Class = FileAssests.button_Collapse_Img;
+            
+            [Bindable]
+            private var selectedStatesImg:Class = FileAssests.button_Expand_Img;
+        ]]>
+    </fx:Script>
+    <!--列出所有ToggleButton的状态并分组，再设置状态-->
+    <s:states>
+        <s:State name="up"
+                 stateGroups="unselectedStates"/>
+        <s:State name="over"
+                 stateGroups="unselectedStates"/>
+        <s:State name="down"
+                 stateGroups="unselectedStates"/>
+        <s:State name="disabled"
+                 stateGroups="unselectedStates"/>
+        <s:State name="upAndSelected"
+                 stateGroups="selectedStates"/>
+        <s:State name="overAndSelected"
+                 stateGroups="selectedStates"/>
+        <s:State name="downAndSelected"
+                 stateGroups="selectedStates"/>
+        <s:State name="disabledAndSelected"
+                 stateGroups="selectedStates"/>
+    </s:states>
+
+    <s:BitmapImage source.unselectedStates="{unselectedStatesImg}"
+                   source.selectedStates="{selectedStatesImg}"
+                   horizontalCenter="0"
+                   verticalCenter="0"/>
+
+</s:SparkSkin>

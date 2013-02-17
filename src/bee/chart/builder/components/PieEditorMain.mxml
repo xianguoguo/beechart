@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	 饼图编辑区域主界面
+-->
+<base:EditorBase xmlns:fx="http://ns.adobe.com/mxml/2009"
+				 xmlns:s="library://ns.adobe.com/flex/spark"
+				 xmlns:mx="library://ns.adobe.com/flex/mx"
+				 xmlns:base="cn.alibaba.yid.chart.builder.components.base.*"
+				 xmlns:pie="cn.alibaba.yid.chart.builder.components.pie.*">
+	<base:layout>
+		<s:BasicLayout/>
+	</base:layout>
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<base:layoutNCChild>
+		<pie:PieLayoutPage width="100%"
+						   height="100%">
+		</pie:PieLayoutPage>
+	</base:layoutNCChild>
+	<base:styleNCChild>
+		<pie:PieStylePage width="100%"
+						  height="100%">
+		</pie:PieStylePage>
+	</base:styleNCChild>
+	<base:animationNCChild>
+		<pie:PieAnimationPage width="100%"
+							  height="100%">
+		</pie:PieAnimationPage>
+	</base:animationNCChild>
+	<!--暂时无该功能
+	<base:otherNCChild>
+		<pie:PieOtherPage width="100%"
+						  height="100%">
+		</pie:PieOtherPage>
+	</base:otherNCChild>
+	-->
+</base:EditorBase>

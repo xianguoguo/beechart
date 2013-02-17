@@ -1,0 +1,73 @@
+body {
+    text-align:center;
+}
+#article { 
+    width:750px; 
+    margin:0 auto; 
+    padding:1em; 
+    color:#666;
+    text-align:left;
+    font-size:11pt;
+}
+h1 { 
+    width:372px; 
+    height:43px; 
+    background:url(../images/page-title.png) no-repeat; 
+    text-indent:-10000px; 
+}
+#page-title { margin-bottom:1em; }
+#page-title h4 { 
+    color:#999; 
+    font-size:20px; 
+    font-family:Verdana; 
+    padding-left:15px;
+}
+.demo {
+    margin-bottom: 1.8em;
+}
+.demo dt { 
+    text-indent:-10000px; 
+}
+.demo dd { 
+    display:inline;
+}
+.demo dd a:hover {
+    background:#FF7300;
+}
+#line-demo dt { 
+    width:177px; 
+    height:53px; 
+    background:url(images/line-title.png); 
+}
+#bar-demo dt { 
+    width:177px; 
+    height:36px; 
+    background:url(images/bar-title.png); 
+}
+#pie-demo dt { 
+    width:177px; 
+    height:36px; 
+    background:url(images/pie-title.png); 
+}
+#help {
+    margin-top:2em;
+}
+#help dt {
+    width:132px;
+    height:35px;
+    background:url(images/help-title.png);
+    text-indent:-10000px;
+    margin-bottom:1em;
+}
+#info {
+    margin:5em 0 1em 0;
+    width: 42em;
+    background: #EEEEEE;
+    padding: 1em;
+}
+#info p {
+    padding:0.5em 0;
+}
+#footer {
+    padding: 1em;
+}

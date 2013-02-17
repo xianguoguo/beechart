@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     图表布局界面公共部分
+-->
+<base:EditorChildBase xmlns:fx="http://ns.adobe.com/mxml/2009"
+                      xmlns:s="library://ns.adobe.com/flex/spark"
+                      xmlns:mx="library://ns.adobe.com/flex/mx"
+                      xmlns:base="cn.alibaba.yid.chart.builder.components.base.*">
+    <fx:Declarations>
+        <!-- 将非可视元素（例如服务、值对象）放在此处 -->
+    </fx:Declarations>
+    <fx:Script>
+        <![CDATA[
+            import bee.chart.builder.events.BuilderEvent;
+            import bee.chart.builder.utils.ChartStyleSetting;
+            
+            import mx.collections.ArrayCollection;
+            import mx.collections.IList;
+            import mx.controls.Alert;
+            import mx.events.FlexEvent;
+            import mx.events.ItemClickEvent;
+            import mx.utils.ObjectProxy;
+            [Bindable]
+            public var legendTypes:ArrayCollection;
+            
+//            [Bindable]
+//            public var legendAligns:ArrayCollection = new ArrayCollection([new ObjectProxy({label: "居左对齐", type: "left"}), new ObjectProxy({label: "居中对齐", type: "center"}), new ObjectProxy({label: "居右对齐", type: "right"})]);
+//            [Bindable]
+//            public var legendValigns:ArrayCollection = new ArrayCollection([new ObjectProxy({label: "垂直上对齐", type: "top"}), new ObjectProxy({label: "垂直居中对齐", type: "middle"}), new ObjectProxy({label: "垂直下对齐", type: "bottom"})]);
+            
+            [Bindable]
+            //简约模式，折线图和饼图时使用
+            public var isSimple:Boolean = false;
+            
+            /**
+             * 重写defalutSetting()函数，设置默认设置
+             * */
+            override protected function defalutSetting():void
+            {
+                super.defalutSetting();
+                btnList.selectedIndex = 0;
+                label_label_CheckBox.selected = true;
+                label_value_CheckBox.selected = false;
+                label_percent_CheckBox.selected = false;
+                
+                tootipCheckBox.selected = true;
+                tooltip_label_CheckBox.selected = true;
+                tooltip_value_CheckBox.selected = true;
+                tooltip_percent_CheckBox.selected = true;
+                var styleSetting:ChartStyleSetting = ChartStyleSetting.getInstance();
+                var legendStyleObject:Object = styleSetting.getStyle("legend");
+                if (legendStyleObject)
+                {
+                    //legend位置
+                    var positionStr:String = legendStyleObject["position"];
+                    if (positionStr)
+                    {
+                        var dataProvider:IList = btnList.dataProvider;
+                        for each (var obj:Object in dataProvider)
+                        {
+                            if (obj.type == positionStr)
+                            {
+                                btnList.selectedItem = obj;
+                                break;
+                            }
+                        }
+                    }
+                }
+                var tooltipStyleObject:Object = styleSetting.getStyle("tooltip");
+                if (tooltipStyleObject)
+                {
+                    //tooltip显示
+                    var enabledStr:String = tooltipStyleObject["enabled"];
+                    if (enabledStr)
+                    {
+                        if (enabledStr == "false" || enabledStr == false)
+                        {
+                            tootipCheckBox.selected = false;
+                        }
+                        else
+                        {
+                            tootipCheckBox.selected = true;
+                        }
+                    }
+                }
+                
+                //label显示位置
+                var labelStyleObject:Object = styleSetting.getStyle("label");
+                if (labelStyleObject)
+                {
+                    var labelPositionStr:String = labelStyleObject["labelPosition"];
+                    if (labelPositionStr == "none")
+                    {
+                        label_label_CheckBox.selected = false;
+                    }
+                }
+            
+            }
+            
+            /**
+             * 重写creationCompleteHandler()函数，设置初始状态
+             * */
+            override protected function creationCompleteHandler(event:FlexEvent):void
+            {
+                super.creationCompleteHandler(event);
+                defalutSetting();
+            }
+            
+//			override protected function removedFromStageHandler(event:Event):void
+//			{
+//				super.removedFromStageHandler(event);
+//				btnList.removeEventListener(ItemClickEvent.ITEM_CLICK, animBtnList_ItemClickHandler);
+//			}
+            
+            protected function tootipCheckBox_changeHandler(event:Event):void
+            {
+                var styleObject:Object = {"enabled": tootipCheckBox.selected};
+                dispatchStyleChangeEvent("tooltip", styleObject);
+            }
+            
+            protected function label_composite_changeHandler(event:Event):void
+            {
+                var tip:String = "";
+                var brStr:String = " ";
+                var styleObject:Object;
+                if (label_label_CheckBox.selected)
+                {
+                    tip += "#label#" + brStr;
+                }
+                if (label_value_CheckBox.selected)
+                {
+                    tip += "#value#" + brStr;
+                }
+                if (label_percent_CheckBox.selected)
+                {
+                    tip += "#percent#";
+                }
+                if (tip == "")
+                {
+                    styleObject = {labelPosition: "none"}
+                }
+                else
+                {
+                    styleObject = {label: tip, labelPosition: "outside"};
+                }
+                dispatchStyleChangeEvent("slice", styleObject);
+            }
+            
+            protected function tooltip_composite_changeHandler(event:Event):void
+            {
+                
+                var tip:String = "";
+                var brStr:String = "<br>";
+                if (tooltip_label_CheckBox.selected)
+                {
+                    tip += "#label#" + brStr;
+                }
+                if (tooltip_value_CheckBox.selected)
+                {
+                    tip += "#value# of #total#" + brStr;
+                }
+                if (tooltip_percent_CheckBox.selected)
+                {
+                    tip += "#percent#";
+                }
+                var styleObject:Object = {"tip": tip};
+                dispatchStyleChangeEvent("tooltip", styleObject);
+            }
+            
+            private function btnList_ItemClickHandler(event:ItemClickEvent):void
+            {
+                var itemObj:Object = event.item;
+                var styleObject:Object = {position: itemObj["type"]};
+                dispatchStyleChangeEvent("legend", styleObject);
+            }
+            
+//            private function alignList_ItemClickHandler(event:ItemClickEvent):void
+//            {
+//                var itemObj:Object = event.item;
+//                var styleObject:Object = {align: itemObj["type"]};
+//                dispatchStyleChangeEvent("legend", styleObject);
+//            }
+//            
+//            private function valignList_ItemClickHandler(event:ItemClickEvent):void
+//            {
+//                var itemObj:Object = event.item;
+//                var styleObject:Object = {valign: itemObj["type"]};
+//                dispatchStyleChangeEvent("legend", styleObject);
+//            }
+        ]]>
+    </fx:Script>
+    <mx:Grid verticalGap="18"
+             horizontalGap="0"
+             width="100%"
+             height="100%">
+        <mx:GridRow width="100%">
+            <mx:GridItem width="100%">
+                <base:TitleLabelContainer width="100%"
+                                          text="图例位置"/>
+            </mx:GridItem>
+        </mx:GridRow>
+        <mx:GridRow width="100%">
+            <mx:GridItem width="100%"
+                         paddingLeft="8">
+                <base:PopularList id="btnList"
+                                  width="100%"
+                                  dataProvider="{legendTypes}"
+                                  itemClickHanlder="btnList_ItemClickHandler"/>
+            </mx:GridItem>
+        </mx:GridRow>
+        <!--图例水平排列和竖直排列操作逻辑，测试用
+             <base:TitleLabelContainer width="100%"
+             text="图例水平排列"/>
+             <base:PopularList id="alignList"
+             width="100%"
+             dataProvider="{legendAligns}"
+             itemClickHanlder="alignList_ItemClickHandler"/>
+             <base:TitleLabelContainer width="100%"
+             text="图例竖直排列"/>
+             <base:PopularList id="valignList"
+             width="100%"
+             dataProvider="{legendValigns}"
+             itemClickHanlder="valignList_ItemClickHandler"/>
+        -->
+        <mx:GridRow width="100%"
+                    visible="{!isSimple}"
+                    includeInLayout="{!isSimple}">
+            <mx:GridItem width="100%">
+                <s:Group width="100%">
+                    <s:layout>
+                        <s:VerticalLayout/>
+                    </s:layout>
+                    <base:TitleLabelContainer width="100%"
+                                              text="标注内容"/>
+                    <s:Group width="100%">
+                        <s:layout>
+                            <s:HorizontalLayout paddingLeft="8"/>
+                        </s:layout>
+                        <s:CheckBox id="label_label_CheckBox"
+                                    label="分类"
+                                    change="label_composite_changeHandler(event)"/>
+                        <s:CheckBox id="label_value_CheckBox"
+                                    label="数据"
+                                    change="label_composite_changeHandler(event)"/>
+                        <s:CheckBox id="label_percent_CheckBox"
+                                    label="百分比"
+                                    change="label_composite_changeHandler(event)"/>
+                    </s:Group>
+                </s:Group>
+            </mx:GridItem>
+        </mx:GridRow>
+        <mx:GridRow width="100%">
+            <mx:GridItem width="100%">
+                <base:TitleLabelContainer width="100%"
+                                          text="浮出提示"/>
+            </mx:GridItem>
+        </mx:GridRow>
+        <mx:GridRow width="100%">
+            <mx:GridItem width="100%"
+                         paddingLeft="8">
+                <s:Group width="100%">
+                    <s:layout>
+                        <s:VerticalLayout>
+                            <s:gap>12</s:gap>
+                        </s:VerticalLayout>
+                    </s:layout>
+                    <s:Group width="100%">
+                        <s:layout>
+                            <s:HorizontalLayout/>
+                        </s:layout>
+                        <s:CheckBox id="tootipCheckBox"
+                                    label="显示"
+                                    selected="@{tooltipSC.enabled}"
+                                    change="tootipCheckBox_changeHandler(event)"/>
+                        <s:Label text="(鼠标在图表上时才显示)"
+                                 fontSize="12"
+                                 color="0xCCCCCC"
+                                 verticalCenter="0"/>
+                    </s:Group>
+                    <s:Group visible="{!isSimple}"
+                             includeInLayout="{!isSimple}">
+                        <s:layout>
+                            <s:VerticalLayout/>
+                        </s:layout>
+                        <s:Label text="提示内容"/>
+                        <s:Group id="tooltipSC">
+                            <s:layout>
+                                <s:HorizontalLayout paddingLeft="4"/>
+                            </s:layout>
+                            <s:CheckBox id="tooltip_label_CheckBox"
+                                        label="分类"
+                                        change="tooltip_composite_changeHandler(event)"/>
+                            <s:CheckBox id="tooltip_value_CheckBox"
+                                        label="数据"
+                                        change="tooltip_composite_changeHandler(event)"/>
+                            <s:CheckBox id="tooltip_percent_CheckBox"
+                                        label="百分比"
+                                        change="tooltip_composite_changeHandler(event)"/>
+                        </s:Group>
+                    </s:Group>
+                </s:Group>
+            </mx:GridItem>
+        </mx:GridRow>
+    </mx:Grid>
+</base:EditorChildBase>

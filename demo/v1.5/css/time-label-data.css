@@ -1,0 +1,54 @@
+chart{
+    chartWidth:500;
+    chartHeight:300;
+    colors:#A8CE55, #E9930F, #4D99DA, #CE5555, #DCBB29,#55BECE,#AF80DE;
+    leftAxisVisibility: visible;
+}
+
+legend{
+    position        : bottom;
+    align			: left;
+    paddingRight	: 0;
+}
+
+canvas{
+    gridColor         : #C1C1C1;
+    gridThickness     : 1;
+    gridAlpha         : .5;
+    borderThickness   : 2;
+    borderColor       : #CADBF1;
+}
+
+line{
+    thickness         : 3;
+    alpha	          : 1;
+    thickness.active  : 5;
+    lineMethod        : line;
+    dropShadow        : none;
+}
+
+line dot{
+    color : inherit#color;
+    radius : 5;
+}
+
+line dot label{
+    visibility:visible;
+}
+
+yAxis{
+    tickColor     : #666666;
+    lineThickness : null;
+    tickThickness : null;
+}
+
+xAxis{
+    lineThickness : 0;
+    tickThickness : 0;
+    labelDataType : date;
+    labelFormat   : %m-%d;
+}
+
+tooltip{
+    enabled:true;
+}

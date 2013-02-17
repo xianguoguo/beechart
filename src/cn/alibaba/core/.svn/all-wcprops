@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/repos/ali_cn_ui/!svn/ver/15523/fdevsource/trunk/as_source/cnued/trunk/cn/alibaba/core
+END
+getSetting.as
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/repos/ali_cn_ui/!svn/ver/7598/fdevsource/trunk/as_source/cnued/trunk/cn/alibaba/core/getSetting.as
+END
+AppSetting.as
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/repos/ali_cn_ui/!svn/ver/3726/fdevsource/trunk/as_source/cnued/trunk/cn/alibaba/core/AppSetting.as
+END
+IDisposable.as
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/repos/ali_cn_ui/!svn/ver/8243/fdevsource/trunk/as_source/cnued/trunk/cn/alibaba/core/IDisposable.as
+END
+BasicApplication.as
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/repos/ali_cn_ui/!svn/ver/14323/fdevsource/trunk/as_source/cnued/trunk/cn/alibaba/core/BasicApplication.as
+END
