@@ -4342,6 +4342,7 @@ jQuery(function($) {
 
 jQuery(function($) {
     var init = {
+        headings: [],
         init: function() {
             this.navStart();
             this.demoNavStart();
@@ -4365,7 +4366,7 @@ jQuery(function($) {
                 $(this).addClass("current");
                 self.arrowPosSet();
             });
-            var headings = [];
+            var headings = self.headings;
             var collectHeaders = function(index, item) {
                 headings.push({
                     top: $(this).offset().top - 15,
@@ -4373,11 +4374,18 @@ jQuery(function($) {
                 });
             };
             $(".content-container h2").each(collectHeaders);
-            $(window).scroll(function() {
+            self.bindScrollEvent();
+        },
+        bindScrollEvent: function() {
+            var self = this;
+            var jq_win = $(window);
+            jq_win.scroll(function() {
+                var headings = self.headings;
                 if (headings.length == 0) {
                     return true;
                 }
-                var scrolltop = $(window).scrollTop() || 0;
+                var scrolltop = jq_win.scrollTop() || 0;
+                var lis = $(".nav-container li");
                 lis.removeClass("current");
                 lis.eq(0).addClass("current");
                 for (var i in headings) {
@@ -4402,6 +4410,7 @@ jQuery(function($) {
             });
         },
         arrowPosSet: function() {
+            var self = this;
             var arrow = $(".nav-container .arrow");
             if (!arrow.length) {
                 return;
@@ -4409,9 +4418,12 @@ jQuery(function($) {
             var lis = $(".nav-container li");
             var currentLi = lis.filter(".current");
             animateArrow(returnCurrentLiTop(currentLi));
+            $(window).off("scroll");
             function animateArrow(top) {
                 arrow.stop(true).animate({
                     top: top
+                }, function() {
+                    self.bindScrollEvent();
                 });
             }
             function returnCurrentLiTop(jq_li) {
