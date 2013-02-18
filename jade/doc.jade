@@ -84,6 +84,9 @@ html
 
                 h2 在网页上部署图表
                 为了便于在html中嵌入图表，故基于jQuery写了一个简单的插件，方便用户使用。
+                插件的主要作用是：
+                div 1.方便在页面上部署flash;
+                div 2.方便flash与js的数据通行、事件交互;
                 h3 嵌入flash图表
                 嵌入flash图表使用flash()方法，参数为object对象，里面的参数如下表：
                 table
@@ -245,20 +248,19 @@ html
                         td getDatasetVisibility(0)
                 .info 调用内部方法，都必须在监听到swfReady事件后，才能正常调用。
                 h3 调用flash方法示例
-                p 调用setDatasetVisibility方法：
+                p 调用loadCSS方法：
                 pre.lang-js.
                     var chart = $('#chart-container').flash({ 
                        swf        : 'beechart-line.swf',
                        width      : 600, 
                        height     : 400, 
                        flashvars  : { 
-                          dataUrl : 'data.xml',
-                          cssUrl  : 'style.css'
+                          dataUrl : 'data.xml'
                        } 
                     }); 
-                    //需要设置数据是否可见，通常需要在数据处理完毕后调用接口
+                    //调用内部方法，都必须在监听到swfReady事件后，才能正常调用
                     chart.on('data_parsed.flash',function(){
-                        chart.getFlash().setDatasetVisibility(0,false);
+                        chart.getFlash().loadCSS('style.css');
                     })
                 h3 事件列表
                 table
@@ -407,8 +409,11 @@ html
                 pre.lang-js.
                     git clone git@github.com:sjpsega/beechart.git
                 h3 使用Ant编译代码
-                p 源码中有一名为bulid的目录，其中的bulid.xml便是ant的编译文件，基本的代码已经写好，用户只需配置下Ant环境，然后打开该文件，根据自己的环境，编辑下FLEX_HOME参数，运行下ant任务，就能将as3代码编译成swf文件了。
-                p Ant做了两件事情，一是在bin目录下，编译生成图表的swf文件；二是在doc目录下，生成BeeChart的开发文档。
+                p 源码中有一名为bulid的目录，其中的bulid.xml便是ant的编译文件。
+                p 使用前需要做：
+                p 1.配置Ant环境;
+                p 2.打开bulid.xml文件，根据自己的环境，编辑下FLEX_HOME参数，设置flash sdk路径，然后运行下ant任务，就能将as3代码编译成swf文件了。
+                p Ant方便编译生成图表的swf文件。
                 h3 修改源代码
                 p 源码包括两部分：
                 ol.ol
