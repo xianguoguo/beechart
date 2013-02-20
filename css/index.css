@@ -241,6 +241,25 @@ hr {
   height: 1px;
   overflow: hidden;
 }
+.links {
+  height: 51px;
+  height: 51px;
+  margin-top: 30px;
+  background: url("../img/assets.png") repeat-x 0px -230px;
+}
+.links .nav {
+  width: 1000px;
+  margin: 0 auto;
+}
+.links .nav li {
+  padding-top: 20px;
+  float: left;
+  color: #3e7db0;
+}
+.links .nav .spacing {
+  color: #a0caeb;
+  margin: 0 10px;
+}
 h2 {
   font-size: 16px;
   font-weight: bold;
@@ -404,23 +423,4 @@ a:active {
 }
 .content .third .github a {
   color: #3e7db0;
-}
-.links {
-  height: 51px;
-  height: 51px;
-  margin-top: 30px;
-  background: url("../img/assets.png") repeat-x 0px -230px;
-}
-.links .nav {
-  width: 1000px;
-  margin: 0 auto;
-}
-.links .nav li {
-  padding-top: 20px;
-  float: left;
-  color: #3e7db0;
-}
-.links .nav .spacing {
-  color: #a0caeb;
-  margin: 0 10px;
 }

@@ -11,7 +11,9 @@
   </head>
   <body>
     <div id="header" data-current="doc" class="fd-clr"><a href="">
-        <div class="logo fd-left">BeeChart</div></a>
+        <div class="logo fd-left"> 
+          <h1>BeeChart</h1>
+        </div></a>
       <ul class="nav fd-right">
         <li class="index"><a href="index.html" target="_self">首页</a></li>
         <li class="spacing">|</li>
@@ -36,44 +38,29 @@
         <h2>开始使用</h2>
         <p>秉承简单，好看，好用的理念，进行设计与开发.</p>
         <p>使用起来简单，易上手。</p>
-        <p>只需简单5步就能使用起来。</p>
-        <div class="info">因为flash本地沙箱的限制，本地flash是不能加载数据的，故在本地运行该示例，需要进行如下操作：控制面板——>Flash Player，打开“高级”tab，点选“受信任位置设置”，将新建的BeeChart文件夹加入受信任的文件夹才能正常运行。当然，如果你将该示例运行在服务器环境下(如apache)，那就再好不过了。</div>
+        <p>先来看看如何在本地运行并查看BeeChart效果。</p>
+        <div class="info">因为flash本地沙箱的限制，本地flash是不能加载数据的，故查看flash效果，必须搭建服务器访问。</div>
         <ol class="ol">
           <li> 
-            <p> <a href="https://github.com/downloads/sjpsega/beechart/beechart%20swf.rar">下载BeeChart swf文件</a></p>
-            <p>点击BeeChart，下载最新版本的swf文件。</p>
+            <p> <a href="rar/beechart-demo.rar">下载BeeChart demo文件</a></p>
           </li>
-          <li> 新建一文件夹，如命名为BeeChart，将下载的swf文件拷贝进该目录下。</li>
+          <li> 将下载压缩文件解压缩至apache或node 服务器环境下，开启服务，通过浏览器访问demo.html。</li>
           <li> 
-            <p>在BeeChart文件夹下，新建data.xml，输入如下内容：</p>
-            <pre class="lang-html">&lt;chart&gt;
-    &lt;data&gt;
-        &lt;indexAxis name=&quot;月份&quot;&gt;
-            &lt;labels&gt;
-                Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec
-            &lt;/labels&gt;
-        &lt;/indexAxis&gt;
-        &lt;valueAxis name=&quot;温度&quot; unit=&quot;度&quot;&gt;&lt;/valueAxis&gt;
-        &lt;dataSets&gt;
-            &lt;set name=&quot;Tokyo&quot;&gt;
-                &lt;values&gt;
-                7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6
-                &lt;/values&gt;
-            &lt;/set&gt;
-            &lt;set name=&quot;London&quot;&gt;
-                &lt;values&gt;
-                3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8
-                &lt;/values&gt;
-            &lt;/set&gt;
-        &lt;/dataSets&gt;
-    &lt;/data&gt;
-&lt;/chart&gt;</pre>
+            <p>不出意外的话，你能在浏览器中看到效果啦！</p>
+            <p>效果如下所示：</p>
+            <div id="chart-container"></div>
           </li>
-          <li> 
-            <p>在BeeChart文件夹下，新建index.html，输入如下代码：</p>
-            <pre class="lang-html">&lt;!DOCTYPE html&gt;
+        </ol>
+        <h2>在网页上部署图表</h2>为了便于在html中嵌入图表，故基于jQuery写了一个简单的插件flash.js，方便用户使用。
+        插件的主要作用是：
+        <div>1.方便在页面上部署flash;</div>
+        <div>2.方便BeeChart与js进行数据通信、事件交互;</div>
+        <h3>在页面上嵌入flash图表</h3>
+        <p>先看下基本的代码示例:</p>
+        <pre class="lang-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;title&gt;BeeChart Demo&lt;/title&gt;
     &lt;script src=&quot;http://sjpsega.github.com/beechart/js/beechart/jquery-1.7.2.js&quot;&gt;&lt;/script&gt;
     &lt;script src=&quot;http://sjpsega.github.com/beechart/js/beechart/flash.js&quot;&gt;&lt;/script&gt;
@@ -82,30 +69,19 @@
     &lt;div id=&quot;chart-container&quot;&gt;&lt;/div&gt;
     &lt;script&gt;
        jQuery(function($){
-            $('#chart-container').flash({ 
+            var chart = $('#chart-container').flash({ 
                swf        : 'beechart-line.swf',
                width      : 840, 
                height     : 400, 
+               allowScriptAccess : &quot;always&quot;,
                flashvars  : { 
                   dataUrl : 'data.xml'
                } 
-            }); 
+            })
        });
     &lt;/script&gt;
 &lt;/body&gt;
-&lt;/html&gt;</pre>
-          </li>
-          <li> 
-            <p>大功告成，双击index.html就能在浏览器中看到效果啦！</p>
-            <p>效果如下所示：</p>
-            <div id="chart-container"></div>
-          </li>
-        </ol>
-        <h2>在网页上部署图表</h2>为了便于在html中嵌入图表，故基于jQuery写了一个简单的插件，方便用户使用。
-        插件的主要作用是：
-        <div>1.方便在页面上部署flash;</div>
-        <div>2.方便flash与js的数据通行、事件交互;</div>
-        <h3>嵌入flash图表</h3>嵌入flash图表使用flash()方法，参数为object对象，里面的参数如下表：
+&lt;/html&gt;</pre>嵌入flash图表使用flash()方法，参数为object对象，里面的参数如下表：
         <table>
           <thead>
             <tr>
@@ -128,17 +104,18 @@
             </tr>
             <tr>
               <td>flashvars</td>
-              <td>传递给图表的参数集<a href="#与图表进行通信">具体见</a></td>
+              <td>传递给图表的参数集</td>
             </tr>
           </tbody>
         </table>
         <p>wmode、allowScriptAccess等flash参数也可在该对象中设置。</p>
         <h3>监听flash事件</h3>监听事件与jQuery监听事件的方法相同，可以使用on\off语法，便可很方便地进行监听事件。
-        <h3>调用flash中的方法</h3>通过getFlash方法返回flash对象，然后便可以调用flash中的方法，<a href="#与图表进行通信">方法列表见</a>
+        <h3>调用flash中的方法</h3>通过getFlash方法返回flash对象，然后便可以调用flash中的方法，
         <p>代码示例:</p>
         <pre class="lang-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
     &lt;title&gt;BeeChart Demo&lt;/title&gt;
     &lt;script src=&quot;http://sjpsega.github.com/beechart/js/beechart/jquery-1.7.2.js&quot;&gt;&lt;/script&gt;
     &lt;script src=&quot;http://sjpsega.github.com/beechart/js/beechart/flash.js&quot;&gt;&lt;/script&gt;
@@ -158,8 +135,9 @@
             })
             //事件监听的使用方法与jQuery的事件监听类似，之后的'.flash'是类似命名空间的作用，
             //加不加都无碍功能，加了更清晰些
-            .on(&quot;data_parsed.flash&quot;,function(){
-                chart.getFlash().setDatasetVisibility(0,false);
+            .on(&quot;swfReady.flash&quot;,function(){
+                //调用内部的loadCSS方法
+                chart.getFlash().loadCSS(&quot;style.css&quot;);
             }); 
        });
     &lt;/script&gt;
@@ -196,7 +174,7 @@
             </tr>
           </tbody>
         </table>
-        <h2>与图表进行通信</h2>
+        <h2>参数、事件、方法</h2>
         <h3>flashvars</h3>
         <p>参数经过flashvar从HTML传递到flash</p>
         <p>有用的参数：</p>
@@ -248,52 +226,47 @@
             <tr>
               <th>接口名称</th>
               <th>说明</th>
-              <th>示例</th>
+              <th style="width:30%">示例</th>
             </tr>
           </thead>
           <tbody></tbody>
-          <tr> 
-            <td>w 或 chartWidth</td>
-            <td style="width:50%">图表内容宽度</td>
-            <td>图表内容宽度</td>
-          </tr>
           <tr>
-            <td>parse   </td>
-            <td>解析数据，数据可以是XML或JSON  </td>
+            <td>parse(String string)</td>
+            <td>解析数据，传入文本数据，数据格式可以是XML或JSON  </td>
             <td>parse(xmlString)</td>
           </tr>
           <tr>
-            <td>parseCSS    </td>
-            <td>解析样式    </td>
+            <td>parseCSS(String string,(Boolean bool))    </td>
+            <td>解析样式，传入样式文本数据，第二个参数默认为false，表示根据传入的样式重新渲染；传递true的话，表示在原有的样式基础上，根据传入样式做部分修改</td>
             <td>parseCSS(cssString)</td>
           </tr>
           <tr>
-            <td>load    </td>
-            <td>加载数据，数据可以是XML或JSON  </td>
+            <td>load(String address)</td>
+            <td>加载数据，参数为数据的地址，其中数据可以是XML或JSON  </td>
             <td>load('../data.xml')</td>
           </tr>
           <tr>
-            <td>loadCSS </td>
-            <td>加载样式    </td>
+            <td>loadCSS(String address) </td>
+            <td>加载样式，参数为样式的地址</td>
             <td>loadCSS('../chart-style.css')</td>
           </tr>
           <tr>
-            <td>setDatasetActivity  </td>
+            <td>setDatasetActivity(int index,Boolean bool)</td>
             <td>设置某条数据是否处于激活状态，激活状态的数据会突出显示，进入active状态  </td>
             <td>setDatasetActivity(1, true)</td>
           </tr>
           <tr>
-            <td>getDatasetActivity  </td>
+            <td>getDatasetActivity(int index)</td>
             <td>获取某条数据是否处于激活状态  </td>
             <td>getDatasetActivity(0)</td>
           </tr>
           <tr>
-            <td>setDatasetVisibility    </td>
+            <td>setDatasetVisibility(int index,Boolean bool)</td>
             <td>设置某条数据是否在界面上可见  </td>
             <td>setDatasetVisibility(1, false)</td>
           </tr>
           <tr>
-            <td>getDatasetVisibility    </td>
+            <td>getDatasetVisibility(int index)</td>
             <td>获取某条数据是否在界面上可见  </td>
             <td>getDatasetVisibility(0)</td>
           </tr>
@@ -366,16 +339,16 @@ chart.on('data_parsed.flash',function(){
     dosomething...
 })
 </pre>
-        <h2>BeeChart如何工作</h2>
+        <h2>数据与样式</h2>
         <p>图表的核心功能有两种，一种是数据，另一种是展现。</p>
         <p>BeeChart针对这两个核心功能，分别由两个参数决定，分别是data和css。</p>
         <p>BeeChart接受的data数据可以是json数据或XML数据；css样式决定图表的展现，如颜色，动画等，这个css与html的css写法大致相同，但是属性有差异。</p>
         <h3>css</h3>
         <p>BeeChart中已经包含了一套漂亮的样式，所以通常情况下，用户只需给图表传入数据，便能有漂亮的图表展现效果了。</p>
         <p>当然需求各异，用户可以根据自己的需要设定适合自身的css样式。</p>
-        <p>内置的样式比较复杂，暂时不会出详细的文档，但我们有<a href="charteditor.html" target="_blank">样式编辑器</a>让用户简单方便地完成图表的配置工作</p>
+        <p>内置的样式比较复杂，暂时不会出详细的文档，但我们有<a href="http://sjpsega.github.com/beechart-editor/" target="_blank">样式编辑器</a>让用户简单方便地完成图表的配置工作</p>
         <h3>data</h3>
-        <p>图表同时接受XML和JSON两种数据类型</p>
+        <p>图表可以接受XML或JSON两种数据类型</p>
         <p>XML范例：</p>
         <pre class="lang-html">&lt;chart&gt;
     &lt;data&gt;
@@ -461,7 +434,57 @@ chart.on('data_parsed.flash',function(){
     }
 }
 </pre>
-        <h2>如何扩展</h2>
+        <h3>设置数据</h3>
+        <p>BeeChart提供了灵活的方式来加载数据。</p>
+        <ol class="ol"> 
+          <li>使用flashvars中的data属性直接给图表设置数据</li>
+          <pre class="lang-js">var dataStr = .........;//略
+var chart = $('#chart-container').flash({ 
+   swf        : 'beechart-line.swf',
+   width      : 840, 
+   height     : 400, 
+   allowScriptAccess : &quot;always&quot;,
+   flashvars  : { 
+      data : dataStr
+   } 
+})</pre>
+          <li>使用flashvars中的dataUrl属性给图表设置数据地址</li>
+          <pre class="lang-js">var dataURL = &quot;data.xml&quot;;
+var chart = $('#chart-container').flash({ 
+   swf        : 'beechart-line.swf',
+   width      : 840, 
+   height     : 400, 
+   allowScriptAccess : &quot;always&quot;,
+   flashvars  : { 
+      dataUrl : dataURL
+   } 
+})</pre>
+          <li>调用parse接口给图表传递数据</li>
+          <pre class="lang-js">var dataStr = .........;//略
+var chart = $('#chart-container').flash({ 
+   swf        : 'beechart-line.swf',
+   width      : 840, 
+   height     : 400, 
+   allowScriptAccess : &quot;always&quot;
+})
+chart.on(&quot;swfReady.flash&quot;,function(){
+    chart.getFlash().parse(dataStr);    
+})</pre>
+          <li>调用load接口给图表传递数据地址</li>
+          <pre class="lang-js">var dataURL = &quot;data.xml&quot;;
+var chart = $('#chart-container').flash({ 
+   swf        : 'beechart-line.swf',
+   width      : 840, 
+   height     : 400, 
+   allowScriptAccess : &quot;always&quot;
+})
+chart.on(&quot;swfReady.flash&quot;,function(){
+    chart.getFlash().load(dataURL);    
+})</pre>
+        </ol>
+        <h3>设置样式</h3>
+        <p>设置样式与设置数据类似，也有四种方式来设置，分别是使用css属性、cssUrl属性、parseCSS方法、loadCSS方法。</p>
+        <h2>如何贡献代码</h2>
         <h3>下载源代码</h3>
         <p>BeeChart使用流行的GitHub来管理源代码，你只要安装了Git，只需要一条命令便能把代码down下来</p>
         <pre class="lang-js">git clone git@github.com:sjpsega/beechart.git</pre>
@@ -491,12 +514,24 @@ chart.on('data_parsed.flash',function(){
         <p>BeeChart的各个部分都是使用这种机制来实现功能的。</p>
         <h3>贡献自己的代码</h3>
         <p>只需要在GitHub中fork BeeChart，然后将自己的分支clone到本地，修改代码，提交。使用Pull Requests，我们验收通过，便能merge到主干。</p>
-        <h2>FAQ</h2>
+        <h2>常见问题</h2>
         <p>Q:使用BeeChart在商业产品中，需要付费吗？</p>
         <p>A:BeeChart是免费、开源的图表组件，不收取任何费用。</p>
-        <h2>图表样式编辑器</h2><a href="http://sjpsega.github.com/beechart-editor/" target="_blank">简单方便的图表样式编辑器</a>
         <!--a(href="charteditor.html",target="_blank") 简单方便的图表样式编辑器-->
       </div>
+    </div>
+    <div class="links fd-clr">
+      <ul class="nav">
+        <li><a href="about.html">关于</a></li>
+        <li class="spacing">|</li>
+        <li><a href="https://github.com/sjpsega/beechart/graphs/contributors" target="_blank">贡献者</a></li>
+        <li class="spacing">|</li>
+        <li><a href="doc.html">文档</a></li>
+        <li class="spacing">|</li>
+        <li><a href="">联系我们</a></li>
+        <li class="spacing">|</li>
+        <li><a href="LICENSE.md" target="_blank">版权声明</a></li>
+      </ul>
     </div>
     <div class="footer">
       <div class="content">

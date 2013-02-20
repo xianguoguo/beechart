@@ -23,18 +23,20 @@ html
                     .download.fd-clr
                         ul
                             li
-                                a.download_link(href="https://github.com/downloads/sjpsega/beechart/beechart%20demo.rar")
+                                //- a.download_link(href="https://github.com/downloads/sjpsega/beechart/beechart%20demo.rar")
+                                a.download_link(href="rar/beechart-demo.rar")
                                     p.title 下载文件包
-                                    p.version Version 1.7.1
+                                    p.version Version 1.7.2
                             li
                                 a.demo_link(href="http://sjpsega.github.com/beechart-editor/",target="_blank")
                                     p.title 编辑图表
+                                    p.version 创建个性化图表样式
                     .news
                         ul
                             li.new
                                 label 最新消息:
-                                a(href="") 饼图图表提升动画性能
-                                label 2011.9.28
+                                a(href="http://sjpsega.github.com/beechart-editor/",target="_blank") 强大的图表属性编辑器
+                                label 2013.2.16
             hr
             .second.fd-clr
                 ul.fd-clr
@@ -62,22 +64,6 @@ html
                         p Github 让您更简单的获取及参与开发BeeChart图表，以及更多其他开源程序。
                         a(href="https://github.com/sjpsega/beechart",target="_blank") 了解更多 &gt;
                 .weibo.fd-left
-        .links.fd-clr
-            ul.nav
-                li
-                    a(href="about.html") 关于
-                li.spacing |
-                li
-                    a(href="https://github.com/sjpsega/beechart/graphs/contributors",target="_blank") 贡献者
-                li.spacing |
-                li
-                    a(href="doc.html") 文档
-                li.spacing |
-                li
-                    a(href="") 联系我们
-                li.spacing |
-                li
-                    a(href="LICENSE.md",target="_blank") 版权声明
         include include/footer.jade
 
     script(type="text/javascript",src="dist/index-merge.js")
