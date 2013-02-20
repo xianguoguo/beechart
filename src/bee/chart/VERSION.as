@@ -32,12 +32,11 @@ package bee.chart
     * 
     * III. People Deserve Being Listed
     *   Developer:   
-    *       邱华 (http://myonepage.com/qhwa),
+    *       邱华 (http://weibo.com/qhwa),
     *       沈剑平 (http://t.sina.com.cn/1798492244)
-    *       曹文文 (http://weibo.com/u/1929924401)
     *   Interaction Designer:
     *       梁薇 (http://t.sina.com.cn/1708482294)
-    *       罗伟 (http://www.tianya8.net/)
+    *       罗伟 (http://weibo.com/luoweihc)
     *   vision Designer:
     *       吴月异 (http://t.sina.com.cn/xiaoyi215)
     *       梁薇 (http://t.sina.com.cn/1708482294)
@@ -48,5 +47,5 @@ package bee.chart
     * @author hua.qiuh, jianping.shenjp
     * 
     */
-    public const VERSION:String = "v1.7.1";
+    public const VERSION:String = "v1.7.2";
 }
