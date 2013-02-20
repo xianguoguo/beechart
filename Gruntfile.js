@@ -79,21 +79,17 @@ module.exports = function( grunt ) {
 									   "js/fdev-min.js",
 									   "js/header-currentset.js",
 									   "js/slider-nav-create.js"],
-				    "dist/about-merge.js": [
-									   "dist/index-merge.js",
-									   "js/jquery.tableofcontents.js"],
-				   "dist/doc-merge.js": [
-									   "dist/about-merge.js",
+				    "dist/doc-merge.js": [
 									   "js/google-code-prettify/prettify.js",
 									   "js/google-code-prettify/lang-css.js",
 									   "js/beechart/flash.js"]
 
 				},
 				options: {
-					 sourceMap: "dist/yid-chart-demo-merge.map",
-					 beautify: true,
-					 compress: false,
-					 mangle: false
+					 // sourceMap: "dist/yid-chart-demo-merge.map",
+					 // beautify: true,
+					 // compress: false,
+					 // mangle: false
 				}
 			}
 		},
