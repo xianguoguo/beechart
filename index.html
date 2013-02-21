@@ -25,7 +25,13 @@
     </div>
     <div class="content">
       <div class="primary fd-clr">
-        <div id="banner" class="banner fd-left"><a href="https://github.com/sjpsega/beechart" target="_blank"><img src="img/banner_1.jpg"></a>
+        <div id="banner" class="banner fd-left">
+          <ul class="banner-content">
+            <li><a href="https://github.com/sjpsega/beechart" target="_blank"><img src="img/slider-1.png"></a></li>
+            <li><a href="https://github.com/sjpsega/beechart" target="_blank"><img data-lazy-src="img/slider-2.png"></a></li>
+            <li><a href="https://github.com/sjpsega/beechart" target="_blank"><img data-lazy-src="img/slider-3.png"></a></li>
+            <li><a href="https://github.com/sjpsega/beechart" target="_blank"><img data-lazy-src="img/slider-4.png"></a></li>
+          </ul>
           <div class="banner-footer"></div>
           <div class="biaoqian"></div>
         </div>
@@ -97,7 +103,7 @@
         <li class="spacing">|</li>
         <li><a href="doc.html">文档</a></li>
         <li class="spacing">|</li>
-        <li><a href="https://github.com/sjpsega/beechart/issues" target="_blank">联系我们</a></li>
+        <li><a href="https://github.com/sjpsega/beechart/issues/1" target="_blank">联系我们</a></li>
         <li class="spacing">|</li>
         <li><a href="LICENSE.md" target="_blank">版权声明</a></li>
       </ul>
@@ -165,4 +171,20 @@
     </script>
   </body>
   <script type="text/javascript" src="dist/index-merge.js"></script>
+  <script>
+    (function($){
+        $.use("ui-tabs-effect,ui-tabs-lazyload",function()
+          {
+             $("#banner .banner-content").tabs({
+                                                   boxSelector: "li",
+                                                   isAutoPlay: true,
+                                                   timeDelay: 4, 
+                                                   effect: "fade",
+                                                   scrollType: "loop",
+                                                   easing: "easeOutCubic"
+             });
+          });
+    })(jQuery);
+    
+  </script>
 </html>
