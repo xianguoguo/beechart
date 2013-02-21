@@ -56,8 +56,10 @@ package bee.chart.release
                 }
 
                 xAxis label {
-                    padding         : 5;
+                    paddingLeft     : 0;
+                    paddingRight    : 0;
                     color           : #666666;
+                    visibility      : visible;
                 }
 
                 yAxis {

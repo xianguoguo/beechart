@@ -42,7 +42,7 @@
         <echo>---------------生成文档---------------</echo>
         <!-- <antcall target="doc"/> -->
         <echo>---------------copy---------------</echo>
-        <!-- <antcall target="copy"/> -->
+        <!-- --><antcall target="copy"/> 
     </target>
     <!--编译flash-->
     <target name="compile">
@@ -88,7 +88,7 @@
     </target> 
 
     <target name="copy"> 
-        <copy todir="D:/gitsource/beechart-editor/swf">
+        <copy todir="E:/gitsource/beechart-editor/swf">
             <fileset dir="${DEPLOY_DIR}">
             </fileset>
         </copy>

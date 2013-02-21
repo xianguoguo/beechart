@@ -45,7 +45,7 @@ package bee.chart.release
                 fillType               : gradient;
                 fillAlpha              : 0;
                 lineMethod.active      : curve;
-                dropshadow.active      : light;
+                dropShadow.active      : light;
                 thickness.active       : 3;
                 fillType.active        : gradient;
                 fillAlpha.active       : .3;
