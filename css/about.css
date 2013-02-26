@@ -356,6 +356,7 @@ html {
   position: absolute;
   border: 10px dashed;
   border-color: transparent #fff transparent transparent;
+  border-right-style: solid;
   right: 0;
 }
 .content .content-container {

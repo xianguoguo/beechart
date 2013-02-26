@@ -9,8 +9,19 @@ html
         .content
             .primary.fd-clr
                 #banner.banner.fd-left
-                    a(href="https://github.com/sjpsega/beechart",target="_blank")
-                        img(src="img/banner_1.jpg")
+                    ul.banner-content
+                        li
+                            a(href="https://github.com/sjpsega/beechart",target="_blank")
+                                img(src="img/slider-1p.png")
+                        li
+                            a(href="https://github.com/sjpsega/beechart",target="_blank")
+                                img(data-lazy-src="img/slider-2p.png")
+                        li
+                            a(href="https://github.com/sjpsega/beechart",target="_blank")
+                                img(data-lazy-src="img/slider-3p.png")
+                        li
+                            a(href="https://github.com/sjpsega/beechart",target="_blank")
+                                img(data-lazy-src="img/slider-4p.png")
                     .banner-footer
                     .biaoqian
                 .infos.fd-left
@@ -67,11 +78,18 @@ html
         include include/footer.jade
 
     script(type="text/javascript",src="dist/index-merge.js")
-    //- script
-    //-     (function($){
-    //-         $.use("ui-tabs-effect",function()
-    //-           {
-    //-              $("#banner").tabs({titleSelector: ".banner-title",boxSelector: ".banner-tab",currentClass: "banner-title-active",isAutoPlay: true,timeDelay: 2, effect: "fade",scrollType: "loop",easing: "easeOutCubic"})
-    //-           });
-    //-     })(jQuery);
+    script
+        (function($){
+            $.use("ui-tabs-effect,ui-tabs-lazyload",function()
+              {
+                 $("#banner .banner-content").tabs({
+                                                       boxSelector: "li",
+                                                       isAutoPlay: true,
+                                                       timeDelay: 4, 
+                                                       effect: "fade",
+                                                       scrollType: "loop",
+                                                       easing: "easeOutCubic"
+                                                   });
+              });
+        })(jQuery);
 
