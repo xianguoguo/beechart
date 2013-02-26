@@ -25,10 +25,10 @@ package bee.chart.release
         
         override protected function initChart():void 
         {
+            //chart --- smooth : true;不能为smooth，否则初始动画会失效；代码后续会将smooth传递给PieSlice，现已经去除；
             var presetCSS:String = <![CDATA[
                 chart {
                     colors          : #FA6222, #FEC53F, #DBEE27, #87C822, #49AFB1;
-                    //smooth          : true;不能为smooth，否则初始动画会失效；代码后续会将smooth传递给PieSlice，现已经去除；
                     animate         : clockwise;
                     order           : none;
                     startAngle      : 0;
