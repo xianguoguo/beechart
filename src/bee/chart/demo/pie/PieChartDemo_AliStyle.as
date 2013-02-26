@@ -85,17 +85,20 @@ package bee.chart.demo.pie
                                 colors: #FA6222, #FEC53F, #DBEE27, #87C822, #49AFB1;
                                 animate:clockwise;
                                 order:asc;
+                                smooth:true;
                             }
                         ]]>
                     </css>
                 </chart>;
             
-            chart.parse(content);
+            
             
             chart.chartWidth = 430;
             chart.chartHeight = 430;
             
             addChild(chart);
+            
+            chart.parse(content);
         }
         
     }

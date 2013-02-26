@@ -81,7 +81,8 @@ package bee.chart.assemble.pie
             viewer.clearPieSlices();
             var pieslices:Vector.<PieSlice>;
             var sliceStyle:Object     = viewer.styleSheet.getStyle("slice");
-            sliceStyle["smooth"] = viewer.getStyle("smooth");
+            //这里不不能讲smooth赋给pieSlice，为true情况下，初始动画会失效
+            //sliceStyle["smooth"] = viewer.getStyle("smooth");
             const chartModel:ChartModel = viewer.chartModel;
             const radius:Number         = Math.min(width, height) >> 1;
             orderType = viewer.getStyle("order");
@@ -401,7 +402,7 @@ package bee.chart.assemble.pie
             }
             
             var sliceStyle:Object = viewer.styleSheet.getStyle("slice");
-            sliceStyle["smooth"] = viewer.getStyle("smooth");
+            //sliceStyle["smooth"] = viewer.getStyle("smooth");
             var pieSlice:PieSlice;
             for each (pieSlice in pieSlices) 
             {

@@ -30,7 +30,7 @@ package bee.chart.demo.demo1dot5
         }
         
         override protected function initChart():void 
-        {·
+        {
             super.initChart();
             chart = new PieChart(new <Class>[
             ]);

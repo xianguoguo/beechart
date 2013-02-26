@@ -63,12 +63,13 @@ package bee.chart.demo.pie
                    
                 </chart>;
             
-            chart.parse(content);
+            
             
             chart.chartWidth = 430;
             chart.chartHeight = 430;
             
             addChild(chart);
+            chart.parse(content);
         }
         
     }
