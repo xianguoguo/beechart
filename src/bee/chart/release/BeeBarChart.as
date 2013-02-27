@@ -63,6 +63,7 @@ package bee.chart.release
                     tickColor       : #666666;
                     tickThickness   : 0;
                     tickLength      : 3;
+                    labelPosition   : center;
                 }
             
                 xAxis label {
