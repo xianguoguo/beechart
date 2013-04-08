@@ -15,19 +15,19 @@ package bee.chart.elements.pie
     import flash.geom.ColorTransform;
     import flash.geom.Point;
     import flash.geom.Rectangle;
-	
+    
 
-	/**
-	 * 在pie图表默认绘制的基础上，label水平放置，自动判断是否放置在圆饼内外侧
-	 * @author jianping.shenjp
-	 */                                                
-	public class PieSlice2dDrawPrinterWithLabel extends PrinterDecorator implements IPieSlicePrinter
-	{
+    /**
+     * 在pie图表默认绘制的基础上，label水平放置，自动判断是否放置在圆饼内外侧
+     * @author jianping.shenjp
+     */                                                
+    public class PieSlice2dDrawPrinterWithLabel extends PrinterDecorator implements IPieSlicePrinter
+    {
 
-		public function PieSlice2dDrawPrinterWithLabel(basePrinter:IStatePrinter)
-		{
-			super(basePrinter);
-		}
+        public function PieSlice2dDrawPrinterWithLabel(basePrinter:IStatePrinter)
+        {
+            super(basePrinter);
+        }
         
         override public function renderState(host:IStatesHost, state:String, context:DisplayObjectContainer):void 
         {
@@ -55,18 +55,18 @@ package bee.chart.elements.pie
          */
         protected function drawPieLabel(view:PieSliceView, context:DisplayObjectContainer):void 
         {
-			var data:PieSliceData = view.dataModel as PieSliceData;
+            var data:PieSliceData = view.dataModel as PieSliceData;
             var radius:Number;
             var pieLabel:Label = new Label();
-			pieLabel.setStyles(StyleUtil.mergeStyle(
+            pieLabel.setStyles(StyleUtil.mergeStyle(
                 view.styleSheet.getStyle('label'), {
                     'paddingLeft'   : '0',
                     'paddingRight'  : '0'
                 })
             );
-			context.addChild(pieLabel);
-			//将label的状态设置为与view相同。
-			pieLabel.state = view.state;
+            context.addChild(pieLabel);
+            //将label的状态设置为与view相同。
+            pieLabel.state = view.state;
             pieLabel.name = 'label';
             pieLabel.text = view.getLabelText();
         }
@@ -75,10 +75,10 @@ package bee.chart.elements.pie
         
         public function updateLabelAndLinePos(view:PieSliceView):void
         {
-			var data:PieSliceData = view.dataModel as PieSliceData;
-			var setX:Number     = 0;
-			var setY:Number     = 0;
-			var label:Label     = view.label;
+            var data:PieSliceData = view.dataModel as PieSliceData;
+            var setX:Number     = 0;
+            var setY:Number     = 0;
+            var label:Label     = view.label;
             
             var labelW:Number = view.labelWidth;
             var labelH:Number = view.labelHeight;
@@ -120,7 +120,7 @@ package bee.chart.elements.pie
                 setX -= view.labelWidth + PieSliceView.TICK_EXTENSION_SIZE + PieSliceView.LABEL_MARGIN + 4;
             }
             setY -= view.labelHeight / 2;
-			
+            
             label.x = setX;
             label.y = setY;
         }
@@ -138,7 +138,7 @@ package bee.chart.elements.pie
             // 标签的半径=圆的半径+标签刻度线长度
             //TODO: 加上碰撞测试修正
             var line:PieLine = getPieLine(context);
-			line.name = "line";
+            line.name = "line";
             var g:Graphics = line.graphics;
             var ticLblX:Number;
             var ticLblY:Number;
@@ -192,12 +192,12 @@ package bee.chart.elements.pie
         {
             var data:PieSliceData = view.dataModel as PieSliceData;
             const needMakeOutside:Boolean = data.labelRadiusAdj > 0;
-			if (needMakeOutside || !canCanvasHoldLabel(view))
-			{
+            if (needMakeOutside || !canCanvasHoldLabel(view))
+            {
                 //如果label在内部时，有字被遮挡，就将字放到圆饼外，并加上连线。
                 makeLabelOutside(view, label);
                 drawLine(view, view.content);
-			}
+            }
         }
         
         /**
@@ -208,7 +208,7 @@ package bee.chart.elements.pie
         * @return
         */
         protected function canCanvasHoldLabel(view:PieSliceView):Boolean
-		{
+        {
             /**
             * 采用BitmapData draw的方式判断label是否超出canvas的范围。先将label绘制出来，并转换为红色；再绘制canvas，转换为白色；绘制结果获得红色的区域，如果区域的width==0，表示label没有超出canvas的范围，否则就超出了。
             */
@@ -230,10 +230,9 @@ package bee.chart.elements.pie
             bmpd.dispose();
             bmpd = null;
             result = (intersection.width == 0);
-            num++;
             return result;
-		}
-        static public var num:int = 1;
+        }
+        
         /**
          * 获得容器上指定的组件类型，若无，就新建一个
          * @param	context
@@ -249,39 +248,39 @@ package bee.chart.elements.pie
             }
             return new PieLine();
         }
-		
-		/**
-		 * 根据情况给label设置背景色.
-		 * 若PieSliceView带line，active时，label带背景色显示，否则不带背景色.
-		 * @param view
-		 * 
-		 */		
-		protected function changeLabelStyle(view:PieSliceView):void{
-			var pieLabel:Label = view.label;
+        
+        /**
+         * 根据情况给label设置背景色.
+         * 若PieSliceView带line，active时，label带背景色显示，否则不带背景色.
+         * @param view
+         * 
+         */		
+        protected function changeLabelStyle(view:PieSliceView):void{
+            var pieLabel:Label = view.label;
             if (pieLabel)
             {
-				var sliceStyle:Object = view.chart.styleSheet.getStyle("slice");
-				if(view.line){
-					sliceStyle = StyleUtil.mergeStyle(
-						sliceStyle,
-						{
-							'paddingLeft'   : '0',
-							'paddingRight'  : '0',
-							'backgroundColor.hl' : '#29A5F7',
-							'color.hl' : '#FFFFFF'
-						}
-					);
-				}else{
-					sliceStyle = StyleUtil.mergeStyle(
-						sliceStyle,
-						{
-							'paddingLeft'   : '0',
-							'paddingRight'  : '0'
-						}
-					);
-				}
-				pieLabel.setStyles(sliceStyle);
-			}
-		}
+                var sliceStyle:Object = view.chart.styleSheet.getStyle("slice");
+                if(view.line){
+                    sliceStyle = StyleUtil.mergeStyle(
+                        sliceStyle,
+                        {
+                            'paddingLeft'   : '0',
+                            'paddingRight'  : '0',
+                            'backgroundColor.hl' : '#29A5F7',
+                            'color.hl' : '#FFFFFF'
+                        }
+                    );
+                }else{
+                    sliceStyle = StyleUtil.mergeStyle(
+                        sliceStyle,
+                        {
+                            'paddingLeft'   : '0',
+                            'paddingRight'  : '0'
+                        }
+                    );
+                }
+                pieLabel.setStyles(sliceStyle);
+            }
+        }
     }
 }
